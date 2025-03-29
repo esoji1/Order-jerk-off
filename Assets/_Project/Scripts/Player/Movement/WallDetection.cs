@@ -13,7 +13,7 @@ namespace Assets._Project.Scripts.Player.Movement
 
         public bool IsTouchingWall => _isTouchingWall;
 
-        void Update()
+        private void Update()
         {
             _lastHit = Physics2D.Raycast(transform.position, _player.JoysickForMovement.VectorDirection(), _raycastDistance, _wallLayer);
             bool hitWall = _lastHit.collider != null;

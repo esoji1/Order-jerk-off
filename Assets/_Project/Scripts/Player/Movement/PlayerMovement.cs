@@ -16,11 +16,17 @@ namespace Assets._Project.Scripts.Player
 
         public void Move()
         {
-            if (_player.WallDetection.IsTouchingWall == false)
+            if (_player.WallDetection[0].IsTouchingWall == false || _player.WallDetection[1].IsTouchingWall == false)
                 return;
 
             Vector2 movement = _joysickForMovement.VectorDirection() * _player.Speed * Time.deltaTime;
             _player.transform.Translate(movement);
+        }
+
+        public void MoveTarget(Transform target)
+        {
+            _player.transform.position = Vector2.MoveTowards(_player.transform.position, 
+                target.position,_player.Config.Speed * Time.deltaTime);
         }
     }
 }
