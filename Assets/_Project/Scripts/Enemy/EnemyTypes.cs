@@ -3,5 +3,6 @@
     public enum EnemyTypes
     {
         CommonEnemy = 0,
+        HeavyCommonEnemy
     }
 }

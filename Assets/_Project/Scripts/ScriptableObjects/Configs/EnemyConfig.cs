@@ -10,8 +10,9 @@ namespace Assets._Project.Scripts.ScriptableObjects.Configs
         [field: SerializeField] public int Damage;
         [field: SerializeField] public int Speed;
         [field: SerializeField] public float AttackRadius;
-        [field: SerializeField] public float SpeedAttack;
-        [field: SerializeField] public float AmountExperienceDropped;
-        [field: SerializeField] public float AmountGoldDropped;
+        [field: SerializeField] public float VisibilityRadius;
+        [field: SerializeField] public int ReturnInitialAttackPosition;
+        [field: SerializeField] public int AmountExperienceDropped;
+        [field: SerializeField] public int AmountGoldDropped;
     }
 }

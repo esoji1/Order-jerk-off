@@ -13,7 +13,7 @@ TagManager:
   - UI
   - Wall
   - Enemy
-  - 
+  - Player
   - 
   - 
   - 
@@ -43,6 +43,9 @@ TagManager:
     locked: 0
   - name: Building
     uniqueID: 1150927379
+    locked: 0
+  - name: AddInPlayer
+    uniqueID: 1159417663
     locked: 0
   - name: Player
     uniqueID: 736359037

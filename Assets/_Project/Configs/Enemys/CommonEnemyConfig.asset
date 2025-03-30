@@ -15,8 +15,10 @@ MonoBehaviour:
   Prefab: {fileID: 366809998630182342, guid: aa31a30fc87af0c4ebb6f4e7cef58b67, type: 3}
   Health: 100
   Damage: 5
-  Speed: 5
-  AttackRadius: 1
-  SpeedAttack: 3
+  Speed: 2
+  AttackRadius: 0.3
+  VisibilityRadius: 1
+  RotationSpeed: 5
+  ReturnInitialAttackPosition: 1
   AmountExperienceDropped: 10
   AmountGoldDropped: 100

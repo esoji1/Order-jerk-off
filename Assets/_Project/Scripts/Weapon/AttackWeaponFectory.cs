@@ -1,4 +1,5 @@
 using Assets._Project.Scripts.Weapon.Attacks;
+using Assets._Project.Scripts.Weapon.Interface;
 using System;
 using UnityEngine;
 
@@ -7,9 +8,9 @@ namespace Assets._Project.Scripts.Weapon
     public class AttackWeaponFectory : MonoBehaviour
     {
         private Weapons.Weapon _weapon;
-        private Interface.IBaseWeapon _baseWeapon;
+        private IBaseWeapon _baseWeapon;
 
-        public Interface.IBaseWeapon BaseWeapon => _baseWeapon;
+        public IBaseWeapon BaseWeapon => _baseWeapon;
 
         private void Start()
         {
@@ -21,11 +22,9 @@ namespace Assets._Project.Scripts.Weapon
         {
             switch (_weapon)
             {
-                case Interface.IMeleeAttack:
+                case IMeleeAttack:
                     _baseWeapon = new MeleeAttack(_weapon);
                     break;
-
-                //» так дальше пишешь классы и плодишь врагов
 
                 default:
                     throw new ArgumentException($"There is no such type of attack {_weapon}");

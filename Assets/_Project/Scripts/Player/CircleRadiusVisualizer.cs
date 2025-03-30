@@ -1,49 +1,44 @@
 using UnityEngine;
-using static UnityEngine.Rendering.HableCurve;
 
 namespace Assets._Project.Scripts.Player
 {
     [RequireComponent(typeof(LineRenderer))]
-
     public class CircleRadiusVisualizer : MonoBehaviour
     {
         [SerializeField] private Player _player;
-        [SerializeField] private int _segments = 64;
+        [SerializeField] private Material _material;
+        [SerializeField] private Color _radiusColor;
+        [SerializeField] private float _lineWidth;
+        [SerializeField] private int _numberPoints;
 
         private LineRenderer _lineRenderer;
 
-        private void Start()
+        private void Awake()
         {
-            if (_lineRenderer == null)
-                _lineRenderer = GetComponent<LineRenderer>();
-
-            DrawCircle();
+            _lineRenderer = GetComponent<LineRenderer>();
+            _lineRenderer.material = _material;
+            _lineRenderer.startWidth = _lineWidth;
+            _lineRenderer.endWidth = _lineWidth;
+            _lineRenderer.positionCount = _numberPoints + 1;
+            _material.color = _radiusColor;
         }
 
-        private void Update()
+        private void Update() => DrawRadius();
+
+        private void DrawRadius()
         {
-            UpdateRadius();
-        }
+            float step = 360f / _numberPoints;
 
-        private void DrawCircle()
-        {
-            _lineRenderer.positionCount = _segments + 1; // +1 дл€ замыкани€ круга
-
-            float deltaTheta = (2f * Mathf.PI) / _segments;
-            float theta = 0f;
-
-            for (int i = 0; i < _segments + 1; i++)
+            for (int i = 0; i < _numberPoints; i++)
             {
-                float x = _player.Config.AttackRadius * Mathf.Cos(theta);
-                float z = _player.Config.AttackRadius * Mathf.Sin(theta);
-                _lineRenderer.SetPosition(i, new Vector3(x, 0.1f, z)); // 0.1f Ч небольша€ высота над землЄй
-                theta += deltaTheta;
+                float angle = step * i * Mathf.Deg2Rad;
+                float x = Mathf.Cos(angle) * _player.Config.AttackRadius;
+                float y = Mathf.Sin(angle) * _player.Config.AttackRadius;
+                Vector3 point = new Vector3(x, y, 0f);
+                _lineRenderer.SetPosition(i, _player.transform.position + point);
             }
-        }
 
-        public void UpdateRadius()
-        {
-            DrawCircle();
+            _lineRenderer.SetPosition(_numberPoints, _lineRenderer.GetPosition(0));
         }
     }
 }

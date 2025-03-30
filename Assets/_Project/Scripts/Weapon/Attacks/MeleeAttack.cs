@@ -108,6 +108,8 @@ namespace Assets._Project.Scripts.Weapon.Attacks
         {
             if (_nearestEnemy.TryGetComponent(out Enemy.Enemy enemy))
                 enemy.Damage(_weapon.Config.Damage + _weapon.Player.PlayerCharacteristics.AddDamageAttack);
+            else if (_nearestEnemy.TryGetComponent(out SpawnEnemy spawnEnemy))
+                spawnEnemy.Damage(_weapon.Config.Damage + _weapon.Player.PlayerCharacteristics.AddDamageAttack);
         }
     }
 }

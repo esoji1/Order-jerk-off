@@ -1,6 +1,6 @@
-    using System;
-    using TMPro;
-    using UnityEngine;
+using System;
+using TMPro;
+using UnityEngine;
 
 namespace Assets._Project.Scripts.Player.Pumping
 {
@@ -20,6 +20,13 @@ namespace Assets._Project.Scripts.Player.Pumping
         public bool Up;
         public bool Down;
 
+        private void Awake()
+        {
+            _level = 1;
+            _experience = 0;
+            _experienceReachNewLevel = 100;
+        }
+
         private void Update()
         {
             if (Up)
@@ -36,8 +43,8 @@ namespace Assets._Project.Scripts.Player.Pumping
 
         public void UpdateCaption()
         {
-            _experienceText.text = $"{_experience} из {_experienceReachNewLevel} опыта";
             _levelText.text = $"Уровень игрока: {_level}";
+            _experienceText.text = $"{_experience} из {_experienceReachNewLevel} опыта";
         }
 
         public void AddExperience(int value)
@@ -71,7 +78,7 @@ namespace Assets._Project.Scripts.Player.Pumping
                 _experienceReachNewLevel = Mathf.RoundToInt(_experienceReachNewLevel / ExperienceMultiplier);
             }
 
-            if (_level < 1)
+            if (_level == 1 && _experience < 0)
             {
                 _level = 1;
                 _experience = 0;

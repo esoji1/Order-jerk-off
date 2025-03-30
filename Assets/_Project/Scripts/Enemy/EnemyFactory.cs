@@ -1,4 +1,6 @@
-﻿using Assets._Project.Scripts.ScriptableObjects.Configs;
+﻿using Assets._Project.Scripts.Enemy.Enemys;
+using Assets._Project.Scripts.ScriptableObjects.Configs;
+using Assets._Project.Sctipts.Core.HealthSystem;
 using System;
 using UnityEngine;
 
@@ -6,11 +8,25 @@ namespace Assets._Project.Scripts.Enemy
 {
     public class EnemyFactory
     {
-        private EnemyConfig _commonEnemyConfig;
+        private EnemyConfig _commonEnemyConfig, _heavyCommonConfig;
+        private BattleZone _battleZone;
+        private SelectionGags.Experience _experience;
+        private HealthInfo _healthInfoPrefab;
+        private HealthView _healthViewPrefab;
+        private Canvas _dynamic;
+        private LayerMask _layer;
 
-        public EnemyFactory(EnemyConfig commonEnemy)
+        public EnemyFactory(EnemyConfig commonEnemy, EnemyConfig heavyCommonConfig, BattleZone battleZone, SelectionGags.Experience experience, HealthInfo healthInfoPrefab, 
+            HealthView healthViewPrefab, Canvas dynamic, LayerMask layer)
         {
             _commonEnemyConfig = commonEnemy;
+            _heavyCommonConfig = heavyCommonConfig;
+            _battleZone = battleZone;
+            _experience = experience;
+            _healthInfoPrefab = healthInfoPrefab;
+            _healthViewPrefab = healthViewPrefab;
+            _dynamic = dynamic;
+            _layer = layer;
         }
 
         public Enemy Get(EnemyTypes enemyType, Vector3 position)
@@ -28,6 +44,9 @@ namespace Assets._Project.Scripts.Enemy
                 case EnemyTypes.CommonEnemy:
                     return _commonEnemyConfig;
 
+                case EnemyTypes.HeavyCommonEnemy:
+                    return _heavyCommonConfig;
+
                 default:
                     throw new ArgumentException(nameof(types));
             }
@@ -35,9 +54,9 @@ namespace Assets._Project.Scripts.Enemy
 
         private Enemy InitializeObject(Enemy instance, EnemyConfig config)
         {
-            if (instance is CommonEnemy)
+            if (instance is CommonEnemy || instance is HeavyCommonEnemy)
             {
-                instance.Initialize(config);
+                instance.Initialize(config, _battleZone, _experience, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer);
 
                 return instance;
             }

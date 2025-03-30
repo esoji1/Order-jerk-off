@@ -17,7 +17,6 @@ namespace Assets._Project.Scripts.UseWeapons
 
         private void OnTransformChildrenChanged()
         {
-            Debug.Log($"Изменение в иерархии {name} или его потомков!");
             Invoke("GetWeapon", 1f);
         }
 
