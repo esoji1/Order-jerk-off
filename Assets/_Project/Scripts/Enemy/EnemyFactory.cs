@@ -1,5 +1,6 @@
 ﻿using Assets._Project.Scripts.Enemy.Enemys;
 using Assets._Project.Scripts.ScriptableObjects.Configs;
+using Assets._Project.Scripts.Weapon;
 using Assets._Project.Sctipts.Core.HealthSystem;
 using System;
 using UnityEngine;
@@ -15,9 +16,10 @@ namespace Assets._Project.Scripts.Enemy
         private HealthView _healthViewPrefab;
         private Canvas _dynamic;
         private LayerMask _layer;
+        private WeaponFactoryBootstrap _weaponFactoryBootstrap;
 
         public EnemyFactory(EnemyConfig commonEnemy, EnemyConfig heavyCommonConfig, BattleZone battleZone, SelectionGags.Experience experience, HealthInfo healthInfoPrefab, 
-            HealthView healthViewPrefab, Canvas dynamic, LayerMask layer)
+            HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, WeaponFactoryBootstrap weaponFactoryBootstrap)
         {
             _commonEnemyConfig = commonEnemy;
             _heavyCommonConfig = heavyCommonConfig;
@@ -27,6 +29,7 @@ namespace Assets._Project.Scripts.Enemy
             _healthViewPrefab = healthViewPrefab;
             _dynamic = dynamic;
             _layer = layer;
+            _weaponFactoryBootstrap = weaponFactoryBootstrap;
         }
 
         public Enemy Get(EnemyTypes enemyType, Vector3 position)
@@ -56,7 +59,7 @@ namespace Assets._Project.Scripts.Enemy
         {
             if (instance is CommonEnemy || instance is HeavyCommonEnemy)
             {
-                instance.Initialize(config, _battleZone, _experience, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer);
+                instance.Initialize(config, _battleZone, _experience, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, _weaponFactoryBootstrap);
 
                 return instance;
             }

@@ -9,8 +9,7 @@ namespace Assets._Project.Scripts.Weapon.Weapons
     public abstract class Weapon : MonoBehaviour
     {
         private WeaponConfig _config;
-        private Player.Player _player;
-        private Transform _point;
+        private Transform _pointRotation;
 
         private AttackMeleeView _attackMeleeView;
         private Move _move;
@@ -18,16 +17,14 @@ namespace Assets._Project.Scripts.Weapon.Weapons
 
         public WeaponConfig Config => _config;
         public AttackMeleeView AttackMeleeView => _attackMeleeView;
-        public Player.Player Player => _player;
-        public Transform Point => _point;
+        public Transform Point => _pointRotation;
         public Move Move => _move;
         public WeaponData WeaponData => _weaponData;
 
-        public virtual void Initialize(WeaponConfig config, Player.Player player, Transform point)
+        public virtual void Initialize(WeaponConfig config, Transform pointRotation)
         {
             _config = config;
-            _player = player;
-            _point = point;
+            _pointRotation = pointRotation;
             _attackMeleeView = new AttackMeleeView();
             _move = new Move();
             _weaponData = new WeaponData();

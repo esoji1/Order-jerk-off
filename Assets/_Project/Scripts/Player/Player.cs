@@ -5,7 +5,6 @@ using Assets._Project.Scripts.Player.Movement;
 using Assets._Project.Scripts.Player.Pumping;
 using Assets._Project.Scripts.ScriptableObjects.Configs;
 using Assets._Project.Scripts.SelectionGags;
-using Assets._Project.Scripts.Weapon.Weapons;
 using Assets._Project.Sctipts.Core;
 using Assets._Project.Sctipts.Core.HealthSystem;
 using Assets._Project.Sctipts.JoystickMovement;
@@ -53,6 +52,7 @@ namespace Assets._Project.Scripts.Player
         public PlayerMovement PlayerMovement => _playerMovement;
         public PlayerCharacteristics PlayerCharacteristics => _playerCharacteristics;
         public PointHealth PointHealth => _pointHealth;
+        public PointRotation PointRotation => _rotationSprite;
 
         private void Update()
         {

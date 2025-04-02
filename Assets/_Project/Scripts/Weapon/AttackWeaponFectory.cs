@@ -10,11 +10,14 @@ namespace Assets._Project.Scripts.Weapon
         private Weapons.Weapon _weapon;
         private IBaseWeapon _baseWeapon;
 
+        private Transform _raycastDirection;
+
         public IBaseWeapon BaseWeapon => _baseWeapon;
 
-        private void Start()
+        public void Initialize(Transform raycastDirection)
         {
             _weapon = GetComponent<Weapons.Weapon>();
+            _raycastDirection = raycastDirection;
             Get();
         }
 
@@ -23,7 +26,7 @@ namespace Assets._Project.Scripts.Weapon
             switch (_weapon)
             {
                 case IMeleeAttack:
-                    _baseWeapon = new MeleeAttack(_weapon);
+                    _baseWeapon = new MeleeAttack(_weapon, _raycastDirection);
                     break;
 
                 default:

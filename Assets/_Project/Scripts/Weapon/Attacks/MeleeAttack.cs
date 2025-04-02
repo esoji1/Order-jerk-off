@@ -8,6 +8,7 @@ namespace Assets._Project.Scripts.Weapon.Attacks
     public class MeleeAttack : IBaseWeapon
     {
         private Weapons.Weapon _weapon;
+        private Transform _raycastDirection;
 
         private DetectionRadius _enemyDetectionRadius;
         private AttackMeleeView _attackMeleeView;
@@ -16,16 +17,17 @@ namespace Assets._Project.Scripts.Weapon.Attacks
         private bool _isAttacking;
         private Collider2D _nearestEnemy;
 
-        public MeleeAttack(Weapons.Weapon weapon)
+        public MeleeAttack(Weapons.Weapon weapon, Transform raycastDirection)
         {
             _weapon = weapon;
+            _raycastDirection = raycastDirection;
             _enemyDetectionRadius = new DetectionRadius(_weapon.transform, _weapon.Config.Layer);
             _attackMeleeView = new AttackMeleeView();
         }
 
         public void Attack()
         {
-            Debug.DrawRay(_weapon.transform.position, _weapon.transform.right * _weapon.Config.RaycastAttack, Color.green);
+            Debug.DrawRay(_raycastDirection.position, _raycastDirection.right * _weapon.Config.RaycastAttack, Color.green);
 
             _enemyDetectionRadius.Detection(_weapon.Config.VisibilityRadius);
             _nearestEnemy = _enemyDetectionRadius.GetNearestEnemy();
@@ -62,11 +64,13 @@ namespace Assets._Project.Scripts.Weapon.Attacks
             if (_isAttacking)
             {
                 _isAttacking = false;
+
                 if (_attackCoroutine != null)
                 {
                     _weapon.StopCoroutine(_attackCoroutine);
                     _attackCoroutine = null;
                 }
+
                 _weapon.StartCoroutine(ReturnOriginalPosition(0));
             }
         }
@@ -84,7 +88,6 @@ namespace Assets._Project.Scripts.Weapon.Attacks
                 else
                 {
                     StopAttack();
-                    yield break;
                 }
             }
 
@@ -107,8 +110,8 @@ namespace Assets._Project.Scripts.Weapon.Attacks
 
         private bool CheckAttackHit()
         {
-            Vector2 direction = _weapon.transform.right;
-            RaycastHit2D hit = Physics2D.Raycast(_weapon.transform.position, direction, _weapon.Config.RaycastAttack, _weapon.Config.Layer);
+            Vector2 direction = _raycastDirection.right;
+            RaycastHit2D hit = Physics2D.Raycast(_raycastDirection.position, direction, _weapon.Config.RaycastAttack, _weapon.Config.Layer);
 
             return hit.collider != null && hit.collider.TryGetComponent(out IDamage _);
         }

@@ -1,12 +1,13 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
 namespace Assets._Project.Scripts.Core
 {
     public class Move
     {
-        public void MoveTarget(Transform target, Transform currentTransform, float speed)
+        public void MoveTarget(Transform targetPosition, Transform currentTransform, float speed)
         {
-            currentTransform.position = Vector2.MoveTowards(currentTransform.position, target.position, speed * Time.deltaTime);
+            currentTransform.position = Vector2.MoveTowards(currentTransform.position, targetPosition.position, speed * Time.deltaTime);
         }
 
         public void Rotation(Transform spriteRotation, Vector2 direction)

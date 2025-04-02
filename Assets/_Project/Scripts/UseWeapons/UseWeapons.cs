@@ -26,7 +26,9 @@ namespace Assets._Project.Scripts.UseWeapons
 
         private void GetWeapon()
         {
-            _baseWeapon = GetComponentInChildren<Weapon.AttackWeaponFectory>().BaseWeapon;
+            Weapon.AttackWeaponFectory attackWeaponFectory = GetComponentInChildren<Weapon.AttackWeaponFectory>();
+            attackWeaponFectory.Initialize(_player.PointRotation.transform);
+            _baseWeapon = attackWeaponFectory.BaseWeapon;
             _weapon = GetComponentInChildren<Weapon.Weapons.Weapon>();
             OnChangeWeapon?.Invoke(_weapon);
         }

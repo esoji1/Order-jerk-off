@@ -1,25 +1,24 @@
 using Assets._Project.Scripts.Core;
-using Assets._Project.Scripts.ScriptableObjects.Configs;
-using System;
+using Assets._Project.Sctipts.Core;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.Weapon
 {
     public class WeaponFactoryBootstrap : MonoBehaviour
     {
-        [SerializeField] private WeaponConfig _firstWeaponConfig;
-        [SerializeField] private Player.Player _player;
         [SerializeField] private Transform _pointWeapon;
+        [SerializeField] private PointAttack _pointAttack;
 
         private WeaponFactory _factory;
         private Weapons.Weapon weapon;
         private SetWeaponPoint _setWeaponPoint;
 
         public SetWeaponPoint SetWeaponPoint => _setWeaponPoint;
+        public WeaponFactory Factory => _factory;
 
         private void Awake()
         {
-            _factory = new WeaponFactory(_firstWeaponConfig, _player, _pointWeapon);
+            _factory = new WeaponFactory();
             _setWeaponPoint = new SetWeaponPoint();
 
             SpawnStandartWeapon();
@@ -27,7 +26,7 @@ namespace Assets._Project.Scripts.Weapon
 
         private void SpawnStandartWeapon()
         {
-            weapon = _factory.Get(WeaponTypes.MeleeAttack, transform.position);
+            weapon = _factory.Get(WeaponTypes.WoodenSwordPlayer, transform.position, _pointAttack.transform);
             _setWeaponPoint.SetParent(weapon.transform, _pointWeapon);
             _setWeaponPoint.Set(weapon.transform);
         }

@@ -2,6 +2,9 @@
 {
     public enum WeaponTypes
     {
-        MeleeAttack = 0,
+        WoodenSwordPlayer = 0,
+        WoodenSwordEnemy,
+        WoodenAxePlayer,
+        WoodenAxeEnemy,
     }
 }

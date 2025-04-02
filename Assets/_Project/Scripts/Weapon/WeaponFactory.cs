@@ -1,5 +1,6 @@
 ﻿using Assets._Project.Scripts.ScriptableObjects.Configs;
 using Assets._Project.Scripts.Weapon.Interface;
+using Assets._Project.Sctipts.Core;
 using System;
 using UnityEngine;
 
@@ -7,22 +8,11 @@ namespace Assets._Project.Scripts.Weapon
 {
     public class WeaponFactory
     {
-        private WeaponConfig _firstWeaponConfig;
-        private Player.Player _player;
-        private Transform _point;
-
-        public WeaponFactory(WeaponConfig firstWeaponConfig, Player.Player player, Transform point)
-        {
-            _firstWeaponConfig = firstWeaponConfig;
-            _player = player;
-            _point = point;
-        }
-
-        public Weapons.Weapon Get(WeaponTypes weaponType, Vector3 position)
+        public Weapons.Weapon Get(WeaponTypes weaponType, Vector3 position, Transform point)
         {
             WeaponConfig config = GetConfigBy(weaponType);
             Weapons.Weapon instance = UnityEngine.Object.Instantiate(config.Prefab, position, Quaternion.identity, null);
-            Weapons.Weapon baseWeapon = InitializeObject(instance, config);
+            Weapons.Weapon baseWeapon = InitializeObject(instance, config, point);
             return baseWeapon;
         }
 
@@ -30,19 +20,28 @@ namespace Assets._Project.Scripts.Weapon
         {
             switch (types)
             {
-                case WeaponTypes.MeleeAttack:
-                    return _firstWeaponConfig;
+                case WeaponTypes.WoodenSwordPlayer:
+                    return WeaponConfigs.WoodenSwordPlayerConfig;
+
+                case WeaponTypes.WoodenSwordEnemy:
+                    return WeaponConfigs.WoodenSwordEnemyConfig;
+
+                case WeaponTypes.WoodenAxePlayer:
+                    return WeaponConfigs.WoodenAxePlayerConfig;
+
+                case WeaponTypes.WoodenAxeEnemy:
+                    return WeaponConfigs.WoodenAxeEnemyConfig;
 
                 default:
                     throw new ArgumentException(nameof(types));
             }
         }
 
-        private Weapons.Weapon InitializeObject(Weapons.Weapon instance, WeaponConfig config)
+        private Weapons.Weapon InitializeObject(Weapons.Weapon instance, WeaponConfig config, Transform point)
         {
             if (instance is IMeleeAttack)
             {
-                instance.Initialize(config, _player, _point);
+                instance.Initialize(config, point);
                 return instance;
             }
             else

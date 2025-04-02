@@ -10,16 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eed8593984ee607458aff12c72bd43f4, type: 3}
-  m_Name: FirstWeaponConfig
+  m_Name: WoodenAxeConfig
   m_EditorClassIdentifier: 
-  Damage: 20
-  Prefab: {fileID: 2045288444892460180, guid: 02cea876772d83f408a4544b0606dd6f, type: 3}
+  Damage: 15
+  Prefab: {fileID: 8880536980909223644, guid: 50cb65bf1035dad498382ca9e50357d5, type: 3}
   AttackSpeed: 20
-  Price: 100
+  Price: 30
   RadiusAttack: 0.4
-  ReturnInitialAttackPosition: 0.5
+  ReturnInitialAttackPosition: 0.6
   Layer:
     serializedVersion: 2
-    m_Bits: 128
-  RaycastAttack: 0.51
+    m_Bits: 256
+  RaycastAttack: 0.5
   VisibilityRadius: 1
+  WeaponTypes: 0
