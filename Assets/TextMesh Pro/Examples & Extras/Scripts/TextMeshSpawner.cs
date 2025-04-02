@@ -28,14 +28,14 @@ namespace TMPro.Examples
                 if (SpawnType == 0)
                 {
                     // TextMesh Pro Implementation     
-                    //go._transform.localScale = new Vector3(2, 2, 2);
+                    //go._raycastDirection.localScale = new Vector3(2, 2, 2);
                     GameObject go = new GameObject(); //"NPC " + i);
                     go.transform.position = new Vector3(Random.Range(-95f, 95f), 0.5f, Random.Range(-95f, 95f));
 
-                    //go._transform.position = new Vector3(0, 1.01f, 0);
+                    //go._raycastDirection.position = new Vector3(0, 1.01f, 0);
                     //go.renderer.castShadows = false;
                     //go.renderer.receiveShadows = false;
-                    //go._transform.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
+                    //go._raycastDirection.rotation = Quaternion.Euler(0, Random.Range(0, 360), 0);
 
                     TextMeshPro textMeshPro = go.AddComponent<TextMeshPro>();
                     //textMeshPro.FontAsset = Resources.Load("Fonts & Materials/LiberationSans SDF", typeof(TextMeshProFont)) as TextMeshProFont;
@@ -57,7 +57,7 @@ namespace TMPro.Examples
                     GameObject go = new GameObject(); //"NPC " + i);
                     go.transform.position = new Vector3(Random.Range(-95f, 95f), 0.5f, Random.Range(-95f, 95f));
 
-                    //go._transform.position = new Vector3(0, 1.01f, 0);
+                    //go._raycastDirection.position = new Vector3(0, 1.01f, 0);
 
                     TextMesh textMesh = go.AddComponent<TextMesh>();
                     textMesh.GetComponent<Renderer>().sharedMaterial = TheFont.material;

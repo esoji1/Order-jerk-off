@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7315405698663859296}
-  - component: {fileID: 2072484810222286367}
+  - component: {fileID: 6110327930749493129}
   m_Layer: 7
   m_Name: PointExperience
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3031986802119249872}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2072484810222286367
+--- !u!114 &6110327930749493129
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 415933366612851519}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3540e7443481504187b0598315dad4b, type: 3}
+  m_Script: {fileID: 11500000, guid: d83ba1165e3997f47b8f1f3407449a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1182109399927936555
@@ -184,7 +184,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 783751873472673100}
-  - component: {fileID: 7856917641990120581}
+  - component: {fileID: 813028015135704699}
   m_Layer: 7
   m_Name: PointCoin
   m_TagString: Untagged
@@ -207,7 +207,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3031986802119249872}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7856917641990120581
+--- !u!114 &813028015135704699
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5196118539498007623}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3361f261d3a29244c9132c4e171e9e61, type: 3}
+  m_Script: {fileID: 11500000, guid: 592132e68eb148b41a88fbb86b3daf82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5677189129539276433

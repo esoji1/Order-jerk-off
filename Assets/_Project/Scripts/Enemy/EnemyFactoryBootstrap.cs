@@ -29,7 +29,7 @@ namespace Assets._Project.Scripts.Enemy
         {
             if(IsSpawn == false)
             {
-                _enemyFactory.Get(EnemyTypes.HeavyCommonEnemy, transform.position);
+                _enemyFactory.Get(EnemyTypes.CommonEnemy, transform.position);
                 IsSpawn = true;
             }
         }

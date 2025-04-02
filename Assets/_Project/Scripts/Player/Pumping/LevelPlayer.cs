@@ -12,7 +12,7 @@ namespace Assets._Project.Scripts.Player.Pumping
         [SerializeField] private TextMeshProUGUI _levelText;
 
         private int _experience;
-        private int _experienceReachNewLevel = 100;
+        private int _experienceReachNewLevel;
         private int _level;
 
         public event Action OnLevelUp;

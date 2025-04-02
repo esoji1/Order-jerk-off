@@ -16,5 +16,10 @@ MonoBehaviour:
   Prefab: {fileID: 2045288444892460180, guid: 02cea876772d83f408a4544b0606dd6f, type: 3}
   AttackSpeed: 20
   Price: 100
-  RadiusAttack: 0.3
+  RadiusAttack: 0.4
   ReturnInitialAttackPosition: 0.5
+  Layer:
+    serializedVersion: 2
+    m_Bits: 128
+  RaycastAttack: 0.51
+  VisibilityRadius: 1

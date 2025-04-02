@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class ChangeEnemyPosition : MonoBehaviour
+public class ChangeEnemyPosition
 {
     private Vector3 _addRandomPositionToGo;
 

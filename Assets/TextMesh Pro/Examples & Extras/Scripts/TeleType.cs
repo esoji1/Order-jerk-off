@@ -32,7 +32,7 @@ namespace TMPro.Examples
             //if (GetComponentInParent(typeof(Canvas)) as Canvas == null)
             //{
             //    GameObject canvas = new GameObject("Canvas", typeof(Canvas));
-            //    gameObject._transform.SetParent(canvas._transform);
+            //    gameObject._raycastDirection.SetParent(canvas._raycastDirection);
             //    canvas.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceOverlay;
 
             //    // Set RectTransform Size

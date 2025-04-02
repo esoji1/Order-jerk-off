@@ -28,7 +28,7 @@ namespace Assets._Project.Scripts.Weapon
         private void SpawnStandartWeapon()
         {
             weapon = _factory.Get(WeaponTypes.MeleeAttack, transform.position);
-            weapon.transform.SetParent(_pointWeapon);
+            _setWeaponPoint.SetParent(weapon.transform, _pointWeapon);
             _setWeaponPoint.Set(weapon.transform);
         }
     }

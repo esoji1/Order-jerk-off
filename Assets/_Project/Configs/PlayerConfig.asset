@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefdc27bde33a254cb363bef34c13e3d, type: 3}
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
-  Speed: 5
-  AttackRadius: 1
+  Speed: 2
+  VisibilityRadius: 1
   Health: 100
   LayerEnemy:
     serializedVersion: 2

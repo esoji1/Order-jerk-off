@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Enemy
+namespace Assets._Project.Scripts.Core
 {
     public class PointCoin : MonoBehaviour
     {

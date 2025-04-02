@@ -1,3 +1,4 @@
+using Assets._Project.Scripts.Core.Interface;
 using Assets._Project.Scripts.Weapon.Interface;
 using System.Collections;
 using UnityEngine;
@@ -8,7 +9,7 @@ namespace Assets._Project.Scripts.Weapon.Attacks
     {
         private Weapons.Weapon _weapon;
 
-        private EnemyDetectionRadius _enemyDetectionRadius;
+        private DetectionRadius _enemyDetectionRadius;
         private AttackMeleeView _attackMeleeView;
 
         private Coroutine _attackCoroutine;
@@ -18,38 +19,32 @@ namespace Assets._Project.Scripts.Weapon.Attacks
         public MeleeAttack(Weapons.Weapon weapon)
         {
             _weapon = weapon;
-            _enemyDetectionRadius = new EnemyDetectionRadius(_weapon.Player);
+            _enemyDetectionRadius = new DetectionRadius(_weapon.transform, _weapon.Config.Layer);
             _attackMeleeView = new AttackMeleeView();
         }
 
         public void Attack()
         {
-            if (_weapon.Player.JoysickForMovement.VectorDirection() != Vector2.zero)
-            {
-                _weapon.StartCoroutine(ReturnOriginalPosition(0));
-                StopAttack();
-                return;
-            }
+            Debug.DrawRay(_weapon.transform.position, _weapon.transform.right * _weapon.Config.RaycastAttack, Color.green);
 
-            _enemyDetectionRadius.Detection();
-
+            _enemyDetectionRadius.Detection(_weapon.Config.VisibilityRadius);
             _nearestEnemy = _enemyDetectionRadius.GetNearestEnemy();
+
             if (_nearestEnemy == null)
             {
                 StopAttack();
                 return;
             }
 
-            float distance = Vector2.Distance(_weapon.Player.transform.position, _nearestEnemy.transform.position);
+            float distance = Vector2.Distance(_weapon.transform.position, _nearestEnemy.transform.position) - 0.1f;
 
-            if (distance > _weapon.Config.RadiusAttack)
+            if (distance < _weapon.Config.RadiusAttack)
             {
-                StopAttack();
-                _weapon.Player.PlayerMovement.MoveTarget(_nearestEnemy.transform);
+                StartAttack();
             }
             else
             {
-                StartAttack();
+                StopAttack();
             }
         }
 
@@ -72,6 +67,7 @@ namespace Assets._Project.Scripts.Weapon.Attacks
                     _weapon.StopCoroutine(_attackCoroutine);
                     _attackCoroutine = null;
                 }
+                _weapon.StartCoroutine(ReturnOriginalPosition(0));
             }
         }
 
@@ -79,12 +75,17 @@ namespace Assets._Project.Scripts.Weapon.Attacks
         {
             while (_isAttacking && _enemyDetectionRadius.EnemiesDetected.Count > 0)
             {
-                yield return PerformAttack(-90);
+                if (CheckAttackHit())
+                {
+                    yield return PerformAttack(-90);
 
-                if (_isAttacking == false)
+                    yield return ReturnOriginalPosition(0);
+                }
+                else
+                {
+                    StopAttack();
                     yield break;
-
-                yield return ReturnOriginalPosition(0);
+                }
             }
 
             _isAttacking = false;
@@ -95,21 +96,27 @@ namespace Assets._Project.Scripts.Weapon.Attacks
         {
             _weapon.StartCoroutine(_attackMeleeView.StartAttack(_weapon.Point, angle, _weapon.Config.AttackSpeed));
             ApplyDamageEnemy();
-            yield return new WaitForSeconds(_weapon.Config.ReturnInitialAttackPosition - _weapon.Player.PlayerCharacteristics.ReturnInitialAttackPosition);
+            yield return new WaitForSeconds(_weapon.Config.ReturnInitialAttackPosition - _weapon.WeaponData.ReturnInitialAttackPosition);
         }
 
         private IEnumerator ReturnOriginalPosition(float angle)
         {
             _weapon.StartCoroutine(_attackMeleeView.StartAttack(_weapon.Point, angle, _weapon.Config.AttackSpeed));
-            yield return new WaitForSeconds(_weapon.Config.ReturnInitialAttackPosition - _weapon.Player.PlayerCharacteristics.ReturnInitialAttackPosition);
+            yield return new WaitForSeconds(_weapon.Config.ReturnInitialAttackPosition - _weapon.WeaponData.ReturnInitialAttackPosition);
+        }
+
+        private bool CheckAttackHit()
+        {
+            Vector2 direction = _weapon.transform.right;
+            RaycastHit2D hit = Physics2D.Raycast(_weapon.transform.position, direction, _weapon.Config.RaycastAttack, _weapon.Config.Layer);
+
+            return hit.collider != null && hit.collider.TryGetComponent(out IDamage _);
         }
 
         private void ApplyDamageEnemy()
         {
-            if (_nearestEnemy.TryGetComponent(out Enemy.Enemy enemy))
-                enemy.Damage(_weapon.Config.Damage + _weapon.Player.PlayerCharacteristics.AddDamageAttack);
-            else if (_nearestEnemy.TryGetComponent(out SpawnEnemy spawnEnemy))
-                spawnEnemy.Damage(_weapon.Config.Damage + _weapon.Player.PlayerCharacteristics.AddDamageAttack);
+            if (_nearestEnemy.TryGetComponent(out IDamage damage))
+                damage.Damage(_weapon.Config.Damage + _weapon.WeaponData.ExtraDamage);
         }
     }
 }

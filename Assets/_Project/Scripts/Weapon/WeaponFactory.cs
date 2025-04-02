@@ -22,8 +22,8 @@ namespace Assets._Project.Scripts.Weapon
         {
             WeaponConfig config = GetConfigBy(weaponType);
             Weapons.Weapon instance = UnityEngine.Object.Instantiate(config.Prefab, position, Quaternion.identity, null);
-            Weapons.Weapon baseEnemy = InitializeObject(instance, config);
-            return baseEnemy;
+            Weapons.Weapon baseWeapon = InitializeObject(instance, config);
+            return baseWeapon;
         }
 
         private WeaponConfig GetConfigBy(WeaponTypes types)

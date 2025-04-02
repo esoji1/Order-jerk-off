@@ -2,8 +2,6 @@ using Assets._Project.Scripts.Enemy.Interface;
 using UnityEngine;
 using System.Collections;
 using Assets._Project.Scripts.Weapon;
-using Unity.VisualScripting;
-using UnityEngine.UIElements;
 
 namespace Assets._Project.Scripts.Enemy.Attacks
 {
@@ -32,21 +30,21 @@ namespace Assets._Project.Scripts.Enemy.Attacks
 
         public void Attack()
         {
-            DetectPlayer();
+            //DetectPlayer();
 
-            if (_target != null)
-            {
-                float distance = Vector2.Distance(_enemy.transform.position, _target.transform.position);
-                if (distance > _enemy.Config.AttackRadius)
-                {
-                    StopAttack();
-                    MoveToTarget();
-                }
-                else
-                {
-                    StartAttack();
-                }
-            }
+            //if (_target != null)
+            //{
+            //    float distance = Vector2.Distance(_enemy.transform.position, _target.transform.position);
+            //    if (distance > _enemy.Config.AttackRadius)
+            //    {
+            //        StopAttack();
+            //        MoveToTarget();
+            //    }
+            //    else
+            //    {
+            //        StartAttack();
+            //    }
+            //}
         }
 
         private void MoveToTarget()

@@ -1,4 +1,5 @@
 using Assets._Project.Scripts.Weapon.Interface;
+using System;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.UseWeapons
@@ -8,6 +9,9 @@ namespace Assets._Project.Scripts.UseWeapons
         [SerializeField] private Player.Player _player;
 
         private IBaseWeapon _baseWeapon;
+        private Weapon.Weapons.Weapon _weapon;
+
+        public event Action<Weapon.Weapons.Weapon> OnChangeWeapon;
 
         private void Update()
         {
@@ -23,6 +27,8 @@ namespace Assets._Project.Scripts.UseWeapons
         private void GetWeapon()
         {
             _baseWeapon = GetComponentInChildren<Weapon.AttackWeaponFectory>().BaseWeapon;
+            _weapon = GetComponentInChildren<Weapon.Weapons.Weapon>();
+            OnChangeWeapon?.Invoke(_weapon);
         }
     }
 }
