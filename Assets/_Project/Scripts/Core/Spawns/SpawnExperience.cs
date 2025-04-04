@@ -14,9 +14,7 @@ namespace Assets._Project.Sctipts.Core.Spawns
             _numberExperience = numberExperience;
         }
 
-        public void Spawn(Transform pointExperience)
-        {
+        public void Spawn(Transform pointExperience) =>
             Object.Instantiate(_experience, pointExperience.position, Quaternion.identity, null).Initialize(_numberExperience);
-        }
     }
 }

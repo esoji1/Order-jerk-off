@@ -1,0 +1,988 @@
+fileFormatVersion: 2
+guid: ef9bd5100dc815d40be943d435171a00
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3666260970331708224
+    second: fortified_structures_0
+  - first:
+      213: -5232187956320693223
+    second: fortified_structures_1
+  - first:
+      213: 4961730568206172142
+    second: fortified_structures_2
+  - first:
+      213: 6433937782719262700
+    second: fortified_structures_3
+  - first:
+      213: -2554386144485668001
+    second: fortified_structures_4
+  - first:
+      213: -339127811559064590
+    second: fortified_structures_5
+  - first:
+      213: 5626358379396529480
+    second: fortified_structures_6
+  - first:
+      213: -3126150131384264787
+    second: fortified_structures_7
+  - first:
+      213: -8025380544890991086
+    second: fortified_structures_8
+  - first:
+      213: 5072796707200007032
+    second: fortified_structures_9
+  - first:
+      213: -3044993278958320143
+    second: fortified_structures_10
+  - first:
+      213: -4584562779590396129
+    second: fortified_structures_11
+  - first:
+      213: 6289575622779318965
+    second: fortified_structures_12
+  - first:
+      213: 350185966727271830
+    second: fortified_structures_13
+  - first:
+      213: 3605213000507081253
+    second: fortified_structures_14
+  - first:
+      213: -8664713248583792981
+    second: fortified_structures_15
+  - first:
+      213: -1556795020123523943
+    second: fortified_structures_16
+  - first:
+      213: 5197773628613585293
+    second: fortified_structures_17
+  - first:
+      213: 4284087332214953507
+    second: fortified_structures_18
+  - first:
+      213: -9151708977414429976
+    second: fortified_structures_19
+  - first:
+      213: -8818087532434270815
+    second: fortified_structures_20
+  - first:
+      213: 7892306712869285643
+    second: fortified_structures_21
+  - first:
+      213: -8179376272580858847
+    second: fortified_structures_22
+  - first:
+      213: -1608294909254581388
+    second: fortified_structures_23
+  - first:
+      213: -7759570080883323557
+    second: fortified_structures_24
+  - first:
+      213: 2625699092582882842
+    second: fortified_structures_25
+  - first:
+      213: 6038025060285575563
+    second: fortified_structures_26
+  - first:
+      213: 5591352261639489706
+    second: fortified_structures_27
+  - first:
+      213: -3440186173878306137
+    second: fortified_structures_28
+  - first:
+      213: 5728987628436106271
+    second: fortified_structures_29
+  - first:
+      213: -1195037958188875286
+    second: fortified_structures_30
+  - first:
+      213: -8438086125595537877
+    second: fortified_structures_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fortified_structures_0
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1351
+        width: 165
+        height: 167
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c4ef797213de1dc0800000000000000
+      internalID: -3666260970331708224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_1
+      rect:
+        serializedVersion: 2
+        x: 554
+        y: 1363
+        width: 93
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9149d6966c88367b0800000000000000
+      internalID: -5232187956320693223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_2
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 1351
+        width: 171
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eef3025d9ab9bd440800000000000000
+      internalID: 4961730568206172142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_3
+      rect:
+        serializedVersion: 2
+        x: 1354
+        y: 1371
+        width: 93
+        height: 88
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cef22fd2350f94950800000000000000
+      internalID: 6433937782719262700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_4
+      rect:
+        serializedVersion: 2
+        x: 1753
+        y: 1369
+        width: 95
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f5b80c6d55ffc8cd0800000000000000
+      internalID: -2554386144485668001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_5
+      rect:
+        serializedVersion: 2
+        x: 2154
+        y: 1363
+        width: 114
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2fbf09a5d0d2b4bf0800000000000000
+      internalID: -339127811559064590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_6
+      rect:
+        serializedVersion: 2
+        x: 2548
+        y: 1364
+        width: 104
+        height: 113
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84df8f6e227d41e40800000000000000
+      internalID: 5626358379396529480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_7
+      rect:
+        serializedVersion: 2
+        x: 2955
+        y: 1370
+        width: 90
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da7dc40c40fad94d0800000000000000
+      internalID: -3126150131384264787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_8
+      rect:
+        serializedVersion: 2
+        x: 3325
+        y: 1341
+        width: 170
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21e017a2aee10a090800000000000000
+      internalID: -8025380544890991086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_9
+      rect:
+        serializedVersion: 2
+        x: 3756
+        y: 1369
+        width: 90
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87b7d667ab1366640800000000000000
+      internalID: 5072796707200007032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_10
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 966
+        width: 112
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f5cc30feb20eb5d0800000000000000
+      internalID: -3044993278958320143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_11
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 957
+        width: 130
+        height: 116
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f177908217c5060c0800000000000000
+      internalID: -4584562779590396129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_12
+      rect:
+        serializedVersion: 2
+        x: 940
+        y: 968
+        width: 122
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b2b7bf84bf094750800000000000000
+      internalID: 6289575622779318965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_13
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 964
+        width: 114
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6951b18084c1cd400800000000000000
+      internalID: 350185966727271830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_14
+      rect:
+        serializedVersion: 2
+        x: 1716
+        y: 950
+        width: 169
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 52248da6f1a480230800000000000000
+      internalID: 3605213000507081253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_15
+      rect:
+        serializedVersion: 2
+        x: 2149
+        y: 971
+        width: 96
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba6ca814531c0c780800000000000000
+      internalID: -8664713248583792981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_16
+      rect:
+        serializedVersion: 2
+        x: 2523
+        y: 942
+        width: 169
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 994b07d6d27256ae0800000000000000
+      internalID: -1556795020123523943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_17
+      rect:
+        serializedVersion: 2
+        x: 2951
+        y: 968
+        width: 94
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d89e7648393322840800000000000000
+      internalID: 5197773628613585293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_18
+      rect:
+        serializedVersion: 2
+        x: 3356
+        y: 975
+        width: 89
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3265c670bb2247b30800000000000000
+      internalID: 4284087332214953507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_19
+      rect:
+        serializedVersion: 2
+        x: 3717
+        y: 936
+        width: 167
+        height: 165
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e2a5714c299ef080800000000000000
+      internalID: -9151708977414429976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_20
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 564
+        width: 114
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a554f60c1cdf9580800000000000000
+      internalID: -8818087532434270815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_21
+      rect:
+        serializedVersion: 2
+        x: 539
+        y: 551
+        width: 123
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0f210fd32b178d60800000000000000
+      internalID: 7892306712869285643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_22
+      rect:
+        serializedVersion: 2
+        x: 925
+        y: 543
+        width: 153
+        height: 154
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12c2f84cd940d7e80800000000000000
+      internalID: -8179376272580858847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_23
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 557
+        width: 131
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 473cfc71d403ea9e0800000000000000
+      internalID: -1608294909254581388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_24
+      rect:
+        serializedVersion: 2
+        x: 1723
+        y: 540
+        width: 178
+        height: 161
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5d43379f18705490800000000000000
+      internalID: -7759570080883323557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_25
+      rect:
+        serializedVersion: 2
+        x: 2120
+        y: 551
+        width: 161
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1ed774c96b507420800000000000000
+      internalID: 2625699092582882842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_26
+      rect:
+        serializedVersion: 2
+        x: 2526
+        y: 551
+        width: 166
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b817a3f2dcf5bc350800000000000000
+      internalID: 6038025060285575563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_27
+      rect:
+        serializedVersion: 2
+        x: 2960
+        y: 568
+        width: 85
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa84919f149789d40800000000000000
+      internalID: 5591352261639489706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_28
+      rect:
+        serializedVersion: 2
+        x: 3354
+        y: 564
+        width: 93
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7aaf5c8d6e00240d0800000000000000
+      internalID: -3440186173878306137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_29
+      rect:
+        serializedVersion: 2
+        x: 3717
+        y: 551
+        width: 169
+        height: 150
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f1caa8305e3718f40800000000000000
+      internalID: 5728987628436106271
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_30
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 175
+        width: 90
+        height: 84
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae14b010f4f5a6fe0800000000000000
+      internalID: -1195037958188875286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fortified_structures_31
+      rect:
+        serializedVersion: 2
+        x: 557
+        y: 164
+        width: 90
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2ec9bb2065e5ea80800000000000000
+      internalID: -8438086125595537877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      fortified_structures_0: -3666260970331708224
+      fortified_structures_1: -5232187956320693223
+      fortified_structures_10: -3044993278958320143
+      fortified_structures_11: -4584562779590396129
+      fortified_structures_12: 6289575622779318965
+      fortified_structures_13: 350185966727271830
+      fortified_structures_14: 3605213000507081253
+      fortified_structures_15: -8664713248583792981
+      fortified_structures_16: -1556795020123523943
+      fortified_structures_17: 5197773628613585293
+      fortified_structures_18: 4284087332214953507
+      fortified_structures_19: -9151708977414429976
+      fortified_structures_2: 4961730568206172142
+      fortified_structures_20: -8818087532434270815
+      fortified_structures_21: 7892306712869285643
+      fortified_structures_22: -8179376272580858847
+      fortified_structures_23: -1608294909254581388
+      fortified_structures_24: -7759570080883323557
+      fortified_structures_25: 2625699092582882842
+      fortified_structures_26: 6038025060285575563
+      fortified_structures_27: 5591352261639489706
+      fortified_structures_28: -3440186173878306137
+      fortified_structures_29: 5728987628436106271
+      fortified_structures_3: 6433937782719262700
+      fortified_structures_30: -1195037958188875286
+      fortified_structures_31: -8438086125595537877
+      fortified_structures_4: -2554386144485668001
+      fortified_structures_5: -339127811559064590
+      fortified_structures_6: 5626358379396529480
+      fortified_structures_7: -3126150131384264787
+      fortified_structures_8: -8025380544890991086
+      fortified_structures_9: 5072796707200007032
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

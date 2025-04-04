@@ -13,10 +13,10 @@ namespace Assets._Project.Scripts.Enemy.Enemys
 
         protected override IBaseWeapon BaseWeapon => _baseWeapon;
 
-        public override void Initialize(EnemyConfig config, BattleZone battleZone, Experience prefab, HealthInfo healthInfoPrefab, HealthView healthViewPrefab,
-            Canvas dynamic, LayerMask layer, WeaponFactoryBootstrap weaponFactoryBootstrap)
+        public override void Initialize(EnemyConfig config, BattleZone battleZone, Experience prefabExperience, Coin prefabCoin, HealthInfo healthInfoPrefab,
+            HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, WeaponFactoryBootstrap weaponFactoryBootstrap)
         {
-            base.Initialize(config, battleZone, prefab, healthInfoPrefab, healthViewPrefab, dynamic, layer, weaponFactoryBootstrap);
+            base.Initialize(config, battleZone, prefabExperience, prefabCoin, healthInfoPrefab, healthViewPrefab, dynamic, layer, weaponFactoryBootstrap);
 
             Weapon.Weapons.Weapon weapon = WeaponFactoryBootstrap.Factory.Get(WeaponTypes.WoodenAxeEnemy, transform.position, PointAttack.transform);
 

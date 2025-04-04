@@ -12,19 +12,21 @@ namespace Assets._Project.Scripts.Enemy
         private EnemyConfig _commonEnemyConfig, _heavyCommonConfig;
         private BattleZone _battleZone;
         private SelectionGags.Experience _experience;
+        private SelectionGags.Coin _coin;
         private HealthInfo _healthInfoPrefab;
         private HealthView _healthViewPrefab;
         private Canvas _dynamic;
         private LayerMask _layer;
         private WeaponFactoryBootstrap _weaponFactoryBootstrap;
 
-        public EnemyFactory(EnemyConfig commonEnemy, EnemyConfig heavyCommonConfig, BattleZone battleZone, SelectionGags.Experience experience, HealthInfo healthInfoPrefab, 
-            HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, WeaponFactoryBootstrap weaponFactoryBootstrap)
+        public EnemyFactory(EnemyConfig commonEnemy, EnemyConfig heavyCommonConfig, BattleZone battleZone, SelectionGags.Experience experience, SelectionGags.Coin coin, 
+            HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, WeaponFactoryBootstrap weaponFactoryBootstrap)
         {
             _commonEnemyConfig = commonEnemy;
             _heavyCommonConfig = heavyCommonConfig;
             _battleZone = battleZone;
             _experience = experience;
+            _coin = coin;
             _healthInfoPrefab = healthInfoPrefab;
             _healthViewPrefab = healthViewPrefab;
             _dynamic = dynamic;
@@ -59,7 +61,7 @@ namespace Assets._Project.Scripts.Enemy
         {
             if (instance is CommonEnemy || instance is HeavyCommonEnemy)
             {
-                instance.Initialize(config, _battleZone, _experience, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, _weaponFactoryBootstrap);
+                instance.Initialize(config, _battleZone, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, _weaponFactoryBootstrap);
 
                 return instance;
             }

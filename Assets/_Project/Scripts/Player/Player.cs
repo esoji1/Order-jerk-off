@@ -5,6 +5,7 @@ using Assets._Project.Scripts.Player.Movement;
 using Assets._Project.Scripts.Player.Pumping;
 using Assets._Project.Scripts.ScriptableObjects.Configs;
 using Assets._Project.Scripts.SelectionGags;
+using Assets._Project.Scripts.Wallet;
 using Assets._Project.Sctipts.Core;
 using Assets._Project.Sctipts.Core.HealthSystem;
 using Assets._Project.Sctipts.JoystickMovement;
@@ -32,8 +33,7 @@ namespace Assets._Project.Scripts.Player
         private Flip _flip;
         private Move _move;
         private Health _health;
-        private HealthView _healthView;
-        private HealthInfo _healthInfo;
+        private Wallet.Wallet _wallet;
 
         private PlayerView _playerView;
         private PointHealth _pointHealth;
@@ -41,6 +41,8 @@ namespace Assets._Project.Scripts.Player
         private RadiusMovementTrigger _radiusMovementTrigger;
 
         private Weapon.Weapons.Weapon _weapon;
+        private HealthView _healthView;
+        private HealthInfo _healthInfo;
 
         public event Action<int> OnDamage;
         public event Action OnUp;
@@ -53,6 +55,7 @@ namespace Assets._Project.Scripts.Player
         public PlayerCharacteristics PlayerCharacteristics => _playerCharacteristics;
         public PointHealth PointHealth => _pointHealth;
         public PointRotation PointRotation => _rotationSprite;
+        public Wallet.Wallet Wallet => _wallet; 
 
         private void Update()
         {
@@ -97,6 +100,11 @@ namespace Assets._Project.Scripts.Player
             OnDamage?.Invoke(damage);
         }
 
+        public void AddMoney(int value)
+        {
+           _wallet.AddMoney(value); 
+        }
+
         private void InitializeInside()
         {
             ExtractComponents();
@@ -105,6 +113,7 @@ namespace Assets._Project.Scripts.Player
             _playerMovement = new PlayerMovement(_joysickForMovement, this);
             _flip = new Flip();
             _move = new Move();
+            _wallet = new Wallet.Wallet(0);
             _playerView.Initialize();
             _characteristicsView.Initialize(this);
 

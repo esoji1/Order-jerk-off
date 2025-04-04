@@ -1,0 +1,1066 @@
+fileFormatVersion: 2
+guid: 016e9140e2d0c66498ed407329b203cd
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3664823417568451025
+    second: paths_and_places_0
+  - first:
+      213: 8984743650913397008
+    second: paths_and_places_1
+  - first:
+      213: 4163660019105781033
+    second: paths_and_places_2
+  - first:
+      213: -1378514681739483707
+    second: paths_and_places_3
+  - first:
+      213: 7897726541319120121
+    second: paths_and_places_4
+  - first:
+      213: 6477836054429358007
+    second: paths_and_places_5
+  - first:
+      213: 192536908443570143
+    second: paths_and_places_6
+  - first:
+      213: -4647393284366440233
+    second: paths_and_places_7
+  - first:
+      213: 1307655244031666602
+    second: paths_and_places_8
+  - first:
+      213: -3702408343935410034
+    second: paths_and_places_9
+  - first:
+      213: 3599410620612289696
+    second: paths_and_places_10
+  - first:
+      213: -5291080546315709938
+    second: paths_and_places_11
+  - first:
+      213: 6867572448224252397
+    second: paths_and_places_12
+  - first:
+      213: 8716367109147410522
+    second: paths_and_places_13
+  - first:
+      213: 3805775486365359437
+    second: paths_and_places_14
+  - first:
+      213: 2469624600149251012
+    second: paths_and_places_15
+  - first:
+      213: 4086782528704283448
+    second: paths_and_places_16
+  - first:
+      213: -7515773156531259916
+    second: paths_and_places_17
+  - first:
+      213: 2089420386250864531
+    second: paths_and_places_18
+  - first:
+      213: 4857987344229927181
+    second: paths_and_places_19
+  - first:
+      213: -1945463337609441171
+    second: paths_and_places_20
+  - first:
+      213: -3535186137712789603
+    second: paths_and_places_21
+  - first:
+      213: -1286206778922068233
+    second: paths_and_places_22
+  - first:
+      213: -2657562452083892155
+    second: paths_and_places_23
+  - first:
+      213: 8424435106587642488
+    second: paths_and_places_24
+  - first:
+      213: 9095260167362414822
+    second: paths_and_places_25
+  - first:
+      213: -2868761824520985910
+    second: paths_and_places_26
+  - first:
+      213: -2446330252648478163
+    second: paths_and_places_27
+  - first:
+      213: -6338022021417902126
+    second: paths_and_places_28
+  - first:
+      213: -7183108863195193306
+    second: paths_and_places_29
+  - first:
+      213: -2880196301465278209
+    second: paths_and_places_30
+  - first:
+      213: 2200577716932222732
+    second: paths_and_places_31
+  - first:
+      213: -4933600182395719036
+    second: paths_and_places_32
+  - first:
+      213: 3259967532859860952
+    second: paths_and_places_33
+  - first:
+      213: 1434447560401222138
+    second: paths_and_places_34
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 8192
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: paths_and_places_0
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 2173
+        width: 72
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d953b03b711cd230800000000000000
+      internalID: 3664823417568451025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_1
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 2158
+        width: 121
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 019a3ae4fb830bc70800000000000000
+      internalID: 8984743650913397008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_2
+      rect:
+        serializedVersion: 2
+        x: 941
+        y: 2163
+        width: 115
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 925db443aba48c930800000000000000
+      internalID: 4163660019105781033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_3
+      rect:
+        serializedVersion: 2
+        x: 1349
+        y: 2159
+        width: 103
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c5e14d53388edce0800000000000000
+      internalID: -1378514681739483707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_4
+      rect:
+        serializedVersion: 2
+        x: 1750
+        y: 2166
+        width: 117
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f42084027c5a9d60800000000000000
+      internalID: 7897726541319120121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_5
+      rect:
+        serializedVersion: 2
+        x: 2146
+        y: 2166
+        width: 108
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7b7da790295e5e950800000000000000
+      internalID: 6477836054429358007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_6
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 1770
+        width: 101
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdf4ee15c470ca200800000000000000
+      internalID: 192536908443570143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_7
+      rect:
+        serializedVersion: 2
+        x: 549
+        y: 1770
+        width: 101
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d86dc94e64218fb0800000000000000
+      internalID: -4647393284366440233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_8
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 1769
+        width: 101
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa92f252489b52210800000000000000
+      internalID: 1307655244031666602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_9
+      rect:
+        serializedVersion: 2
+        x: 1343
+        y: 1756
+        width: 107
+        height: 97
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e80a9463a376e9cc0800000000000000
+      internalID: -3702408343935410034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_10
+      rect:
+        serializedVersion: 2
+        x: 1737
+        y: 1762
+        width: 123
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a42d5293eca3f130800000000000000
+      internalID: 3599410620612289696
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_11
+      rect:
+        serializedVersion: 2
+        x: 2149
+        y: 1767
+        width: 101
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e025fd6c64e4296b0800000000000000
+      internalID: -5291080546315709938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_12
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 1359
+        width: 123
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de19aa571c48e4f50800000000000000
+      internalID: 6867572448224252397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_13
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 1363
+        width: 117
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5041a854b1c6f870800000000000000
+      internalID: 8716367109147410522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_14
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 1369
+        width: 101
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4d52b714a4d0d430800000000000000
+      internalID: 3805775486365359437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_15
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 1370
+        width: 109
+        height: 76
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c3567c3d7ed54220800000000000000
+      internalID: 2469624600149251012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_16
+      rect:
+        serializedVersion: 2
+        x: 1405
+        y: 1363
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83301b1ae0b27b830800000000000000
+      internalID: 4086782528704283448
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_17
+      rect:
+        serializedVersion: 2
+        x: 1760
+        y: 1368
+        width: 81
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f5b988622c92b790800000000000000
+      internalID: -7515773156531259916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_18
+      rect:
+        serializedVersion: 2
+        x: 2160
+        y: 1368
+        width: 81
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39731f465cc1ffc10800000000000000
+      internalID: 2089420386250864531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_19
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 967
+        width: 100
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d090b2830c90b6340800000000000000
+      internalID: 4857987344229927181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_20
+      rect:
+        serializedVersion: 2
+        x: 536
+        y: 959
+        width: 125
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d605e36e6635005e0800000000000000
+      internalID: -1945463337609441171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_21
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 969
+        width: 99
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d977ebe10fe70fec0800000000000000
+      internalID: -3535186137712789603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_22
+      rect:
+        serializedVersion: 2
+        x: 1345
+        y: 970
+        width: 103
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7f696aacfb9762ee0800000000000000
+      internalID: -1286206778922068233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_23
+      rect:
+        serializedVersion: 2
+        x: 1747
+        y: 959
+        width: 112
+        height: 91
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 540af1bb7017e1bd0800000000000000
+      internalID: -2657562452083892155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_24
+      rect:
+        serializedVersion: 2
+        x: 2150
+        y: 965
+        width: 104
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87a8c79481b99e470800000000000000
+      internalID: 8424435106587642488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_25
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 569
+        width: 99
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e88567feead83e70800000000000000
+      internalID: 9095260167362414822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_26
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 569
+        width: 109
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac2a938e15c1038d0800000000000000
+      internalID: -2868761824520985910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_27
+      rect:
+        serializedVersion: 2
+        x: 947
+        y: 587
+        width: 103
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2a889fa893ec0ed0800000000000000
+      internalID: -2446330252648478163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_28
+      rect:
+        serializedVersion: 2
+        x: 1346
+        y: 570
+        width: 68
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2df58c24d82da08a0800000000000000
+      internalID: -6338022021417902126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_29
+      rect:
+        serializedVersion: 2
+        x: 1783
+        y: 570
+        width: 68
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6206a42fb88705c90800000000000000
+      internalID: -7183108863195193306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_30
+      rect:
+        serializedVersion: 2
+        x: 2149
+        y: 566
+        width: 101
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff8a4c749bc7708d0800000000000000
+      internalID: -2880196301465278209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_31
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 167
+        width: 67
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0f926e36c50a8e10800000000000000
+      internalID: 2200577716932222732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_32
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 167
+        width: 67
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 482308006c4588bb0800000000000000
+      internalID: -4933600182395719036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_33
+      rect:
+        serializedVersion: 2
+        x: 951
+        y: 190
+        width: 64
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d72b67f23bbd3d20800000000000000
+      internalID: 3259967532859860952
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: paths_and_places_34
+      rect:
+        serializedVersion: 2
+        x: 1388
+        y: 190
+        width: 64
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: af9f3a6c47e28e310800000000000000
+      internalID: 1434447560401222138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      paths_and_places_0: 3664823417568451025
+      paths_and_places_1: 8984743650913397008
+      paths_and_places_10: 3599410620612289696
+      paths_and_places_11: -5291080546315709938
+      paths_and_places_12: 6867572448224252397
+      paths_and_places_13: 8716367109147410522
+      paths_and_places_14: 3805775486365359437
+      paths_and_places_15: 2469624600149251012
+      paths_and_places_16: 4086782528704283448
+      paths_and_places_17: -7515773156531259916
+      paths_and_places_18: 2089420386250864531
+      paths_and_places_19: 4857987344229927181
+      paths_and_places_2: 4163660019105781033
+      paths_and_places_20: -1945463337609441171
+      paths_and_places_21: -3535186137712789603
+      paths_and_places_22: -1286206778922068233
+      paths_and_places_23: -2657562452083892155
+      paths_and_places_24: 8424435106587642488
+      paths_and_places_25: 9095260167362414822
+      paths_and_places_26: -2868761824520985910
+      paths_and_places_27: -2446330252648478163
+      paths_and_places_28: -6338022021417902126
+      paths_and_places_29: -7183108863195193306
+      paths_and_places_3: -1378514681739483707
+      paths_and_places_30: -2880196301465278209
+      paths_and_places_31: 2200577716932222732
+      paths_and_places_32: -4933600182395719036
+      paths_and_places_33: 3259967532859860952
+      paths_and_places_34: 1434447560401222138
+      paths_and_places_4: 7897726541319120121
+      paths_and_places_5: 6477836054429358007
+      paths_and_places_6: 192536908443570143
+      paths_and_places_7: -4647393284366440233
+      paths_and_places_8: 1307655244031666602
+      paths_and_places_9: -3702408343935410034
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

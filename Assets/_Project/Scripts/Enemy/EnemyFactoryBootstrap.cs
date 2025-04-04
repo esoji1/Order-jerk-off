@@ -10,6 +10,7 @@ namespace Assets._Project.Scripts.Enemy
         [SerializeField] private EnemyConfig _commonEnemyConfig, _heavyCommonConfig;
         [SerializeField] private BattleZone _battleZone;
         [SerializeField] private SelectionGags.Experience _experience;
+        [SerializeField] private SelectionGags.Coin _coin;
         [SerializeField] private HealthInfo _healthInfoPrefab;
         [SerializeField] private HealthView _healthViewPrefab;
         [SerializeField] private Canvas _dynamic;
@@ -25,8 +26,8 @@ namespace Assets._Project.Scripts.Enemy
 
         private void Awake()
         {
-            _enemyFactory  = new EnemyFactory(_commonEnemyConfig, _heavyCommonConfig, _battleZone, _experience, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer,
-                _weaponFactoryBootstrap);
+            _enemyFactory  = new EnemyFactory(_commonEnemyConfig, _heavyCommonConfig, _battleZone, _experience, _coin, _healthInfoPrefab, 
+                _healthViewPrefab, _dynamic, _layer, _weaponFactoryBootstrap);
         }
 
         private void Update()

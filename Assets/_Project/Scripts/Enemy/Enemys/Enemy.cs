@@ -1,6 +1,7 @@
 using Assets._Project.Scripts.Core;
 using Assets._Project.Scripts.Core.HealthSystem;
 using Assets._Project.Scripts.Core.Interface;
+using Assets._Project.Scripts.Core.Spawns;
 using Assets._Project.Scripts.ScriptableObjects.Configs;
 using Assets._Project.Scripts.Weapon;
 using Assets._Project.Scripts.Weapon.Interface;
@@ -24,7 +25,8 @@ namespace Assets._Project.Scripts.Enemy
 
         private EnemyConfig _config;
         private BattleZone _battleZone;
-        private SelectionGags.Experience _prefab;
+        private SelectionGags.Experience _prefabExperience;
+        private SelectionGags.Coin _prefabCoin;
         private HealthInfo _healthInfoPrefab;
         private HealthView _healthViewPrefab;
         private Canvas _dynamic;
@@ -37,6 +39,7 @@ namespace Assets._Project.Scripts.Enemy
 
         private Health _health;
         private SpawnExperience _spawnExperience;
+        private SpawnCoin _spawnCoin;
         private HealthInfo _healthInfo;
         private HealthView _healthView;
 
@@ -47,21 +50,23 @@ namespace Assets._Project.Scripts.Enemy
         public EnemyConfig Config => _config;
         public LayerMask LayerMask => _layer;
 
-        public virtual void Initialize(EnemyConfig config, BattleZone battleZone, SelectionGags.Experience prefab, HealthInfo healthInfoPrefab,
-            HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, WeaponFactoryBootstrap weaponFactoryBootstrap)
+        public virtual void Initialize(EnemyConfig config, BattleZone battleZone, SelectionGags.Experience prefabExperience, SelectionGags.Coin prefabCoin,
+            HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, WeaponFactoryBootstrap weaponFactoryBootstrap)
         {
             ExtractComponents();
 
             _config = config;
             _battleZone = battleZone;
-            _prefab = prefab;
+            _prefabExperience = prefabExperience;
+            _prefabCoin = prefabCoin;
             _healthInfoPrefab = healthInfoPrefab;
             _healthViewPrefab = healthViewPrefab;
             _dynamic = dynamic;
             _layer = layer;
             WeaponFactoryBootstrap = weaponFactoryBootstrap;
             _health = new Health(_config.Health);
-            _spawnExperience = new SpawnExperience(_prefab, _config.AmountExperienceDropped);
+            _spawnExperience = new SpawnExperience(_prefabExperience, _config.AmountExperienceDropped);
+            _spawnCoin = new SpawnCoin(_prefabCoin, _config.AmountGoldDropped);
             SetWeaponPoint = new SetWeaponPoint();
 
             _healthInfo = Instantiate(_healthInfoPrefab, transform.position, Quaternion.identity);
@@ -100,6 +105,7 @@ namespace Assets._Project.Scripts.Enemy
         public void Die()
         {
             _spawnExperience.Spawn(_pointExperience.transform);
+            _spawnCoin.Spawn(_pointCoin.transform);
 
             _health.OnDie -= Die;
             Destroy(_healthInfo.InstantiatedHealthBar.gameObject);
