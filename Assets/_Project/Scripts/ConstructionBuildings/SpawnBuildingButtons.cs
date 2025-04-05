@@ -66,12 +66,14 @@ namespace Assets._Project.Scripts.ConstructionBuildings
                 {
                     Destroy(baseBuilding.gameObject);
                     _buildingArea.SetZoneOccupeid(false);
+                    _buildingArea.SetBaseBuilding(null);
                     return;
                 }
             }
 
             _buildingList.Add(baseBuilding);
             _buildingArea.SetZoneOccupeid(true);
+            _buildingArea.SetBaseBuilding(baseBuilding);
             Flip(baseBuilding);
         }
 

@@ -8,18 +8,23 @@ namespace Assets._Project.Scripts.ConstructionBuildings
     {
         private House _housePrefab;
         private Shop _shopPrefab;
+        private GameObject _playerHomeMenuPrefab;
+        private Canvas _staticCanvas;
 
-        public BuildingFactory(House housePrefab, Shop shopPrefab)
+        public BuildingFactory(House housePrefab, Shop shopPrefab, GameObject playerHomeMenuPrefab, Canvas staticCanvas)
         {
             _housePrefab = housePrefab;
             _shopPrefab = shopPrefab;
+            _playerHomeMenuPrefab = playerHomeMenuPrefab;
+            _staticCanvas = staticCanvas;
         }
 
         public BaseBuilding Get(TypesBuildings typesBuildings, Vector3 position)
         {
             BaseBuilding building = GetSpawn(typesBuildings);
             BaseBuilding instance = UnityEngine.Object.Instantiate(building, position, Quaternion.identity, null);
-            return instance;
+            BaseBuilding baseBuilding = InitializeObject(instance);
+            return baseBuilding;
         }
 
         private BaseBuilding GetSpawn(TypesBuildings typesBuildings)
@@ -34,6 +39,24 @@ namespace Assets._Project.Scripts.ConstructionBuildings
 
                 default:
                     throw new ArgumentException($"not {typesBuildings}");
+            }
+        }
+
+        private BaseBuilding InitializeObject(BaseBuilding instance)
+        {
+            if (instance is House house)
+            {
+                house.Initialize(_playerHomeMenuPrefab, _staticCanvas);
+                return house;
+            }
+            else if(instance is Shop shop)
+            {
+                shop.Initialize(null, _staticCanvas);
+                return shop;
+            }
+            else
+            {
+                throw new ArgumentException(nameof(instance));
             }
         }
     }

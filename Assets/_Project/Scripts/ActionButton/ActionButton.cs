@@ -1,5 +1,7 @@
 using Assets._Project.Scripts.ConstructionBuildings;
+using Assets._Project.Scripts.ConstructionBuildings.Buildings;
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,6 +47,11 @@ namespace Assets._Project.Scripts.ActionButton
                 if (buildingArea.IsZoneOccupied == false)
                 {
                     OnStandingInConstructionZone?.Invoke(buildingArea);
+                    return;
+                }
+                else if (buildingArea.IsZoneOccupied)
+                {
+                    buildingArea.BaseBuilding.Show();
                 }
             }
         }

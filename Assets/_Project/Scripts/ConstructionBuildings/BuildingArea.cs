@@ -1,3 +1,4 @@
+using Assets._Project.Scripts.ConstructionBuildings.Buildings;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.ConstructionBuildings
@@ -8,13 +9,15 @@ namespace Assets._Project.Scripts.ConstructionBuildings
 
         private bool _isZoneOccupied;
         private SpriteRenderer _spriteRenderer;
+        private BaseBuilding _baseBuilding;
 
         public bool IsZoneOccupied => _isZoneOccupied;
         public int LeftOrRightSide => _leftOrRightSide;
+        public BaseBuilding BaseBuilding => _baseBuilding;
 
         private void Awake()
         {
-            _spriteRenderer = GetComponent<SpriteRenderer>();
+            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
 
         public void SetZoneOccupeid(bool value)
@@ -29,6 +32,11 @@ namespace Assets._Project.Scripts.ConstructionBuildings
             {
                 _spriteRenderer.gameObject.SetActive(true);
             }
+        }
+
+        public void SetBaseBuilding(BaseBuilding baseBuilding)
+        {
+            _baseBuilding = baseBuilding;
         }
     }
 }
