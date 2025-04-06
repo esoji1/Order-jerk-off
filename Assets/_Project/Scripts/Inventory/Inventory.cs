@@ -18,7 +18,9 @@ namespace Assets._Project.Sctipts.Inventory
         public bool IsAddCell;
         public bool IsAddItem;
 
-        public event Action<Item> OnClickedItem;
+        public event Action<Cell> OnClickedItem;
+
+        public List<Cell> CellList => _cellList;
 
         private void Awake()
         {
@@ -71,7 +73,7 @@ namespace Assets._Project.Sctipts.Inventory
 
         private void OnItemClicked(Cell cell)
         {
-            OnClickedItem?.Invoke(cell.Item);
+            OnClickedItem?.Invoke(cell);
         }
 
         private void AddCell(int numberCells)
@@ -91,11 +93,7 @@ namespace Assets._Project.Sctipts.Inventory
 
         private void UpdateCellInNumberItems(Cell cell)
         {
-            Button button = cell.Item.GetComponent<Button>();
-            TextMeshProUGUI textMeshProUGUI = button.GetComponentInChildren<TextMeshProUGUI>();
-            int additionQuantityItem = cell.NumberItems + 1;
-            cell.NumberItems = additionQuantityItem;
-            textMeshProUGUI.text = cell.NumberItems.ToString();
+            cell.AddNumberItems(1);
         }
     }
 }

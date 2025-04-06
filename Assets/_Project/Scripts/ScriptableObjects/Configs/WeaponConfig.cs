@@ -16,5 +16,6 @@ namespace Assets._Project.Scripts.ScriptableObjects.Configs
         [field: SerializeField] public float RaycastAttack;
         [field: SerializeField] public float VisibilityRadius;
         [field: SerializeField] public WeaponTypes WeaponTypes;
+        [field: SerializeField] public string NameWeapon;
     }
 }

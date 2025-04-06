@@ -9,6 +9,8 @@ namespace Assets._Project.Scripts.ConstructionBuildings
         [SerializeField] private Shop _shopPrefab;
         [SerializeField] private GameObject _playerHomeMenuPrefab;
         [SerializeField] private Canvas _staticCanvas;
+        [SerializeField] private Player.Player _player;
+        [SerializeField] private UseWeapons.UseWeapons _useWeapons;
 
         private BuildingFactory _buildingFactory;
 
@@ -16,7 +18,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
 
         private void Awake()
         {
-            _buildingFactory = new BuildingFactory(_housePrefab, _shopPrefab, _playerHomeMenuPrefab, _staticCanvas);
+            _buildingFactory = new BuildingFactory(_housePrefab, _shopPrefab, _playerHomeMenuPrefab, _staticCanvas, _player, _useWeapons);
         }
     }
 }

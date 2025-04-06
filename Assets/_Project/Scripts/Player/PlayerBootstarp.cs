@@ -12,7 +12,6 @@ namespace Assets._Project.Scripts.Player
         [SerializeField] private PlayerConfig _config;
         [SerializeField] private JoysickForMovement _joysickForMovement;
         [SerializeField] private LevelPlayer _levelPlayer;
-        [SerializeField] private CharacteristicsView _characteristicsView;
         [SerializeField] private HealthInfo _healthInfoPrefab;
         [SerializeField] private HealthView _healthViewPrefab;
         [SerializeField] private Canvas _dynamic;
@@ -20,7 +19,7 @@ namespace Assets._Project.Scripts.Player
 
         private void Awake()
         {
-            _player.Initialize(_config, _joysickForMovement, _levelPlayer, _characteristicsView, _healthInfoPrefab, _healthViewPrefab, _dynamic, _useWeapons);
+            _player.Initialize(_config, _joysickForMovement, _levelPlayer, _healthInfoPrefab, _healthViewPrefab, _dynamic, _useWeapons);
         }
     }
 }

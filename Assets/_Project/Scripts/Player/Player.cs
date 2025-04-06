@@ -5,7 +5,6 @@ using Assets._Project.Scripts.Player.Movement;
 using Assets._Project.Scripts.Player.Pumping;
 using Assets._Project.Scripts.ScriptableObjects.Configs;
 using Assets._Project.Scripts.SelectionGags;
-using Assets._Project.Scripts.Wallet;
 using Assets._Project.Sctipts.Core;
 using Assets._Project.Sctipts.Core.HealthSystem;
 using Assets._Project.Sctipts.JoystickMovement;
@@ -23,7 +22,6 @@ namespace Assets._Project.Scripts.Player
         private WallDetection[] _wallDetection;
         private PlayerCharacteristics _playerCharacteristics;
         private LevelPlayer _levelPlayer;
-        private CharacteristicsView _characteristicsView;
         private HealthInfo _healthInfoPrefab;
         private HealthView _healthViewPrefab;
         private Canvas _dynamic;
@@ -55,7 +53,7 @@ namespace Assets._Project.Scripts.Player
         public PlayerCharacteristics PlayerCharacteristics => _playerCharacteristics;
         public PointHealth PointHealth => _pointHealth;
         public PointRotation PointRotation => _rotationSprite;
-        public Wallet.Wallet Wallet => _wallet; 
+        public Wallet.Wallet Wallet => _wallet;
 
         private void Update()
         {
@@ -69,13 +67,12 @@ namespace Assets._Project.Scripts.Player
             _useWeapons.OnChangeWeapon -= AppropriateWeapons;
         }
 
-        public void Initialize(PlayerConfig config, JoysickForMovement joysickForMovement, LevelPlayer levelPlayer, CharacteristicsView characteristicsView,
-            HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas dynamic, UseWeapons.UseWeapons useWeapons)
+        public void Initialize(PlayerConfig config, JoysickForMovement joysickForMovement, LevelPlayer levelPlayer, HealthInfo healthInfoPrefab,
+            HealthView healthViewPrefab, Canvas dynamic, UseWeapons.UseWeapons useWeapons)
         {
             _config = config;
             _joysickForMovement = joysickForMovement;
             _levelPlayer = levelPlayer;
-            _characteristicsView = characteristicsView;
             _healthInfoPrefab = healthInfoPrefab;
             _healthViewPrefab = healthViewPrefab;
             _dynamic = dynamic;
@@ -102,7 +99,7 @@ namespace Assets._Project.Scripts.Player
 
         public void AddMoney(int value)
         {
-           _wallet.AddMoney(value); 
+            _wallet.AddMoney(value);
         }
 
         private void InitializeInside()
@@ -115,7 +112,6 @@ namespace Assets._Project.Scripts.Player
             _move = new Move();
             _wallet = new Wallet.Wallet(0);
             _playerView.Initialize();
-            _characteristicsView.Initialize(this);
 
             _healthInfo = Instantiate(_healthInfoPrefab, transform.position, Quaternion.identity);
             _healthInfo.Initialize(_dynamic);
@@ -156,8 +152,6 @@ namespace Assets._Project.Scripts.Player
 
             _weapon.WeaponData.ExtraDamage = _playerCharacteristics.AddDamageAttack;
             _weapon.WeaponData.ReturnInitialAttackPosition = _playerCharacteristics.ReturnInitialAttackPosition;
-
-            _characteristicsView.Show();
         }
 
         private void Move()

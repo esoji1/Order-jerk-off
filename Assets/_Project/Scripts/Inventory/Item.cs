@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets._Project.Scripts.Weapon;
+using UnityEngine;
 
 namespace Assets._Project.Scripts.Inventory
 {
@@ -10,7 +11,7 @@ namespace Assets._Project.Scripts.Inventory
         public ItemCategory Category;
 
         [Header("Weapon Settings")]
-        public WeaponType WeaponType;
+        public WeaponTypes WeaponType;
 
         [Header("Resource Settings")]
         public ResourceType ResourceType;

@@ -20,34 +20,36 @@ namespace Assets._Project.Scripts.Inventory
             _inventory.OnClickedItem -= Show;
         }
 
-        private void Show(Item item)
+        private void Show(Cell cell)
         {
-            if (item.Category == ItemCategory.Weapon)
+            if (cell.Item.Category == ItemCategory.Weapon)
             {
-                if (item.WeaponType.ToString() == WeaponTypes.WoodenSwordPlayer.ToString())
+                if (cell.Item.WeaponType == WeaponTypes.WoodenSwordPlayer)
                 {
-                    ChangeTextForWeapon(item.WeaponType);
+                    ChangeTextForWeapon(cell.Item.WeaponType);
                 }
-                else if (item.WeaponType.ToString() == WeaponTypes.WoodenAxePlayer.ToString())
+                else if (cell.Item.WeaponType == WeaponTypes.WoodenAxePlayer)
                 {
-                    ChangeTextForWeapon(item.WeaponType);
+                    ChangeTextForWeapon(cell.Item.WeaponType);
                 }
             }
         }
 
-        private void ChangeTextForWeapon(WeaponType weaponType)
+        private void ChangeTextForWeapon(WeaponTypes weaponType)
         {
-            if (weaponType.ToString() == WeaponTypes.WoodenSwordPlayer.ToString())
+            if (weaponType == WeaponTypes.WoodenSwordPlayer)
             {
-                _textInfoItem.text = $"Урон: {WeaponConfigs.WoodenSwordPlayerConfig.Damage}\n" +
+                _textInfoItem.text = $"{WeaponConfigs.WoodenSwordPlayerConfig.NameWeapon}\n" +
                             $"Цена: {WeaponConfigs.WoodenSwordPlayerConfig.Price}\n" +
-                            $"Радиус атаки: {WeaponConfigs.WoodenSwordPlayerConfig.VisibilityRadius}";
+                            $"Радиус атаки: {WeaponConfigs.WoodenSwordPlayerConfig.VisibilityRadius}\n" +
+                            $"Урон: {WeaponConfigs.WoodenSwordPlayerConfig.Damage}";
             }
-            else if (weaponType.ToString() == WeaponTypes.WoodenAxePlayer.ToString())
+            else if (weaponType == WeaponTypes.WoodenAxePlayer)
             {
-                _textInfoItem.text = $"Урон: {WeaponConfigs.WoodenAxePlayerConfig.Damage}\n" +
+                _textInfoItem.text = $"{WeaponConfigs.WoodenAxePlayerConfig.NameWeapon}\n" +
                            $"Цена: {WeaponConfigs.WoodenAxePlayerConfig.Price}\n" +
-                           $"Радиус атаки: {WeaponConfigs.WoodenAxePlayerConfig.VisibilityRadius}";
+                           $"Радиус атаки: {WeaponConfigs.WoodenAxePlayerConfig.VisibilityRadius}\n" +
+                           $"Урон: {WeaponConfigs.WoodenAxePlayerConfig.Damage}";
             }
         }
     }

@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Assets._Project.Sctipts.Inventory;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
 {

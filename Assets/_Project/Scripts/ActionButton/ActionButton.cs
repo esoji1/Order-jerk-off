@@ -1,7 +1,5 @@
 using Assets._Project.Scripts.ConstructionBuildings;
-using Assets._Project.Scripts.ConstructionBuildings.Buildings;
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
