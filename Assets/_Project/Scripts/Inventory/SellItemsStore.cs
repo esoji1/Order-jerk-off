@@ -1,5 +1,7 @@
 using Assets._Project.Scripts.Inventory;
 using Assets._Project.Scripts.Player;
+using Assets._Project.Scripts.ScriptableObjects.Configs;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,11 +12,14 @@ namespace Assets._Project.Sctipts.Inventory
     {
         [SerializeField] private Button _buy;
         [SerializeField] private List<Cell> _cellList;
+        [SerializeField] private ItemData _itemData;
 
         private Player _player;
         private Inventory _inventory;
 
         private Cell _currentCell;
+
+        public event Action<Cell> OnClickItem;
 
         public void Initialize(Player player, Inventory inventory)
         {
@@ -36,14 +41,24 @@ namespace Assets._Project.Sctipts.Inventory
         private void OnItemClicked(Cell cell)
         {
             _currentCell = cell;
+            OnClickItem?.Invoke(_currentCell);
         }
 
         private void Buy()
         {
-            _player.Wallet.SubtractMoney(_currentCell.Item.Price);
-            if (_player.Wallet.Money > 0)
+            if (_inventory.CellList.Count <= 0)
+                return;
+
+            if (_player.Wallet.SubtractMoney(_currentCell.Item.Price))
             {
-                _inventory.AddItemInCell(_currentCell.Item);
+                if (_currentCell.Item.WeaponType == _itemData.WoodenSwordItem.WeaponType)
+                {
+                    _inventory.AddItemInCell(_itemData.WoodenSwordItem);
+                }
+                else if (_currentCell.Item.WeaponType == _itemData.WoodenAxeItem.WeaponType)
+                {
+                    _inventory.AddItemInCell(_itemData.WoodenAxeItem);
+                }
             }
         }
 

@@ -9,14 +9,15 @@ namespace Assets._Project.Sctipts.Inventory
     public class SaleItem : MonoBehaviour
     {
         [SerializeField] private Button _sell;
-        [SerializeField] private Inventory _inventory;
+        private Inventory _inventory;
 
         private Player _player;
         private Cell _currentCell;
 
-        public void Initialize(Player player)
+        public void Initialize(Player player, Inventory inventor)
         {
             _player = player;
+            _inventory = inventor;
 
             _sell.onClick.AddListener(Sele);
             _inventory.OnClickedItem += ChangeItem;

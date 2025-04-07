@@ -13,9 +13,10 @@ namespace Assets._Project.Scripts.ConstructionBuildings
         private Canvas _staticCanvas;
         private Player.Player _player; 
         private UseWeapons.UseWeapons _useWeapons;
+        private Sctipts.Inventory.Inventory _inventory;
 
         public BuildingFactory(House housePrefab, Shop shopPrefab, GameObject playerHomeMenuPrefab, GameObject playerShopMenuPrefab, 
-            Canvas staticCanvas, Player.Player player, UseWeapons.UseWeapons useWeapons)
+            Canvas staticCanvas, Player.Player player, UseWeapons.UseWeapons useWeapons, Sctipts.Inventory.Inventory inventory)
         {
             _housePrefab = housePrefab;
             _shopPrefab = shopPrefab;
@@ -24,6 +25,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
             _staticCanvas = staticCanvas;
             _player = player;
             _useWeapons = useWeapons;
+            _inventory = inventory;
         }
 
         public BaseBuilding Get(TypesBuildings typesBuildings, Vector3 position)
@@ -53,12 +55,12 @@ namespace Assets._Project.Scripts.ConstructionBuildings
         {
             if (instance is House house)
             {
-                house.Initialize(_playerHomeMenuPrefab, _staticCanvas, _player, _useWeapons);
+                house.Initialize(_playerHomeMenuPrefab, _staticCanvas, _player, _useWeapons, _inventory);
                 return house;
             }
             else if(instance is Shop shop)
             {
-                shop.Initialize(_playerShopMenuPrefab, _staticCanvas, _player);
+                shop.Initialize(_playerShopMenuPrefab, _staticCanvas, _player, _inventory);
                 return shop;
             }
             else

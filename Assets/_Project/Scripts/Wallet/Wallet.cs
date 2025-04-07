@@ -6,12 +6,12 @@ namespace Assets._Project.Scripts.Wallet
     {
         private int _money;
 
-        public int Money { get; private set; }
+        public int Money => _money;
 
         public event Action<int> OnMoneyChange;
 
         public Wallet(int money) => _money = money;
-
+        
         public void AddMoney(int value)
         {
             if (value < 0)
@@ -21,18 +21,21 @@ namespace Assets._Project.Scripts.Wallet
             OnMoneyChange?.Invoke(_money);
         }
 
-        public void SubtractMoney(int value)
+        public bool SubtractMoney(int value)
         {
             if (value < 0)
-                return;
+                return false;
 
             int resultSubtractMoney = _money - value;
 
-            if (resultSubtractMoney < _money)
+            if (resultSubtractMoney >= 0) 
             {
                 _money = resultSubtractMoney;
                 OnMoneyChange?.Invoke(_money);
+                return true;
             }
+
+            return false;
         }
     }
 }

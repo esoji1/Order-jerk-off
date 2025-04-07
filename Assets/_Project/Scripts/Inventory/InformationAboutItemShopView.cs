@@ -1,20 +1,21 @@
 ﻿using Assets._Project.Scripts.Weapon;
 using Assets._Project.Sctipts.Core;
+using Assets._Project.Sctipts.Inventory;
 using TMPro;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.Inventory
 {
-    public class InformationAboutItemView : MonoBehaviour
+    public class InformationAboutItemShopView : MonoBehaviour 
     {
         [SerializeField] TextMeshProUGUI _textInfoItem;
 
-        private Sctipts.Inventory.Inventory _inventory;
+        private SellItemsStore _sellItemsStore;
 
-        public void Initialize(Sctipts.Inventory.Inventory inventory)
+        public void Initialize(SellItemsStore sellItemsStore)
         {
-            _inventory = inventory;
-            _inventory.OnClickedItem += Show;
+            _sellItemsStore = sellItemsStore;
+            _sellItemsStore.OnClickItem += Show;
         }
 
         private void Show(Cell cell)
@@ -52,7 +53,7 @@ namespace Assets._Project.Scripts.Inventory
 
         private void OnDestroy()
         {
-            _inventory.OnClickedItem -= Show;
+            _sellItemsStore.OnClickItem -= Show;
         }
     }
 }

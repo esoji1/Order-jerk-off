@@ -10,7 +10,7 @@ namespace Assets._Project.Sctipts.Inventory
     {
         [SerializeField] private ItemData _data;
         [SerializeField] private Button _putOn;
-        [SerializeField] private Inventory _inventory;
+        private Inventory _inventory;
 
         private UseWeapons _useWeapons;
 
@@ -18,9 +18,10 @@ namespace Assets._Project.Sctipts.Inventory
         private Cell _clickCell;
 
 
-        public void Initialize(UseWeapons useWeapons)
+        public void Initialize(UseWeapons useWeapons, Inventory inventory)
         {
             _useWeapons = useWeapons;
+            _inventory = inventory;
             _currentCell = GetComponent<Cell>();
 
             UpdateCurrentWeaponInHand();

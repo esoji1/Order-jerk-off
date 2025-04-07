@@ -228,8 +228,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
-  m_fontSizeBase: 70
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -410,7 +410,7 @@ MonoBehaviour:
   _cellList:
   - {fileID: 7340112555145330452}
   - {fileID: 3284349326055464079}
-  _inventory: {fileID: 0}
+  _itemData: {fileID: 11400000, guid: e5f80686d52d2a148a2733f514879b16, type: 2}
 --- !u!1 &2070408706976991080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,6 +1269,7 @@ GameObject:
   - component: {fileID: 8032359121686345044}
   - component: {fileID: 4276572369111610981}
   - component: {fileID: 9194038155379413838}
+  - component: {fileID: 3921611444056797521}
   m_Layer: 5
   m_Name: DescriptionItem
   m_TagString: Untagged
@@ -1335,6 +1336,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3921611444056797521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7088846850122437739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3dd289092150a4cad0d3ec9c5a18da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _textInfoItem: {fileID: 4298585155066943841}
 --- !u!1 &7957839085976416771
 GameObject:
   m_ObjectHideFlags: 0

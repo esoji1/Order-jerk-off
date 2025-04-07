@@ -21,5 +21,10 @@ namespace Assets._Project.Scripts.Player
         {
             _player.Initialize(_config, _joysickForMovement, _levelPlayer, _healthInfoPrefab, _healthViewPrefab, _dynamic, _useWeapons);
         }
+
+        private void Start()
+        {
+            _player.Wallet.AddMoney(50);
+        }
     }
 }

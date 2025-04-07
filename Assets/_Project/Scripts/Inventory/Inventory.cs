@@ -9,11 +9,11 @@ namespace Assets._Project.Sctipts.Inventory
 {
     public class Inventory : MonoBehaviour
     {
-        [SerializeField] private RectTransform _contentInventory;
         [SerializeField] private Cell _prefabCell;
         [SerializeField] private Item _item;
 
         private List<Cell> _cellList = new();
+        private RectTransform _contentInventory;
 
         public bool IsAddCell;
         public bool IsAddItem;
@@ -22,8 +22,9 @@ namespace Assets._Project.Sctipts.Inventory
 
         public List<Cell> CellList => _cellList;
 
-        private void Initialize()
+        public void Initialize(RectTransform contentInventory)
         {
+            _contentInventory = contentInventory;
             InitializeCellFilling(6);
         }
 
