@@ -23,15 +23,19 @@ namespace Assets._Project.Scripts.Inventory
         public void AddNumberItems(int value)
         {
             _numberItems += value;
-
-            _textMeshProUGUI.text = _numberItems.ToString();
+            UpdateText();
         }
 
         public void SubtractNumberItems(int value)
         {
             _numberItems -= value;
+            UpdateText();
+        }
 
-            _textMeshProUGUI.text = _numberItems.ToString();
+        private void UpdateText()
+        {
+            string result = _numberItems > 0 ? _numberItems.ToString() : "";
+            _textMeshProUGUI.text = result;
         }
     }
 }

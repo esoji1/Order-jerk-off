@@ -1,5 +1,4 @@
-﻿using Assets._Project.Sctipts.Inventory;
-using System;
+﻿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +8,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
     {
         private GameObject _window;
         private Canvas _staticCanvas;
+        private Player.Player _player;
 
         private SpriteRenderer _spriteRenderer;
         private Type _type;
@@ -17,11 +17,13 @@ namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
         public Type Type => _type;
         public GameObject Window => _window;
+        public Player.Player Player => _player;
 
-        public virtual void Initialize(GameObject window, Canvas staticCanvas)
+        public virtual void Initialize(GameObject window, Canvas staticCanvas, Player.Player player)
         {
             _window = window;
             _staticCanvas = staticCanvas;
+            _player = player;
             _window = Instantiate(window, _staticCanvas.transform);
             _window.SetActive(false);
 

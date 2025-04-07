@@ -26,28 +26,28 @@ namespace Assets._Project.Scripts.Inventory
             {
                 if (cell.Item.WeaponType == WeaponTypes.WoodenSwordPlayer)
                 {
-                    ChangeTextForWeapon(cell.Item.WeaponType);
+                    ChangeTextForWeapon(cell.Item.WeaponType, cell);
                 }
                 else if (cell.Item.WeaponType == WeaponTypes.WoodenAxePlayer)
                 {
-                    ChangeTextForWeapon(cell.Item.WeaponType);
+                    ChangeTextForWeapon(cell.Item.WeaponType, cell);
                 }
             }
         }
 
-        private void ChangeTextForWeapon(WeaponTypes weaponType)
+        private void ChangeTextForWeapon(WeaponTypes weaponType, Cell cell)
         {
             if (weaponType == WeaponTypes.WoodenSwordPlayer)
             {
                 _textInfoItem.text = $"{WeaponConfigs.WoodenSwordPlayerConfig.NameWeapon}\n" +
-                            $"Цена: {WeaponConfigs.WoodenSwordPlayerConfig.Price}\n" +
+                            $"Цена: {cell.Item.Price}\n" +
                             $"Радиус атаки: {WeaponConfigs.WoodenSwordPlayerConfig.VisibilityRadius}\n" +
                             $"Урон: {WeaponConfigs.WoodenSwordPlayerConfig.Damage}";
             }
             else if (weaponType == WeaponTypes.WoodenAxePlayer)
             {
                 _textInfoItem.text = $"{WeaponConfigs.WoodenAxePlayerConfig.NameWeapon}\n" +
-                           $"Цена: {WeaponConfigs.WoodenAxePlayerConfig.Price}\n" +
+                           $"Цена: {cell.Item.Price}\n" +
                            $"Радиус атаки: {WeaponConfigs.WoodenAxePlayerConfig.VisibilityRadius}\n" +
                            $"Урон: {WeaponConfigs.WoodenAxePlayerConfig.Damage}";
             }

@@ -22,7 +22,7 @@ namespace Assets._Project.Sctipts.Inventory
 
         public List<Cell> CellList => _cellList;
 
-        private void Awake()
+        private void Initialize()
         {
             InitializeCellFilling(6);
         }

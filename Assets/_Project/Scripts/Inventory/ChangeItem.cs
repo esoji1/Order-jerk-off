@@ -49,6 +49,9 @@ namespace Assets._Project.Sctipts.Inventory
 
         private void PutOn()
         {
+            if (_clickCell == null)
+                return;
+
             if (_clickCell.Item.WeaponType == _currentCell.Item.WeaponType)
             {
                 Debug.Log("ѕомен€лись местами одинаковые оружи€");

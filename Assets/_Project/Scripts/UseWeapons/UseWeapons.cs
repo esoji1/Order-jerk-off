@@ -33,7 +33,7 @@ namespace Assets._Project.Scripts.UseWeapons
 
         private void OnTransformChildrenChanged()
         {
-            Invoke("GetWeapon", 1f);
+            Invoke("GetWeapon", 0.2f);
         }
 
         public void SetWeapon(WeaponTypes weaponType)

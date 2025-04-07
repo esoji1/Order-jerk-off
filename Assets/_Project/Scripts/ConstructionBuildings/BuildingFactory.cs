@@ -9,16 +9,18 @@ namespace Assets._Project.Scripts.ConstructionBuildings
         private House _housePrefab;
         private Shop _shopPrefab;
         private GameObject _playerHomeMenuPrefab;
+        private GameObject _playerShopMenuPrefab;
         private Canvas _staticCanvas;
         private Player.Player _player; 
         private UseWeapons.UseWeapons _useWeapons;
 
-        public BuildingFactory(House housePrefab, Shop shopPrefab, GameObject playerHomeMenuPrefab, Canvas staticCanvas, Player.Player player,
-            UseWeapons.UseWeapons useWeapons)
+        public BuildingFactory(House housePrefab, Shop shopPrefab, GameObject playerHomeMenuPrefab, GameObject playerShopMenuPrefab, 
+            Canvas staticCanvas, Player.Player player, UseWeapons.UseWeapons useWeapons)
         {
             _housePrefab = housePrefab;
             _shopPrefab = shopPrefab;
             _playerHomeMenuPrefab = playerHomeMenuPrefab;
+            _playerShopMenuPrefab = playerShopMenuPrefab;
             _staticCanvas = staticCanvas;
             _player = player;
             _useWeapons = useWeapons;
@@ -56,7 +58,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
             }
             else if(instance is Shop shop)
             {
-                shop.Initialize(null, _staticCanvas);
+                shop.Initialize(_playerShopMenuPrefab, _staticCanvas, _player);
                 return shop;
             }
             else

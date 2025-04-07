@@ -7935,7 +7935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683c9c1459666354caea8a40ecef2bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leftOrRightSide: -1
+  _leftOrRightSide: 1
 --- !u!61 &858136033
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9993,7 +9993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683c9c1459666354caea8a40ecef2bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leftOrRightSide: -1
+  _leftOrRightSide: 1
 --- !u!61 &1383520994
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10086,7 +10086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 683c9c1459666354caea8a40ecef2bde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _leftOrRightSide: -1
+  _leftOrRightSide: 1
 --- !u!61 &1427685698
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11724,6 +11724,7 @@ MonoBehaviour:
   _housePrefab: {fileID: 5533314126033720438, guid: c23ebb018484d2343b423f4e36594a38, type: 3}
   _shopPrefab: {fileID: 2469893090968974888, guid: c531d6dd4e2d3424e818a89cd0799cf4, type: 3}
   _playerHomeMenuPrefab: {fileID: 3700146692179422136, guid: 16f14225668e4de4b8ad36362bb9d819, type: 3}
+  _playerShopMenuPrefab: {fileID: 2290110677882071739, guid: 3cdda57d06a6a324e82ee1443626e0d2, type: 3}
   _staticCanvas: {fileID: 1460140111}
   _player: {fileID: 52823349}
   _useWeapons: {fileID: 1123977697}

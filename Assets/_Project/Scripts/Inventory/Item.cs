@@ -9,6 +9,7 @@ namespace Assets._Project.Scripts.Inventory
         public string Name;
         public Sprite Sprite;
         public ItemCategory Category;
+        public int Price;
 
         [Header("Weapon Settings")]
         public WeaponTypes WeaponType;

@@ -137,5 +137,6 @@ MonoBehaviour:
   Name: WoodenAxeItem
   Sprite: {fileID: 281249422065066209, guid: 0e2736670ee2af6459cbfc15808b7bd4, type: 3}
   Category: 0
+  Price: 30
   WeaponType: 2
   ResourceType: 0
