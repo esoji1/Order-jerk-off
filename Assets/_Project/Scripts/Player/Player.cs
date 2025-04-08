@@ -144,7 +144,7 @@ namespace Assets._Project.Scripts.Player
         private void ImproveCharacteristics()
         {
             _playerCharacteristics.Health += 20;
-            _health.AddHealth(_playerCharacteristics.Health);
+            _health.SetHealth(_playerCharacteristics.Health);
             _playerCharacteristics.AttackSpeed += 1;
             _playerCharacteristics.ReturnInitialAttackPosition += 0.02f;
             _playerCharacteristics.AddDamageAttack += 2;

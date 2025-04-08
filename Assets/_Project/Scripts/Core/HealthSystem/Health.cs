@@ -32,5 +32,10 @@ namespace Assets._Project.Scripts.Core
 
             _health += value;
         }
+
+        public void SetHealth(int value)
+        {
+            _health = value;
+        }
     }
 }
