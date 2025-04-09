@@ -113,9 +113,11 @@ namespace Assets._Project.Scripts.Player
             _wallet = new Wallet.Wallet(0);
             _playerView.Initialize();
 
-            _healthInfo = Instantiate(_healthInfoPrefab, transform.position, Quaternion.identity);
+            //_healthInfo = Instantiate(_healthInfoPrefab, transform.position, Quaternion.identity);
+            _healthInfo = _healthInfoPrefab;
             _healthInfo.Initialize(_dynamic);
-            _healthView = Instantiate(_healthViewPrefab, transform.position, Quaternion.identity);
+            //_healthView = Instantiate(_healthViewPrefab, transform.position, Quaternion.identity);
+            _healthView = _healthViewPrefab;
             _healthView.Initialize(this, _playerCharacteristics.Health, _healthInfo, this);
 
             _circleRadiusVisualizer.Initialize(transform);
@@ -164,7 +166,7 @@ namespace Assets._Project.Scripts.Player
             MoveInRadiusAndRotation();
             _flip.RotateView(_joysickForMovement.VectorDirection(), _rotationSprite.transform);
 
-            _healthView.FollowTargetHealth();
+            //_healthView.FollowTargetHealth();
             _circleRadiusVisualizer.DrawRadius(_config.VisibilityRadius);
         }
 

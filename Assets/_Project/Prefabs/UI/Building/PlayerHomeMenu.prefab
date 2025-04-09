@@ -590,7 +590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d049adbb1865e6c4d98b2ada471f7510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventory: {fileID: 0}
   _textInfoItem: {fileID: 5301644243207607219}
 --- !u!1 &2655779380073249344
 GameObject:
@@ -1565,7 +1564,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _data: {fileID: 11400000, guid: e5f80686d52d2a148a2733f514879b16, type: 2}
-  _putOn: {fileID: 2152507749275250344}
+  _putOnButton: {fileID: 2152507749275250344}
 --- !u!1 &6331219269969252485
 GameObject:
   m_ObjectHideFlags: 0

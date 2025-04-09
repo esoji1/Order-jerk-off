@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +15,7 @@ namespace Assets._Project.Sctipts.Core.HealthSystem
 
         public Slider InstantiatedHealthBar => _instantiatedHealthBar;
         public HealthInfo GetHealthInfo => _healthInfo;
-
+        
         public void Initialize(Canvas healthUi)
         {
             _healthInfo = this;

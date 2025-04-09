@@ -136,7 +136,7 @@ namespace TMPro.Examples
                     vertices[vertexIndex + 2] = vertices[vertexIndex + 2] + offset;
                     vertices[vertexIndex + 3] = vertices[vertexIndex + 3] + offset;
 
-                    // Change Vertex Colors of the highlighted character
+                    // ExchangeMergedItem Vertex Colors of the highlighted character
                     Color32 c = new Color32(255, 255, 192, 255);
 
                     // Get a reference to the vertex color

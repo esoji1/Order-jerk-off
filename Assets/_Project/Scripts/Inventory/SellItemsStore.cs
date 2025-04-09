@@ -50,6 +50,7 @@ namespace Assets._Project.Sctipts.Inventory
         {
             if (_inventory.CellList.Count <= 0)
                 return;
+
             if (_currentCell.Item.Category == ItemCategory.Weapon)
             {
                 if (_player.Wallet.SubtractMoney(_currentCell.Item.Price))
