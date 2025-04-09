@@ -5,8 +5,4 @@
         Weapon,
         Resource,
     }
-    
-    public enum ResourceType
-    {
-    }
 }

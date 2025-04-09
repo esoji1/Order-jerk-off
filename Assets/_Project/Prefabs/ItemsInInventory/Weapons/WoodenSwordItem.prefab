@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7659958171057716679}
   - component: {fileID: 3857540789502515325}
   - component: {fileID: 8588516659353063809}
-  - component: {fileID: 2656024396565270411}
+  - component: {fileID: 3398061218366655883}
   m_Layer: 0
   m_Name: WoodenSwordItem
   m_TagString: Untagged
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2656024396565270411
+--- !u!114 &3398061218366655883
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,12 +130,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 257083609494550111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a55ef8f080c5004b8581390dd0e7081, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d3ae703a063786439ff653fb54301a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 0
-  Name: WoodenSwordItem
+  Name: "\u0414\u0435\u0440\u0435\u0432\u044F\u043D\u043D\u044B\u0439 \u043C\u0435\u0447"
   Sprite: {fileID: 5624988362446944380, guid: 3bba530c943832d4cacad24c2407693a, type: 3}
   Category: 0
-  WeaponType: 0
-  ResourceType: 0
+  Price: 0
+  Description: 
+  TypeItem: 0

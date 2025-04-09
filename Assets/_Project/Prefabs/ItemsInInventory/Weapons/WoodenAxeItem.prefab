@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6961551950212127573}
   - component: {fileID: 6034097321387545697}
   - component: {fileID: 3953022326918089121}
-  - component: {fileID: 8754367920829481903}
+  - component: {fileID: -8735090903098058742}
   m_Layer: 0
   m_Name: WoodenAxeItem
   m_TagString: Untagged
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &8754367920829481903
+--- !u!114 &-8735090903098058742
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,13 +130,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2795353021945111089}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a55ef8f080c5004b8581390dd0e7081, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d3ae703a063786439ff653fb54301a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 1
-  Name: WoodenAxeItem
+  Name: "\u0414\u0435\u0440\u0435\u0432\u044F\u043D\u043D\u044B\u0439 \u0442\u043E\u043F\u043E\u0440"
   Sprite: {fileID: 281249422065066209, guid: 0e2736670ee2af6459cbfc15808b7bd4, type: 3}
   Category: 0
   Price: 30
-  WeaponType: 2
-  ResourceType: 0
+  Description: 
+  TypeItem: 2

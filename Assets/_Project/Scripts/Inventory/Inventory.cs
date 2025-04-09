@@ -1,7 +1,7 @@
 using Assets._Project.Scripts.Inventory;
+using Assets._Project.Sctipts.Inventory.Items;
 using System;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +10,7 @@ namespace Assets._Project.Sctipts.Inventory
     public class Inventory : MonoBehaviour
     {
         [SerializeField] private Cell _prefabCell;
-        [SerializeField] private Item _item;
+        [SerializeField] private BaseItem _item;
 
         private List<Cell> _cellList = new();
         private RectTransform _contentInventory;
@@ -42,13 +42,13 @@ namespace Assets._Project.Sctipts.Inventory
             }
         }
 
-        public void AddItemInCell(Item item)
+        public void AddItemInCell(BaseItem item)
         {
             for (int i = 0; i < _cellList.Count; i++)
             {
                 if (_cellList[i].IsCellBusy == false)
                 {
-                    Item itemSpawn = Instantiate(item, _cellList[i].transform);
+                    BaseItem itemSpawn = Instantiate(item, _cellList[i].transform);
                     _cellList[i].Item = itemSpawn;
                     _cellList[i].SetIsCellBusy(true);
                     SetupItemButton(_cellList[i]);

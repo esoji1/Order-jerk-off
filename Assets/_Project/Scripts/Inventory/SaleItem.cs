@@ -1,6 +1,7 @@
 using Assets._Project.Scripts.Inventory;
 using Assets._Project.Scripts.Player;
 using Assets._Project.Sctipts.Core;
+using Assets._Project.Sctipts.Inventory.Items;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,31 +34,35 @@ namespace Assets._Project.Sctipts.Inventory
             if (_currentCell == null)
                 return;
 
-            if (_currentCell.NumberItems > 0)
+            if (_currentCell.Item.Category == ItemCategory.Weapon)
             {
-                _currentCell.SubtractNumberItems(1);
-                if (_currentCell.Item.WeaponType == WeaponConfigs.WoodenAxePlayerConfig.WeaponTypes)
+                if (_currentCell.NumberItems > 0)
                 {
-                    _player.Wallet.AddMoney(_currentCell.Item.Price);
-                    if (_currentCell.NumberItems <= 0)
+                    _currentCell.SubtractNumberItems(1);
+                    WeaponItem weaponItem = _currentCell.Item as WeaponItem;
+                    if (weaponItem.TypeItem == WeaponConfigs.WoodenAxePlayerConfig.WeaponTypes)
+                    {
+                        _player.Wallet.AddMoney(_currentCell.Item.Price);
+                        if (_currentCell.NumberItems <= 0)
+                        {
+                            _currentCell.SetIsCellBusy(false);
+                            Destroy(_currentCell.Item.gameObject);
+                        }
+                    }
+                    else if (weaponItem.TypeItem == WeaponConfigs.WoodenSwordPlayerConfig.WeaponTypes)
+                    {
+                        _player.Wallet.AddMoney(_currentCell.Item.Price);
+                        if (_currentCell.NumberItems <= 0)
+                        {
+                            _currentCell.SetIsCellBusy(false);
+                            Destroy(_currentCell.Item.gameObject);
+                        }
+                    }
+                    else if (_currentCell.NumberItems <= 0)
                     {
                         _currentCell.SetIsCellBusy(false);
                         Destroy(_currentCell.Item.gameObject);
                     }
-                }
-                else if (_currentCell.Item.WeaponType == WeaponConfigs.WoodenSwordPlayerConfig.WeaponTypes)
-                {
-                    _player.Wallet.AddMoney(_currentCell.Item.Price);
-                    if (_currentCell.NumberItems <= 0)
-                    {
-                        _currentCell.SetIsCellBusy(false);
-                        Destroy(_currentCell.Item.gameObject);
-                    }
-                }
-                else if (_currentCell.NumberItems <= 0)
-                {
-                    _currentCell.SetIsCellBusy(false);
-                    Destroy(_currentCell.Item.gameObject);
                 }
             }
         }

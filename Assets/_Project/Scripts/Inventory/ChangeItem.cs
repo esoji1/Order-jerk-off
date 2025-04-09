@@ -1,6 +1,8 @@
 using Assets._Project.Scripts.Inventory;
 using Assets._Project.Scripts.ScriptableObjects.Configs;
 using Assets._Project.Scripts.UseWeapons;
+using Assets._Project.Scripts.Weapon;
+using Assets._Project.Sctipts.Inventory.Items;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +18,6 @@ namespace Assets._Project.Sctipts.Inventory
 
         private Cell _currentCell;
         private Cell _clickCell;
-
 
         public void Initialize(UseWeapons useWeapons, Inventory inventory)
         {
@@ -36,14 +37,14 @@ namespace Assets._Project.Sctipts.Inventory
 
         private void UpdateCurrentWeaponInHand()
         {
-            if (_useWeapons.Weapon.Config.WeaponTypes == _data.WoodenSwordItem.WeaponType)
+            if (_useWeapons.Weapon.Config.WeaponTypes == WeaponTypes.WoodenSwordPlayer)
             {
-                Item itemSpawn = Instantiate(_data.WoodenSwordItem, _currentCell.transform);
+                BaseItem itemSpawn = Instantiate(_data.WoodenSwordItem , _currentCell.transform);
                 _currentCell.Item = itemSpawn;
             }
-            else if (_useWeapons.Weapon.Config.WeaponTypes == _data.WoodenAxeItem.WeaponType)
+            else if (_useWeapons.Weapon.Config.WeaponTypes == WeaponTypes.WoodenSwordPlayer)
             {
-                Item itemSpawn = Instantiate(_data.WoodenAxeItem, _currentCell.transform);
+                BaseItem itemSpawn = Instantiate(_data.WoodenAxeItem, _currentCell.transform);
                 _currentCell.Item = itemSpawn;
             }
         }
@@ -53,35 +54,40 @@ namespace Assets._Project.Sctipts.Inventory
             if (_clickCell == null)
                 return;
 
-            if (_clickCell.Item.WeaponType == _currentCell.Item.WeaponType)
+            WeaponItem weaponClickCell = _clickCell.Item as WeaponItem;
+            WeaponItem weaponCurrentCell = _currentCell.Item as WeaponItem;
+
+            if (weaponClickCell.TypeItem == weaponCurrentCell.TypeItem)
             {
                 Debug.Log("ѕомен€лись местами одинаковые оружи€");
             }
-            else if (_clickCell.Item.WeaponType != _currentCell.Item.WeaponType)
+            else if (weaponClickCell.TypeItem != weaponCurrentCell.TypeItem)
             {
                 foreach (Cell cell in _inventory.CellList)
                 {
+                    WeaponItem weapon = cell.Item as WeaponItem;
                     if (cell.Item == null || _currentCell.Item == null)
                         continue;
-                    else if (cell.Item.WeaponType == _clickCell.Item.WeaponType)
+                    else if (weapon.TypeItem == weaponClickCell.TypeItem)
                     {
                         foreach (Cell cell2 in _inventory.CellList)
                         {
+                            WeaponItem weaponCell2 = cell2.Item as WeaponItem;
                             if (cell2.IsCellBusy == false)
                             {
-                                if (_currentCell.Item.WeaponType == _data.WoodenSwordItem.WeaponType)
+                                if (weaponCell2.TypeItem == WeaponTypes.WoodenSwordPlayer)
                                 {
                                     _inventory.AddItemInCell(_data.WoodenSwordItem);
                                     break;
                                 }
-                                else if (_currentCell.Item.WeaponType == _data.WoodenAxeItem.WeaponType)
+                                else if (weaponCell2.TypeItem == WeaponTypes.WoodenAxePlayer)
                                 {
                                     _inventory.AddItemInCell(_data.WoodenAxeItem);
                                     break;
                                 }
                             }
 
-                            else if (cell2.Item.WeaponType == _currentCell.Item.WeaponType)
+                            else if (weaponCell2.TypeItem == weaponCurrentCell.TypeItem)
                             {
                                 cell2.AddNumberItems(1);
                                 break;
@@ -95,9 +101,9 @@ namespace Assets._Project.Sctipts.Inventory
                             _currentCell.Item.Id = _clickCell.Item.Id;
                             _currentCell.Item.Name = _clickCell.Item.Name;
                             _currentCell.Item.Category = _clickCell.Item.Category;
-                            _currentCell.Item.WeaponType = cell.Item.WeaponType;
+                            weaponCurrentCell.TypeItem = weapon.TypeItem;
                             cell.SubtractNumberItems(1);
-                            _useWeapons.SetWeapon(_currentCell.Item.WeaponType);
+                            _useWeapons.SetWeapon(weaponCurrentCell.TypeItem);
 
                             if (_clickCell.NumberItems <= 0)
                             {

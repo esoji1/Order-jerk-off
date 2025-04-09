@@ -1,6 +1,7 @@
 ﻿using Assets._Project.Scripts.Weapon;
 using Assets._Project.Sctipts.Core;
 using Assets._Project.Sctipts.Inventory;
+using Assets._Project.Sctipts.Inventory.Items;
 using TMPro;
 using UnityEngine;
 
@@ -20,15 +21,16 @@ namespace Assets._Project.Scripts.Inventory
 
         private void Show(Cell cell)
         {
+            WeaponItem weapon = cell.Item as WeaponItem;
             if (cell.Item.Category == ItemCategory.Weapon)
             {
-                if (cell.Item.WeaponType == WeaponTypes.WoodenSwordPlayer)
+                if (weapon.TypeItem == WeaponTypes.WoodenSwordPlayer)
                 {
-                    ChangeTextForWeapon(cell.Item.WeaponType, cell);
+                    ChangeTextForWeapon(weapon.TypeItem, cell);
                 }
-                else if (cell.Item.WeaponType == WeaponTypes.WoodenAxePlayer)
+                else if (weapon.TypeItem == WeaponTypes.WoodenAxePlayer)
                 {
-                    ChangeTextForWeapon(cell.Item.WeaponType, cell);
+                    ChangeTextForWeapon(weapon.TypeItem, cell);
                 }
             }
         }

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55d1a8b07c7263848ac748529c3f1815, type: 3}
   m_Name: ItemData
   m_EditorClassIdentifier: 
-  <WoodenAxeItem>k__BackingField: {fileID: 8754367920829481903, guid: 3df611a187bf9cf469b63666f6b625e0, type: 3}
-  <WoodenSwordItem>k__BackingField: {fileID: 2656024396565270411, guid: dd54e488ae1c2ce458c3e4bc0489f20d, type: 3}
+  <WoodenAxeItem>k__BackingField: {fileID: -8735090903098058742, guid: 3df611a187bf9cf469b63666f6b625e0, type: 3}
+  <WoodenSwordItem>k__BackingField: {fileID: 3398061218366655883, guid: dd54e488ae1c2ce458c3e4bc0489f20d, type: 3}

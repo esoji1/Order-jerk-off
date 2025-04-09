@@ -1,11 +1,12 @@
-﻿using TMPro;
+﻿using Assets._Project.Sctipts.Inventory.Items;
+using TMPro;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.Inventory
 {
     public class Cell : MonoBehaviour
     {
-        public Item Item;
+        public BaseItem Item;
         private int _numberItems;
         private bool _IsCellBusy;
         private TextMeshProUGUI _textMeshProUGUI;

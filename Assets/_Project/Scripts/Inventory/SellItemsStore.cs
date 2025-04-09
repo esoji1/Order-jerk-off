@@ -1,6 +1,8 @@
 using Assets._Project.Scripts.Inventory;
 using Assets._Project.Scripts.Player;
 using Assets._Project.Scripts.ScriptableObjects.Configs;
+using Assets._Project.Scripts.Weapon;
+using Assets._Project.Sctipts.Inventory.Items;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,16 +50,20 @@ namespace Assets._Project.Sctipts.Inventory
         {
             if (_inventory.CellList.Count <= 0)
                 return;
-
-            if (_player.Wallet.SubtractMoney(_currentCell.Item.Price))
+            if (_currentCell.Item.Category == ItemCategory.Weapon)
             {
-                if (_currentCell.Item.WeaponType == _itemData.WoodenSwordItem.WeaponType)
+                if (_player.Wallet.SubtractMoney(_currentCell.Item.Price))
                 {
-                    _inventory.AddItemInCell(_itemData.WoodenSwordItem);
-                }
-                else if (_currentCell.Item.WeaponType == _itemData.WoodenAxeItem.WeaponType)
-                {
-                    _inventory.AddItemInCell(_itemData.WoodenAxeItem);
+                    WeaponItem weaponItem = _currentCell.Item as WeaponItem;
+
+                    if (weaponItem.TypeItem == WeaponTypes.WoodenSwordPlayer)
+                    {
+                        _inventory.AddItemInCell(_itemData.WoodenSwordItem);
+                    }
+                    else if (weaponItem.TypeItem == WeaponTypes.WoodenAxePlayer)
+                    {
+                        _inventory.AddItemInCell(_itemData.WoodenAxeItem);
+                    }
                 }
             }
         }
