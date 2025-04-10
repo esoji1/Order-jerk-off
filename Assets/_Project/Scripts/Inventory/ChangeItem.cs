@@ -67,7 +67,7 @@ namespace Assets._Project.Sctipts.Inventory
             {
                 foreach (Cell cell in _inventory.CellList)
                 {
-                    if (cell.Item == null)
+                    if (cell.Item == null || _currentCell.Item == null)
                         continue;
 
                     WeaponItem weapon = cell.Item as WeaponItem;
