@@ -53,6 +53,8 @@ namespace Assets._Project.Scripts.Player
         public PointHealth PointHealth => _pointHealth;
         public PointRotation PointRotation => _rotationSprite;
         public Wallet.Wallet Wallet => _wallet;
+        public HealthView HealthView => _healthView;
+        public Health Health => _health;
 
         private void Update()
         {
