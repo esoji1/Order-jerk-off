@@ -52,6 +52,13 @@ namespace Assets._Project.Scripts.ActionButton
                     buildingArea.BaseBuilding.Show();
                 }
             }
+            else if(_collision2D.TryGetComponent(out SpawnEnemy spawnEnemy))
+            {
+                if(spawnEnemy.IsSpawning)
+                {
+                    spawnEnemy.DisableSpawner();
+                }
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Assets._Project.Scripts.Weapon;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.ScriptableObjects.Configs
@@ -10,11 +11,11 @@ namespace Assets._Project.Scripts.ScriptableObjects.Configs
         [field: SerializeField] public Weapon.Weapons.Weapon Prefab;
         [field: SerializeField] public int AttackSpeed;
         [field: SerializeField] public float RadiusAttack;
+        [field: SerializeField] public float AttackDistance;
         [field: SerializeField] public float ReturnInitialAttackPosition;
         [field: SerializeField] public LayerMask Layer;
         [field: SerializeField] public float RaycastAttack;
         [field: SerializeField] public float VisibilityRadius;
         [field: SerializeField] public WeaponTypes WeaponTypes;
-        [field: SerializeField] public string NameWeapon;
     }
 }

@@ -16,6 +16,7 @@ MonoBehaviour:
   Prefab: {fileID: 8880536980909223644, guid: 50cb65bf1035dad498382ca9e50357d5, type: 3}
   AttackSpeed: 20
   RadiusAttack: 0.4
+  AttackDistance: 0.3
   ReturnInitialAttackPosition: 0.6
   Layer:
     serializedVersion: 2
@@ -23,4 +24,3 @@ MonoBehaviour:
   RaycastAttack: 0.5
   VisibilityRadius: 1
   WeaponTypes: 2
-  NameWeapon: "\u0414\u0435\u0440\u0435\u0432\u044F\u043D\u043D\u044B\u0439  \u0442\u043E\u043F\u043E\u0440"

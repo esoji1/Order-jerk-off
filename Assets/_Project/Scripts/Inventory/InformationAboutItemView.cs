@@ -38,14 +38,14 @@ namespace Assets._Project.Scripts.Inventory
         {
             if (weaponType == WeaponTypes.WoodenSwordPlayer)
             {
-                _textInfoItem.text = $"{WeaponConfigs.WoodenSwordPlayerConfig.NameWeapon}\n" +
+                _textInfoItem.text = $"{cell.Item.Name}\n" +
                             $"Цена: {cell.Item.Price}\n" +
                             $"Радиус атаки: {WeaponConfigs.WoodenSwordPlayerConfig.VisibilityRadius}\n" +
                             $"Урон: {WeaponConfigs.WoodenSwordPlayerConfig.Damage}";
             }
             else if (weaponType == WeaponTypes.WoodenAxePlayer)
             {
-                _textInfoItem.text = $"{WeaponConfigs.WoodenAxePlayerConfig.NameWeapon}\n" +
+                _textInfoItem.text = $"{cell.Item.Name}\n" +
                            $"Цена: {cell.Item.Price}\n" +
                            $"Радиус атаки: {WeaponConfigs.WoodenAxePlayerConfig.VisibilityRadius}\n" +
                            $"Урон: {WeaponConfigs.WoodenAxePlayerConfig.Damage}";

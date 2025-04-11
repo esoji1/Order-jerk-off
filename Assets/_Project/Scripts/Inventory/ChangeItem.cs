@@ -54,7 +54,7 @@ namespace Assets._Project.Sctipts.Inventory
 
         private void PutOn()
         {
-            if (_clickedCell == null || _currentCell.Item == null)
+            if (_clickedCell == null)
                 return;
 
             WeaponItem weaponClickCell = _clickedCell.Item as WeaponItem;
@@ -96,12 +96,12 @@ namespace Assets._Project.Sctipts.Inventory
 
                 if (cell2.IsCellBusy == false)
                 {
-                    if (weaponCell.TypeItem == WeaponTypes.WoodenSwordPlayer)
+                    if (weaponCurrentCell.TypeItem == WeaponTypes.WoodenSwordPlayer)
                     {
                         _inventory.AddItemInCell(_data.WoodenSwordItem);
                         break;
                     }
-                    else if (weaponCell.TypeItem == WeaponTypes.WoodenAxePlayer)
+                    else if (weaponCurrentCell.TypeItem == WeaponTypes.WoodenAxePlayer)
                     {
                         _inventory.AddItemInCell(_data.WoodenAxeItem);
                         break;

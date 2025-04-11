@@ -9,7 +9,6 @@ using Assets._Project.Sctipts.Core;
 using Assets._Project.Sctipts.Core.HealthSystem;
 using Assets._Project.Sctipts.JoystickMovement;
 using System;
-using System.Collections;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.Player
@@ -113,17 +112,14 @@ namespace Assets._Project.Scripts.Player
             _wallet = new Wallet.Wallet(0);
             _playerView.Initialize();
 
-            //_healthInfo = Instantiate(_healthInfoPrefab, transform.position, Quaternion.identity);
             _healthInfo = _healthInfoPrefab;
             _healthInfo.Initialize(_dynamic);
-            //_healthView = Instantiate(_healthViewPrefab, transform.position, Quaternion.identity);
+
             _healthView = _healthViewPrefab;
             _healthView.Initialize(this, _playerCharacteristics.Health, _healthInfo, this);
 
             _circleRadiusVisualizer.Initialize(transform);
             _radiusMovementTrigger.Initialize(transform, _rotationSprite.transform, _config.LayerEnemy, transform, _config.Speed, _config.VisibilityRadius);
-
-            StartCoroutine(GradualHealing());
         }
 
         private void ExtractComponents()
@@ -161,12 +157,11 @@ namespace Assets._Project.Scripts.Player
             _playerMovement.Move();
 
             if (_weapon != null)
-                _radiusMovementTrigger.MoveToTarget(_weapon.Config.RadiusAttack);
+                _radiusMovementTrigger.MoveToTarget(_weapon.Config.AttackDistance);
 
             MoveInRadiusAndRotation();
             _flip.RotateView(_joysickForMovement.VectorDirection(), _rotationSprite.transform);
 
-            //_healthView.FollowTargetHealth();
             _circleRadiusVisualizer.DrawRadius(_config.VisibilityRadius);
         }
 
@@ -180,16 +175,6 @@ namespace Assets._Project.Scripts.Player
             else if (_joysickForMovement.VectorDirection() == Vector2.zero)
             {
                 _radiusMovementTrigger.StartRadiusMovement();
-            }
-        }
-
-        private IEnumerator GradualHealing()
-        {
-            while (true)
-            {
-                _health.AddHealth(10);
-                _healthView.AddHealth(10);
-                yield return new WaitForSeconds(5f);
             }
         }
 

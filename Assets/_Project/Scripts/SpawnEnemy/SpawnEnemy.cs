@@ -1,58 +1,57 @@
-using Assets._Project.Scripts.Core;
-using Assets._Project.Scripts.Core.HealthSystem;
-using Assets._Project.Scripts.Core.Interface;
 using Assets._Project.Scripts.Enemy;
 using Assets._Project.Scripts.ScriptableObjects;
-using Assets._Project.Sctipts.Core.HealthSystem;
-using System.Collections;
+using Assets._Project.Scripts.SelectionGags;
+using Assets._Project.Sctipts.Core.Spawns;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnEnemy : MonoBehaviour, IDamage, IOnDamage
+public class SpawnEnemy : MonoBehaviour
 {
     [SerializeField] private Enemys _enemys;
     [SerializeField] private int _maxEnemy;
     [SerializeField] private float _betweenSpawn;
+    [SerializeField] private int _amountExperienceDropped;
     [SerializeField] private List<Enemy> _enemy;
     [SerializeField] private EnemyFactoryBootstrap _enemyFactoryBootstrap;
-    [SerializeField] private HealthInfo _healthInfoPrefab;
-    [SerializeField] private HealthView _healthViewPrefab;
-    [SerializeField] private Canvas _dynamic;
+    [SerializeField] private Experience _experiencePrefab;
 
-    private Health _health;
+    private SpawnExperience _spawnExperience;
 
-    private HealthView _healthView;
-    private HealthInfo _healthInfo;
-    private PointHealth _pointHealth;
     private BattleZone _battleZone;
-    private Coroutine _coroutine;
     private float _nextSpawnTime;
+    private bool _isSpawning;
 
-    public PointHealth PointHealth => _pointHealth;
-
-    public event System.Action<int> OnDamage;
+    public bool IsSpawning => _isSpawning;
 
     private void Start()
     {
-        _health = new Health(30);
-        _pointHealth = GetComponentInChildren<PointHealth>();
-
-        _healthInfo = Instantiate(_healthInfoPrefab, transform.position, Quaternion.identity);
-        _healthInfo.Initialize(_dynamic);
-        _healthView = Instantiate(_healthViewPrefab, transform.position, Quaternion.identity);
-        _healthView.Initialize(this, _health.HealthValue, _healthInfo, null);
-
-        _health.OnDie += Die;
+        _isSpawning = true;
+        _spawnExperience = new SpawnExperience(_experiencePrefab, _amountExperienceDropped);
     }
 
     private void Update()
     {
-        _healthView.FollowTargetHealth();
+        Spawn();
+    }
 
-        if (_battleZone.IsEnterZone)
+    public void Initialize(BattleZone battleZone)
+    {
+        _battleZone = battleZone;
+    }
+
+    public void DisableSpawner()
+    {
+        _isSpawning = false;
+        _spawnExperience.Spawn(transform);
+        Destroy(gameObject);
+    }
+
+    private void Spawn()
+    {
+        if (_battleZone.IsEnterZone && _isSpawning)
         {
             if (_nextSpawnTime <= 0)
-                _nextSpawnTime = Time.time + 1f; 
+                _nextSpawnTime = Time.time + 1f;
 
             if (Time.time >= _nextSpawnTime)
             {
@@ -79,13 +78,14 @@ public class SpawnEnemy : MonoBehaviour, IDamage, IOnDamage
     {
         EnemyTypes enemyType = (EnemyTypes)Random.Range(0, _enemys.GetEnemys.Count);
         Enemy newEnemy = _enemyFactoryBootstrap.EnemyFactory.Get(enemyType, transform.position);
+
         if (newEnemy != null)
             _enemy.Add(newEnemy);
     }
 
     private void ClearEnemies()
     {
-        foreach (var enemy in _enemy)
+        foreach (Enemy enemy in _enemy)
         {
             if (enemy != null && enemy.gameObject != null)
             {
@@ -93,27 +93,7 @@ public class SpawnEnemy : MonoBehaviour, IDamage, IOnDamage
                 Destroy(enemy.gameObject);
             }
         }
+
         _enemy.Clear();
     }
-
-    public void Initialize(BattleZone battleZone)
-    {
-        _battleZone = battleZone;
-    }
-
-    public void Damage(int damage)
-    {
-        _health.TakeDamage(damage);
-        OnDamage?.Invoke(damage);
-    }
-
-    private void Die()
-    {
-        _health.OnDie -= Die;
-        Destroy(_healthInfo.InstantiatedHealthBar.gameObject);
-        Destroy(_healthInfo.gameObject);
-        Destroy(_healthView.gameObject);
-        Destroy(gameObject);
-    }
-
 }

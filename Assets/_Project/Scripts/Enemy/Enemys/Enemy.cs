@@ -13,7 +13,7 @@ using UnityEngine;
 
 namespace Assets._Project.Scripts.Enemy
 {
-    [RequireComponent(typeof(RadiusMovementTrigger))]
+    [RequireComponent(typeof(RadiusMovementTrigger), typeof(Rigidbody2D), typeof(BoxCollider2D))]
     public abstract class Enemy : MonoBehaviour, IDamage, IOnDamage
     {
         protected WeaponFactoryBootstrap WeaponFactoryBootstrap;

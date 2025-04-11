@@ -48,7 +48,7 @@ namespace Assets._Project.Sctipts.Inventory
 
         private void Buy()
         {
-            if (_inventory.CellList.Count <= 0)
+            if (_inventory.CellList.Count <= 0 || _currentCell == null)
                 return;
 
             if (_currentCell.Item.Category == ItemCategory.Weapon)

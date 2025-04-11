@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: d5cf4d51f674aed42bb5d5f1610e06ac
+guid: 32f45890eab83dd4096b41a34cc5bd25
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1211520478792014560
-    second: photo_2025-04-08_19-49-48_0
+      213: 5476177545198260091
+    second: photo_2025-04-08_19-49-45_0
+  - first:
+      213: 3894931820845615538
+    second: photo_2025-04-08_19-49-45_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,7 +49,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -139,13 +142,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: photo_2025-04-08_19-49-48_0
+      name: photo_2025-04-08_19-49-45_0
       rect:
         serializedVersion: 2
-        x: 45
-        y: 52
-        width: 552
-        height: 566
+        x: 78
+        y: 82
+        width: 465
+        height: 440
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +157,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 025ad7f1b80df2fe0800000000000000
-      internalID: -1211520478792014560
+      spriteID: b7f438c967a4ffb40800000000000000
+      internalID: 5476177545198260091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: photo_2025-04-08_19-49-45_1
+      rect:
+        serializedVersion: 2
+        x: 531
+        y: 159
+        width: 13
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b94ed5dad39d0630800000000000000
+      internalID: 3894931820845615538
       vertices: []
       indices: 
       edges: []
@@ -164,7 +189,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +199,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      photo_2025-04-08_19-49-48_0: -1211520478792014560
+      photo_2025-04-08_19-49-45_0: 5476177545198260091
+      photo_2025-04-08_19-49-45_1: 3894931820845615538
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

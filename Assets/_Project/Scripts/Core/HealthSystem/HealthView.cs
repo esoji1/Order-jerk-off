@@ -68,6 +68,9 @@ namespace Assets._Project.Sctipts.Core.HealthSystem
         private void UpdateHealthBar()
         {
             _healthInfo.InstantiatedHealthBar.value = _currentHp;
+
+            if (_healthInfo.TextHp != null)
+                _healthInfo.TextHp.text = $"{_currentHp}/{_maxHp}";
         }
 
         private void UpdateParameters()

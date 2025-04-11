@@ -1,4 +1,5 @@
 using Assets._Project.Scripts.Player;
+using Assets._Project.Sctipts.CameraMain;
 using UnityEngine;
 
 namespace Assets._Project.Sctipts.Core
@@ -7,8 +8,8 @@ namespace Assets._Project.Sctipts.Core
     {
         [SerializeField] private AdaptingColliderResolution _adaptingColliderResolution;
 
-        private float _forward = 10;
-        private float _back = -22;
+        private float _forward = 10f;
+        private float _back = 22f;
 
         private float _addPositionPlayer = 2.2f;
 
@@ -22,8 +23,8 @@ namespace Assets._Project.Sctipts.Core
                 if (collision.TryGetComponent(out Player player))
                 {
                     player.transform.position -= new Vector3(0f, _addPositionPlayer, 0f);
-                    _adaptingColliderResolution.AddTopHeight(-10f);
-                    _adaptingColliderResolution.AddBottomHeight(22f);
+                    _adaptingColliderResolution.AddTopHeight(-_forward);
+                    _adaptingColliderResolution.AddBottomHeight(_back);
                 }
             }
             else
@@ -33,8 +34,8 @@ namespace Assets._Project.Sctipts.Core
                 if (collision.TryGetComponent(out Player player))
                 {
                     player.transform.position += new Vector3(0f, _addPositionPlayer, 0f);
-                    _adaptingColliderResolution.AddTopHeight(10f);
-                    _adaptingColliderResolution.AddBottomHeight(-22f);
+                    _adaptingColliderResolution.AddTopHeight(_forward);
+                    _adaptingColliderResolution.AddBottomHeight(-_back);
                 }
             }
         }
