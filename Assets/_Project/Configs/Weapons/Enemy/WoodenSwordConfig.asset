@@ -15,7 +15,7 @@ MonoBehaviour:
   Damage: 10
   Prefab: {fileID: 2045288444892460180, guid: 02cea876772d83f408a4544b0606dd6f, type: 3}
   AttackSpeed: 20
-  RadiusAttack: 0.4
+  RadiusAttack: 0.5
   AttackDistance: 0
   ReturnInitialAttackPosition: 0.8
   Layer:

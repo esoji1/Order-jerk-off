@@ -88,7 +88,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -193,12 +193,12 @@ TextureImporter:
       name: plant repack_0_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 157
-        width: 40
-        height: 91
+        x: 1
+        y: 159
+        width: 37
+        height: 88
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -215,12 +215,12 @@ TextureImporter:
       name: plant repack_0_1
       rect:
         serializedVersion: 2
-        x: 41
-        y: 172
-        width: 67
-        height: 78
+        x: 43
+        y: 173
+        width: 65
+        height: 77
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -242,7 +242,7 @@ TextureImporter:
         width: 57
         height: 78
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -264,7 +264,7 @@ TextureImporter:
         width: 78
         height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -286,7 +286,7 @@ TextureImporter:
         width: 27
         height: 70
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -308,7 +308,7 @@ TextureImporter:
         width: 33
         height: 27
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -326,11 +326,11 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 133
-        width: 21
-        height: 22
+        y: 134
+        width: 19
+        height: 21
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -347,12 +347,12 @@ TextureImporter:
       name: plant repack_0_7
       rect:
         serializedVersion: 2
-        x: 18
-        y: 134
-        width: 22
-        height: 21
+        x: 20
+        y: 136
+        width: 18
+        height: 19
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -374,7 +374,7 @@ TextureImporter:
         width: 19
         height: 38
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -391,12 +391,12 @@ TextureImporter:
       name: plant repack_0_9
       rect:
         serializedVersion: 2
-        x: 59
-        y: 81
-        width: 53
-        height: 91
+        x: 60
+        y: 82
+        width: 51
+        height: 88
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -413,12 +413,12 @@ TextureImporter:
       name: plant repack_0_10
       rect:
         serializedVersion: 2
-        x: 114
-        y: 80
-        width: 60
-        height: 85
+        x: 116
+        y: 81
+        width: 56
+        height: 83
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -440,7 +440,7 @@ TextureImporter:
         width: 41
         height: 37
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -457,12 +457,12 @@ TextureImporter:
       name: plant repack_0_12
       rect:
         serializedVersion: 2
-        x: 5
-        y: 77
-        width: 48
-        height: 58
+        x: 6
+        y: 78
+        width: 46
+        height: 56
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -479,12 +479,12 @@ TextureImporter:
       name: plant repack_0_13
       rect:
         serializedVersion: 2
-        x: 173
-        y: 77
-        width: 39
-        height: 57
+        x: 175
+        y: 78
+        width: 36
+        height: 55
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -501,12 +501,12 @@ TextureImporter:
       name: plant repack_0_14
       rect:
         serializedVersion: 2
-        x: 210
-        y: 79
-        width: 39
-        height: 55
+        x: 213
+        y: 80
+        width: 35
+        height: 53
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -525,10 +525,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 2
-        width: 78
+        width: 77
         height: 72
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -545,12 +545,12 @@ TextureImporter:
       name: plant repack_0_16
       rect:
         serializedVersion: 2
-        x: 76
+        x: 136
         y: 2
-        width: 118
+        width: 56
         height: 73
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -567,12 +567,12 @@ TextureImporter:
       name: plant repack_0_17
       rect:
         serializedVersion: 2
-        x: 191
+        x: 192
         y: 2
-        width: 59
+        width: 58
         height: 75
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -585,11 +585,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: plant repack_0_18
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 3
+        width: 57
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adb6138cb8d8f844f89374111073ac00
+      internalID: 1125637699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8e2c2d91577fb1e4c93e9f9256aaf16a
     internalID: 0
     vertices: []
     indices: 
@@ -598,7 +620,26 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      plant repack_0_0: -1230265450105225160
+      plant repack_0_1: -6197781694107623782
+      plant repack_0_10: -326833949846412614
+      plant repack_0_11: 8754660733498574481
+      plant repack_0_12: -2384620778228882995
+      plant repack_0_13: -8380235693371568535
+      plant repack_0_14: -7119229212758584587
+      plant repack_0_15: 3728344973765577452
+      plant repack_0_16: -6685264057528007426
+      plant repack_0_17: -6209288642062118266
+      plant repack_0_18: 1125637699
+      plant repack_0_2: -4681902904856467977
+      plant repack_0_3: 8311103016214131206
+      plant repack_0_4: -2835088428863352265
+      plant repack_0_5: 4523753066405004974
+      plant repack_0_6: -4473731161533793401
+      plant repack_0_7: 5976156521902379443
+      plant repack_0_8: -4450161076203375751
+      plant repack_0_9: -7536856876144343508
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

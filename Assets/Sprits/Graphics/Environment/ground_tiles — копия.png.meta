@@ -157,7 +157,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -267,7 +267,7 @@ TextureImporter:
         width: 8
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -289,7 +289,7 @@ TextureImporter:
         width: 10
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -311,7 +311,7 @@ TextureImporter:
         width: 9
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -333,7 +333,7 @@ TextureImporter:
         width: 23
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -350,12 +350,12 @@ TextureImporter:
       name: "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_4"
       rect:
         serializedVersion: 2
-        x: 191
-        y: 476
-        width: 162
-        height: 225
+        x: 192
+        y: 541
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -377,7 +377,7 @@ TextureImporter:
         width: 162
         height: 97
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -399,7 +399,7 @@ TextureImporter:
         width: 73
         height: 73
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -421,7 +421,7 @@ TextureImporter:
         width: 34
         height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -443,7 +443,7 @@ TextureImporter:
         width: 162
         height: 98
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -465,7 +465,7 @@ TextureImporter:
         width: 6
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -487,7 +487,7 @@ TextureImporter:
         width: 6
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -509,7 +509,7 @@ TextureImporter:
         width: 7
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -531,7 +531,7 @@ TextureImporter:
         width: 6
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -553,7 +553,7 @@ TextureImporter:
         width: 6
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -575,7 +575,7 @@ TextureImporter:
         width: 15
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -597,7 +597,7 @@ TextureImporter:
         width: 107
         height: 108
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -619,7 +619,7 @@ TextureImporter:
         width: 6
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -641,7 +641,7 @@ TextureImporter:
         width: 6
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -663,7 +663,7 @@ TextureImporter:
         width: 6
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -685,7 +685,7 @@ TextureImporter:
         width: 6
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -707,7 +707,7 @@ TextureImporter:
         width: 15
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -726,10 +726,10 @@ TextureImporter:
         serializedVersion: 2
         x: 191
         y: 348
-        width: 162
-        height: 98
+        width: 97
+        height: 97
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -751,7 +751,7 @@ TextureImporter:
         width: 162
         height: 98
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -773,7 +773,7 @@ TextureImporter:
         width: 7
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -795,7 +795,7 @@ TextureImporter:
         width: 66
         height: 66
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -817,7 +817,7 @@ TextureImporter:
         width: 53
         height: 54
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -839,7 +839,7 @@ TextureImporter:
         width: 66
         height: 66
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -858,10 +858,10 @@ TextureImporter:
         serializedVersion: 2
         x: 127
         y: 220
-        width: 226
-        height: 98
+        width: 65
+        height: 66
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -883,7 +883,7 @@ TextureImporter:
         width: 162
         height: 98
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -905,7 +905,7 @@ TextureImporter:
         width: 598
         height: 14
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -927,7 +927,7 @@ TextureImporter:
         width: 19
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -949,7 +949,7 @@ TextureImporter:
         width: 13
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -971,7 +971,7 @@ TextureImporter:
         width: 8
         height: 7
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -993,7 +993,7 @@ TextureImporter:
         width: 15
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1015,7 +1015,7 @@ TextureImporter:
         width: 98
         height: 162
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1037,7 +1037,7 @@ TextureImporter:
         width: 66
         height: 66
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1059,7 +1059,7 @@ TextureImporter:
         width: 130
         height: 162
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1081,7 +1081,7 @@ TextureImporter:
         width: 98
         height: 98
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1103,7 +1103,7 @@ TextureImporter:
         width: 66
         height: 66
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1125,7 +1125,7 @@ TextureImporter:
         width: 34
         height: 34
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1147,7 +1147,7 @@ TextureImporter:
         width: 194
         height: 83
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -1160,11 +1160,319 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_41"
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 221
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 313e316155a72a24c8c78be9eefd64bd
+      internalID: 1610939984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_42"
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 221
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ddf3d50206d04b4eb4be846a74017ac
+      internalID: -693463414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_43"
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 285
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91b5748d05402a247a1895090f3db0d9
+      internalID: -520972082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_44"
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 413
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fddb3ca8c2533d947bb61c85f1782984
+      internalID: -1926127637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_45"
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 349
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4776c7ea3d454a141ac061b7617f279d
+      internalID: -435466508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_46"
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 509
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a277bf8d093c6694eb6900b9e2ada456
+      internalID: -178799094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_47"
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 477
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74e64d942d4c8914192afcfcba57f301
+      internalID: 1074363775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_48"
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 541
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 702dc16cf99fb9145aa533911912e909
+      internalID: 1575488908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_49"
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 541
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7791ebd9f44fce458364eade14e0f09
+      internalID: 1898546432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_50"
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 509
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 102e4c56342f2a940a432c4442af2ec2
+      internalID: -1451216390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_51"
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 477
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ce6bd1765975fc449a0b42cbd8a9474
+      internalID: -482693374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_52"
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 477
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8abc37d75ad423e449805bc503c85c39
+      internalID: 676199177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_53"
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 477
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 989ce2af017609946989f32343900403
+      internalID: -1440121217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_54"
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 541
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e93fd9f7dac41a4da45021e544995d0
+      internalID: 1800080150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: dd6fbac6205f00b4aa2ce54d9729a1b5
     internalID: 0
     vertices: []
     indices: 
@@ -1173,7 +1481,62 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_0": 7831486668619843132
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_1": -7824641260908293647
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_10": 5233019647467421151
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_11": 6305545099838626552
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_12": -7123631384292799703
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_13": -8010325912615140327
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_14": 8275724228864552687
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_15": -1936657702164792570
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_16": 2783423863791843616
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_17": -3989542953831443363
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_18": 6404563461706791805
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_19": -8507422440963464105
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_2": -328576485949707383
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_20": -1451783920457161416
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_21": -6239704305880270504
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_22": -1006066950770925116
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_23": -370501644488107064
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_24": -5005362827328683331
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_25": 694121833109370687
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_26": 2860435272296889864
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_27": -8811130510153147376
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_28": 2837989749601847305
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_29": -4206018434399501259
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_3": -6631879406331930295
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_30": -1996567020488112045
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_31": -2990077744083206143
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_32": -4216716287376855151
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_33": 1724671674954988391
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_34": -2249788968877626537
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_35": 9042961240089015966
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_36": -3017750758332069640
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_37": 6526001856312917043
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_38": -245651029325345419
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_39": -7305648083872703230
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_4": 1400139379107854456
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_40": 1779777659484099907
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_41": 1610939984
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_42": -693463414
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_43": -520972082
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_44": -1926127637
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_45": -435466508
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_46": -178799094
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_47": 1074363775
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_48": 1575488908
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_49": 1898546432
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_5": 4849706542084859261
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_50": -1451216390
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_51": -482693374
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_52": 676199177
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_53": -1440121217
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_54": 1800080150
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_6": 7462003040353755738
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_7": -732706085226823306
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_8": -2438672080031349832
+      "ground_tiles \u2014 \u043A\u043E\u043F\u0438\u044F_9": 5276363897252940903
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
