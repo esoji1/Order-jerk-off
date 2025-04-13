@@ -1,4 +1,5 @@
 using Assets._Project.Scripts.ConstructionBuildings;
+using Assets._Project.Scripts.ResourceExtraction.OreMining;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ namespace Assets._Project.Scripts.ActionButton
         private Collider2D _collision2D;
 
         public event Action<BuildingArea> OnStandingInConstructionZone;
+        public event Action<Ore> OnMining;
 
         private void OnEnable()
         {
@@ -58,6 +60,10 @@ namespace Assets._Project.Scripts.ActionButton
                 {
                     spawnEnemy.DisableSpawner();
                 }
+            }
+            else if(_collision2D.TryGetComponent(out Ore ore))
+            {
+                OnMining?.Invoke(ore);
             }
         }
     }

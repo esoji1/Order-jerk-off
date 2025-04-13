@@ -1,4 +1,5 @@
 using Assets._Project.Scripts.Inventory;
+using Assets._Project.Scripts.Inventory.Items;
 using Assets._Project.Scripts.Player;
 using Assets._Project.Scripts.ScriptableObjects.Configs;
 using Assets._Project.Scripts.Weapon;
@@ -64,6 +65,17 @@ namespace Assets._Project.Sctipts.Inventory
                     else if (weaponItem.TypeItem == WeaponTypes.WoodenAxePlayer)
                     {
                         _inventory.AddItemInCell(_itemData.WoodenAxeItem);
+                    }
+                }
+            }
+            else if (_currentCell.Item.Category == ItemCategory.Mining)
+            {
+                if (_player.Wallet.SubtractMoney(_currentCell.Item.Price))
+                {
+                    MiningItem miningItem = _currentCell.Item as MiningItem;
+                    if (miningItem.TypesMining == ResourceExtraction.TypesMining.Pick)
+                    {
+                        _inventory.AddItemInCell(_itemData.PickItem);
                     }
                 }
             }

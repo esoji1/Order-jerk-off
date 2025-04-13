@@ -1,7 +1,9 @@
 using Assets._Project.Scripts.Inventory;
+using Assets._Project.Scripts.Inventory.Items;
 using Assets._Project.Scripts.Player;
 using Assets._Project.Sctipts.Core;
 using Assets._Project.Sctipts.Inventory.Items;
+using Assets._Project.Sctipts.ResourceExtraction;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -50,6 +52,28 @@ namespace Assets._Project.Sctipts.Inventory
                         }
                     }
                     else if (weaponItem.TypeItem == WeaponConfigs.WoodenSwordPlayerConfig.WeaponTypes)
+                    {
+                        _player.Wallet.AddMoney(_currentCell.Item.Price);
+                        if (_currentCell.NumberItems <= 0)
+                        {
+                            _currentCell.SetIsCellBusy(false);
+                            Destroy(_currentCell.Item.gameObject);
+                        }
+                    }
+                    else if (_currentCell.NumberItems <= 0)
+                    {
+                        _currentCell.SetIsCellBusy(false);
+                        Destroy(_currentCell.Item.gameObject);
+                    }
+                }
+            }
+            else if(_currentCell.Item.Category == ItemCategory.Mining)
+            {
+                if (_currentCell.NumberItems > 0)
+                {
+                    _currentCell.SubtractNumberItems(1);
+                    MiningItem weaponItem = _currentCell.Item as MiningItem;
+                    if (weaponItem.TypesMining == TypesMining.Pick)
                     {
                         _player.Wallet.AddMoney(_currentCell.Item.Price);
                         if (_currentCell.NumberItems <= 0)

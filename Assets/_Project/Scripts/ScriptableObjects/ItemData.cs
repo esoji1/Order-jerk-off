@@ -8,5 +8,6 @@ namespace Assets._Project.Scripts.ScriptableObjects.Configs
     {
         [field: SerializeField] public BaseItem WoodenAxeItem { get; private set; }
         [field: SerializeField] public BaseItem WoodenSwordItem { get; private set; }
+        [field: SerializeField] public BaseItem PickItem { get; private set; }
     }
 }

@@ -1,6 +1,8 @@
-﻿using Assets._Project.Scripts.Weapon;
+﻿using Assets._Project.Scripts.Inventory.Items;
+using Assets._Project.Scripts.Weapon;
 using Assets._Project.Sctipts.Core;
 using Assets._Project.Sctipts.Inventory.Items;
+using Assets._Project.Sctipts.ResourceExtraction;
 using TMPro;
 using UnityEngine;
 
@@ -20,9 +22,10 @@ namespace Assets._Project.Scripts.Inventory
 
         private void Show(Cell cell)
         {
-            WeaponItem weapon = cell.Item as WeaponItem;
             if (cell.Item.Category == ItemCategory.Weapon)
             {
+                WeaponItem weapon = cell.Item as WeaponItem;
+
                 if (weapon.TypeItem == WeaponTypes.WoodenSwordPlayer)
                 {
                     ChangeTextForWeapon(weapon.TypeItem, cell);
@@ -30,6 +33,14 @@ namespace Assets._Project.Scripts.Inventory
                 else if (weapon.TypeItem == WeaponTypes.WoodenAxePlayer)
                 {
                     ChangeTextForWeapon(weapon.TypeItem, cell);
+                }
+            }
+            else if(cell.Item.Category == ItemCategory.Mining)
+            {
+                MiningItem miningItem = cell.Item as MiningItem;
+                if(miningItem.TypesMining == TypesMining.Pick)
+                {
+                    ChangeTextForMining(cell);
                 }
             }
         }
@@ -50,6 +61,13 @@ namespace Assets._Project.Scripts.Inventory
                            $"Радиус атаки: {WeaponConfigs.WoodenAxePlayerConfig.VisibilityRadius}\n" +
                            $"Урон: {WeaponConfigs.WoodenAxePlayerConfig.Damage}";
             }
+        }
+
+        private void ChangeTextForMining(Cell cell)
+        {
+            _textInfoItem.text = $"{cell.Item.Name}\n" +
+                $"Цена: {cell.Item.Price}\n" +
+                $"{cell.Item.Description}";
         }
 
         private void OnDestroy()

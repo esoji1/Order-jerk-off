@@ -4,5 +4,6 @@
     {
         Weapon,
         Resource,
+        Mining
     }
 }

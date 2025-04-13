@@ -42,7 +42,7 @@ namespace Assets._Project.Sctipts.Inventory
 
             if (weaponTypes == WeaponTypes.WoodenSwordPlayer)
             {
-                BaseItem itemSpawn = Instantiate(_data.WoodenSwordItem , _currentCell.transform);
+                BaseItem itemSpawn = Instantiate(_data.WoodenSwordItem, _currentCell.transform);
                 _currentCell.Item = itemSpawn;
             }
             else if (weaponTypes == WeaponTypes.WoodenSwordPlayer)
@@ -54,7 +54,7 @@ namespace Assets._Project.Sctipts.Inventory
 
         private void PutOn()
         {
-            if (_clickedCell == null)
+            if (_clickedCell == null || _clickedCell.Item.Category != ItemCategory.Weapon)
                 return;
 
             WeaponItem weaponClickCell = _clickedCell.Item as WeaponItem;
@@ -70,18 +70,21 @@ namespace Assets._Project.Sctipts.Inventory
                     if (cell.Item == null || _currentCell.Item == null)
                         continue;
 
-                    WeaponItem weapon = cell.Item as WeaponItem;
-                    
-                    if (weapon.TypeItem == weaponClickCell.TypeItem)
+                    if (cell.Item is WeaponItem)
                     {
-                        AddItemChange(weaponCurrentCell);
+                        WeaponItem weapon = (WeaponItem)cell.Item;
 
-                        if (cell.NumberItems > 0)
+                        if (weapon.TypeItem == weaponClickCell.TypeItem)
                         {
-                            ChangeItemDetails(weaponCurrentCell, weapon, cell);
-                            
-                            if (_clickedCell.NumberItems <= 0)
-                                ClearCellData(cell);
+                            AddItemChange(weaponCurrentCell);
+
+                            if (cell.NumberItems > 0)
+                            {
+                                ChangeItemDetails(weaponCurrentCell, weapon, cell);
+
+                                if (_clickedCell.NumberItems <= 0)
+                                    ClearCellData(cell);
+                            }
                         }
                     }
                 }
@@ -92,25 +95,28 @@ namespace Assets._Project.Sctipts.Inventory
         {
             foreach (Cell cell2 in _inventory.CellList)
             {
-                WeaponItem weaponCell = cell2.Item as WeaponItem;
+                if (cell2.Item is WeaponItem)
+                {
+                    WeaponItem weaponCell = cell2.Item as WeaponItem;
 
-                if (cell2.IsCellBusy == false)
-                {
-                    if (weaponCurrentCell.TypeItem == WeaponTypes.WoodenSwordPlayer)
+                    if (cell2.IsCellBusy == false)
                     {
-                        _inventory.AddItemInCell(_data.WoodenSwordItem);
+                        if (weaponCurrentCell.TypeItem == WeaponTypes.WoodenSwordPlayer)
+                        {
+                            _inventory.AddItemInCell(_data.WoodenSwordItem);
+                            break;
+                        }
+                        else if (weaponCurrentCell.TypeItem == WeaponTypes.WoodenAxePlayer)
+                        {
+                            _inventory.AddItemInCell(_data.WoodenAxeItem);
+                            break;
+                        }
+                    }
+                    else if (weaponCell.TypeItem == weaponCurrentCell.TypeItem)
+                    {
+                        cell2.AddNumberItems(1);
                         break;
                     }
-                    else if (weaponCurrentCell.TypeItem == WeaponTypes.WoodenAxePlayer)
-                    {
-                        _inventory.AddItemInCell(_data.WoodenAxeItem);
-                        break;
-                    }
-                }
-                else if (weaponCell.TypeItem == weaponCurrentCell.TypeItem)
-                {
-                    cell2.AddNumberItems(1);
-                    break;
                 }
             }
         }
