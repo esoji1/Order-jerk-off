@@ -524,7 +524,7 @@ Transform:
   m_GameObject: {fileID: 52823348}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.15, z: 0}
+  m_LocalPosition: {x: 0, y: -6.19, z: 0}
   m_LocalScale: {x: 0.8000001, y: 0.8000001, z: 0.8000001}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -775,7 +775,7 @@ Transform:
   m_GameObject: {fileID: 91798147}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.15, z: -10}
+  m_LocalPosition: {x: 0, y: -6.19, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1945,6 +1945,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402673083}
   m_CullTransparentMesh: 1
+--- !u!1 &422452197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 422452198}
+  - component: {fileID: 422452199}
+  m_Layer: 0
+  m_Name: PercentageFillView
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &422452198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422452197}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1221726868}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &422452199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422452197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2445b5b7acd970848af87cbea6eef250, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 3640573002946447604, guid: e6a72bf9720d1ac45bc2d4adc38f16e9, type: 3}
 --- !u!1 &459062782
 GameObject:
   m_ObjectHideFlags: 0
@@ -2397,7 +2442,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.47571182, z: -10}
+  m_LocalPosition: {x: 0, y: -6.19, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10198,6 +10243,7 @@ Transform:
   - {fileID: 526738962}
   - {fileID: 2119364610}
   - {fileID: 1689887621}
+  - {fileID: 422452198}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1231261527
@@ -22113,6 +22159,8 @@ MonoBehaviour:
   _mineringFactoryBootstrap: {fileID: 903154598}
   _inventory: {fileID: 2119364609}
   _itemData: {fileID: 11400000, guid: e5f80686d52d2a148a2733f514879b16, type: 2}
+  _percentageFillView: {fileID: 422452199}
+  _canvas: {fileID: 8108546}
 --- !u!1 &1693347578
 GameObject:
   m_ObjectHideFlags: 0
@@ -23630,9 +23678,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabCell: {fileID: 7794714616000454447, guid: eb347706e5488cd45a1e1d3426699d8a, type: 3}
-  _item: {fileID: 3398061218366655883, guid: dd54e488ae1c2ce458c3e4bc0489f20d, type: 3}
+  _item: {fileID: 7883121247641303904, guid: 69f2d50db6c25a340b7ae1e597c7566e, type: 3}
   IsAddCell: 0
-  IsAddItem: 0
+  IsAddItem: 1
 --- !u!4 &2119364610
 Transform:
   m_ObjectHideFlags: 0

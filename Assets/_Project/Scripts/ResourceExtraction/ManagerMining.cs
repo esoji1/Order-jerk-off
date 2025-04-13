@@ -3,6 +3,7 @@ using Assets._Project.Scripts.Core;
 using Assets._Project.Scripts.Inventory;
 using Assets._Project.Scripts.Inventory.Items;
 using Assets._Project.Scripts.Player;
+using Assets._Project.Scripts.ResourceExtraction;
 using Assets._Project.Scripts.ResourceExtraction.OreMining;
 using Assets._Project.Scripts.ScriptableObjects.Configs;
 using Assets._Project.Scripts.UseWeapons;
@@ -19,6 +20,8 @@ namespace Assets._Project.Sctipts.ResourceExtraction
         [SerializeField] private MiningFactoryBootstrap _mineringFactoryBootstrap;
         [SerializeField] private Inventory.Inventory _inventory;
         [SerializeField] private ItemData _itemData;
+        [SerializeField] private PercentageFillView _percentageFillView;
+        [SerializeField] private Canvas _canvas;
 
         private SetWeaponPoint _setWeaponPoint;
 
@@ -41,6 +44,7 @@ namespace Assets._Project.Sctipts.ResourceExtraction
                 if (_time >= _baseMining.MiningConfig.ExtractionTime + 0.5f)
                 {
                     _time = 0;
+                    _percentageFillView.StopTimer();
                     _isDoesExtract = false;
                     _player.SetMove(true);
                     _useWeapons.ActiveSelfWeapon(true);
@@ -86,6 +90,7 @@ namespace Assets._Project.Sctipts.ResourceExtraction
 
                     if (_time <= _baseMining.MiningConfig.ExtractionTime)
                     {
+                        _percentageFillView.StartTimer(_baseMining.MiningConfig.ExtractionTime, ore.transform, _canvas);
                         _isDoesExtract = true;
                         _player.SetMove(false);
                         _baseMining.StartObtain();
