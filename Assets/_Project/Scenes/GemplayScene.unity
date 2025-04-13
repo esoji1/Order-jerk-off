@@ -22111,6 +22111,8 @@ MonoBehaviour:
   _useWeapons: {fileID: 1123977697}
   _actionButton: {fileID: 52823356}
   _mineringFactoryBootstrap: {fileID: 903154598}
+  _inventory: {fileID: 2119364609}
+  _itemData: {fileID: 11400000, guid: e5f80686d52d2a148a2733f514879b16, type: 2}
 --- !u!1 &1693347578
 GameObject:
   m_ObjectHideFlags: 0

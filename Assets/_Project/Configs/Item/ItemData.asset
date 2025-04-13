@@ -15,3 +15,4 @@ MonoBehaviour:
   <WoodenAxeItem>k__BackingField: {fileID: -8735090903098058742, guid: 3df611a187bf9cf469b63666f6b625e0, type: 3}
   <WoodenSwordItem>k__BackingField: {fileID: 3398061218366655883, guid: dd54e488ae1c2ce458c3e4bc0489f20d, type: 3}
   <PickItem>k__BackingField: {fileID: 7883121247641303904, guid: 69f2d50db6c25a340b7ae1e597c7566e, type: 3}
+  <IronOre>k__BackingField: {fileID: 4601046106296165302, guid: 9cf719d04e076ce4aaa811f9be8f3477, type: 3}

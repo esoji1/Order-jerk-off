@@ -4,6 +4,7 @@ using Assets._Project.Sctipts.Core;
 using Assets._Project.Sctipts.Inventory;
 using Assets._Project.Sctipts.Inventory.Items;
 using Assets._Project.Sctipts.ResourceExtraction;
+using Assets._Project.Sctipts.ResourceExtraction.OreMining;
 using TMPro;
 using UnityEngine;
 
@@ -43,6 +44,14 @@ namespace Assets._Project.Scripts.Inventory
                     ChangeTextForMining(cell);
                 }
             }
+            else if (cell.Item.Category == ItemCategory.Resource)
+            {
+                OreItem miningItem = cell.Item as OreItem;
+                if (miningItem.TypesOre == TypesOre.Iron)
+                {
+                    ChangeTextForResource(cell);
+                }
+            }
         }
 
         private void ChangeTextForWeapon(WeaponTypes weaponType, Cell cell)
@@ -64,6 +73,13 @@ namespace Assets._Project.Scripts.Inventory
         }
 
         private void ChangeTextForMining(Cell cell)
+        {
+            _textInfoItem.text = $"{cell.Item.Name}\n" +
+                $"Цена: {cell.Item.Price}\n" +
+                $"{cell.Item.Description}";
+        }
+
+        private void ChangeTextForResource(Cell cell)
         {
             _textInfoItem.text = $"{cell.Item.Name}\n" +
                 $"Цена: {cell.Item.Price}\n" +

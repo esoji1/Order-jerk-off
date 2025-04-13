@@ -41,6 +41,8 @@ namespace Assets._Project.Scripts.Player
         private HealthView _healthView;
         private HealthInfo _healthInfo;
 
+        private bool _isMove;
+
         public event Action<int> OnDamage;
         public event Action OnUp;
 
@@ -58,7 +60,8 @@ namespace Assets._Project.Scripts.Player
 
         private void Update()
         {
-            Move();
+            if (_isMove)
+                Move();
         }
 
         private void OnDestroy()
@@ -78,6 +81,7 @@ namespace Assets._Project.Scripts.Player
             _healthViewPrefab = healthViewPrefab;
             _dynamic = dynamic;
             _useWeapons = useWeapons;
+            _isMove = true;
 
             InitializeInside();
 
@@ -101,6 +105,11 @@ namespace Assets._Project.Scripts.Player
         public void AddMoney(int value)
         {
             _wallet.AddMoney(value);
+        }
+
+        public void SetMove(bool value)
+        {
+            _isMove = value;
         }
 
         private void InitializeInside()

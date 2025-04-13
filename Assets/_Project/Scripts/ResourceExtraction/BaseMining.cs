@@ -17,6 +17,8 @@ namespace Assets._Project.Sctipts.ResourceExtraction
         private float _time;
         private bool _isDoesExtract;
 
+        public MiningConfig MiningConfig => _config; 
+
         private void Update()
         {
             if (_isDoesExtract)

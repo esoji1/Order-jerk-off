@@ -38,55 +38,92 @@ namespace Assets._Project.Sctipts.Inventory
 
             if (_currentCell.Item.Category == ItemCategory.Weapon)
             {
-                if (_currentCell.NumberItems > 0)
+                SaleWeapon();
+            }
+            else if(_currentCell.Item.Category == ItemCategory.Mining)
+            {
+                SaleMining();
+            }
+            else if (_currentCell.Item.Category == ItemCategory.Resource)
+            {
+                SaleResource();
+            }
+        }
+
+        private void SaleWeapon()
+        {
+            if (_currentCell.NumberItems > 0)
+            {
+                _currentCell.SubtractNumberItems(1);
+                WeaponItem weaponItem = _currentCell.Item as WeaponItem;
+                if (weaponItem.TypeItem == WeaponConfigs.WoodenAxePlayerConfig.WeaponTypes)
                 {
-                    _currentCell.SubtractNumberItems(1);
-                    WeaponItem weaponItem = _currentCell.Item as WeaponItem;
-                    if (weaponItem.TypeItem == WeaponConfigs.WoodenAxePlayerConfig.WeaponTypes)
-                    {
-                        _player.Wallet.AddMoney(_currentCell.Item.Price);
-                        if (_currentCell.NumberItems <= 0)
-                        {
-                            _currentCell.SetIsCellBusy(false);
-                            Destroy(_currentCell.Item.gameObject);
-                        }
-                    }
-                    else if (weaponItem.TypeItem == WeaponConfigs.WoodenSwordPlayerConfig.WeaponTypes)
-                    {
-                        _player.Wallet.AddMoney(_currentCell.Item.Price);
-                        if (_currentCell.NumberItems <= 0)
-                        {
-                            _currentCell.SetIsCellBusy(false);
-                            Destroy(_currentCell.Item.gameObject);
-                        }
-                    }
-                    else if (_currentCell.NumberItems <= 0)
+                    _player.Wallet.AddMoney(_currentCell.Item.Price);
+                    if (_currentCell.NumberItems <= 0)
                     {
                         _currentCell.SetIsCellBusy(false);
                         Destroy(_currentCell.Item.gameObject);
                     }
                 }
-            }
-            else if(_currentCell.Item.Category == ItemCategory.Mining)
-            {
-                if (_currentCell.NumberItems > 0)
+                else if (weaponItem.TypeItem == WeaponConfigs.WoodenSwordPlayerConfig.WeaponTypes)
                 {
-                    _currentCell.SubtractNumberItems(1);
-                    MiningItem weaponItem = _currentCell.Item as MiningItem;
-                    if (weaponItem.TypesMining == TypesMining.Pick)
-                    {
-                        _player.Wallet.AddMoney(_currentCell.Item.Price);
-                        if (_currentCell.NumberItems <= 0)
-                        {
-                            _currentCell.SetIsCellBusy(false);
-                            Destroy(_currentCell.Item.gameObject);
-                        }
-                    }
-                    else if (_currentCell.NumberItems <= 0)
+                    _player.Wallet.AddMoney(_currentCell.Item.Price);
+                    if (_currentCell.NumberItems <= 0)
                     {
                         _currentCell.SetIsCellBusy(false);
                         Destroy(_currentCell.Item.gameObject);
                     }
+                }
+                else if (_currentCell.NumberItems <= 0)
+                {
+                    _currentCell.SetIsCellBusy(false);
+                    Destroy(_currentCell.Item.gameObject);
+                }
+            }
+        }
+
+        private void SaleMining()
+        {
+            if (_currentCell.NumberItems > 0)
+            {
+                _currentCell.SubtractNumberItems(1);
+                MiningItem weaponItem = _currentCell.Item as MiningItem;
+                if (weaponItem.TypesMining == TypesMining.Pick)
+                {
+                    _player.Wallet.AddMoney(_currentCell.Item.Price);
+                    if (_currentCell.NumberItems <= 0)
+                    {
+                        _currentCell.SetIsCellBusy(false);
+                        Destroy(_currentCell.Item.gameObject);
+                    }
+                }
+                else if (_currentCell.NumberItems <= 0)
+                {
+                    _currentCell.SetIsCellBusy(false);
+                    Destroy(_currentCell.Item.gameObject);
+                }
+            }
+        }
+
+        private void SaleResource()
+        {
+            if (_currentCell.NumberItems > 0)
+            {
+                _currentCell.SubtractNumberItems(1);
+                OreItem weaponItem = _currentCell.Item as OreItem;
+                if (weaponItem.TypesOre == ResourceExtraction.OreMining.TypesOre.Iron)
+                {
+                    _player.Wallet.AddMoney(_currentCell.Item.Price);
+                    if (_currentCell.NumberItems <= 0)
+                    {
+                        _currentCell.SetIsCellBusy(false);
+                        Destroy(_currentCell.Item.gameObject);
+                    }
+                }
+                else if (_currentCell.NumberItems <= 0)
+                {
+                    _currentCell.SetIsCellBusy(false);
+                    Destroy(_currentCell.Item.gameObject);
                 }
             }
         }
