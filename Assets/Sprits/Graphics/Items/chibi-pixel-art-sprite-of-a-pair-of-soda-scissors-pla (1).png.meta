@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 14bdc53da01cb7e4db22cb4fef107fd9
+guid: 071b2c8c0aa4ce44490cfb97b19b95bb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3321775850868533872
-    second: chibi-pixel-art-sprite-of-a-pair-of-soda-scissors-pla_0
+      213: 1428347281346907607
+    second: chibi-pixel-art-sprite-of-a-pair-of-soda-scissors-pla (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,11 +139,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chibi-pixel-art-sprite-of-a-pair-of-soda-scissors-pla_0
+      name: chibi-pixel-art-sprite-of-a-pair-of-soda-scissors-pla (1)_0
       rect:
         serializedVersion: 2
-        x: 155
-        y: 133
+        x: 17
+        y: 18
         width: 325
         height: 388
       alignment: 0
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 07a6d7e6981591e20800000000000000
-      internalID: 3321775850868533872
+      spriteID: 7ddc390e84282d310800000000000000
+      internalID: 1428347281346907607
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      chibi-pixel-art-sprite-of-a-pair-of-soda-scissors-pla_0: 3321775850868533872
+      chibi-pixel-art-sprite-of-a-pair-of-soda-scissors-pla (1)_0: 1428347281346907607
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

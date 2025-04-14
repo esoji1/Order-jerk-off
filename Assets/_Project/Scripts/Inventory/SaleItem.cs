@@ -2,6 +2,7 @@ using Assets._Project.Scripts.Inventory;
 using Assets._Project.Scripts.Inventory.Items;
 using Assets._Project.Scripts.Player;
 using Assets._Project.Scripts.ResourceExtraction.FishingRodMining;
+using Assets._Project.Scripts.ResourceExtraction.ScissorsMining;
 using Assets._Project.Sctipts.Core;
 using Assets._Project.Sctipts.Inventory.Items;
 using Assets._Project.Sctipts.ResourceExtraction;
@@ -120,7 +121,6 @@ namespace Assets._Project.Sctipts.Inventory
             if (_currentCell.NumberItems > 0)
             {
                 _currentCell.SubtractNumberItems(1);
-                OreItem weaponItem = _currentCell.Item as OreItem;
                 if (_currentCell.Item.GetItemType().Equals(ResourceExtraction.OreMining.TypesOre.Iron))
                 {
                     _player.Wallet.AddMoney(_currentCell.Item.Price);
@@ -140,6 +140,15 @@ namespace Assets._Project.Sctipts.Inventory
                     }
                 }
                 else if (_currentCell.Item.GetItemType().Equals(TypesFish.Perch))
+                {
+                    _player.Wallet.AddMoney(_currentCell.Item.Price);
+                    if (_currentCell.NumberItems <= 0)
+                    {
+                        _currentCell.SetIsCellBusy(false);
+                        Destroy(_currentCell.Item.gameObject);
+                    }
+                }
+                else if(_currentCell.Item.GetItemType().Equals(TypesGrasses.Normal))
                 {
                     _player.Wallet.AddMoney(_currentCell.Item.Price);
                     if (_currentCell.NumberItems <= 0)

@@ -1,13 +1,12 @@
 using Assets._Project.Scripts.ScriptableObjects.Configs;
 using Assets._Project.Sctipts.Core;
-using System.Net.Http.Headers;
 using UnityEngine;
 
 namespace Assets._Project.Sctipts.ResourceExtraction
 {
     public class MiningFactoryBootstrap : MonoBehaviour
     {
-        [SerializeField] private MiningConfig _pickConfig, _fishingRodConfig;
+        [SerializeField] private MiningConfig _pickConfig, _fishingRodConfig, _scissorsConfig;
         [SerializeField] private PointAttack _pointWeapon;
 
         private MiningFactory _factory;
@@ -16,7 +15,7 @@ namespace Assets._Project.Sctipts.ResourceExtraction
 
         private void Awake()
         {
-            _factory = new MiningFactory(_pointWeapon, _pickConfig, _fishingRodConfig);
+            _factory = new MiningFactory(_pointWeapon, _pickConfig, _fishingRodConfig, _scissorsConfig);
         }
     }
 }

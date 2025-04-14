@@ -8,13 +8,14 @@ namespace Assets._Project.Sctipts.ResourceExtraction
     public class MiningFactory
     {
         private PointAttack _pointWeapon;
-        private MiningConfig _pickConfig, _fishingRodConfig;
+        private MiningConfig _pickConfig, _fishingRodConfig, _scissorsConfig;
 
-        public MiningFactory(PointAttack pointWeapon, MiningConfig pickConfig, MiningConfig fishingRodConfig)
+        public MiningFactory(PointAttack pointWeapon, MiningConfig pickConfig, MiningConfig fishingRodConfig, MiningConfig scissorsConfig)
         {
             _pointWeapon = pointWeapon;
             _pickConfig = pickConfig;
             _fishingRodConfig = fishingRodConfig;
+            _scissorsConfig = scissorsConfig;
         }
 
         public BaseMining Get(TypesMining typesMining, Vector3 position)
@@ -34,6 +35,9 @@ namespace Assets._Project.Sctipts.ResourceExtraction
 
                 case TypesMining.FishingRod:
                     return _fishingRodConfig;
+
+                case TypesMining.Scissors:
+                    return _scissorsConfig;
 
                 default:
                     throw new ArgumentException(nameof(typesMining));
