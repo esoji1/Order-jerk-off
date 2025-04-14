@@ -43,7 +43,7 @@ namespace Assets._Project.Scripts.ResourceExtraction
             {
                 yield return new WaitForSeconds(1f);
                 _result += _addPercent;
-                _percentageFill.text = $"{_result}%";
+                _percentageFill.text = $"{(int)_result}%";
             }
         }
     }

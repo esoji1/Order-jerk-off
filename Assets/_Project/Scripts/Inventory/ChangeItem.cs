@@ -1,8 +1,9 @@
-using Assets._Project.Scripts.Inventory;
+п»їusing Assets._Project.Scripts.Inventory;
 using Assets._Project.Scripts.ScriptableObjects.Configs;
 using Assets._Project.Scripts.UseWeapons;
 using Assets._Project.Scripts.Weapon;
 using Assets._Project.Sctipts.Inventory.Items;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -61,7 +62,7 @@ namespace Assets._Project.Sctipts.Inventory
             WeaponItem weaponCurrentCell = _currentCell.Item as WeaponItem;
 
             if (weaponClickCell.TypeItem == weaponCurrentCell.TypeItem)
-                Debug.Log("Поменялись местами одинаковые оружия");
+                Debug.Log("РћСЂСѓР¶РёСЏ РѕРґРёРЅР°РєРѕРІС‹");
 
             else if (weaponClickCell.TypeItem != weaponCurrentCell.TypeItem)
             {
@@ -95,24 +96,23 @@ namespace Assets._Project.Sctipts.Inventory
         {
             foreach (Cell cell2 in _inventory.CellList)
             {
+                if (cell2.IsCellBusy == false)
+                {
+                    if (weaponCurrentCell.TypeItem == WeaponTypes.WoodenSwordPlayer)
+                    {
+                        _inventory.AddItemInCell(_data.WoodenSwordItem);
+                        break;
+                    }
+                    else if (weaponCurrentCell.TypeItem == WeaponTypes.WoodenAxePlayer)
+                    {
+                        _inventory.AddItemInCell(_data.WoodenAxeItem);
+                        break;
+                    }
+                }
                 if (cell2.Item is WeaponItem)
                 {
                     WeaponItem weaponCell = cell2.Item as WeaponItem;
-
-                    if (cell2.IsCellBusy == false)
-                    {
-                        if (weaponCurrentCell.TypeItem == WeaponTypes.WoodenSwordPlayer)
-                        {
-                            _inventory.AddItemInCell(_data.WoodenSwordItem);
-                            break;
-                        }
-                        else if (weaponCurrentCell.TypeItem == WeaponTypes.WoodenAxePlayer)
-                        {
-                            _inventory.AddItemInCell(_data.WoodenAxeItem);
-                            break;
-                        }
-                    }
-                    else if (weaponCell.TypeItem == weaponCurrentCell.TypeItem)
+                    if (weaponCell.TypeItem == weaponCurrentCell.TypeItem)
                     {
                         cell2.AddNumberItems(1);
                         break;

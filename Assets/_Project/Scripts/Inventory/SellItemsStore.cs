@@ -77,6 +77,10 @@ namespace Assets._Project.Sctipts.Inventory
                     {
                         _inventory.AddItemInCell(_itemData.PickItem);
                     }
+                    else if (miningItem.TypesMining == ResourceExtraction.TypesMining.FishingRod)
+                    {
+                        _inventory.AddItemInCell(_itemData.FishingRodItem);
+                    }
                 }
             }
         }

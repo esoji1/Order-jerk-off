@@ -8,36 +8,36 @@ namespace Assets._Project.Sctipts.ResourceExtraction
 {
     public abstract class BaseMining : MonoBehaviour
     {
-        private PointAttack _pointWeapon;
-        private MiningConfig _config;
+        protected MiningConfig Config;
+        protected float Time;
 
-        private AttackMeleeView _attackMeleeView;
+        protected PointAttack PointWeapon;
+        protected AttackMeleeView AttackMeleeView;
 
         private Coroutine _coroutine;
-        private float _time;
         private bool _isDoesExtract;
 
-        public MiningConfig MiningConfig => _config; 
+        public MiningConfig MiningConfig => Config; 
 
         private void Update()
         {
             if (_isDoesExtract)
-                _time += Time.deltaTime;
+                Time += UnityEngine.Time.deltaTime;
         }
 
         public virtual void Initialize(PointAttack pointWeapon, MiningConfig config)
         {
-            _pointWeapon = pointWeapon;
-            _config = config;
-            _attackMeleeView = new AttackMeleeView();
+            PointWeapon = pointWeapon;
+            Config = config;
+            AttackMeleeView = new AttackMeleeView();
         }
 
-        public virtual void StartObtain()
+        public void StartObtain()
         {
             StartCoroutine();
         }
 
-        public virtual void StopObtain()
+        public void StopObtain()
         {
             StopCoroutine();
         }
@@ -57,18 +57,18 @@ namespace Assets._Project.Sctipts.ResourceExtraction
             {
                 StopCoroutine(_coroutine);
                 _isDoesExtract = false;
-                _time = 0;
+                Time = 0;
                 _coroutine = null;
             }
         }
 
-        private IEnumerator Obtain()
+        public virtual IEnumerator Obtain()
         {
-            while (_time <= _config.ExtractionTime)
+            while (Time <= Config.ExtractionTime)
             {
-                yield return StartCoroutine(_attackMeleeView.StartAttack(_pointWeapon.transform, -90, _config.MiningSpeed));
+                yield return StartCoroutine(AttackMeleeView.StartAttack(PointWeapon.transform, -90, Config.MiningSpeed));
 
-                yield return StartCoroutine(_attackMeleeView.StartAttack(_pointWeapon.transform, 0, _config.MiningSpeed));
+                yield return StartCoroutine(AttackMeleeView.StartAttack(PointWeapon.transform, 0, Config.MiningSpeed));
             }
             StopObtain();
         }

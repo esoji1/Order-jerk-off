@@ -12,7 +12,6 @@ namespace Assets._Project.Sctipts.Inventory.Items
         public ItemCategory Category;
         public int Price;
         public string Description;
-        public Enum Type;
 
         public abstract Enum GetItemType();
     }

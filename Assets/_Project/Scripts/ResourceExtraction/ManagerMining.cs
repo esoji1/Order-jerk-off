@@ -4,10 +4,12 @@ using Assets._Project.Scripts.Inventory;
 using Assets._Project.Scripts.Inventory.Items;
 using Assets._Project.Scripts.Player;
 using Assets._Project.Scripts.ResourceExtraction;
+using Assets._Project.Scripts.ResourceExtraction.FishingRodMining;
 using Assets._Project.Scripts.ResourceExtraction.OreMining;
 using Assets._Project.Scripts.ScriptableObjects.Configs;
 using Assets._Project.Scripts.UseWeapons;
-using Unity.VisualScripting;
+using Assets._Project.Sctipts.Inventory.Items;
+using System;
 using UnityEngine;
 
 namespace Assets._Project.Sctipts.ResourceExtraction
@@ -26,6 +28,7 @@ namespace Assets._Project.Sctipts.ResourceExtraction
         private SetWeaponPoint _setWeaponPoint;
 
         private bool _isPick;
+        private bool _isFishingRod;
         private bool _isDoesExtract;
         private BaseMining _baseMining;
         private float _time;
@@ -55,29 +58,19 @@ namespace Assets._Project.Sctipts.ResourceExtraction
 
         private void OnEnable()
         {
-            _actionButton.OnMining += StartMining;
+            _actionButton.OnMiningOre += StarOre;
+            _actionButton.OnMiningFish += StartFishRod;
         }
 
         private void OnDisable()
         {
-            _actionButton.OnMining -= StartMining;
+            _actionButton.OnMiningOre -= StarOre;
+            _actionButton.OnMiningFish -= StartFishRod;
         }
 
-        private void StartMining(Ore ore)
+        private void StarOre(Ore ore)
         {
-            foreach (Cell cell in _inventory.CellList)
-            {
-                if (cell.Item is MiningItem mining)
-                {
-                    if (mining.TypesMining == TypesMining.Pick)
-                    {
-                        _isPick = true;
-                        break;
-                    }
-
-                    _isPick = false;
-                }
-            }
+            CheckMiningPickItems();
 
             if (_isPick)
             {
@@ -94,8 +87,73 @@ namespace Assets._Project.Sctipts.ResourceExtraction
                         _isDoesExtract = true;
                         _player.SetMove(false);
                         _baseMining.StartObtain();
-                        _inventory.AddItemInCell(_itemData.IronOre);
+
+                        Enum targetType = ore.GetItemType();
+                        foreach (BaseItem item in _itemData.Items)
+                            if (item.GetItemType().Equals(targetType))
+                                _inventory.AddItemInCell(item);
                     }
+                }
+            }
+        }
+
+        private void StartFishRod(Water water)
+        {
+            CheckMiningFishRodItems();
+
+            if (_isFishingRod)
+            {
+                if (_baseMining == null)
+                {
+                    _baseMining = _mineringFactoryBootstrap.MiningFactory.Get(TypesMining.FishingRod, transform.position);
+                    _setWeaponPoint.SetParent(_baseMining.transform, _useWeapons.transform);
+                    _setWeaponPoint.Set(_baseMining.transform);
+                    _useWeapons.ActiveSelfWeapon(false);
+
+                    if (_time <= _baseMining.MiningConfig.ExtractionTime)
+                    {
+                        _percentageFillView.StartTimer(_baseMining.MiningConfig.ExtractionTime, water.transform, _canvas);
+                        _isDoesExtract = true;
+                        _player.SetMove(false);
+                        _baseMining.StartObtain();
+
+                        int randomFish = UnityEngine.Random.Range(0, _itemData.FishItems.Count);
+                        _inventory.AddItemInCell(_itemData.FishItems[randomFish]);
+                    }
+                }
+            }
+        }
+
+        private void CheckMiningPickItems()
+        {
+            foreach (Cell cell in _inventory.CellList)
+            {
+                if (cell.Item is MiningItem mining)
+                {
+                    if (mining.TypesMining == TypesMining.Pick)
+                    {
+                        _isPick = true;
+                        break;
+                    }
+
+                    _isPick = false;
+                }
+            }
+        }
+
+        private void CheckMiningFishRodItems()
+        {
+            foreach (Cell cell in _inventory.CellList)
+            {
+                if (cell.Item is MiningItem mining)
+                {
+                    if (mining.TypesMining == TypesMining.FishingRod)
+                    {
+                        _isFishingRod = true;
+                        break;
+                    }
+
+                    _isFishingRod = false;
                 }
             }
         }

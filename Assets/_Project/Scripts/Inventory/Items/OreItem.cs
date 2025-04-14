@@ -1,8 +1,6 @@
 ﻿using Assets._Project.Sctipts.Inventory.Items;
 using Assets._Project.Sctipts.ResourceExtraction.OreMining;
 using System;
-using System.Collections;
-using UnityEngine;
 
 namespace Assets._Project.Scripts.Inventory.Items
 {

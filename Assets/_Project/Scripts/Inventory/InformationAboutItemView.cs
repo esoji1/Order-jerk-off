@@ -1,9 +1,9 @@
-﻿using Assets._Project.Scripts.Inventory.Items;
+﻿using Assets._Project.Scripts.ResourceExtraction.FishingRodMining;
 using Assets._Project.Scripts.Weapon;
 using Assets._Project.Sctipts.Core;
-using Assets._Project.Sctipts.Inventory.Items;
 using Assets._Project.Sctipts.ResourceExtraction;
 using Assets._Project.Sctipts.ResourceExtraction.OreMining;
+using System;
 using TMPro;
 using UnityEngine;
 
@@ -25,45 +25,29 @@ namespace Assets._Project.Scripts.Inventory
         {
             if (cell.Item.Category == ItemCategory.Weapon)
             {
-                WeaponItem weapon = cell.Item as WeaponItem;
-
-                if (weapon.TypeItem == WeaponTypes.WoodenSwordPlayer)
-                {
-                    ChangeTextForWeapon(weapon.TypeItem, cell);
-                }
-                else if (weapon.TypeItem == WeaponTypes.WoodenAxePlayer)
-                {
-                    ChangeTextForWeapon(weapon.TypeItem, cell);
-                }
+                Enum weaponItem = cell.Item.GetItemType();
+                ChangeTextForWeapon(weaponItem, cell);
             }
             else if(cell.Item.Category == ItemCategory.Mining)
             {
-                MiningItem miningItem = cell.Item as MiningItem;
-                if(miningItem.TypesMining == TypesMining.Pick)
-                {
-                    ChangeTextForMining(cell);
-                }
+                ChangeTextForMining(cell);
             }
             else if (cell.Item.Category == ItemCategory.Resource)
             {
-                OreItem miningItem = cell.Item as OreItem;
-                if (miningItem.TypesOre == TypesOre.Iron)
-                {
-                    ChangeTextForResource(cell);
-                }
+                ChangeTextForResource(cell);
             }
         }
 
-        private void ChangeTextForWeapon(WeaponTypes weaponType, Cell cell)
+        private void ChangeTextForWeapon(Enum weaponType, Cell cell)
         {
-            if (weaponType == WeaponTypes.WoodenSwordPlayer)
+            if (weaponType.Equals(WeaponTypes.WoodenSwordPlayer))
             {
                 _textInfoItem.text = $"{cell.Item.Name}\n" +
                             $"Цена: {cell.Item.Price}\n" +
                             $"Радиус атаки: {WeaponConfigs.WoodenSwordPlayerConfig.VisibilityRadius}\n" +
                             $"Урон: {WeaponConfigs.WoodenSwordPlayerConfig.Damage}";
             }
-            else if (weaponType == WeaponTypes.WoodenAxePlayer)
+            else if (weaponType.Equals(WeaponTypes.WoodenAxePlayer))
             {
                 _textInfoItem.text = $"{cell.Item.Name}\n" +
                            $"Цена: {cell.Item.Price}\n" +

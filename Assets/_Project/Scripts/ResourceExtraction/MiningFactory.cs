@@ -8,12 +8,13 @@ namespace Assets._Project.Sctipts.ResourceExtraction
     public class MiningFactory
     {
         private PointAttack _pointWeapon;
-        private MiningConfig _pickConfig;
+        private MiningConfig _pickConfig, _fishingRodConfig;
 
-        public MiningFactory(PointAttack pointWeapon, MiningConfig pickConfig)
+        public MiningFactory(PointAttack pointWeapon, MiningConfig pickConfig, MiningConfig fishingRodConfig)
         {
             _pointWeapon = pointWeapon;
             _pickConfig = pickConfig;
+            _fishingRodConfig = fishingRodConfig;
         }
 
         public BaseMining Get(TypesMining typesMining, Vector3 position)
@@ -31,6 +32,9 @@ namespace Assets._Project.Sctipts.ResourceExtraction
                 case TypesMining.Pick:
                     return _pickConfig;
 
+                case TypesMining.FishingRod:
+                    return _fishingRodConfig;
+
                 default:
                     throw new ArgumentException(nameof(typesMining));
             }
@@ -40,16 +44,6 @@ namespace Assets._Project.Sctipts.ResourceExtraction
         {
             instance.Initialize(_pointWeapon, config);
             return instance;
-
-            //if (instance is IMeleeAttack)
-            //{
-            //    instance.Initialize(config, point);
-            //    return instance;
-            //}
-            //else
-            //{
-            //    throw new ArgumentException(nameof(instance));
-            //}
         }
     }
 }

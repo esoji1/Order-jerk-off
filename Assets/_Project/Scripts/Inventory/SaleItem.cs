@@ -1,6 +1,7 @@
 using Assets._Project.Scripts.Inventory;
 using Assets._Project.Scripts.Inventory.Items;
 using Assets._Project.Scripts.Player;
+using Assets._Project.Scripts.ResourceExtraction.FishingRodMining;
 using Assets._Project.Sctipts.Core;
 using Assets._Project.Sctipts.Inventory.Items;
 using Assets._Project.Sctipts.ResourceExtraction;
@@ -97,6 +98,15 @@ namespace Assets._Project.Sctipts.Inventory
                         Destroy(_currentCell.Item.gameObject);
                     }
                 }
+                else if(weaponItem.TypesMining == TypesMining.FishingRod)
+                {
+                    _player.Wallet.AddMoney(_currentCell.Item.Price);
+                    if (_currentCell.NumberItems <= 0)
+                    {
+                        _currentCell.SetIsCellBusy(false);
+                        Destroy(_currentCell.Item.gameObject);
+                    }
+                }
                 else if (_currentCell.NumberItems <= 0)
                 {
                     _currentCell.SetIsCellBusy(false);
@@ -111,7 +121,25 @@ namespace Assets._Project.Sctipts.Inventory
             {
                 _currentCell.SubtractNumberItems(1);
                 OreItem weaponItem = _currentCell.Item as OreItem;
-                if (weaponItem.TypesOre == ResourceExtraction.OreMining.TypesOre.Iron)
+                if (_currentCell.Item.GetItemType().Equals(ResourceExtraction.OreMining.TypesOre.Iron))
+                {
+                    _player.Wallet.AddMoney(_currentCell.Item.Price);
+                    if (_currentCell.NumberItems <= 0)
+                    {
+                        _currentCell.SetIsCellBusy(false);
+                        Destroy(_currentCell.Item.gameObject);
+                    }
+                }
+                else if(_currentCell.Item.GetItemType().Equals(TypesFish.Carp))
+                {
+                    _player.Wallet.AddMoney(_currentCell.Item.Price);
+                    if (_currentCell.NumberItems <= 0)
+                    {
+                        _currentCell.SetIsCellBusy(false);
+                        Destroy(_currentCell.Item.gameObject);
+                    }
+                }
+                else if (_currentCell.Item.GetItemType().Equals(TypesFish.Perch))
                 {
                     _player.Wallet.AddMoney(_currentCell.Item.Price);
                     if (_currentCell.NumberItems <= 0)

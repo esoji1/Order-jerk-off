@@ -1,6 +1,8 @@
 using Assets._Project.Scripts.ConstructionBuildings;
+using Assets._Project.Scripts.ResourceExtraction.FishingRodMining;
 using Assets._Project.Scripts.ResourceExtraction.OreMining;
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +17,8 @@ namespace Assets._Project.Scripts.ActionButton
         private Collider2D _collision2D;
 
         public event Action<BuildingArea> OnStandingInConstructionZone;
-        public event Action<Ore> OnMining;
+        public event Action<Water> OnMiningFish;
+        public event Action<Ore> OnMiningOre;
 
         private void OnEnable()
         {
@@ -63,7 +66,11 @@ namespace Assets._Project.Scripts.ActionButton
             }
             else if(_collision2D.TryGetComponent(out Ore ore))
             {
-                OnMining?.Invoke(ore);
+                OnMiningOre?.Invoke(ore);
+            }
+            else if(_collision2D.TryGetComponent(out Water water))
+            {
+                OnMiningFish?.Invoke(water);
             }
         }
     }
