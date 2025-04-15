@@ -1,6 +1,7 @@
 using Assets._Project.Scripts.ConstructionBuildings;
 using Assets._Project.Scripts.ResourceExtraction.FishingRodMining;
 using Assets._Project.Scripts.ResourceExtraction.OreMining;
+using Assets._Project.Scripts.ResourceExtraction.ScissorsMining;
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -19,6 +20,7 @@ namespace Assets._Project.Scripts.ActionButton
         public event Action<BuildingArea> OnStandingInConstructionZone;
         public event Action<Water> OnMiningFish;
         public event Action<Ore> OnMiningOre;
+        public event Action<Grass> OnMiningGrass;
 
         private void OnEnable()
         {
@@ -71,6 +73,10 @@ namespace Assets._Project.Scripts.ActionButton
             else if(_collision2D.TryGetComponent(out Water water))
             {
                 OnMiningFish?.Invoke(water);
+            }
+            else if(_collision2D.TryGetComponent(out Grass grass))
+            {
+                OnMiningGrass?.Invoke(grass);
             }
         }
     }

@@ -81,6 +81,10 @@ namespace Assets._Project.Sctipts.Inventory
                     {
                         _inventory.AddItemInCell(_itemData.FishingRodItem);
                     }
+                    else if (miningItem.TypesMining == ResourceExtraction.TypesMining.Scissors)
+                    {
+                        _inventory.AddItemInCell(_itemData.ScissorItem);
+                    }
                 }
             }
         }

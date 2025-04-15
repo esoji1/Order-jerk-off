@@ -7965,6 +7965,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783557299}
   m_CullTransparentMesh: 1
+--- !u!1 &804753452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 804753453}
+  - component: {fileID: 804753454}
+  m_Layer: 0
+  m_Name: InventoryActiveWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &804753453
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804753452}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1221726868}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &804753454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804753452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2de6ac08b3a3b2945b3d25af107003da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefabCell: {fileID: 4235686897307499434, guid: 0f2d026684d1fff44a8fca20b987c52f, type: 3}
+  _item: {fileID: 0}
+  IsAddCell: 0
+  IsAddItem: 0
 --- !u!1 &808788600
 GameObject:
   m_ObjectHideFlags: 0
@@ -10154,6 +10202,7 @@ Transform:
   - {fileID: 2119364610}
   - {fileID: 1689887621}
   - {fileID: 422452198}
+  - {fileID: 804753453}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1231261527
@@ -21981,6 +22030,7 @@ MonoBehaviour:
   _actionButton: {fileID: 52823356}
   _mineringFactoryBootstrap: {fileID: 903154598}
   _inventory: {fileID: 2119364609}
+  _inventoryActive: {fileID: 804753454}
   _itemData: {fileID: 11400000, guid: e5f80686d52d2a148a2733f514879b16, type: 2}
   _percentageFillView: {fileID: 422452199}
   _canvas: {fileID: 8108546}
@@ -22342,6 +22392,7 @@ MonoBehaviour:
   _player: {fileID: 52823349}
   _useWeapons: {fileID: 1123977697}
   _inventory: {fileID: 2119364609}
+  _inventoryActive: {fileID: 804753454}
 --- !u!1 &1744406569
 GameObject:
   m_ObjectHideFlags: 0

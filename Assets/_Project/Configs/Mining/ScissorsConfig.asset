@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Prefab>k__BackingField: {fileID: 2947805524356181311, guid: e3d8b9641d22d034da2e64cc4621098c, type: 3}
   <MiningSpeed>k__BackingField: 5
-  <ExtractionTime>k__BackingField: 0
+  <ExtractionTime>k__BackingField: 8

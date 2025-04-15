@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed8593984ee607458aff12c72bd43f4, type: 3}
   m_Name: WoodenAxeConfig
   m_EditorClassIdentifier: 
+  MinDamage: 5
+  MaxDamage: 15
   Damage: 15
   Prefab: {fileID: 8880536980909223644, guid: 50cb65bf1035dad498382ca9e50357d5, type: 3}
   AttackSpeed: 20

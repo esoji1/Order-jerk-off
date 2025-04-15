@@ -1,4 +1,3 @@
-using NUnit.Framework.Constraints;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -45,6 +44,9 @@ namespace Assets._Project.Scripts.ResourceExtraction
                 _result += _addPercent;
                 _percentageFill.text = $"{(int)_result}%";
             }
+
+            yield return new WaitForSeconds(0.5f);
+            StopTimer();
         }
     }
 }

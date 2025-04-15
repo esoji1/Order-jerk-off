@@ -35,14 +35,14 @@ namespace Assets._Project.Sctipts.Inventory
 
         private void Sele()
         {
-            if (_currentCell == null)
+            if (_currentCell == null || _currentCell.Item == null)
                 return;
 
             if (_currentCell.Item.Category == ItemCategory.Weapon)
             {
                 SaleWeapon();
             }
-            else if(_currentCell.Item.Category == ItemCategory.Mining)
+            else if (_currentCell.Item.Category == ItemCategory.Mining)
             {
                 SaleMining();
             }
@@ -65,6 +65,7 @@ namespace Assets._Project.Sctipts.Inventory
                     {
                         _currentCell.SetIsCellBusy(false);
                         Destroy(_currentCell.Item.gameObject);
+                        _currentCell.Item = null;
                     }
                 }
                 else if (weaponItem.TypeItem == WeaponConfigs.WoodenSwordPlayerConfig.WeaponTypes)
@@ -74,12 +75,14 @@ namespace Assets._Project.Sctipts.Inventory
                     {
                         _currentCell.SetIsCellBusy(false);
                         Destroy(_currentCell.Item.gameObject);
+                        _currentCell.Item = null;
                     }
                 }
                 else if (_currentCell.NumberItems <= 0)
                 {
                     _currentCell.SetIsCellBusy(false);
                     Destroy(_currentCell.Item.gameObject);
+                    _currentCell.Item = null;
                 }
             }
         }
@@ -97,21 +100,24 @@ namespace Assets._Project.Sctipts.Inventory
                     {
                         _currentCell.SetIsCellBusy(false);
                         Destroy(_currentCell.Item.gameObject);
+                        _currentCell.Item = null;
                     }
                 }
-                else if(weaponItem.TypesMining == TypesMining.FishingRod)
+                else if (weaponItem.TypesMining == TypesMining.FishingRod)
                 {
                     _player.Wallet.AddMoney(_currentCell.Item.Price);
                     if (_currentCell.NumberItems <= 0)
                     {
                         _currentCell.SetIsCellBusy(false);
                         Destroy(_currentCell.Item.gameObject);
+                        _currentCell.Item = null;
                     }
                 }
                 else if (_currentCell.NumberItems <= 0)
                 {
                     _currentCell.SetIsCellBusy(false);
                     Destroy(_currentCell.Item.gameObject);
+                    _currentCell.Item = null;
                 }
             }
         }
@@ -128,15 +134,17 @@ namespace Assets._Project.Sctipts.Inventory
                     {
                         _currentCell.SetIsCellBusy(false);
                         Destroy(_currentCell.Item.gameObject);
+                        _currentCell.Item = null;
                     }
                 }
-                else if(_currentCell.Item.GetItemType().Equals(TypesFish.Carp))
+                else if (_currentCell.Item.GetItemType().Equals(TypesFish.Carp))
                 {
                     _player.Wallet.AddMoney(_currentCell.Item.Price);
                     if (_currentCell.NumberItems <= 0)
                     {
                         _currentCell.SetIsCellBusy(false);
                         Destroy(_currentCell.Item.gameObject);
+                        _currentCell.Item = null;
                     }
                 }
                 else if (_currentCell.Item.GetItemType().Equals(TypesFish.Perch))
@@ -146,21 +154,24 @@ namespace Assets._Project.Sctipts.Inventory
                     {
                         _currentCell.SetIsCellBusy(false);
                         Destroy(_currentCell.Item.gameObject);
+                        _currentCell.Item = null;
                     }
                 }
-                else if(_currentCell.Item.GetItemType().Equals(TypesGrasses.Normal))
+                else if (_currentCell.Item.GetItemType().Equals(TypesGrasses.Normal))
                 {
                     _player.Wallet.AddMoney(_currentCell.Item.Price);
                     if (_currentCell.NumberItems <= 0)
                     {
                         _currentCell.SetIsCellBusy(false);
                         Destroy(_currentCell.Item.gameObject);
+                        _currentCell.Item = null;
                     }
                 }
                 else if (_currentCell.NumberItems <= 0)
                 {
                     _currentCell.SetIsCellBusy(false);
                     Destroy(_currentCell.Item.gameObject);
+                    _currentCell.Item = null;
                 }
             }
         }

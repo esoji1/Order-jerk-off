@@ -40,14 +40,14 @@ namespace Assets._Project.Scripts.Inventory
                 _textInfoItem.text = $"{cell.Item.Name}\n" +
                             $"Цена: {cell.Item.Price}\n" +
                             $"Радиус атаки: {WeaponConfigs.WoodenSwordPlayerConfig.VisibilityRadius}\n" +
-                            $"Урон: {WeaponConfigs.WoodenSwordPlayerConfig.Damage}";
+                            $"Урон: {WeaponConfigs.WoodenSwordPlayerConfig.MinDamage} -  {WeaponConfigs.WoodenSwordPlayerConfig.MaxDamage}";
             }
             else if (weaponType.Equals(WeaponTypes.WoodenAxePlayer))
             {
                 _textInfoItem.text = $"{cell.Item.Name}\n" +
                            $"Цена: {cell.Item.Price}\n" +
                            $"Радиус атаки: {WeaponConfigs.WoodenAxePlayerConfig.VisibilityRadius}\n" +
-                           $"Урон: {WeaponConfigs.WoodenAxePlayerConfig.Damage}";
+                           $"Урон: {WeaponConfigs.WoodenSwordPlayerConfig.MinDamage} -  {WeaponConfigs.WoodenSwordPlayerConfig.MaxDamage}";
             }
         }
 

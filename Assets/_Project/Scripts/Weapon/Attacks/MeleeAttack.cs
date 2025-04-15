@@ -119,7 +119,10 @@ namespace Assets._Project.Scripts.Weapon.Attacks
         private void ApplyDamageEnemy()
         {
             if (_nearestEnemy.TryGetComponent(out IDamage damage))
-                damage.Damage(_weapon.Config.Damage + _weapon.WeaponData.ExtraDamage);
+            {
+                int randomDamage = Random.Range(_weapon.Config.MinDamage, _weapon.Config.MaxDamage);
+                damage.Damage(randomDamage + _weapon.WeaponData.ExtraDamage);
+            }
         }
     }
 }

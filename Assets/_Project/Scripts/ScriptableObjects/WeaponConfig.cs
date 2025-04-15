@@ -1,5 +1,4 @@
 ﻿using Assets._Project.Scripts.Weapon;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.ScriptableObjects.Configs
@@ -7,6 +6,8 @@ namespace Assets._Project.Scripts.ScriptableObjects.Configs
     [CreateAssetMenu(fileName = "WeaponConfig", menuName = "ScriptableObjects/Configs/WeaponConfig")]
     public class WeaponConfig : ScriptableObject
     {
+        [field: SerializeField] public int MinDamage;
+        [field: SerializeField] public int MaxDamage;
         [field: SerializeField] public int Damage;
         [field: SerializeField] public Weapon.Weapons.Weapon Prefab;
         [field: SerializeField] public int AttackSpeed;

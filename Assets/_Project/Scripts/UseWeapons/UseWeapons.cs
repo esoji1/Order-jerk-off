@@ -36,17 +36,15 @@ namespace Assets._Project.Scripts.UseWeapons
             Invoke("GetWeapon", 0.2f);
         }
 
-        public void SetWeapon(WeaponTypes weaponType)
+        public void SetWeapon(Enum weaponType)
         {
-            Destroy(_weapon.gameObject);
-
-            if (weaponType == WeaponTypes.WoodenSwordPlayer)
+            if (weaponType.Equals(WeaponTypes.WoodenSwordPlayer))
             {
-                SetWeaponParent(weaponType);
+                SetWeaponParent(WeaponTypes.WoodenSwordPlayer);
             }
-            else if (weaponType == WeaponTypes.WoodenAxePlayer)
+            else if (weaponType.Equals(WeaponTypes.WoodenAxePlayer))
             {
-                SetWeaponParent(weaponType);
+                SetWeaponParent(WeaponTypes.WoodenAxePlayer);
             }
         }
 
@@ -65,10 +63,7 @@ namespace Assets._Project.Scripts.UseWeapons
         private void GetWeapon()
         {
             if (_baseWeapon != null && _weapon != null)
-            {
-                Debug.Log("Оружие уже в руке");
                 return;
-            }
 
             AttackWeaponFectory attackWeaponFectory = GetComponentInChildren<Weapon.AttackWeaponFectory>();
             attackWeaponFectory.Initialize(_player.PointRotation.transform);

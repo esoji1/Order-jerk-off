@@ -1,4 +1,5 @@
 using Assets._Project.Scripts.ConstructionBuildings.Buildings;
+using Assets._Project.Scripts.Inventory;
 using System;
 using UnityEngine;
 
@@ -14,9 +15,10 @@ namespace Assets._Project.Scripts.ConstructionBuildings
         private Player.Player _player; 
         private UseWeapons.UseWeapons _useWeapons;
         private Sctipts.Inventory.Inventory _inventory;
+        private InventoryActive _inventoryActive;
 
         public BuildingFactory(House housePrefab, Shop shopPrefab, GameObject playerHomeMenuPrefab, GameObject playerShopMenuPrefab, 
-            Canvas staticCanvas, Player.Player player, UseWeapons.UseWeapons useWeapons, Sctipts.Inventory.Inventory inventory)
+            Canvas staticCanvas, Player.Player player, UseWeapons.UseWeapons useWeapons, Sctipts.Inventory.Inventory inventory, InventoryActive inventoryActive)
         {
             _housePrefab = housePrefab;
             _shopPrefab = shopPrefab;
@@ -26,6 +28,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
             _player = player;
             _useWeapons = useWeapons;
             _inventory = inventory;
+            _inventoryActive = inventoryActive;
         }
 
         public BaseBuilding Get(TypesBuildings typesBuildings, Vector3 position)
@@ -55,7 +58,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
         {
             if (instance is House house)
             {
-                house.Initialize(_playerHomeMenuPrefab, _staticCanvas, _player, _useWeapons, _inventory);
+                house.Initialize(_playerHomeMenuPrefab, _staticCanvas, _player, _useWeapons, _inventory, _inventoryActive);
                 return house;
             }
             else if(instance is Shop shop)

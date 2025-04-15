@@ -2,7 +2,6 @@
 using Assets._Project.Scripts.ScriptableObjects.Configs;
 using Assets._Project.Scripts.UseWeapons;
 using Assets._Project.Scripts.Weapon;
-using Assets._Project.Sctipts.Inventory.Items;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,142 +12,101 @@ namespace Assets._Project.Sctipts.Inventory
     {
         [SerializeField] private ItemData _data;
         [SerializeField] private Button _putOnButton;
+        [SerializeField] private Button _takeOffButton;
 
         private Inventory _inventory;
-
+        private InventoryActive _inventoryActive;
         private UseWeapons _useWeapons;
 
-        private Cell _currentCell;
-        private Cell _clickedCell;
+        private bool _isOpen;
+        private bool _isWeaponEquipped;
+        private Cell _clickedCellInventoryActive;
+        private Cell _clickedCellInventory;
 
-        public void Initialize(UseWeapons useWeapons, Inventory inventory)
+
+        private void Update()
+        {
+            if (_inventoryActive.IsOpen && _isOpen == false)
+            {
+                UpdateCurrentWeaponInHand();
+                _isOpen = true;
+            }
+        }
+
+        public void Initialize(UseWeapons useWeapons, Inventory inventory, InventoryActive inventoryActive)
         {
             _useWeapons = useWeapons;
             _inventory = inventory;
-            _currentCell = GetComponent<Cell>();
+            _inventoryActive = inventoryActive;
 
-            UpdateCurrentWeaponInHand();
-            _inventory.OnClickedItem += ExchangeMergedItem;
+            _inventory.OnClickedItem += ClicedItemInventory;
+            _inventoryActive.OnClickedItem += ClicedItemInventoryActive;
+
             _putOnButton.onClick.AddListener(PutOn);
+            _takeOffButton.onClick.AddListener(TakeOff);
         }
 
-        private void ExchangeMergedItem(Cell cell)
-        {
-            _clickedCell = cell;
-        }
+        private void ClicedItemInventoryActive(Cell cell) =>
+            _clickedCellInventoryActive = cell;
+
+        private void ClicedItemInventory(Cell cell) =>
+            _clickedCellInventory = cell;
 
         private void UpdateCurrentWeaponInHand()
         {
             WeaponTypes weaponTypes = _useWeapons.Weapon.Config.WeaponTypes;
-
+            _isWeaponEquipped = true;
             if (weaponTypes == WeaponTypes.WoodenSwordPlayer)
-            {
-                BaseItem itemSpawn = Instantiate(_data.WoodenSwordItem, _currentCell.transform);
-                _currentCell.Item = itemSpawn;
-            }
+                _inventoryActive.AddItemInCell(_data.WoodenSwordItem);
             else if (weaponTypes == WeaponTypes.WoodenSwordPlayer)
-            {
-                BaseItem itemSpawn = Instantiate(_data.WoodenAxeItem, _currentCell.transform);
-                _currentCell.Item = itemSpawn;
-            }
+                _inventoryActive.AddItemInCell(_data.WoodenAxeItem);
         }
 
         private void PutOn()
         {
-            if (_clickedCell == null || _clickedCell.Item.Category != ItemCategory.Weapon)
+            if (_clickedCellInventory == null || _clickedCellInventory.Item == null)
                 return;
 
-            WeaponItem weaponClickCell = _clickedCell.Item as WeaponItem;
-            WeaponItem weaponCurrentCell = _currentCell.Item as WeaponItem;
-
-            if (weaponClickCell.TypeItem == weaponCurrentCell.TypeItem)
-                Debug.Log("Оружия одинаковы");
-
-            else if (weaponClickCell.TypeItem != weaponCurrentCell.TypeItem)
+            if (_clickedCellInventory.Item.Category == ItemCategory.Weapon)
             {
-                foreach (Cell cell in _inventory.CellList)
-                {
-                    if (cell.Item == null || _currentCell.Item == null)
-                        continue;
+                if (_isWeaponEquipped)
+                    return;
 
-                    if (cell.Item is WeaponItem)
-                    {
-                        WeaponItem weapon = (WeaponItem)cell.Item;
-
-                        if (weapon.TypeItem == weaponClickCell.TypeItem)
-                        {
-                            AddItemChange(weaponCurrentCell);
-
-                            if (cell.NumberItems > 0)
-                            {
-                                ChangeItemDetails(weaponCurrentCell, weapon, cell);
-
-                                if (_clickedCell.NumberItems <= 0)
-                                    ClearCellData(cell);
-                            }
-                        }
-                    }
-                }
+                _inventoryActive.AddItemInCell(_clickedCellInventory.Item);
+                _useWeapons.SetWeapon(_clickedCellInventory.Item.GetItemType());
+                _inventory.SubtractItems(_clickedCellInventory, 1);
+                _isWeaponEquipped = true;
+                return;
             }
+
+            _inventoryActive.AddItemInCell(_clickedCellInventory.Item);
+            _inventory.SubtractItems(_clickedCellInventory, 1);
         }
 
-        private void AddItemChange(WeaponItem weaponCurrentCell)
+        private void TakeOff()
         {
-            foreach (Cell cell2 in _inventory.CellList)
+            if (_clickedCellInventoryActive == null || _clickedCellInventoryActive.Item == null)
+                return;
+
+            if (_clickedCellInventoryActive.Item.Category == ItemCategory.Weapon)
             {
-                if (cell2.IsCellBusy == false)
-                {
-                    if (weaponCurrentCell.TypeItem == WeaponTypes.WoodenSwordPlayer)
-                    {
-                        _inventory.AddItemInCell(_data.WoodenSwordItem);
-                        break;
-                    }
-                    else if (weaponCurrentCell.TypeItem == WeaponTypes.WoodenAxePlayer)
-                    {
-                        _inventory.AddItemInCell(_data.WoodenAxeItem);
-                        break;
-                    }
-                }
-                if (cell2.Item is WeaponItem)
-                {
-                    WeaponItem weaponCell = cell2.Item as WeaponItem;
-                    if (weaponCell.TypeItem == weaponCurrentCell.TypeItem)
-                    {
-                        cell2.AddNumberItems(1);
-                        break;
-                    }
-                }
+                _inventory.AddItemInCell(_clickedCellInventoryActive.Item);
+                _inventoryActive.SubtractItems(_clickedCellInventoryActive, 1);
+                _isWeaponEquipped = false;
+                return;
             }
-        }
 
-        private void ChangeItemDetails(WeaponItem weaponCurrentCell, WeaponItem weapon, Cell cell)
-        {
-            _currentCell.Item.gameObject.GetComponent<Image>().sprite = _clickedCell.Item.Sprite;
-            _currentCell.Item.Sprite = _clickedCell.Item.Sprite;
-            _currentCell.Item.Id = _clickedCell.Item.Id;
-            _currentCell.Item.Name = _clickedCell.Item.Name;
-            _currentCell.Item.Category = _clickedCell.Item.Category;
-            weaponCurrentCell.TypeItem = weapon.TypeItem;
-            SubtractAndExchangeWeapons(weaponCurrentCell, cell);
-        }
-
-        private void SubtractAndExchangeWeapons(WeaponItem weaponCurrentCell, Cell cell)
-        {
-            cell.SubtractNumberItems(1);
-            _useWeapons.SetWeapon(weaponCurrentCell.TypeItem);
-        }
-
-        private void ClearCellData(Cell cell)
-        {
-            cell.SetIsCellBusy(false);
-            _clickedCell.Item = cell.Item;
-            Destroy(cell.Item.gameObject);
+            _inventory.AddItemInCell(_clickedCellInventoryActive.Item);
+            _inventoryActive.SubtractItems(_clickedCellInventoryActive, 1);
         }
 
         private void OnDestroy()
         {
-            _inventory.OnClickedItem += ExchangeMergedItem;
+            _inventory.OnClickedItem -= ClicedItemInventory;
+            _inventoryActive.OnClickedItem -= ClicedItemInventoryActive;
+
             _putOnButton.onClick.RemoveListener(PutOn);
+            _takeOffButton.onClick.RemoveListener(TakeOff);
         }
     }
 }

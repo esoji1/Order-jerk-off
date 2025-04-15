@@ -1,19 +1,23 @@
-using Assets._Project.Scripts.Inventory;
+﻿using Assets._Project.Scripts.Inventory.Items;
 using Assets._Project.Sctipts.Inventory.Items;
+using Assets._Project.Sctipts.ResourceExtraction;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Project.Sctipts.Inventory
+namespace Assets._Project.Scripts.Inventory
 {
-    public class Inventory : MonoBehaviour
+    public class InventoryActive : MonoBehaviour
     {
         [SerializeField] private Cell _prefabCell;
         [SerializeField] private BaseItem _item;
 
         private List<Cell> _cellList = new();
         private RectTransform _contentInventory;
+        private bool _isOpen;
 
         public bool IsAddCell;
         public bool IsAddItem;
@@ -21,11 +25,13 @@ namespace Assets._Project.Sctipts.Inventory
         public event Action<Cell> OnClickedItem;
 
         public List<Cell> CellList => _cellList;
+        public bool IsOpen => _isOpen;
 
         public void Initialize(RectTransform contentInventory)
         {
             _contentInventory = contentInventory;
-            InitializeCellFilling(6);
+            InitializeCellFilling(2);
+            _isOpen = true;
         }
 
         private void Update()
@@ -104,7 +110,7 @@ namespace Assets._Project.Sctipts.Inventory
         private void InitializeCellFilling(int numberLines)
         {
             for (int i = 0; i < numberLines; i++)
-                AddCell(8);
+                AddCell(3);
         }
 
         private void UpdateCellInNumberItems(Cell cell)

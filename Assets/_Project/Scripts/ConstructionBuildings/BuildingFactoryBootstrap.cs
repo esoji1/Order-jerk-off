@@ -1,4 +1,5 @@
 ﻿using Assets._Project.Scripts.ConstructionBuildings.Buildings;
+using Assets._Project.Scripts.Inventory;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.ConstructionBuildings
@@ -13,6 +14,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
         [SerializeField] private Player.Player _player;
         [SerializeField] private UseWeapons.UseWeapons _useWeapons;
         [SerializeField] private Sctipts.Inventory.Inventory _inventory;
+        [SerializeField] private InventoryActive _inventoryActive;
 
         private BuildingFactory _buildingFactory;
 
@@ -21,7 +23,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
         private void Awake()
         {
             _buildingFactory = new BuildingFactory(_housePrefab, _shopPrefab, _playerHomeMenuPrefab, _playerShopMenuPrefab, 
-                _staticCanvas, _player, _useWeapons, _inventory);
+                _staticCanvas, _player, _useWeapons, _inventory, _inventoryActive);
         }
     }
 }

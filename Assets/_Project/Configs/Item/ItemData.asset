@@ -19,6 +19,8 @@ MonoBehaviour:
   <FishingRodItem>k__BackingField: {fileID: 5550623585402216597, guid: ccf2326c98f644a4ca6ab251dd346904, type: 3}
   <FishCarpItem>k__BackingField: {fileID: 4834641224689193922, guid: c5cb87cd0a026b34ca0c23efa7e4a17e, type: 3}
   <FishPerchItem>k__BackingField: {fileID: 4545795417554702242, guid: b5118e303b60745449c08f9a23f4d2fb, type: 3}
+  <NormalGrassItem>k__BackingField: {fileID: 1814892152424458945, guid: a44a3d13753391e4e8b6e4b08853e8d2, type: 3}
+  <ScissorItem>k__BackingField: {fileID: 6647833910563449875, guid: bb1d6cf3e47a1a14bbced55812c8c124, type: 3}
   <Items>k__BackingField:
   - {fileID: -8735090903098058742, guid: 3df611a187bf9cf469b63666f6b625e0, type: 3}
   - {fileID: 3398061218366655883, guid: dd54e488ae1c2ce458c3e4bc0489f20d, type: 3}
@@ -26,6 +28,13 @@ MonoBehaviour:
   - {fileID: 4601046106296165302, guid: 9cf719d04e076ce4aaa811f9be8f3477, type: 3}
   - {fileID: 5550623585402216597, guid: ccf2326c98f644a4ca6ab251dd346904, type: 3}
   - {fileID: 4834641224689193922, guid: c5cb87cd0a026b34ca0c23efa7e4a17e, type: 3}
+  - {fileID: 4545795417554702242, guid: b5118e303b60745449c08f9a23f4d2fb, type: 3}
+  - {fileID: 1814892152424458945, guid: a44a3d13753391e4e8b6e4b08853e8d2, type: 3}
+  - {fileID: 6647833910563449875, guid: bb1d6cf3e47a1a14bbced55812c8c124, type: 3}
   <FishItems>k__BackingField:
   - {fileID: 4834641224689193922, guid: c5cb87cd0a026b34ca0c23efa7e4a17e, type: 3}
   - {fileID: 4545795417554702242, guid: b5118e303b60745449c08f9a23f4d2fb, type: 3}
+  <OreItems>k__BackingField:
+  - {fileID: 4601046106296165302, guid: 9cf719d04e076ce4aaa811f9be8f3477, type: 3}
+  <GrassItems>k__BackingField:
+  - {fileID: 1814892152424458945, guid: a44a3d13753391e4e8b6e4b08853e8d2, type: 3}
