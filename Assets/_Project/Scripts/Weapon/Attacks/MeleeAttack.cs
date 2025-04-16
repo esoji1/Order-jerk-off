@@ -1,4 +1,5 @@
 using Assets._Project.Scripts.Core.Interface;
+using Assets._Project.Scripts.DroppedDamage;
 using Assets._Project.Scripts.Weapon.Interface;
 using System.Collections;
 using UnityEngine;
@@ -12,6 +13,7 @@ namespace Assets._Project.Scripts.Weapon.Attacks
 
         private DetectionRadius _enemyDetectionRadius;
         private AttackMeleeView _attackMeleeView;
+        private DroppedDamage.DroppedDamage _droppedDamage;
 
         private Coroutine _attackCoroutine;
         private bool _isAttacking;
@@ -23,6 +25,7 @@ namespace Assets._Project.Scripts.Weapon.Attacks
             _raycastDirection = raycastDirection;
             _enemyDetectionRadius = new DetectionRadius(_weapon.transform, _weapon.Config.Layer);
             _attackMeleeView = new AttackMeleeView();
+            _droppedDamage = new DroppedDamage.DroppedDamage(_weapon.TextDamage, _weapon.Canvas);
         }
 
         public void Attack()
@@ -121,6 +124,8 @@ namespace Assets._Project.Scripts.Weapon.Attacks
             if (_nearestEnemy.TryGetComponent(out IDamage damage))
             {
                 int randomDamage = Random.Range(_weapon.Config.MinDamage, _weapon.Config.MaxDamage);
+                if (_nearestEnemy.TryGetComponent(out Player.Player _) == false)
+                    _droppedDamage.SpawnNumber(randomDamage, _nearestEnemy.transform);
                 damage.Damage(randomDamage + _weapon.WeaponData.ExtraDamage);
             }
         }

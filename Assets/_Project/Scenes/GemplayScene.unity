@@ -2130,6 +2130,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _pointWeapon: {fileID: 1123977696}
   _pointAttack: {fileID: 1123977698}
+  _canvas: {fileID: 8108546}
+  _textDamage: {fileID: 676674665621685464, guid: 8894e842789df984db8de20b1bd78f1b, type: 3}
 --- !u!1 &499809854
 GameObject:
   m_ObjectHideFlags: 0

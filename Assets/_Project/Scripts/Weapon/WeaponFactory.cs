@@ -2,12 +2,22 @@
 using Assets._Project.Scripts.Weapon.Interface;
 using Assets._Project.Sctipts.Core;
 using System;
+using TMPro;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.Weapon
 {
     public class WeaponFactory
     {
+        private Canvas _canvas;
+        private TextMeshProUGUI _textDamage;
+
+        public WeaponFactory(Canvas canvas, TextMeshProUGUI textDamage)
+        {
+            _canvas = canvas;
+            _textDamage = textDamage;
+        }
+
         public Weapons.Weapon Get(WeaponTypes weaponType, Vector3 position, Transform point)
         {
             WeaponConfig config = GetConfigBy(weaponType);
@@ -41,7 +51,7 @@ namespace Assets._Project.Scripts.Weapon
         {
             if (instance is IMeleeAttack)
             {
-                instance.Initialize(config, point);
+                instance.Initialize(config, point, _canvas, _textDamage);
                 return instance;
             }
             else

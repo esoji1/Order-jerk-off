@@ -1,5 +1,6 @@
 using Assets._Project.Scripts.Core;
 using Assets._Project.Sctipts.Core;
+using TMPro;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.Weapon
@@ -8,6 +9,8 @@ namespace Assets._Project.Scripts.Weapon
     {
         [SerializeField] private Transform _pointWeapon;
         [SerializeField] private PointAttack _pointAttack;
+        [SerializeField] private Canvas _canvas;
+        [SerializeField] private TextMeshProUGUI _textDamage;
 
         private WeaponFactory _factory;
         private Weapons.Weapon weapon;
@@ -18,7 +21,7 @@ namespace Assets._Project.Scripts.Weapon
 
         private void Awake()
         {
-            _factory = new WeaponFactory();
+            _factory = new WeaponFactory(_canvas, _textDamage);
             _setWeaponPoint = new SetWeaponPoint();
 
             SpawnStandartWeapon();
