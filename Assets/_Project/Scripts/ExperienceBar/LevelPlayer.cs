@@ -2,20 +2,21 @@ using System;
 using TMPro;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Player.Pumping
+namespace Assets._Project.Scripts.ExperienceBar
 {
     public class LevelPlayer : MonoBehaviour
     {
         private const float ExperienceMultiplier = 1.2f;
-
-        [SerializeField] private TextMeshProUGUI _experienceText;
-        [SerializeField] private TextMeshProUGUI _levelText;
 
         private int _experience;
         private int _experienceReachNewLevel;
         private int _level;
 
         public event Action OnLevelUp;
+
+        public int ExperienceReachNewLevel => _experienceReachNewLevel;
+        public int Experience => _experience;
+        public int Level => _level;
 
         public bool Up;
         public bool Down;
@@ -41,24 +42,16 @@ namespace Assets._Project.Scripts.Player.Pumping
             }
         }
 
-        public void UpdateCaption()
-        {
-            _levelText.text = $"Уровень игрока: {_level}";
-            _experienceText.text = $"{_experience} из {_experienceReachNewLevel} опыта";
-        }
-
         public void AddExperience(int value)
         {
             _experience += value;
             CheckIncreaseDecreaseLevel();
-            UpdateCaption();
         }
 
         public void SubtractExperience(int value)
         {
             _experience -= value;
             CheckIncreaseDecreaseLevel();
-            UpdateCaption();
         }
 
         public void CheckIncreaseDecreaseLevel()

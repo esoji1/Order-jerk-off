@@ -123,10 +123,10 @@ namespace Assets._Project.Scripts.Weapon.Attacks
         {
             if (_nearestEnemy.TryGetComponent(out IDamage damage))
             {
-                int randomDamage = Random.Range(_weapon.Config.MinDamage, _weapon.Config.MaxDamage);
+                int randomDamage = Random.Range(_weapon.Config.MinDamage, _weapon.Config.MaxDamage) + _weapon.WeaponData.ExtraDamage;
                 if (_nearestEnemy.TryGetComponent(out Player.Player _) == false)
                     _droppedDamage.SpawnNumber(randomDamage, _nearestEnemy.transform);
-                damage.Damage(randomDamage + _weapon.WeaponData.ExtraDamage);
+                damage.Damage(randomDamage);
             }
         }
     }

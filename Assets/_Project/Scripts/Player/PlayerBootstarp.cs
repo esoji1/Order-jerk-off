@@ -1,4 +1,4 @@
-using Assets._Project.Scripts.Player.Pumping;
+using Assets._Project.Scripts.ExperienceBar;
 using Assets._Project.Scripts.ScriptableObjects.Configs;
 using Assets._Project.Sctipts.Core.HealthSystem;
 using Assets._Project.Sctipts.JoystickMovement;

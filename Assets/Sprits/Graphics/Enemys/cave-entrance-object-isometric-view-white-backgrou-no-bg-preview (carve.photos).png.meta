@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      cave-entrance-object-isometric-view-white-backgrou-no-bg-preview (carve.photos)_0: 7860111751862452828
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

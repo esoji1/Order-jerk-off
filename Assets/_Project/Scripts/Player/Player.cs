@@ -1,6 +1,7 @@
 using Assets._Project.Scripts.Core;
 using Assets._Project.Scripts.Core.HealthSystem;
 using Assets._Project.Scripts.Core.Interface;
+using Assets._Project.Scripts.ExperienceBar;
 using Assets._Project.Scripts.Player.Movement;
 using Assets._Project.Scripts.Player.Pumping;
 using Assets._Project.Scripts.ScriptableObjects.Configs;
@@ -45,6 +46,7 @@ namespace Assets._Project.Scripts.Player
 
         public event Action<int> OnDamage;
         public event Action OnUp;
+        public event Action OnAddExperience;
 
         public float Speed => _config.Speed;
         public JoysickForMovement JoysickForMovement => _joysickForMovement;
@@ -94,6 +96,7 @@ namespace Assets._Project.Scripts.Player
         public void AddExperience(int value)
         {
             _levelPlayer.AddExperience(value);
+            OnAddExperience?.Invoke();
         }
 
         public void Damage(int damage)
