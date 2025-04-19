@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Assets._Project.Scripts.Core;
+using DG.Tweening;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,6 +16,8 @@ namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
         private Type _type;
         private Button _exit;
 
+        private Tween _tween;
+
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
         public Type Type => _type;
         public GameObject Window => _window;
@@ -28,14 +32,26 @@ namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
             _window.SetActive(false);
 
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-            _exit = _window.GetComponentInChildren<Button>();
+            _exit = _window.GetComponentInChildren<Exit>().GetComponent<Button>();
             _type = GetType();
 
             _exit.onClick.AddListener(Hide);
         }
 
-        public void Show() => _window.SetActive(true);
-        public void Hide() => _window.SetActive(false);
+        public void Show()
+        {
+            _window.SetActive(true);
+            _tween = _window.transform
+                .DOScale(1, 0.5f);
+        }
+
+        public void Hide()
+        {
+            _tween.Kill();
+
+            _window.SetActive(false);
+            _window.transform.localScale = new Vector3(0, 0,0);
+        }
 
         private void OnDestroy()
         {
