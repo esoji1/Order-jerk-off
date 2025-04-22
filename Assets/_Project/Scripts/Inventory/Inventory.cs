@@ -22,10 +22,10 @@ namespace Assets._Project.Sctipts.Inventory
 
         public List<Cell> CellList => _cellList;
 
-        public void Initialize(RectTransform contentInventory)
+        public void Initialize(RectTransform contentInventory, List<Cell> cellList)
         {
             _contentInventory = contentInventory;
-            InitializeCellFilling(6);
+            _cellList = cellList;
         }
 
         private void Update()
@@ -101,7 +101,7 @@ namespace Assets._Project.Sctipts.Inventory
             }
         }
 
-        private void InitializeCellFilling(int numberLines)
+        private void AddCellFilling(int numberLines)
         {
             for (int i = 0; i < numberLines; i++)
                 AddCell(8);

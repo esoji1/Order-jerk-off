@@ -23,7 +23,10 @@ namespace Assets._Project.Scripts.Weapon
         {
             _factory = new WeaponFactory(_canvas, _textDamage);
             _setWeaponPoint = new SetWeaponPoint();
+        }
 
+        private void Start()
+        {
             SpawnStandartWeapon();
         }
 

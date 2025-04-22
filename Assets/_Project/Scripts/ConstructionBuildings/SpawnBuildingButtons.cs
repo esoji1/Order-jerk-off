@@ -9,6 +9,8 @@ namespace Assets._Project.Scripts.ConstructionBuildings
     {
         [SerializeField] private ActionButton.ActionButton _actionButton;
         [SerializeField] private BuildingFactoryBootstrap _buildingFactoryBootstrap;
+        [SerializeField] private BuildingArea buildingAreaInHouse;
+        [SerializeField] private BuildingArea buildingAreaInShope;
 
         [Header("Bottons")]
         [SerializeField] private Button _houseButton;
@@ -16,6 +18,14 @@ namespace Assets._Project.Scripts.ConstructionBuildings
 
         private BuildingArea _buildingArea;
         private List<BaseBuilding> _buildingList = new();
+
+        private void Start()
+        {
+            _buildingArea = buildingAreaInHouse;
+            Spawn(TypesBuildings.House);
+            _buildingArea = buildingAreaInShope;
+            Spawn(TypesBuildings.Shop);
+        }
 
         private void OnEnable()
         {

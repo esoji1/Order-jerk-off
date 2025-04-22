@@ -1,5 +1,4 @@
 using Assets._Project.Scripts.Core.Interface;
-using Assets._Project.Scripts.DroppedDamage;
 using Assets._Project.Scripts.Weapon.Interface;
 using System.Collections;
 using UnityEngine;

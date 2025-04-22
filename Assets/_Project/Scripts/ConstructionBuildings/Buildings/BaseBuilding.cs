@@ -57,6 +57,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
         {
             _exit.onClick.RemoveListener(Hide);
             Destroy(_window);
+            _tween.Kill();
         }
     }
 }

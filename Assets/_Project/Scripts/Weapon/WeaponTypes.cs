@@ -6,5 +6,7 @@
         WoodenSwordEnemy,
         WoodenAxePlayer,
         WoodenAxeEnemy,
+        WoodenOnionPlayer,
+        WoodenOnionEnemy,
     }
 }

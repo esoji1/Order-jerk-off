@@ -27,13 +27,13 @@ namespace Assets._Project.Scripts.UseWeapons
 
         private void Update()
         {
-            if (_baseWeapon != null && _weapon.gameObject.activeSelf)
+            if (_baseWeapon != null)
                 _baseWeapon.Attack();
         }
 
         private void OnTransformChildrenChanged()
         {
-            Invoke("GetWeapon", 0.2f);
+            GetWeapon();
         }
 
         public void SetWeapon(Enum weaponType)
@@ -55,6 +55,7 @@ namespace Assets._Project.Scripts.UseWeapons
         {
             _baseWeapon = null;
             Destroy(_weapon.gameObject);
+            _weapon = null;
             Weapon.Weapons.Weapon weapon = _weaponFactoryBootstrap.Factory.Get(weaponType, transform.position, transform);
             _setWeaponPoint.SetParent(weapon.transform, transform);
             _setWeaponPoint.Set(weapon.transform);
@@ -62,9 +63,6 @@ namespace Assets._Project.Scripts.UseWeapons
 
         private void GetWeapon()
         {
-            if (_baseWeapon != null && _weapon != null)
-                return;
-
             AttackWeaponFectory attackWeaponFectory = GetComponentInChildren<Weapon.AttackWeaponFectory>();
             attackWeaponFectory.Initialize(_player.PointRotation.transform);
             _baseWeapon = attackWeaponFectory.BaseWeapon;

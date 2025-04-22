@@ -4,7 +4,6 @@ using Assets._Project.Sctipts.ResourceExtraction;
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +14,7 @@ namespace Assets._Project.Scripts.Inventory
         [SerializeField] private Cell _prefabCell;
         [SerializeField] private BaseItem _item;
 
-        private List<Cell> _cellList = new();
+        private List<Cell> _cellWeaponList = new();
         private RectTransform _contentInventory;
         private bool _isOpen;
 
@@ -24,13 +23,13 @@ namespace Assets._Project.Scripts.Inventory
 
         public event Action<Cell> OnClickedItem;
 
-        public List<Cell> CellList => _cellList;
+        public List<Cell> CellList => _cellWeaponList;
         public bool IsOpen => _isOpen;
 
-        public void Initialize(RectTransform contentInventory)
+        public void Initialize(RectTransform contentInventory, List<Cell> cellWeaponList)
         {
             _contentInventory = contentInventory;
-            InitializeCellFilling(2);
+            _cellWeaponList = cellWeaponList;
             _isOpen = true;
         }
 
@@ -50,20 +49,20 @@ namespace Assets._Project.Scripts.Inventory
 
         public void AddItemInCell(BaseItem item)
         {
-            for (int i = 0; i < _cellList.Count; i++)
+            for (int i = 0; i < _cellWeaponList.Count; i++)
             {
-                if (_cellList[i].IsCellBusy == false)
+                if (_cellWeaponList[i].IsCellBusy == false)
                 {
-                    BaseItem itemSpawn = Instantiate(item, _cellList[i].transform);
-                    _cellList[i].Item = itemSpawn;
-                    _cellList[i].SetIsCellBusy(true);
-                    SetupItemButton(_cellList[i]);
-                    UpdateCellInNumberItems(_cellList[i]);
+                    BaseItem itemSpawn = Instantiate(item, _cellWeaponList[i].transform);
+                    _cellWeaponList[i].Item = itemSpawn;
+                    _cellWeaponList[i].SetIsCellBusy(true);
+                    SetupItemButton(_cellWeaponList[i]);
+                    UpdateCellInNumberItems(_cellWeaponList[i]);
                     break;
                 }
-                else if (_cellList[i].Item.Name == item.Name && _cellList[i].Item != null)
+                else if (_cellWeaponList[i].Item.Name == item.Name && _cellWeaponList[i].Item != null)
                 {
-                    UpdateCellInNumberItems(_cellList[i]);
+                    UpdateCellInNumberItems(_cellWeaponList[i]);
                     break;
                 }
             }
@@ -103,11 +102,11 @@ namespace Assets._Project.Scripts.Inventory
             for (int i = 0; i < numberCells; i++)
             {
                 Cell cell = Instantiate(_prefabCell, _contentInventory.transform);
-                _cellList.Add(cell);
+                _cellWeaponList.Add(cell);
             }
         }
 
-        private void InitializeCellFilling(int numberLines)
+        private void AddCellFilling(int numberLines)
         {
             for (int i = 0; i < numberLines; i++)
                 AddCell(3);
