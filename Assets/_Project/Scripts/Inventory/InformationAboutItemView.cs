@@ -8,7 +8,7 @@ namespace Assets._Project.Scripts.Inventory
 {
     public class InformationAboutItemView : MonoBehaviour
     {
-        [SerializeField] TextMeshProUGUI _textInfoItem;
+        [SerializeField] private TextMeshProUGUI _textInfoItem;
 
         private Sctipts.Inventory.Inventory _inventory;
         private InventoryActive _inventoryActive;
@@ -28,49 +28,34 @@ namespace Assets._Project.Scripts.Inventory
                 Enum weaponItem = cell.Item.GetItemType();
                 ChangeTextForWeapon(weaponItem, cell);
             }
-            else if(cell.Item.Category == ItemCategory.Mining)
+            else if (cell.Item.Category == ItemCategory.Mining || cell.Item.Category == ItemCategory.Resource)
             {
-                ChangeTextForMining(cell);
-            }
-            else if (cell.Item.Category == ItemCategory.Resource)
-            {
-                ChangeTextForResource(cell);
+                ChangeTextForItem(cell);
             }
         }
 
         private void ChangeTextForWeapon(Enum weaponType, Cell cell)
         {
             if (weaponType.Equals(WeaponTypes.WoodenSwordPlayer))
-            {
-                _textInfoItem.text = $"{cell.Item.Name}\n" +
-                            $"Цена: {cell.Item.Price}\n" +
-                            $"Радиус атаки: {WeaponConfigs.WoodenSwordPlayerConfig.VisibilityRadius}\n" +
-                            $"Урон: {WeaponConfigs.WoodenSwordPlayerConfig.MinDamage}  -  {WeaponConfigs.WoodenSwordPlayerConfig.MaxDamage}";
-            }
+                ChangeText(cell, WeaponConfigs.WoodenSwordPlayerConfig.VisibilityRadius, WeaponConfigs.WoodenSwordPlayerConfig.MinDamage,
+                    WeaponConfigs.WoodenSwordPlayerConfig.MaxDamage);
             else if (weaponType.Equals(WeaponTypes.WoodenAxePlayer))
-            {
-                _textInfoItem.text = $"{cell.Item.Name}\n" +
-                           $"Цена: {cell.Item.Price}\n" +
-                           $"Радиус атаки: {WeaponConfigs.WoodenAxePlayerConfig.VisibilityRadius}\n" +
-                           $"Урон: {WeaponConfigs.WoodenAxePlayerConfig.MinDamage} -  {WeaponConfigs.WoodenSwordPlayerConfig.MaxDamage}";
-            }
+                ChangeText(cell, WeaponConfigs.WoodenAxePlayerConfig.VisibilityRadius, WeaponConfigs.WoodenAxePlayerConfig.MinDamage,
+                    WeaponConfigs.WoodenAxePlayerConfig.MaxDamage);
             else if (weaponType.Equals(WeaponTypes.WoodenOnionPlayer))
-            {
-                _textInfoItem.text = $"{cell.Item.Name}\n" +
-                         $"Цена: {cell.Item.Price}\n" +
-                         $"Радиус атаки: {WeaponConfigs.WeaponOnionPlayerConfig.VisibilityRadius}\n" +
-                         $"Урон: {WeaponConfigs.WeaponOnionPlayerConfig.MinDamage} -  {WeaponConfigs.WeaponOnionPlayerConfig.MaxDamage}";
-            }
+                ChangeText(cell, WeaponConfigs.WeaponOnionPlayerConfig.VisibilityRadius, WeaponConfigs.WeaponOnionPlayerConfig.MinDamage,
+                    WeaponConfigs.WeaponOnionPlayerConfig.MaxDamage);
         }
 
-        private void ChangeTextForMining(Cell cell)
+        private void ChangeText(Cell cell, float visibilityRadius, int minDamage, int maxDamage)
         {
-            _textInfoItem.text = $"{cell.Item.Name}\n" +
-                $"Цена: {cell.Item.Price}\n" +
-                $"{cell.Item.Description}";
+            _textInfoItem.text = $"{cell.Item.Name}\n " +
+                $"Цена: {cell.Item.Price}\n " +
+                $"Радиус атаки: {visibilityRadius}\n " +
+                $"Урон: {minDamage}  -  {maxDamage}";
         }
 
-        private void ChangeTextForResource(Cell cell)
+        private void ChangeTextForItem(Cell cell)
         {
             _textInfoItem.text = $"{cell.Item.Name}\n" +
                 $"Цена: {cell.Item.Price}\n" +

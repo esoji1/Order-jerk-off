@@ -36,26 +36,22 @@ namespace Assets._Project.Scripts.Inventory
         private void ChangeTextForWeapon(Enum weaponType, Cell cell)
         {
             if (weaponType.Equals(WeaponTypes.WoodenSwordPlayer))
-            {
-                _textInfoItem.text = $"{cell.Item.Name}\n" +
-                            $"Цена: {cell.Item.Price}\n" +
-                            $"Радиус атаки: {WeaponConfigs.WoodenSwordPlayerConfig.VisibilityRadius}\n" +
-                            $"Урон: {WeaponConfigs.WoodenSwordPlayerConfig.MinDamage} -  {WeaponConfigs.WoodenSwordPlayerConfig.MaxDamage}";
-            }
+                ChangeText(cell, WeaponConfigs.WoodenSwordPlayerConfig.VisibilityRadius, WeaponConfigs.WoodenSwordPlayerConfig.MinDamage,
+                    WeaponConfigs.WoodenSwordPlayerConfig.MaxDamage);
             else if (weaponType.Equals(WeaponTypes.WoodenAxePlayer))
-            {
-                _textInfoItem.text = $"{cell.Item.Name}\n" +
-                           $"Цена: {cell.Item.Price}\n" +
-                           $"Радиус атаки: {WeaponConfigs.WoodenAxePlayerConfig.VisibilityRadius}\n" +
-                           $"Урон: {WeaponConfigs.WoodenAxePlayerConfig.MinDamage} -  {WeaponConfigs.WoodenAxePlayerConfig.MaxDamage}";
-            }
+                ChangeText(cell, WeaponConfigs.WoodenAxePlayerConfig.VisibilityRadius, WeaponConfigs.WoodenAxePlayerConfig.MinDamage,
+                    WeaponConfigs.WoodenAxePlayerConfig.MaxDamage);
             else if (weaponType.Equals(WeaponTypes.WoodenOnionPlayer))
-            {
-                _textInfoItem.text = $"{cell.Item.Name}\n" +
-                         $"Цена: {cell.Item.Price}\n" +
-                         $"Радиус атаки: {WeaponConfigs.WeaponOnionPlayerConfig.VisibilityRadius}\n" +
-                         $"Урон: {WeaponConfigs.WeaponOnionPlayerConfig.MinDamage} -  {WeaponConfigs.WeaponOnionPlayerConfig.MaxDamage}";
-            }
+                ChangeText(cell, WeaponConfigs.WeaponOnionPlayerConfig.VisibilityRadius, WeaponConfigs.WeaponOnionPlayerConfig.MinDamage,
+                    WeaponConfigs.WeaponOnionPlayerConfig.MaxDamage);
+        }
+
+        private void ChangeText(Cell cell, float visibilityRadius, int minDamage, int maxDamage)
+        {
+            _textInfoItem.text = $"{cell.Item.Name}\n " +
+                $"Цена: {cell.Item.Price}\n " +
+                $"Радиус атаки: {visibilityRadius}\n " +
+                $"Урон: {minDamage}  -  {maxDamage}";
         }
 
         private void ChangeTextForMining(Cell cell)

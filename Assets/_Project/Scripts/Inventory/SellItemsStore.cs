@@ -2,7 +2,6 @@ using Assets._Project.Scripts.Inventory;
 using Assets._Project.Scripts.Inventory.Items;
 using Assets._Project.Scripts.Player;
 using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Scripts.Weapon;
 using Assets._Project.Sctipts.Inventory.Items;
 using System;
 using System.Collections.Generic;
@@ -58,18 +57,9 @@ namespace Assets._Project.Sctipts.Inventory
                 {
                     WeaponItem weaponItem = _currentCell.Item as WeaponItem;
 
-                    if (weaponItem.TypeItem == WeaponTypes.WoodenSwordPlayer)
-                    {
-                        _inventory.AddItemInCell(_itemData.WoodenSwordItem);
-                    }
-                    else if (weaponItem.TypeItem == WeaponTypes.WoodenAxePlayer)
-                    {
-                        _inventory.AddItemInCell(_itemData.WoodenAxeItem);
-                    }
-                    else if (weaponItem.TypeItem == WeaponTypes.WoodenOnionPlayer)
-                    {
-                        _inventory.AddItemInCell(_itemData.WoodenOnionItem);
-                    }
+                    foreach (WeaponItem item in _itemData.WeaponItems)
+                        if (weaponItem.TypeItem == item.TypeItem)
+                            _inventory.AddItemInCell(item);
                 }
             }
             else if (_currentCell.Item.Category == ItemCategory.Mining)
@@ -77,25 +67,15 @@ namespace Assets._Project.Sctipts.Inventory
                 if (_player.Wallet.SubtractMoney(_currentCell.Item.Price))
                 {
                     MiningItem miningItem = _currentCell.Item as MiningItem;
-                    if (miningItem.TypesMining == ResourceExtraction.TypesMining.Pick)
-                    {
-                        _inventory.AddItemInCell(_itemData.PickItem);
-                    }
-                    else if (miningItem.TypesMining == ResourceExtraction.TypesMining.FishingRod)
-                    {
-                        _inventory.AddItemInCell(_itemData.FishingRodItem);
-                    }
-                    else if (miningItem.TypesMining == ResourceExtraction.TypesMining.Scissors)
-                    {
-                        _inventory.AddItemInCell(_itemData.ScissorItem);
-                    }
+
+                    foreach (MiningItem item in _itemData.MiningItems)
+                        if (miningItem.TypesMining == item.TypesMining)
+                            _inventory.AddItemInCell(item);
                 }
             }
         }
 
-        private void OnDestroy()
-        {
+        private void OnDestroy() => 
             _buy.onClick.RemoveListener(Buy);
-        }
     }
 }

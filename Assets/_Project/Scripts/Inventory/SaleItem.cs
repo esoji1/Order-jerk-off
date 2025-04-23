@@ -1,11 +1,5 @@
 using Assets._Project.Scripts.Inventory;
-using Assets._Project.Scripts.Inventory.Items;
 using Assets._Project.Scripts.Player;
-using Assets._Project.Scripts.ResourceExtraction.FishingRodMining;
-using Assets._Project.Scripts.ResourceExtraction.ScissorsMining;
-using Assets._Project.Sctipts.Core;
-using Assets._Project.Sctipts.Inventory.Items;
-using Assets._Project.Sctipts.ResourceExtraction;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,9 +8,10 @@ namespace Assets._Project.Sctipts.Inventory
     public class SaleItem : MonoBehaviour
     {
         [SerializeField] private Button _sell;
-        private Inventory _inventory;
 
+        private Inventory _inventory;
         private Player _player;
+
         private Cell _currentCell;
 
         public void Initialize(Player player, Inventory inventor)
@@ -24,7 +19,7 @@ namespace Assets._Project.Sctipts.Inventory
             _player = player;
             _inventory = inventor;
 
-            _sell.onClick.AddListener(Sele);
+            _sell.onClick.AddListener(Sell);
             _inventory.OnClickedItem += ChangeItem;
         }
 
@@ -33,151 +28,17 @@ namespace Assets._Project.Sctipts.Inventory
             _currentCell = cell;
         }
 
-        private void Sele()
+        private void Sell()
         {
             if (_currentCell == null || _currentCell.Item == null)
                 return;
 
-            if (_currentCell.Item.Category == ItemCategory.Weapon)
-            {
-                SaleWeapon();
-            }
-            else if (_currentCell.Item.Category == ItemCategory.Mining)
-            {
-                SaleMining();
-            }
-            else if (_currentCell.Item.Category == ItemCategory.Resource)
-            {
-                SaleResource();
-            }
-        }
-
-        private void SaleWeapon()
-        {
             if (_currentCell.NumberItems > 0)
             {
                 _currentCell.SubtractNumberItems(1);
-                WeaponItem weaponItem = _currentCell.Item as WeaponItem;
-                if (weaponItem.TypeItem == WeaponConfigs.WoodenAxePlayerConfig.WeaponTypes)
-                {
-                    _player.Wallet.AddMoney(_currentCell.Item.Price);
-                    if (_currentCell.NumberItems <= 0)
-                    {
-                        _currentCell.SetIsCellBusy(false);
-                        Destroy(_currentCell.Item.gameObject);
-                        _currentCell.Item = null;
-                    }
-                }
-                else if (weaponItem.TypeItem == WeaponConfigs.WoodenSwordPlayerConfig.WeaponTypes)
-                {
-                    _player.Wallet.AddMoney(_currentCell.Item.Price);
-                    if (_currentCell.NumberItems <= 0)
-                    {
-                        _currentCell.SetIsCellBusy(false);
-                        Destroy(_currentCell.Item.gameObject);
-                        _currentCell.Item = null;
-                    }
-                }
-                else if (weaponItem.TypeItem == WeaponConfigs.WeaponOnionPlayerConfig.WeaponTypes)
-                {
-                    _player.Wallet.AddMoney(_currentCell.Item.Price);
-                    if (_currentCell.NumberItems <= 0)
-                    {
-                        _currentCell.SetIsCellBusy(false);
-                        Destroy(_currentCell.Item.gameObject);
-                        _currentCell.Item = null;
-                    }
-                }
-                else if (_currentCell.NumberItems <= 0)
-                {
-                    _currentCell.SetIsCellBusy(false);
-                    Destroy(_currentCell.Item.gameObject);
-                    _currentCell.Item = null;
-                }
-            }
-        }
+                _player.Wallet.AddMoney(_currentCell.Item.Price);
 
-        private void SaleMining()
-        {
-            if (_currentCell.NumberItems > 0)
-            {
-                _currentCell.SubtractNumberItems(1);
-                MiningItem weaponItem = _currentCell.Item as MiningItem;
-                if (weaponItem.TypesMining == TypesMining.Pick)
-                {
-                    _player.Wallet.AddMoney(_currentCell.Item.Price);
-                    if (_currentCell.NumberItems <= 0)
-                    {
-                        _currentCell.SetIsCellBusy(false);
-                        Destroy(_currentCell.Item.gameObject);
-                        _currentCell.Item = null;
-                    }
-                }
-                else if (weaponItem.TypesMining == TypesMining.FishingRod)
-                {
-                    _player.Wallet.AddMoney(_currentCell.Item.Price);
-                    if (_currentCell.NumberItems <= 0)
-                    {
-                        _currentCell.SetIsCellBusy(false);
-                        Destroy(_currentCell.Item.gameObject);
-                        _currentCell.Item = null;
-                    }
-                }
-                else if (_currentCell.NumberItems <= 0)
-                {
-                    _currentCell.SetIsCellBusy(false);
-                    Destroy(_currentCell.Item.gameObject);
-                    _currentCell.Item = null;
-                }
-            }
-        }
-
-        private void SaleResource()
-        {
-            if (_currentCell.NumberItems > 0)
-            {
-                _currentCell.SubtractNumberItems(1);
-                if (_currentCell.Item.GetItemType().Equals(ResourceExtraction.OreMining.TypesOre.Iron))
-                {
-                    _player.Wallet.AddMoney(_currentCell.Item.Price);
-                    if (_currentCell.NumberItems <= 0)
-                    {
-                        _currentCell.SetIsCellBusy(false);
-                        Destroy(_currentCell.Item.gameObject);
-                        _currentCell.Item = null;
-                    }
-                }
-                else if (_currentCell.Item.GetItemType().Equals(TypesFish.Carp))
-                {
-                    _player.Wallet.AddMoney(_currentCell.Item.Price);
-                    if (_currentCell.NumberItems <= 0)
-                    {
-                        _currentCell.SetIsCellBusy(false);
-                        Destroy(_currentCell.Item.gameObject);
-                        _currentCell.Item = null;
-                    }
-                }
-                else if (_currentCell.Item.GetItemType().Equals(TypesFish.Perch))
-                {
-                    _player.Wallet.AddMoney(_currentCell.Item.Price);
-                    if (_currentCell.NumberItems <= 0)
-                    {
-                        _currentCell.SetIsCellBusy(false);
-                        Destroy(_currentCell.Item.gameObject);
-                        _currentCell.Item = null;
-                    }
-                }
-                else if (_currentCell.Item.GetItemType().Equals(TypesGrasses.Normal))
-                {
-                    _player.Wallet.AddMoney(_currentCell.Item.Price);
-                    if (_currentCell.NumberItems <= 0)
-                    {
-                        _currentCell.SetIsCellBusy(false);
-                        Destroy(_currentCell.Item.gameObject);
-                        _currentCell.Item = null;
-                    }
-                }
-                else if (_currentCell.NumberItems <= 0)
+                if (_currentCell.NumberItems <= 0)
                 {
                     _currentCell.SetIsCellBusy(false);
                     Destroy(_currentCell.Item.gameObject);
@@ -188,7 +49,7 @@ namespace Assets._Project.Sctipts.Inventory
 
         private void OnDestroy()
         {
-            _sell.onClick.RemoveListener(Sele);
+            _sell.onClick.RemoveListener(Sell);
             _inventory.OnClickedItem -= ChangeItem;
         }
     }

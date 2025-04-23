@@ -1,3 +1,4 @@
+using Assets._Project.Scripts.Inventory.Items;
 using Assets._Project.Sctipts.Inventory.Items;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,8 +19,9 @@ namespace Assets._Project.Scripts.ScriptableObjects.Configs
         [field: SerializeField] public BaseItem NormalGrassItem { get; private set; }
         [field: SerializeField] public BaseItem ScissorItem { get; private set; }
 
-
         [field: SerializeField] public List<BaseItem> Items { get; private set; }
+        [field: SerializeField] public List<WeaponItem> WeaponItems { get; private set; }
+        [field: SerializeField] public List<MiningItem> MiningItems { get; private set; }
         [field: SerializeField] public List<BaseItem> FishItems { get; private set; }
         [field: SerializeField] public List<BaseItem> OreItems { get; private set; }
         [field: SerializeField] public List<BaseItem> GrassItems { get; private set; }
