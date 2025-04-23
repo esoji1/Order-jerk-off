@@ -6,7 +6,7 @@ namespace Assets._Project.Scripts.Player.Movement
     {
         [SerializeField] private float _raycastDistance = 1f;
         [SerializeField] private LayerMask _layer;
-        [SerializeField] private Transform _raycastDirection;
+        [SerializeField] private Player _player;
 
         private bool _isTouchingWall;
         private RaycastHit2D _lastHit;
@@ -15,11 +15,11 @@ namespace Assets._Project.Scripts.Player.Movement
 
         private void Update()
         {
-            _lastHit = Physics2D.Raycast(transform.position, _raycastDirection.right, _raycastDistance, _layer);
+            _lastHit = Physics2D.Raycast(transform.position, _player.JoysickForMovement.VectorDirection(), _raycastDistance, _layer);
             bool hitWall = _lastHit.collider != null;
 
             _isTouchingWall = hitWall;
-                Debug.DrawRay(transform.position, _raycastDirection.right * _raycastDistance,
+                Debug.DrawRay(transform.position, _player.JoysickForMovement.VectorDirection() * _raycastDistance,
                     hitWall ? Color.green : Color.red);
         }
     }

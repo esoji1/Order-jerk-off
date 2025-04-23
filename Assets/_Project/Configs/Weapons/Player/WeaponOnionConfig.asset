@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eed8593984ee607458aff12c72bd43f4, type: 3}
-  m_Name: WoodenSwordConfig
+  m_Name: WeaponOnionConfig
   m_EditorClassIdentifier: 
   MinDamage: 5
-  MaxDamage: 20
-  Prefab: {fileID: 2045288444892460180, guid: 02cea876772d83f408a4544b0606dd6f, type: 3}
-  AttackSpeed: 20
-  RadiusAttack: 0.2
+  MaxDamage: 10
+  Prefab: {fileID: 6326876866998801924, guid: 8b746ae2628208d479bec6d06920f7e8, type: 3}
+  AttackSpeed: 4
+  RadiusAttack: 2
   ReturnInitialAttackPosition: 0.5
   Layer:
     serializedVersion: 2
     m_Bits: 128
-  VisibilityRadius: 1
-  WeaponTypes: 0
+  VisibilityRadius: 2
+  WeaponTypes: 4

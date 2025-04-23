@@ -60,6 +60,8 @@ namespace Assets._Project.Sctipts.Inventory
                 _inventoryActive.AddItemInCell(_data.WoodenSwordItem);
             else if (weaponTypes == WeaponTypes.WoodenSwordPlayer)
                 _inventoryActive.AddItemInCell(_data.WoodenAxeItem);
+            else if (weaponTypes == WeaponTypes.WoodenOnionPlayer)
+                _inventoryActive.AddItemInCell(_data.WoodenOnionItem);
         }
 
         private void PutOn()

@@ -29,8 +29,6 @@ namespace Assets._Project.Scripts.Weapon.Attacks
 
         public void Attack()
         {
-            Debug.DrawRay(_raycastDirection.position, _raycastDirection.right * _weapon.Config.RaycastAttack, Color.green);
-
             _enemyDetectionRadius.Detection(_weapon.Config.VisibilityRadius);
             _nearestEnemy = _enemyDetectionRadius.GetNearestEnemy();
 
@@ -40,9 +38,7 @@ namespace Assets._Project.Scripts.Weapon.Attacks
                 return;
             }
 
-            float distance = Vector2.Distance(_weapon.transform.position, _nearestEnemy.transform.position) - 0.1f;
-
-            if (distance < _weapon.Config.RadiusAttack)
+            if (WithinAttackRadius(_weapon.Config.RadiusAttack))
             {
                 StartAttack();
             }
@@ -81,7 +77,7 @@ namespace Assets._Project.Scripts.Weapon.Attacks
         {
             while (_isAttacking && _enemyDetectionRadius.EnemiesDetected.Count > 0)
             {
-                if (CheckAttackHit())
+                if (WithinAttackRadius(_weapon.Config.RadiusAttack))
                 {
                     yield return PerformAttack(-90);
 
@@ -110,14 +106,6 @@ namespace Assets._Project.Scripts.Weapon.Attacks
             yield return new WaitForSeconds(_weapon.Config.ReturnInitialAttackPosition - _weapon.WeaponData.ReturnInitialAttackPosition);
         }
 
-        private bool CheckAttackHit()
-        {
-            Vector2 direction = _raycastDirection.right;
-            RaycastHit2D hit = Physics2D.Raycast(_raycastDirection.position, direction, _weapon.Config.RaycastAttack, _weapon.Config.Layer);
-
-            return hit.collider != null && hit.collider.TryGetComponent(out IDamage _);
-        }
-
         private void ApplyDamageEnemy()
         {
             if (_nearestEnemy.TryGetComponent(out IDamage damage))
@@ -127,6 +115,19 @@ namespace Assets._Project.Scripts.Weapon.Attacks
                     _droppedDamage.SpawnNumber(randomDamage, _nearestEnemy.transform);
                 damage.Damage(randomDamage);
             }
+        }
+
+        private bool WithinAttackRadius(float radiusAttack)
+        {
+            Collider2D[] collider2D = Physics2D.OverlapCircleAll(_raycastDirection.position, radiusAttack, _weapon.Config.Layer);
+
+            foreach (Collider2D collider in collider2D)
+            {
+                if (collider == _nearestEnemy)
+                    return true;
+            }
+
+            return false;
         }
     }
 }

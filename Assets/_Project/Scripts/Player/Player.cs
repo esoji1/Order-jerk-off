@@ -29,7 +29,6 @@ namespace Assets._Project.Scripts.Player
 
         private PlayerMovement _playerMovement;
         private Flip _flip;
-        private Move _move;
         private Health _health;
         private Wallet.Wallet _wallet;
 
@@ -122,7 +121,6 @@ namespace Assets._Project.Scripts.Player
 
             _playerMovement = new PlayerMovement(_joysickForMovement, this);
             _flip = new Flip();
-            _move = new Move();
             _wallet = new Wallet.Wallet(0);
             _playerView.Initialize();
 
@@ -133,7 +131,7 @@ namespace Assets._Project.Scripts.Player
             _healthView.Initialize(this, _playerCharacteristics.Health, _healthInfo, this);
 
             _circleRadiusVisualizer.Initialize(transform);
-            _radiusMovementTrigger.Initialize(transform, _rotationSprite.transform, _config.LayerEnemy, transform, _config.Speed, _config.VisibilityRadius);
+            _radiusMovementTrigger.Initialize(transform, _config.LayerEnemy, transform, _config.Speed);
         }
 
         private void ExtractComponents()
@@ -171,19 +169,31 @@ namespace Assets._Project.Scripts.Player
             _playerMovement.Move();
 
             if (_weapon != null)
-                _radiusMovementTrigger.MoveToTarget(_weapon.Config.AttackDistance);
+                _radiusMovementTrigger.MoveToTarget(_weapon.Config.RadiusAttack, _weapon.Config.VisibilityRadius);
 
             MoveInRadiusAndRotation();
             _flip.RotateView(_joysickForMovement.VectorDirection(), _rotationSprite.transform);
 
-            _circleRadiusVisualizer.DrawRadius(_config.VisibilityRadius);
+            if (_joysickForMovement.VectorDirection().y > 0f)
+            {
+                _playerView.SpriteRenderer.sprite = _playerView.Back;
+                _weapon.SpriteRenderer.sortingLayerName = "AddInPlayer";
+                _weapon.SpriteRenderer.sortingOrder = 0;
+            }
+            else if (_joysickForMovement.VectorDirection().y < 0f)
+            {
+                _playerView.SpriteRenderer.sprite = _playerView.Front;
+                _weapon.SpriteRenderer.sortingLayerName = "Weapon";
+                _weapon.SpriteRenderer.sortingOrder = 10;
+            }
+
+            _circleRadiusVisualizer.DrawRadius(_weapon.Config.VisibilityRadius);
         }
 
         private void MoveInRadiusAndRotation()
         {
             if (_joysickForMovement.VectorDirection() != Vector2.zero)
             {
-                _move.Rotation(_rotationSprite.transform, _joysickForMovement.VectorDirection());
                 _radiusMovementTrigger.StopRadiusMovement();
             }
             else if (_joysickForMovement.VectorDirection() == Vector2.zero)

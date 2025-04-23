@@ -13,10 +13,13 @@ namespace Assets._Project.Scripts.Weapon.Weapons
         private Transform _pointRotation;
         private Canvas _canvas;
         private TextMeshProUGUI _textDamage;
+        private Player.Player _player;
 
         private AttackMeleeView _attackMeleeView;
         private Move _move;
         private WeaponData _weaponData;
+
+        private SpriteRenderer _spriteRenderer;
 
         public WeaponConfig Config => _config;
         public AttackMeleeView AttackMeleeView => _attackMeleeView;
@@ -25,16 +28,21 @@ namespace Assets._Project.Scripts.Weapon.Weapons
         public WeaponData WeaponData => _weaponData;
         public Canvas Canvas => _canvas;
         public TextMeshProUGUI TextDamage => _textDamage;
+        public SpriteRenderer SpriteRenderer => _spriteRenderer;
+        public Player.Player Player => _player;
 
-        public virtual void Initialize(WeaponConfig config, Transform pointRotation, Canvas canvas, TextMeshProUGUI textDamage)
+        public virtual void Initialize(WeaponConfig config, Transform pointRotation, Canvas canvas, TextMeshProUGUI textDamage, Player.Player player)
         {
             _config = config;
             _pointRotation = pointRotation;
             _canvas = canvas;
             _textDamage = textDamage;
+            _player = player;
             _attackMeleeView = new AttackMeleeView();
             _move = new Move();
             _weaponData = new WeaponData();
+
+            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
     }
 }

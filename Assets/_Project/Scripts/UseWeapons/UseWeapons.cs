@@ -46,6 +46,10 @@ namespace Assets._Project.Scripts.UseWeapons
             {
                 SetWeaponParent(WeaponTypes.WoodenAxePlayer);
             }
+            else if (weaponType.Equals(WeaponTypes.WoodenOnionPlayer))
+            {
+                SetWeaponParent(WeaponTypes.WoodenOnionPlayer);
+            }
         }
 
         public void ActiveSelfWeapon(bool value) =>

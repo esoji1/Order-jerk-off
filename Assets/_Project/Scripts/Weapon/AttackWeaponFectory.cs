@@ -1,4 +1,3 @@
-using Assets._Project.Scripts.Weapon.Attacks;
 using Assets._Project.Scripts.Weapon.Interface;
 using System;
 using UnityEngine;
@@ -26,7 +25,12 @@ namespace Assets._Project.Scripts.Weapon
             switch (_weapon)
             {
                 case IMeleeAttack:
-                    _baseWeapon = new MeleeAttack(_weapon, _raycastDirection);
+                    _baseWeapon = new Attacks.MeleeAttack(_weapon, _raycastDirection);
+                    break;
+
+                case IRangedAttack:
+                    Weapons.RangedAttack rangedAttack = _weapon as Weapons.RangedAttack;
+                    _baseWeapon = new Attacks.RangedAttack(rangedAttack, _raycastDirection);   
                     break;
 
                 default:

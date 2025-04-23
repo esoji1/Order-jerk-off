@@ -66,6 +66,10 @@ namespace Assets._Project.Sctipts.Inventory
                     {
                         _inventory.AddItemInCell(_itemData.WoodenAxeItem);
                     }
+                    else if (weaponItem.TypeItem == WeaponTypes.WoodenOnionPlayer)
+                    {
+                        _inventory.AddItemInCell(_itemData.WoodenOnionItem);
+                    }
                 }
             }
             else if (_currentCell.Item.Category == ItemCategory.Mining)

@@ -11,6 +11,8 @@ namespace Assets._Project.Scripts.Weapon
         [SerializeField] private PointAttack _pointAttack;
         [SerializeField] private Canvas _canvas;
         [SerializeField] private TextMeshProUGUI _textDamage;
+        [SerializeField] private Player.Player _player;
+        [SerializeField] private Projectile.Projectile _arrow;
 
         private WeaponFactory _factory;
         private Weapons.Weapon weapon;
@@ -21,7 +23,7 @@ namespace Assets._Project.Scripts.Weapon
 
         private void Awake()
         {
-            _factory = new WeaponFactory(_canvas, _textDamage);
+            _factory = new WeaponFactory(_canvas, _textDamage, _player, _arrow);
             _setWeaponPoint = new SetWeaponPoint();
         }
 
@@ -32,7 +34,7 @@ namespace Assets._Project.Scripts.Weapon
 
         private void SpawnStandartWeapon()
         {
-            weapon = _factory.Get(WeaponTypes.WoodenSwordPlayer, transform.position, _pointAttack.transform);
+            weapon = _factory.Get(WeaponTypes.WoodenOnionPlayer, transform.position, _pointAttack.transform);
             _setWeaponPoint.SetParent(weapon.transform, _pointWeapon);
             _setWeaponPoint.Set(weapon.transform);
         }

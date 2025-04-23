@@ -78,6 +78,16 @@ namespace Assets._Project.Sctipts.Inventory
                         _currentCell.Item = null;
                     }
                 }
+                else if (weaponItem.TypeItem == WeaponConfigs.WeaponOnionPlayerConfig.WeaponTypes)
+                {
+                    _player.Wallet.AddMoney(_currentCell.Item.Price);
+                    if (_currentCell.NumberItems <= 0)
+                    {
+                        _currentCell.SetIsCellBusy(false);
+                        Destroy(_currentCell.Item.gameObject);
+                        _currentCell.Item = null;
+                    }
+                }
                 else if (_currentCell.NumberItems <= 0)
                 {
                     _currentCell.SetIsCellBusy(false);

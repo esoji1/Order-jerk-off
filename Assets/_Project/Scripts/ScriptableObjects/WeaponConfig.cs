@@ -8,14 +8,11 @@ namespace Assets._Project.Scripts.ScriptableObjects.Configs
     {
         [field: SerializeField] public int MinDamage;
         [field: SerializeField] public int MaxDamage;
-        [field: SerializeField] public int Damage;
         [field: SerializeField] public Weapon.Weapons.Weapon Prefab;
-        [field: SerializeField] public int AttackSpeed;
+        [field: SerializeField] public float AttackSpeed;
         [field: SerializeField] public float RadiusAttack;
-        [field: SerializeField] public float AttackDistance;
         [field: SerializeField] public float ReturnInitialAttackPosition;
         [field: SerializeField] public LayerMask Layer;
-        [field: SerializeField] public float RaycastAttack;
         [field: SerializeField] public float VisibilityRadius;
         [field: SerializeField] public WeaponTypes WeaponTypes;
     }

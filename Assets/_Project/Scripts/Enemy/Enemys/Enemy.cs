@@ -74,7 +74,7 @@ namespace Assets._Project.Scripts.Enemy
             _healthView = Instantiate(_healthViewPrefab, transform.position, Quaternion.identity);
             _healthView.Initialize(this, _config.Health, _healthInfo, null);
 
-            _radiusMovementTrigger.Initialize(transform, PointRotation.transform, layer, transform, _config.Speed, _config.VisibilityRadius);
+            _radiusMovementTrigger.Initialize(transform, layer, transform, _config.Speed);
 
             _health.OnDie += Die;
         }
@@ -82,7 +82,7 @@ namespace Assets._Project.Scripts.Enemy
         private void Update()
         {
             _healthView.FollowTargetHealth();
-            _radiusMovementTrigger.MoveToTarget(_config.AttackRadius);
+            _radiusMovementTrigger.MoveToTarget(_config.AttackRadius, _config.VisibilityRadius);
             BaseWeapon.Attack();
         }
 

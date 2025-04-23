@@ -7,32 +7,28 @@ namespace Assets._Project.Sctipts.Core
     public class RadiusMovementTrigger : MonoBehaviour
     {
         private Transform _pointDetection;
-        private Transform _radiusSprite;
         private LayerMask _layer;
         private Transform _currentTransfomMove;
         private float _speed;
-        private float _visibilityRadius;
 
         private DetectionRadius _detectionRadius;
         private Move _move;
 
         private bool _isMove;
 
-        public void Initialize(Transform pointDetection, Transform radiusSprite, LayerMask layer, Transform currentTransfomMove, float speed, float radius)
+        public void Initialize(Transform pointDetection, LayerMask layer, Transform currentTransfomMove, float speed)
         {
             _pointDetection = pointDetection;
-            _radiusSprite = radiusSprite;
             _layer = layer;
             _currentTransfomMove = currentTransfomMove;
             _speed = speed;
-            _visibilityRadius = radius;
 
             InitializeInside();
         }
 
-        public void MoveToTarget(float attackRadius)
+        public void MoveToTarget(float attackRadius, float visibilityRadius)
         {
-            _detectionRadius.Detection(_visibilityRadius);
+            _detectionRadius.Detection(visibilityRadius);
 
             if (_detectionRadius.HasEnemies && _isMove)
             {
@@ -40,10 +36,7 @@ namespace Assets._Project.Sctipts.Core
                 float distance = Vector2.Distance(_currentTransfomMove.position, _detectionRadius.GetNearestEnemy().transform.position);
 
                 if (distance > attackRadius)
-                {
-                    _move.Rotation(_radiusSprite, _direction);
                     _move.MoveTarget(_detectionRadius.GetNearestEnemy().transform, _currentTransfomMove, _speed);
-                }
             }
         }
 
