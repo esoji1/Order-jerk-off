@@ -3,5 +3,7 @@
     public enum TypesGrasses
     {
         Normal = 0,
+        RedFlower,
+        BlueFlower
     }
 }

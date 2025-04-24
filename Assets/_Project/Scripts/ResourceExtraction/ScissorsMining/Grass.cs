@@ -3,8 +3,10 @@ using UnityEngine;
 
 namespace Assets._Project.Scripts.ResourceExtraction.ScissorsMining
 {
-    public abstract class Grass : MonoBehaviour
+    public class Grass : MonoBehaviour
     {
-        public abstract Enum GetItemType();
+        public TypesGrasses TypesGrasses;
+
+        public Enum GetItemType() => TypesGrasses;
     }
 }

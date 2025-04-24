@@ -95,7 +95,7 @@ namespace Assets._Project.Sctipts.ResourceExtraction
                         _baseMining.StartObtain();
 
                         Enum targetType = ore.GetItemType();
-                        foreach (BaseItem item in _itemData.Items)
+                        foreach (BaseItem item in _itemData.OreItems)
                             if (item.GetItemType().Equals(targetType))
                                 _inventory.AddItemInCell(item);
                     }

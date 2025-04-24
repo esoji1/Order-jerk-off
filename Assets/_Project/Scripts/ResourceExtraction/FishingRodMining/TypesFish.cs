@@ -3,6 +3,7 @@
     public enum TypesFish 
     {
         Carp = 0,
-        Perch
+        Perch,
+        Mackerel
     }
 }

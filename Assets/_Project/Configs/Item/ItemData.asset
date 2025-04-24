@@ -33,10 +33,26 @@ MonoBehaviour:
   - {fileID: 1814892152424458945, guid: a44a3d13753391e4e8b6e4b08853e8d2, type: 3}
   - {fileID: 6647833910563449875, guid: bb1d6cf3e47a1a14bbced55812c8c124, type: 3}
   - {fileID: 4491079388801751820, guid: 619ab93890da3734da3123dad3bed16e, type: 3}
+  - {fileID: 5875518255924871237, guid: 50d1c9cb486bee345899874e7d59a728, type: 3}
+  - {fileID: 6967535910018881431, guid: 4cc486655c7a7e043aa662c9ae244bb3, type: 3}
+  - {fileID: 7634357527481193883, guid: 9457e9dbdbb77d843b3a3fa8cd5abfbd, type: 3}
+  <WeaponItems>k__BackingField:
+  - {fileID: 4491079388801751820, guid: 619ab93890da3734da3123dad3bed16e, type: 3}
+  - {fileID: -8735090903098058742, guid: 3df611a187bf9cf469b63666f6b625e0, type: 3}
+  - {fileID: 3398061218366655883, guid: dd54e488ae1c2ce458c3e4bc0489f20d, type: 3}
+  <MiningItems>k__BackingField:
+  - {fileID: 5550623585402216597, guid: ccf2326c98f644a4ca6ab251dd346904, type: 3}
+  - {fileID: 7883121247641303904, guid: 69f2d50db6c25a340b7ae1e597c7566e, type: 3}
+  - {fileID: 6647833910563449875, guid: bb1d6cf3e47a1a14bbced55812c8c124, type: 3}
   <FishItems>k__BackingField:
   - {fileID: 4834641224689193922, guid: c5cb87cd0a026b34ca0c23efa7e4a17e, type: 3}
   - {fileID: 4545795417554702242, guid: b5118e303b60745449c08f9a23f4d2fb, type: 3}
+  - {fileID: 3826002595940787332, guid: 5c0bda9f7c7ff3d45a080ce7a609c073, type: 3}
   <OreItems>k__BackingField:
   - {fileID: 4601046106296165302, guid: 9cf719d04e076ce4aaa811f9be8f3477, type: 3}
+  - {fileID: 5875518255924871237, guid: 50d1c9cb486bee345899874e7d59a728, type: 3}
+  - {fileID: 2182497842507453036, guid: 04fc51f7551996f46a9b776ec860d4e7, type: 3}
   <GrassItems>k__BackingField:
   - {fileID: 1814892152424458945, guid: a44a3d13753391e4e8b6e4b08853e8d2, type: 3}
+  - {fileID: 6967535910018881431, guid: 4cc486655c7a7e043aa662c9ae244bb3, type: 3}
+  - {fileID: 7634357527481193883, guid: 9457e9dbdbb77d843b3a3fa8cd5abfbd, type: 3}

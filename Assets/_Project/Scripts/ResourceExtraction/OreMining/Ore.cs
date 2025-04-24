@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Assets._Project.Sctipts.ResourceExtraction.OreMining;
+using System;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.ResourceExtraction.OreMining
 {
-    public abstract class Ore : MonoBehaviour
+    public class Ore : MonoBehaviour
     {
-        public abstract Enum GetItemType();
+        public TypesOre TypesOre;
+
+        public Enum GetItemType() => TypesOre;
     }
 }
