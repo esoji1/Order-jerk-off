@@ -11,6 +11,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
         [SerializeField] private BuildingFactoryBootstrap _buildingFactoryBootstrap;
         [SerializeField] private BuildingArea buildingAreaInHouse;
         [SerializeField] private BuildingArea buildingAreaInShope;
+        [SerializeField] private Player.Player _player;
 
         [Header("Bottons")]
         [SerializeField] private Button _houseButton;
@@ -23,9 +24,9 @@ namespace Assets._Project.Scripts.ConstructionBuildings
         private void Start()
         {
             _buildingArea = buildingAreaInHouse;
-            Spawn(TypesBuildings.House);
+            Spawn(TypesBuildings.House, 0);
             _buildingArea = buildingAreaInShope;
-            Spawn(TypesBuildings.Shop);
+            Spawn(TypesBuildings.Shop, 0);
         }
 
         private void OnEnable()
@@ -57,7 +58,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
             if (IsTheZoneOccupied())
                 return;
 
-            Spawn(TypesBuildings.House);
+            Spawn(TypesBuildings.House, 0);
         }
 
         private void ShopButtonSpawn()
@@ -65,7 +66,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
             if (IsTheZoneOccupied())
                 return;
 
-            Spawn(TypesBuildings.Shop);
+            Spawn(TypesBuildings.Shop, 0);
         }
 
         private void AlchemyButtonSpawn()
@@ -73,13 +74,16 @@ namespace Assets._Project.Scripts.ConstructionBuildings
             if (IsTheZoneOccupied())
                 return;
 
-            Spawn(TypesBuildings.Alchemy);
+            Spawn(TypesBuildings.Alchemy, 20);
         }
 
         private bool IsTheZoneOccupied() => _buildingArea.IsZoneOccupied;
 
-        private void Spawn(TypesBuildings typesBuildings)
+        private void Spawn(TypesBuildings typesBuildings, int value)
         {
+            if (_player.Wallet.SubtractMoney(value) == false)
+                return;
+
             BaseBuilding baseBuilding = _buildingFactoryBootstrap.BuildingFactory.Get(typesBuildings, _buildingArea.transform.position);
 
             foreach (BaseBuilding building in _buildingList)
@@ -89,9 +93,11 @@ namespace Assets._Project.Scripts.ConstructionBuildings
                     Destroy(baseBuilding.gameObject);
                     _buildingArea.SetZoneOccupeid(false);
                     _buildingArea.SetBaseBuilding(null);
+                    _player.Wallet.AddMoney(value);
                     return;
                 }
             }
+
 
             _buildingList.Add(baseBuilding);
             _buildingArea.SetZoneOccupeid(true);
