@@ -26,7 +26,7 @@ namespace Assets._Project.Sctipts.Core
         }
 
         private void OpenGameplayScene() =>
-            SceneManager.LoadScene((int)TypeScene.GameplayScene);
+            SceneManager.LoadScene((int)TypesScene.GameplayScene);
 
         private void OpenSettingWindow() { }
 

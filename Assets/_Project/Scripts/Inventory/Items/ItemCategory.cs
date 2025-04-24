@@ -4,6 +4,7 @@
     {
         Weapon,
         Resource,
-        Mining
+        Mining,
+        Potions
     }
 }

@@ -28,7 +28,7 @@ namespace Assets._Project.Scripts.Inventory
                 Enum weaponItem = cell.Item.GetItemType();
                 ChangeTextForWeapon(weaponItem, cell);
             }
-            else if (cell.Item.Category == ItemCategory.Mining || cell.Item.Category == ItemCategory.Resource)
+            else if (cell.Item.Category == ItemCategory.Mining || cell.Item.Category == ItemCategory.Resource || cell.Item.Category == ItemCategory.Potions)
             {
                 ChangeTextForItem(cell);
             }

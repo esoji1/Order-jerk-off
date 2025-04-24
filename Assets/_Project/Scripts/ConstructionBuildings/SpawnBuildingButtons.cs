@@ -15,6 +15,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
         [Header("Bottons")]
         [SerializeField] private Button _houseButton;
         [SerializeField] private Button _shopButton;
+        [SerializeField] private Button _alchemyButton;
 
         private BuildingArea _buildingArea;
         private List<BaseBuilding> _buildingList = new();
@@ -33,6 +34,8 @@ namespace Assets._Project.Scripts.ConstructionBuildings
 
             _houseButton.onClick.AddListener(HouseButtonSpawn);
             _shopButton.onClick.AddListener(ShopButtonSpawn);
+            _alchemyButton.onClick.AddListener(AlchemyButtonSpawn);
+
         }
 
         private void OnDisable()
@@ -41,6 +44,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
 
             _houseButton.onClick.RemoveListener(HouseButtonSpawn);
             _shopButton.onClick.RemoveListener(ShopButtonSpawn);
+            _alchemyButton.onClick.RemoveListener(AlchemyButtonSpawn);
         }
 
         private void AssignSpawnZone(BuildingArea buildingArea)
@@ -62,6 +66,14 @@ namespace Assets._Project.Scripts.ConstructionBuildings
                 return;
 
             Spawn(TypesBuildings.Shop);
+        }
+
+        private void AlchemyButtonSpawn()
+        {
+            if (IsTheZoneOccupied())
+                return;
+
+            Spawn(TypesBuildings.Alchemy);
         }
 
         private bool IsTheZoneOccupied() => _buildingArea.IsZoneOccupied;

@@ -19,6 +19,7 @@ namespace Assets._Project.Sctipts.Inventory
         public bool IsAddItem;
 
         public event Action<Cell> OnClickedItem;
+        public event Action OnAddItem;
 
         public List<Cell> CellList => _cellList;
 
@@ -110,6 +111,7 @@ namespace Assets._Project.Sctipts.Inventory
         private void UpdateCellInNumberItems(Cell cell)
         {
             cell.AddNumberItems(1);
+            OnAddItem?.Invoke();
         }
     }
 }

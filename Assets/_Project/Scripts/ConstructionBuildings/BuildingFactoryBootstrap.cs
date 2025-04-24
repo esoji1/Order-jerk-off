@@ -8,8 +8,10 @@ namespace Assets._Project.Scripts.ConstructionBuildings
     {
         [SerializeField] private House _housePrefab;
         [SerializeField] private Shop _shopPrefab;
+        [SerializeField] private Alchemy _alchemyPrefab;
         [SerializeField] private GameObject _playerHomeMenuPrefab;
         [SerializeField] private GameObject _playerShopMenuPrefab;
+        [SerializeField] private GameObject _playerAlchemyMenuPrefab;
         [SerializeField] private Canvas _staticCanvas;
         [SerializeField] private Player.Player _player;
         [SerializeField] private UseWeapons.UseWeapons _useWeapons;
@@ -22,7 +24,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
 
         private void Awake()
         {
-            _buildingFactory = new BuildingFactory(_housePrefab, _shopPrefab, _playerHomeMenuPrefab, _playerShopMenuPrefab, 
+            _buildingFactory = new BuildingFactory(_housePrefab, _shopPrefab, _alchemyPrefab, _playerHomeMenuPrefab, _playerShopMenuPrefab, _playerAlchemyMenuPrefab, 
                 _staticCanvas, _player, _useWeapons, _inventory, _inventoryActive);
         }
     }

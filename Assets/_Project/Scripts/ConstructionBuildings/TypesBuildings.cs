@@ -4,5 +4,6 @@
     {
         House = 0,
         Shop,
+        Alchemy
     }
 }
