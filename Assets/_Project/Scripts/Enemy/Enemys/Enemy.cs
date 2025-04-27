@@ -2,14 +2,17 @@ using Assets._Project.Scripts.Core;
 using Assets._Project.Scripts.Core.HealthSystem;
 using Assets._Project.Scripts.Core.Interface;
 using Assets._Project.Scripts.Core.Spawns;
+using Assets._Project.Scripts.Enemy.MovePoints;
 using Assets._Project.Scripts.ScriptableObjects.Configs;
 using Assets._Project.Scripts.Weapon;
-using Assets._Project.Scripts.Weapon.Interface;
 using Assets._Project.Sctipts.Core;
 using Assets._Project.Sctipts.Core.HealthSystem;
 using Assets._Project.Sctipts.Core.Spawns;
 using System;
+using System.Collections.Generic;
+using UnityEditor.Splines;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Assets._Project.Scripts.Enemy
 {
@@ -17,11 +20,8 @@ namespace Assets._Project.Scripts.Enemy
     public abstract class Enemy : MonoBehaviour, IDamage, IOnDamage
     {
         protected WeaponFactoryBootstrap WeaponFactoryBootstrap;
-        protected PointAttack PointAttack;
         protected SetWeaponPoint SetWeaponPoint;
         protected PointRotation PointRotation;
-
-        protected abstract IBaseWeapon BaseWeapon { get; }
 
         private EnemyConfig _config;
         private BattleZone _battleZone;
@@ -31,43 +31,89 @@ namespace Assets._Project.Scripts.Enemy
         private HealthView _healthViewPrefab;
         private Canvas _dynamic;
         private LayerMask _layer;
+        private List<Transform> _points;
 
         private PointExperience _pointExperience;
         private PointHealth _pointHealth;
         private PointCoin _pointCoin;
         private RadiusMovementTrigger _radiusMovementTrigger;
+        private NavMeshAgent _agent;
+        private EnemyView _enemyView;
+        private Rigidbody2D _rigidbody2D;
 
         private Health _health;
         private SpawnExperience _spawnExperience;
         private SpawnCoin _spawnCoin;
         private HealthInfo _healthInfo;
         private HealthView _healthView;
+        private IMovePoints _movePoints;
+
+        private Vector3 _previousPosition;
+        private Vector3 _smoothedDirection;
 
         public event Action<int> OnDamage;
 
-        public BattleZone BattleZone => _battleZone;
         public PointHealth PointHealth => _pointHealth;
         public EnemyConfig Config => _config;
         public LayerMask LayerMask => _layer;
 
-        public virtual void Initialize(EnemyConfig config, BattleZone battleZone, SelectionGags.Experience prefabExperience, SelectionGags.Coin prefabCoin,
-            HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, WeaponFactoryBootstrap weaponFactoryBootstrap)
+        private void Update()
+        {
+            Vector3 currentDirection = (transform.position - _previousPosition).normalized;
+
+            _previousPosition = transform.position;
+
+            _smoothedDirection = Vector3.Lerp(_smoothedDirection, currentDirection, Time.deltaTime * 10f);
+
+            _enemyView.Animator.SetFloat("Horizontal", _smoothedDirection.x);
+            _enemyView.Animator.SetFloat("Vertical", _smoothedDirection.y);
+
+            _healthView.FollowTargetHealth();
+
+            if (_radiusMovementTrigger.MoveToTarget(_config.AttackRadius, _config.VisibilityRadius))
+            {
+                _agent.isStopped = true;
+                return;
+            }
+
+            _movePoints.MovePoints();
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if (other.gameObject.TryGetComponent(out Enemy _) &&
+                _radiusMovementTrigger.MoveToTarget(_config.AttackRadius, _config.VisibilityRadius) == false)
+            {
+                _agent.ResetPath();
+            }
+        }
+
+        public virtual void Initialize(EnemyConfig config, SelectionGags.Experience prefabExperience, SelectionGags.Coin prefabCoin,
+            HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, List<Transform> points)
         {
             ExtractComponents();
 
             _config = config;
-            _battleZone = battleZone;
             _prefabExperience = prefabExperience;
             _prefabCoin = prefabCoin;
             _healthInfoPrefab = healthInfoPrefab;
             _healthViewPrefab = healthViewPrefab;
             _dynamic = dynamic;
             _layer = layer;
-            WeaponFactoryBootstrap = weaponFactoryBootstrap;
+            _points = points;
+
+            _agent.updateRotation = false;
+            _agent.updateUpAxis = false;
+            _agent.speed = _config.Speed;
+
+            _movePoints = new RandomMovePoints(_points, _agent);
+
             _health = new Health(_config.Health);
             _spawnExperience = new SpawnExperience(_prefabExperience, _config.AmountExperienceDropped);
             _spawnCoin = new SpawnCoin(_prefabCoin, _config.AmountGoldDropped);
             SetWeaponPoint = new SetWeaponPoint();
+
+            _enemyView.Initialize();
 
             _healthInfo = Instantiate(_healthInfoPrefab, transform.position, Quaternion.identity);
             _healthInfo.Initialize(_dynamic);
@@ -79,27 +125,10 @@ namespace Assets._Project.Scripts.Enemy
             _health.OnDie += Die;
         }
 
-        private void Update()
-        {
-            _healthView.FollowTargetHealth();
-            _radiusMovementTrigger.MoveToTarget(_config.AttackRadius, _config.VisibilityRadius);
-            BaseWeapon.Attack();
-        }
-
         public void Damage(int damage)
         {
             _health.TakeDamage(damage);
             OnDamage?.Invoke(damage);
-        }
-
-        private void ExtractComponents()
-        {
-            _pointExperience = GetComponentInChildren<PointExperience>();
-            _pointCoin = GetComponentInChildren<PointCoin>();
-            _pointHealth = GetComponentInChildren<PointHealth>();
-            PointAttack = GetComponentInChildren<PointAttack>();
-            _radiusMovementTrigger = GetComponent<RadiusMovementTrigger>();
-            PointRotation = GetComponentInChildren<PointRotation>();
         }
 
         public void Die()
@@ -119,6 +148,18 @@ namespace Assets._Project.Scripts.Enemy
             Destroy(_healthInfo.InstantiatedHealthBar.gameObject);
             Destroy(_healthInfo.gameObject);
             Destroy(_healthView.gameObject);
+        }
+
+        private void ExtractComponents()
+        {
+            _pointExperience = GetComponentInChildren<PointExperience>();
+            _pointCoin = GetComponentInChildren<PointCoin>();
+            _pointHealth = GetComponentInChildren<PointHealth>();
+            _radiusMovementTrigger = GetComponent<RadiusMovementTrigger>();
+            PointRotation = GetComponentInChildren<PointRotation>();
+            _agent = GetComponent<NavMeshAgent>();
+            _enemyView = GetComponentInChildren<EnemyView>();
+            _rigidbody2D = GetComponent<Rigidbody2D>();
         }
     }
 }

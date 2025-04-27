@@ -26,7 +26,7 @@ namespace Assets._Project.Sctipts.Core
             InitializeInside();
         }
 
-        public void MoveToTarget(float attackRadius, float visibilityRadius)
+        public bool MoveToTarget(float attackRadius, float visibilityRadius)
         {
             _detectionRadius.Detection(visibilityRadius);
 
@@ -36,8 +36,16 @@ namespace Assets._Project.Sctipts.Core
                 float distance = Vector2.Distance(_currentTransfomMove.position, _detectionRadius.GetNearestEnemy().transform.position);
 
                 if (distance > attackRadius)
+                {
                     _move.MoveTarget(_detectionRadius.GetNearestEnemy().transform, _currentTransfomMove, _speed);
+                    return true;
+                }
+                else if (distance < visibilityRadius)
+                {
+                    return true;
+                }
             }
+            return false;
         }
 
         public void StartRadiusMovement() => _isMove = true;

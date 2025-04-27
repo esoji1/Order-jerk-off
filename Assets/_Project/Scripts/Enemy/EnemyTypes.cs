@@ -2,7 +2,7 @@
 {
     public enum EnemyTypes
     {
-        CommonEnemy = 0,
-        HeavyCommonEnemy
+        PlantPredator = 0,
+        Slime
     }
 }

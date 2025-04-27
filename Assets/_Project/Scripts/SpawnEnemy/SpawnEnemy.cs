@@ -14,6 +14,7 @@ public class SpawnEnemy : MonoBehaviour
     [SerializeField] private List<Enemy> _enemy;
     [SerializeField] private EnemyFactoryBootstrap _enemyFactoryBootstrap;
     [SerializeField] private Experience _experiencePrefab;
+    [SerializeField] private List<Transform> _points;
 
     private SpawnExperience _spawnExperience;
 
@@ -77,7 +78,7 @@ public class SpawnEnemy : MonoBehaviour
     private void SpawnEnemyLogic()
     {
         EnemyTypes enemyType = (EnemyTypes)Random.Range(0, _enemys.GetEnemys.Count);
-        Enemy newEnemy = _enemyFactoryBootstrap.EnemyFactory.Get(enemyType, transform.position);
+        Enemy newEnemy = _enemyFactoryBootstrap.EnemyFactory.Get(enemyType, transform.position, _points);
 
         if (newEnemy != null)
             _enemy.Add(newEnemy);

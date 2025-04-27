@@ -8,7 +8,7 @@ namespace Assets._Project.Sctipts.Core
     {
         [SerializeField] private AdaptingColliderResolution _adaptingColliderResolution;
 
-        private float _forward = 10f;
+        private float _forward = 13f;
         private float _back = 22f;
 
         private float _addPositionPlayer = 2.2f;

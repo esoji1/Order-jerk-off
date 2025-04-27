@@ -7,40 +7,22 @@ namespace Assets._Project.Scripts.Enemy
 {
     public class EnemyFactoryBootstrap : MonoBehaviour
     {
-        [SerializeField] private EnemyConfig _commonEnemyConfig, _heavyCommonConfig;
-        [SerializeField] private BattleZone _battleZone;
+        [SerializeField] private EnemyConfig _plantPredator, _slime;
         [SerializeField] private SelectionGags.Experience _experience;
         [SerializeField] private SelectionGags.Coin _coin;
         [SerializeField] private HealthInfo _healthInfoPrefab;
         [SerializeField] private HealthView _healthViewPrefab;
         [SerializeField] private Canvas _dynamic;
         [SerializeField] private LayerMask _layer;
-        [SerializeField] private WeaponFactoryBootstrap _weaponFactoryBootstrap;
 
         private EnemyFactory _enemyFactory;
-
-        public bool IsSpawn;
-        public bool IsSpawn2;
 
         public EnemyFactory EnemyFactory => _enemyFactory;
 
         private void Awake()
         {
-            _enemyFactory  = new EnemyFactory(_commonEnemyConfig, _heavyCommonConfig, _battleZone, _experience, _coin, _healthInfoPrefab, 
-                _healthViewPrefab, _dynamic, _layer, _weaponFactoryBootstrap);
-        }
-
-        private void Update()
-        {
-            if(IsSpawn == false)
-            {
-                _enemyFactory.Get(EnemyTypes.CommonEnemy, transform.position);
-                IsSpawn = true;
-            }  if(IsSpawn2 == false)
-            {
-                _enemyFactory.Get(EnemyTypes.HeavyCommonEnemy, transform.position);
-                IsSpawn2 = true;
-            }
+            _enemyFactory  = new EnemyFactory(_plantPredator, _slime, _experience, _coin, _healthInfoPrefab, 
+                _healthViewPrefab, _dynamic, _layer);
         }
     }
 }

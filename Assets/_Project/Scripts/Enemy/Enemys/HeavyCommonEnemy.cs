@@ -9,23 +9,23 @@ namespace Assets._Project.Scripts.Enemy.Enemys
 {
     public class HeavyCommonEnemy : Enemy
     {
-        private IBaseWeapon _baseWeapon;
+        //private IBaseWeapon _baseWeapon;
 
-        protected override IBaseWeapon BaseWeapon => _baseWeapon;
+        //protected override IBaseWeapon BaseWeapon => _baseWeapon;
 
-        public override void Initialize(EnemyConfig config, BattleZone battleZone, Experience prefabExperience, Coin prefabCoin, HealthInfo healthInfoPrefab,
-            HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, WeaponFactoryBootstrap weaponFactoryBootstrap)
-        {
-            base.Initialize(config, battleZone, prefabExperience, prefabCoin, healthInfoPrefab, healthViewPrefab, dynamic, layer, weaponFactoryBootstrap);
+        //public override void Initialize(EnemyConfig config, BattleZone battleZone, Experience prefabExperience, Coin prefabCoin, HealthInfo healthInfoPrefab,
+        //    HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, WeaponFactoryBootstrap weaponFactoryBootstrap)
+        //{
+        //    base.Initialize(config, battleZone, prefabExperience, prefabCoin, healthInfoPrefab, healthViewPrefab, dynamic, layer, weaponFactoryBootstrap);
 
-            Weapon.Weapons.Weapon weapon = WeaponFactoryBootstrap.Factory.Get(WeaponTypes.WoodenAxeEnemy, transform.position, PointAttack.transform);
+        //    Weapon.Weapons.Weapon weapon = WeaponFactoryBootstrap.Factory.Get(WeaponTypes.WoodenAxeEnemy, transform.position, PointAttack.transform);
 
-            AttackWeaponFectory attackWeaponFectory = weapon.GetComponentInChildren<AttackWeaponFectory>();
-            attackWeaponFectory.Initialize(PointRotation.transform);
-            _baseWeapon = attackWeaponFectory.BaseWeapon;
+        //    AttackWeaponFectory attackWeaponFectory = weapon.GetComponentInChildren<AttackWeaponFectory>();
+        //    attackWeaponFectory.Initialize(PointRotation.transform);
+        //    _baseWeapon = attackWeaponFectory.BaseWeapon;
 
-            SetWeaponPoint.SetParent(attackWeaponFectory.transform, PointAttack.transform);
-            SetWeaponPoint.Set(attackWeaponFectory.transform);
-        }
+        //    SetWeaponPoint.SetParent(attackWeaponFectory.transform, PointAttack.transform);
+        //    SetWeaponPoint.Set(attackWeaponFectory.transform);
+        //}
     }
 }
