@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eed8593984ee607458aff12c72bd43f4, type: 3}
   m_Name: WoodenSwordConfig
   m_EditorClassIdentifier: 
-  MinDamage: 5
+  MinDamage: 10
   MaxDamage: 10
   Prefab: {fileID: 2045288444892460180, guid: 02cea876772d83f408a4544b0606dd6f, type: 3}
   AttackSpeed: 20

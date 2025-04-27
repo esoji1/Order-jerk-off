@@ -13,7 +13,7 @@ namespace Assets._Project.Scripts.Potions
         [SerializeField] private Sctipts.Inventory.Inventory _inventory;
         [SerializeField] private TextMeshProUGUI _textNumberHilokas;
 
-        private int _numberHilokas;
+        private bool _isHealingPotions;
 
         private void Start()
         {
@@ -34,7 +34,9 @@ namespace Assets._Project.Scripts.Potions
 
         private void Use()
         {
-            if (_numberHilokas <= 0)
+            CheckItemInInventory();
+
+            if (_isHealingPotions == false)
                 return;
 
             int currentHealth = _player.Health.HealthValue;
@@ -51,8 +53,7 @@ namespace Assets._Project.Scripts.Potions
                     {
                         if (cell.Item.GetItemType().Equals(TypesPotion.Hilka))
                         {
-                            cell.SubtractNumberItems(1); 
-                            --_numberHilokas;
+                            cell.SubtractNumberItems(1);
                             _textNumberHilokas.text = cell.NumberItems.ToString();
                             if (cell.NumberItems <= 0)
                             {
@@ -74,9 +75,24 @@ namespace Assets._Project.Scripts.Potions
                 {
                     if (cell.Item.GetItemType().Equals(TypesPotion.Hilka))
                     {
-                        _numberHilokas = cell.NumberItems;
                         _textNumberHilokas.text = cell.NumberItems.ToString();
                     }
+                }
+            }
+        }
+
+        private void CheckItemInInventory()
+        {
+            for (int i = 0; i < _inventory.CellList.Count; i++)
+            {
+                if (_inventory.CellList[i].Item == null)
+                {
+                    _isHealingPotions = false;
+                }
+                else if (_inventory.CellList[i].Item.GetItemType().Equals(TypesPotion.Hilka))
+                {
+                    _isHealingPotions = true;
+                    break;
                 }
             }
         }
