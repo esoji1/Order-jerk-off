@@ -9,8 +9,8 @@ using Assets._Project.Sctipts.Core;
 using Assets._Project.Sctipts.Core.HealthSystem;
 using Assets._Project.Sctipts.Core.Spawns;
 using System;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Splines;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -24,7 +24,6 @@ namespace Assets._Project.Scripts.Enemy
         protected PointRotation PointRotation;
 
         private EnemyConfig _config;
-        private BattleZone _battleZone;
         private SelectionGags.Experience _prefabExperience;
         private SelectionGags.Coin _prefabCoin;
         private HealthInfo _healthInfoPrefab;
@@ -39,7 +38,7 @@ namespace Assets._Project.Scripts.Enemy
         private RadiusMovementTrigger _radiusMovementTrigger;
         private NavMeshAgent _agent;
         private EnemyView _enemyView;
-        private Rigidbody2D _rigidbody2D;
+        private BoxCollider2D _boxCollider2D;
 
         private Health _health;
         private SpawnExperience _spawnExperience;
@@ -50,6 +49,10 @@ namespace Assets._Project.Scripts.Enemy
 
         private Vector3 _previousPosition;
         private Vector3 _smoothedDirection;
+        private Coroutine _coroutine;
+        private bool _isDie;
+        private bool _isAttack;
+        private Player.Player _player;
 
         public event Action<int> OnDamage;
 
@@ -59,24 +62,12 @@ namespace Assets._Project.Scripts.Enemy
 
         private void Update()
         {
-            Vector3 currentDirection = (transform.position - _previousPosition).normalized;
-
-            _previousPosition = transform.position;
-
-            _smoothedDirection = Vector3.Lerp(_smoothedDirection, currentDirection, Time.deltaTime * 10f);
-
-            _enemyView.Animator.SetFloat("Horizontal", _smoothedDirection.x);
-            _enemyView.Animator.SetFloat("Vertical", _smoothedDirection.y);
+            if (_isDie)
+                return;
 
             _healthView.FollowTargetHealth();
 
-            if (_radiusMovementTrigger.MoveToTarget(_config.AttackRadius, _config.VisibilityRadius))
-            {
-                _agent.isStopped = true;
-                return;
-            }
-
-            _movePoints.MovePoints();
+            Move();
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -135,19 +126,115 @@ namespace Assets._Project.Scripts.Enemy
         {
             _spawnExperience.Spawn(_pointExperience.transform);
             _spawnCoin.Spawn(_pointCoin.transform);
+            _isDie = true;
+            _enemyView.StartDie();
+            _boxCollider2D.enabled = false;
 
             _health.OnDie -= Die;
-            Destroy(_healthInfo.InstantiatedHealthBar.gameObject);
-            Destroy(_healthInfo.gameObject);
-            Destroy(_healthView.gameObject);
-            Destroy(gameObject);
+
+            DieHp();
+            Destroy(gameObject, 5f);
         }
 
         public void DieHp()
         {
-            Destroy(_healthInfo.InstantiatedHealthBar.gameObject);
-            Destroy(_healthInfo.gameObject);
-            Destroy(_healthView.gameObject);
+            if (_healthInfo != null || _healthInfo != null || _healthView != null)
+            {
+                Destroy(_healthInfo.InstantiatedHealthBar.gameObject);
+                Destroy(_healthInfo.gameObject);
+                Destroy(_healthView.gameObject);
+            }
+        }
+
+        public void StartAttackIfNeeded()
+        {
+            if (_coroutine == null)
+            {
+                _isAttack = true;
+                _coroutine = StartCoroutine(Attack());
+            }
+        }
+
+        private void StopAttackIfNeeded()
+        {
+            if (_coroutine != null)
+            {
+                _isAttack = false;
+                _enemyView.StopAttack();
+                StopCoroutine(_coroutine);
+                _coroutine = null;
+            }
+        }
+
+        private IEnumerator Attack()
+        {
+            while (_isAttack && _isDie == false)
+            {
+                if (CheckAttackHitRadius())
+                {
+                    _enemyView.StartAttack();
+
+                    float attackAnimationTime = _enemyView.Animator.GetCurrentAnimatorStateInfo(0).length;
+                    yield return new WaitForSeconds(attackAnimationTime);
+                    DamageTarget();
+                    _enemyView.StopAttack();
+
+                    yield return new WaitForSeconds(1);
+                }
+                else
+                {
+                    StopAttackIfNeeded();
+                }
+            }
+        }
+
+        private bool CheckAttackHitRadius()
+        {
+            Collider2D[] collider2D = Physics2D.OverlapCircleAll(transform.position, _config.AttackRadius, _layer);
+
+            foreach (Collider2D collider in collider2D)
+            {
+                if (collider.TryGetComponent(out Player.Player player))
+                {
+                    _player = player;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private void DamageTarget()
+        {
+            if (_player == null)
+                return;
+
+            _player.Damage(_config.Damage);
+        }
+
+        private void Move()
+        {
+            Vector3 currentDirection = (transform.position - _previousPosition).normalized;
+
+            _previousPosition = transform.position;
+
+            _smoothedDirection = Vector3.Lerp(_smoothedDirection, currentDirection, Time.deltaTime * 10f);
+
+            _enemyView.UpdateRunX(_smoothedDirection.x);
+            _enemyView.UpdateRunY(_smoothedDirection.y);
+
+            if (CheckAttackHitRadius())
+            {
+                StartAttackIfNeeded();
+            }
+
+            if (_radiusMovementTrigger.MoveToTarget(_config.AttackRadius, _config.VisibilityRadius))
+            {
+                _agent.isStopped = true;
+                return;
+            }
+
+            _movePoints.MovePoints();
         }
 
         private void ExtractComponents()
@@ -159,7 +246,7 @@ namespace Assets._Project.Scripts.Enemy
             PointRotation = GetComponentInChildren<PointRotation>();
             _agent = GetComponent<NavMeshAgent>();
             _enemyView = GetComponentInChildren<EnemyView>();
-            _rigidbody2D = GetComponent<Rigidbody2D>();
+            _boxCollider2D = GetComponent<BoxCollider2D>();
         }
     }
 }

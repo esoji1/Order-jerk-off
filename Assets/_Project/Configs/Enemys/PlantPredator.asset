@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: PlantPredator
   m_EditorClassIdentifier: 
   Prefab: {fileID: 6645060693120122346, guid: aa31a30fc87af0c4ebb6f4e7cef58b67, type: 3}
-  Health: 50
+  Health: 80
   Speed: 1
-  AttackRadius: 0.5
+  AttackRadius: 0.35
   VisibilityRadius: 1
-  AmountExperienceDropped: 10
-  AmountGoldDropped: 15
+  AmountExperienceDropped: 25
+  AmountGoldDropped: 25
+  Damage: 10

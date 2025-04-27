@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Slime
   m_EditorClassIdentifier: 
   Prefab: {fileID: 9024555812715414904, guid: 8c301c09cd093aa4d9776e26cf283ca1, type: 3}
-  Health: 80
+  Health: 50
   Speed: 1
-  AttackRadius: 0.3
+  AttackRadius: 0.35
   VisibilityRadius: 1
-  AmountExperienceDropped: 25
-  AmountGoldDropped: 30
+  AmountExperienceDropped: 10
+  AmountGoldDropped: 10
+  Damage: 5

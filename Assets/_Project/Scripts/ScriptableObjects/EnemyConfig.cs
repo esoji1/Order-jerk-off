@@ -12,5 +12,6 @@ namespace Assets._Project.Scripts.ScriptableObjects.Configs
         [field: SerializeField] public float VisibilityRadius;
         [field: SerializeField] public int AmountExperienceDropped;
         [field: SerializeField] public int AmountGoldDropped;
+        [SerializeField] public int Damage;
     }
 }
