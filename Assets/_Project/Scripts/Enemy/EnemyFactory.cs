@@ -17,9 +17,10 @@ namespace Assets._Project.Scripts.Enemy
         private HealthView _healthViewPrefab;
         private Canvas _dynamic;
         private LayerMask _layer;
+        private Transform _mainBuildingPoint;
 
         public EnemyFactory(EnemyConfig plantPredator, EnemyConfig slime, SelectionGags.Experience experience, SelectionGags.Coin coin, 
-            HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas dynamic, LayerMask layer)
+            HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, Transform mainBuildingPoint)
         {
             _plantPredator = plantPredator;
             _slime = slime;
@@ -29,13 +30,14 @@ namespace Assets._Project.Scripts.Enemy
             _healthViewPrefab = healthViewPrefab;
             _dynamic = dynamic;
             _layer = layer;
+            _mainBuildingPoint = mainBuildingPoint;
         }
 
-        public Enemy Get(EnemyTypes enemyType, Vector3 position, List<Transform> points)
+        public Enemy Get(EnemyTypes enemyType, Vector3 position, List<Transform> points, bool _isMoveRandomPoints)
         {
             EnemyConfig config = GetConfigBy(enemyType);
             Enemy instance = UnityEngine.Object.Instantiate(config.Prefab, position, Quaternion.identity, null);
-            Enemy baseEnemy = InitializeObject(instance, config, points);
+            Enemy baseEnemy = InitializeObject(instance, config, points, _isMoveRandomPoints);
             return baseEnemy;
         }
 
@@ -54,11 +56,11 @@ namespace Assets._Project.Scripts.Enemy
             }
         }
 
-        private Enemy InitializeObject(Enemy instance, EnemyConfig config, List<Transform> points)
+        private Enemy InitializeObject(Enemy instance, EnemyConfig config, List<Transform> points, bool _isMoveRandomPoints)
         {
-            if (instance is CommonEnemy || instance is HeavyCommonEnemy)
+            if (instance is PlantPredatorEnemy || instance is SlimeEnemy)
             {
-                instance.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points);
+                instance.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points, _isMoveRandomPoints, _mainBuildingPoint);
 
                 return instance;
             }

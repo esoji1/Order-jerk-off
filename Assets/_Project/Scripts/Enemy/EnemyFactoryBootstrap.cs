@@ -1,5 +1,4 @@
 ﻿using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Scripts.Weapon;
 using Assets._Project.Sctipts.Core.HealthSystem;
 using UnityEngine;
 
@@ -14,6 +13,7 @@ namespace Assets._Project.Scripts.Enemy
         [SerializeField] private HealthView _healthViewPrefab;
         [SerializeField] private Canvas _dynamic;
         [SerializeField] private LayerMask _layer;
+        [SerializeField] private Transform _mainBuildingPoint;
 
         private EnemyFactory _enemyFactory;
 
@@ -22,7 +22,7 @@ namespace Assets._Project.Scripts.Enemy
         private void Awake()
         {
             _enemyFactory  = new EnemyFactory(_plantPredator, _slime, _experience, _coin, _healthInfoPrefab, 
-                _healthViewPrefab, _dynamic, _layer);
+                _healthViewPrefab, _dynamic, _layer, _mainBuildingPoint);
         }
     }
 }

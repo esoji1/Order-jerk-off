@@ -1,4 +1,5 @@
 ﻿using Assets._Project.Scripts.Core;
+using Assets._Project.Scripts.Core.Interface;
 using DG.Tweening;
 using System;
 using UnityEngine;
@@ -6,16 +7,19 @@ using UnityEngine.UI;
 
 namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
 {
-    public abstract class BaseBuilding : MonoBehaviour
+    public abstract class BaseBuilding : MonoBehaviour, IDamage
     {
         private GameObject _window;
         private Canvas _staticCanvas;
         private Player.Player _player;
 
-        private SpriteRenderer _spriteRenderer;
-        private Type _type;
-        private Button _exit;
+        private Health _health;
 
+        private SpriteRenderer _spriteRenderer;
+        private Button _exit;
+        private Type _type;
+
+        private BuildingArea _buildingArea;
         private Tween _tween;
 
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
@@ -28,6 +32,8 @@ namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
             _window = window;
             _staticCanvas = staticCanvas;
             _player = player;
+            _health = new Health(50);
+
             _window = Instantiate(window, _staticCanvas.transform);
             _window.SetActive(false);
 
@@ -36,7 +42,10 @@ namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
             _type = GetType();
 
             _exit.onClick.AddListener(Hide);
+            _health.OnDie += Die;
         }
+
+        public void SetBuildingArea(BuildingArea buildingArea) => _buildingArea = buildingArea;
 
         public void Show()
         {
@@ -53,11 +62,21 @@ namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
             _window.transform.localScale = new Vector3(0, 0,0);
         }
 
+        public void Damage(int damage) => _health.TakeDamage(damage);
+
+        private void Die()
+        {
+            _buildingArea.SetZoneOccupeid(false);
+            _buildingArea.SetBaseBuilding(null);
+            Destroy(_window);
+            _tween.Kill();
+            Destroy(gameObject);
+        }
+
         private void OnDestroy()
         {
             _exit.onClick.RemoveListener(Hide);
-            Destroy(_window);
-            _tween.Kill();
+            _health.OnDie -= Die;
         }
     }
 }

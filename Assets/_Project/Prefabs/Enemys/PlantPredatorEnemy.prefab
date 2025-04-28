@@ -269,6 +269,8 @@ GameObject:
   - component: {fileID: 765776548785433995}
   - component: {fileID: 6885274442394750490}
   - component: {fileID: 6645060693120122346}
+  - component: {fileID: 7002861314984181650}
+  - component: {fileID: 2389288668811779051}
   m_Layer: 7
   m_Name: PlantPredatorEnemy
   m_TagString: Untagged
@@ -410,6 +412,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 173904de0b0f0344a8bbb3a57d91cb9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7002861314984181650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965413335520476869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8262a70fc864fc42a377988a65fc593, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2389288668811779051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4965413335520476869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad3920970f36d5542874a4a554074f55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8658544842590922409

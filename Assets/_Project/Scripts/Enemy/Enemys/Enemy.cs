@@ -1,3 +1,4 @@
+using Assets._Project.Scripts.ConstructionBuildings.Buildings;
 using Assets._Project.Scripts.Core;
 using Assets._Project.Scripts.Core.HealthSystem;
 using Assets._Project.Scripts.Core.Interface;
@@ -31,6 +32,8 @@ namespace Assets._Project.Scripts.Enemy
         private Canvas _dynamic;
         private LayerMask _layer;
         private List<Transform> _points;
+        private bool _isMoveRandomPoints;
+        private Transform _mainBuildingPoint;
 
         private PointExperience _pointExperience;
         private PointHealth _pointHealth;
@@ -45,14 +48,15 @@ namespace Assets._Project.Scripts.Enemy
         private SpawnCoin _spawnCoin;
         private HealthInfo _healthInfo;
         private HealthView _healthView;
-        private IMovePoints _movePoints;
+        private RandomMovePoints _movePointsRandom;
+        private MoveToPoint _moveToPoint;
 
         private Vector3 _previousPosition;
         private Vector3 _smoothedDirection;
         private Coroutine _coroutine;
         private bool _isDie;
         private bool _isAttack;
-        private Player.Player _player;
+        private Collider2D _targetDamage;
 
         public event Action<int> OnDamage;
 
@@ -70,17 +74,17 @@ namespace Assets._Project.Scripts.Enemy
             Move();
         }
 
-        private void OnCollisionEnter2D(Collision2D other)
-        {
-            if (other.gameObject.TryGetComponent(out Enemy _) &&
-                _radiusMovementTrigger.MoveToTarget(_config.AttackRadius, _config.VisibilityRadius) == false)
-            {
-                _agent.ResetPath();
-            }
-        }
+        //private void OnCollisionEnter2D(Collision2D other)
+        //{
+        //    if (other.gameObject.TryGetComponent(out Enemy _) &&
+        //        _radiusMovementTrigger.MoveToTarget(_config.AttackRadius, _config.VisibilityRadius) == false)
+        //    {
+        //        _agent.ResetPath();
+        //    }
+        //}
 
         public virtual void Initialize(EnemyConfig config, SelectionGags.Experience prefabExperience, SelectionGags.Coin prefabCoin,
-            HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, List<Transform> points)
+            HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, List<Transform> points, bool isMoveRandomPoints, Transform mainBuildingPoint)
         {
             ExtractComponents();
 
@@ -92,12 +96,15 @@ namespace Assets._Project.Scripts.Enemy
             _dynamic = dynamic;
             _layer = layer;
             _points = points;
+            _isMoveRandomPoints = isMoveRandomPoints;
+            _mainBuildingPoint = mainBuildingPoint;
 
             _agent.updateRotation = false;
             _agent.updateUpAxis = false;
             _agent.speed = _config.Speed;
 
-            _movePoints = new RandomMovePoints(_points, _agent);
+            _movePointsRandom.Initialize(_points, _agent);
+            _moveToPoint.Initialize(_mainBuildingPoint, _agent);
 
             _health = new Health(_config.Health);
             _spawnExperience = new SpawnExperience(_prefabExperience, _config.AmountExperienceDropped);
@@ -176,7 +183,10 @@ namespace Assets._Project.Scripts.Enemy
 
                     float attackAnimationTime = _enemyView.Animator.GetCurrentAnimatorStateInfo(0).length;
                     yield return new WaitForSeconds(attackAnimationTime);
-                    DamageTarget();
+
+                    if (CheckAttackHitRadius())
+                        DamageTarget();
+
                     _enemyView.StopAttack();
 
                     yield return new WaitForSeconds(1);
@@ -194,9 +204,9 @@ namespace Assets._Project.Scripts.Enemy
 
             foreach (Collider2D collider in collider2D)
             {
-                if (collider.TryGetComponent(out Player.Player player))
+                if (collider.TryGetComponent(out Player.Player _) || collider.TryGetComponent(out BaseBuilding _))
                 {
-                    _player = player;
+                    _targetDamage = collider;
                     return true;
                 }
             }
@@ -206,10 +216,10 @@ namespace Assets._Project.Scripts.Enemy
 
         private void DamageTarget()
         {
-            if (_player == null)
+            if (_targetDamage == null)
                 return;
 
-            _player.Damage(_config.Damage);
+            _targetDamage.GetComponent<IDamage>().Damage(_config.Damage);
         }
 
         private void Move()
@@ -234,7 +244,15 @@ namespace Assets._Project.Scripts.Enemy
                 return;
             }
 
-            _movePoints.MovePoints();
+            if (_isMoveRandomPoints)
+            {
+                _movePointsRandom.MovePoints();
+            }
+
+            if(_isMoveRandomPoints == false)
+            {
+                _moveToPoint.MovePoints();
+            }
         }
 
         private void ExtractComponents()
@@ -247,6 +265,8 @@ namespace Assets._Project.Scripts.Enemy
             _agent = GetComponent<NavMeshAgent>();
             _enemyView = GetComponentInChildren<EnemyView>();
             _boxCollider2D = GetComponent<BoxCollider2D>();
+            _movePointsRandom = GetComponent<RandomMovePoints>();
+            _moveToPoint = GetComponent<MoveToPoint>();
         }
     }
 }

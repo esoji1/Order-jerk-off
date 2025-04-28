@@ -37,6 +37,8 @@ namespace Assets._Project.Scripts.ConstructionBuildings
         public void SetBaseBuilding(BaseBuilding baseBuilding)
         {
             _baseBuilding = baseBuilding;
+            if (_baseBuilding != null)
+                _baseBuilding.SetBuildingArea(this);
         }
     }
 }

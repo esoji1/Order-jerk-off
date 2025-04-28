@@ -88,16 +88,18 @@ namespace Assets._Project.Scripts.ConstructionBuildings
 
             foreach (BaseBuilding building in _buildingList)
             {
-                if (building.Type == baseBuilding.Type)
+                if (building != null)
                 {
-                    Destroy(baseBuilding.gameObject);
-                    _buildingArea.SetZoneOccupeid(false);
-                    _buildingArea.SetBaseBuilding(null);
-                    _player.Wallet.AddMoney(value);
-                    return;
+                    if (building.Type == baseBuilding.Type)
+                    {
+                        Destroy(baseBuilding.gameObject);
+                        _buildingArea.SetZoneOccupeid(false);
+                        _buildingArea.SetBaseBuilding(null);
+                        _player.Wallet.AddMoney(value);
+                        return;
+                    }
                 }
             }
-
 
             _buildingList.Add(baseBuilding);
             _buildingArea.SetZoneOccupeid(true);
