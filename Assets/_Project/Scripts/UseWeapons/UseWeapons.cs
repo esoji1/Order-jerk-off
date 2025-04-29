@@ -38,6 +38,14 @@ namespace Assets._Project.Scripts.UseWeapons
 
         public void SetWeapon(Enum weaponType)
         {
+            if (weaponType == null)
+            {
+                _baseWeapon = null;
+                Destroy(_weapon.gameObject);
+                _weapon = null;
+                return;
+            }
+
             if (weaponType.Equals(WeaponTypes.WoodenSwordPlayer))
             {
                 SetWeaponParent(WeaponTypes.WoodenSwordPlayer);
@@ -52,14 +60,21 @@ namespace Assets._Project.Scripts.UseWeapons
             }
         }
 
-        public void ActiveSelfWeapon(bool value) =>
-            _weapon.gameObject.SetActive(value);
+        public void ActiveSelfWeapon(bool value)
+        {
+            if (_weapon != null)
+                _weapon.gameObject.SetActive(value);
+        }
 
         private void SetWeaponParent(WeaponTypes weaponType)
         {
-            _baseWeapon = null;
-            Destroy(_weapon.gameObject);
-            _weapon = null;
+            if (_baseWeapon != null && _weapon != null)
+            {
+                _baseWeapon = null;
+                Destroy(_weapon.gameObject);
+                _weapon = null;
+            }
+
             Weapon.Weapons.Weapon weapon = _weaponFactoryBootstrap.Factory.Get(weaponType, transform.position, transform);
             _setWeaponPoint.SetParent(weapon.transform, transform);
             _setWeaponPoint.Set(weapon.transform);
@@ -68,6 +83,9 @@ namespace Assets._Project.Scripts.UseWeapons
         private void GetWeapon()
         {
             AttackWeaponFectory attackWeaponFectory = GetComponentInChildren<Weapon.AttackWeaponFectory>();
+            if (attackWeaponFectory == null)
+                return;
+
             attackWeaponFectory.Initialize(_player.PointRotation.transform);
             _baseWeapon = attackWeaponFectory.BaseWeapon;
             _weapon = GetComponentInChildren<Weapon.Weapons.Weapon>();

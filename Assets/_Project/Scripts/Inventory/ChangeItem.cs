@@ -94,6 +94,7 @@ namespace Assets._Project.Sctipts.Inventory
             {
                 _inventory.AddItemInCell(_clickedCellInventoryActive.Item);
                 _inventoryActive.SubtractItems(_clickedCellInventoryActive, 1);
+                _useWeapons.SetWeapon(null);
                 _isWeaponEquipped = false;
                 return;
             }

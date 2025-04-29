@@ -177,14 +177,20 @@ namespace Assets._Project.Scripts.Player
             if (_joysickForMovement.VectorDirection().y > 0f)
             {
                 _playerView.SpriteRenderer.sprite = _playerView.Back;
-                _weapon.SpriteRenderer.sortingLayerName = "AddInPlayer";
-                _weapon.SpriteRenderer.sortingOrder = 0;
+                if (_weapon != null)
+                {
+                    _weapon.SpriteRenderer.sortingLayerName = "AddInPlayer";
+                    _weapon.SpriteRenderer.sortingOrder = 0;
+                }
             }
             else if (_joysickForMovement.VectorDirection().y < 0f)
             {
                 _playerView.SpriteRenderer.sprite = _playerView.Front;
-                _weapon.SpriteRenderer.sortingLayerName = "Weapon";
-                _weapon.SpriteRenderer.sortingOrder = 10;
+                if (_weapon != null)
+                {
+                    _weapon.SpriteRenderer.sortingLayerName = "Weapon";
+                    _weapon.SpriteRenderer.sortingOrder = 10;
+                }
             }
 
             _circleRadiusVisualizer.DrawRadius(_weapon.Config.VisibilityRadius);

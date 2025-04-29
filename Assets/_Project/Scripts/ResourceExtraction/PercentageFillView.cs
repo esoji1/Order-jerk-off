@@ -24,11 +24,13 @@ namespace Assets._Project.Scripts.ResourceExtraction
         {
             StopCoroutine(StrictOneSecondTimer());
             _result = 0;
-            Destroy(_percentageFill.gameObject);
+            if (_percentageFill != null)
+                Destroy(_percentageFill.gameObject);
         }
 
         private void SpawnPercentage(Transform transform, Canvas canvas)
         {
+            StopTimer();
             _percentageFill = Instantiate(_prefab, canvas.transform);
 
             Vector3 worldPosition = transform.position;

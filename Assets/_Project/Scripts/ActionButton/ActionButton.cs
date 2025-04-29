@@ -1,4 +1,5 @@
 using Assets._Project.Scripts.ConstructionBuildings;
+using Assets._Project.Scripts.Enemy;
 using Assets._Project.Scripts.ResourceExtraction.FishingRodMining;
 using Assets._Project.Scripts.ResourceExtraction.OreMining;
 using Assets._Project.Scripts.ResourceExtraction.ScissorsMining;

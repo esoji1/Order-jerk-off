@@ -74,15 +74,6 @@ namespace Assets._Project.Scripts.Enemy
             Move();
         }
 
-        //private void OnCollisionEnter2D(Collision2D other)
-        //{
-        //    if (other.gameObject.TryGetComponent(out Enemy _) &&
-        //        _radiusMovementTrigger.MoveToTarget(_config.AttackRadius, _config.VisibilityRadius) == false)
-        //    {
-        //        _agent.ResetPath();
-        //    }
-        //}
-
         public virtual void Initialize(EnemyConfig config, SelectionGags.Experience prefabExperience, SelectionGags.Coin prefabCoin,
             HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, List<Transform> points, bool isMoveRandomPoints, Transform mainBuildingPoint)
         {
@@ -136,6 +127,7 @@ namespace Assets._Project.Scripts.Enemy
             _isDie = true;
             _enemyView.StartDie();
             _boxCollider2D.enabled = false;
+            _agent.isStopped = true;
 
             _health.OnDie -= Die;
 
