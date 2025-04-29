@@ -1,6 +1,7 @@
 using Assets._Project.Scripts.Core.Points;
 using Assets._Project.Scripts.Inventory;
 using Assets._Project.Scripts.Player.Pumping;
+using Assets._Project.Scripts.ScriptableObjects.Configs;
 using Assets._Project.Sctipts.Core;
 using Assets._Project.Sctipts.Inventory;
 using System.Linq;
@@ -19,10 +20,10 @@ namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
         private SaleItem _saleItem;
         private InformationAboutItemView _informationAboutItemView;
 
-        public void Initialize(GameObject playerHomeMenu, Canvas staticCanvas, Player.Player player, UseWeapons.UseWeapons useWeapons,
+        public void Initialize(BuildsConfig config, Canvas staticCanvas, Player.Player player, UseWeapons.UseWeapons useWeapons,
             Sctipts.Inventory.Inventory inventory, InventoryActive inventoryActive)
         {
-            base.Initialize(playerHomeMenu, staticCanvas, player);
+            base.Initialize(config, staticCanvas, player);
 
             _inventory = inventory;
             _inventoryActive = inventoryActive;

@@ -1,82 +1,99 @@
 using Assets._Project.Scripts.ConstructionBuildings.Buildings;
+using Assets._Project.Scripts.ConstructionBuildings.DefensiveBuildings;
 using Assets._Project.Scripts.Inventory;
+using Assets._Project.Scripts.ScriptableObjects.Configs;
+using Assets._Project.Scripts.Weapon.Projectile;
 using System;
+using TMPro;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.ConstructionBuildings
 {
     public class BuildingFactory
     {
-        private House _housePrefab;
-        private Shop _shopPrefab;
-        private Alchemy _alchemyPrefab;
-        private GameObject _playerHomeMenuPrefab;
-        private GameObject _playerShopMenuPrefab;
-        private GameObject _playerAlchemyMenuPrefab;
+        private BuildsConfig _houseConfig;
+        private BuildsConfig _shopConfig;
+        private BuildsConfig _alchemyConfig;
+        private BuildsConfig _archerTowerConfig;
         private Canvas _staticCanvas;
+        private Canvas _dynamicCanvas;
         private Player.Player _player; 
         private UseWeapons.UseWeapons _useWeapons;
         private Sctipts.Inventory.Inventory _inventory;
         private InventoryActive _inventoryActive;
+        private TextMeshProUGUI _textDamage;
+        private LayerMask _layerMask;
+        private Projectile _projectile;
 
-        public BuildingFactory(House housePrefab, Shop shopPrefab, Alchemy alchemyPrefab, GameObject playerHomeMenuPrefab, GameObject playerShopMenuPrefab, GameObject playerAlchemyMenuPrefab,
-            Canvas staticCanvas, Player.Player player, UseWeapons.UseWeapons useWeapons, Sctipts.Inventory.Inventory inventory, InventoryActive inventoryActive)
+        public BuildingFactory(BuildsConfig housConfig, BuildsConfig shopConfig, BuildsConfig alchemyConfig, BuildsConfig archerTowerConfig, Canvas staticCanvas, 
+            Player.Player player, UseWeapons.UseWeapons useWeapons, Sctipts.Inventory.Inventory inventory, InventoryActive inventoryActive, Canvas dynamicCanvas, TextMeshProUGUI textDamage,
+            LayerMask layerMask, Projectile projectile)
         {
-            _housePrefab = housePrefab;
-            _shopPrefab = shopPrefab;
-            _alchemyPrefab = alchemyPrefab;
-            _playerHomeMenuPrefab = playerHomeMenuPrefab;
-            _playerShopMenuPrefab = playerShopMenuPrefab;
-            _playerAlchemyMenuPrefab = playerAlchemyMenuPrefab;
+            _houseConfig = housConfig;
+            _shopConfig = shopConfig;
+            _alchemyConfig = alchemyConfig;
+            _archerTowerConfig = archerTowerConfig;
             _staticCanvas = staticCanvas;
             _player = player;
             _useWeapons = useWeapons;
             _inventory = inventory;
             _inventoryActive = inventoryActive;
+            _dynamicCanvas = dynamicCanvas;
+            _textDamage = textDamage;
+            _layerMask = layerMask;
+            _projectile = projectile;
         }
 
         public BaseBuilding Get(TypesBuildings typesBuildings, Vector3 position)
         {
-            BaseBuilding building = GetSpawn(typesBuildings);
-            BaseBuilding instance = UnityEngine.Object.Instantiate(building, position, Quaternion.identity, null);
-            BaseBuilding baseBuilding = InitializeObject(instance);
+            BuildsConfig buildingConfig = GetSpawn(typesBuildings);
+            BaseBuilding instance = UnityEngine.Object.Instantiate(buildingConfig.BaseBuildingPrefab, position, Quaternion.identity, null);
+            BaseBuilding baseBuilding = InitializeObject(instance, buildingConfig);
             return baseBuilding;
         }
 
-        private BaseBuilding GetSpawn(TypesBuildings typesBuildings)
+        private BuildsConfig GetSpawn(TypesBuildings typesBuildings)
         {
             switch (typesBuildings)
             {
                 case TypesBuildings.House:
-                    return _housePrefab;
+                    return _houseConfig;
 
                 case TypesBuildings.Shop:
-                    return _shopPrefab;
+                    return _shopConfig;
 
                 case TypesBuildings.Alchemy:
-                    return _alchemyPrefab;
+                    return _alchemyConfig;
+
+               case TypesBuildings.ArcherTower:
+                   return _archerTowerConfig;
 
                 default:
                     throw new ArgumentException($"not {typesBuildings}");
             }
         }
 
-        private BaseBuilding InitializeObject(BaseBuilding instance)
+        private BaseBuilding InitializeObject(BaseBuilding instance, BuildsConfig buildsConfig)
         {
             if (instance is House house)
             {
-                house.Initialize(_playerHomeMenuPrefab, _staticCanvas, _player, _useWeapons, _inventory, _inventoryActive);
+                house.Initialize(buildsConfig, _staticCanvas, _player, _useWeapons, _inventory, _inventoryActive);
                 return house;
             }
             else if(instance is Shop shop)
             {
-                shop.Initialize(_playerShopMenuPrefab, _staticCanvas, _player, _inventory);
+                shop.Initialize(buildsConfig, _staticCanvas, _player, _inventory);
                 return shop;
             }
             else if (instance is Alchemy alchemy)
             {
-                alchemy.Initialize(_playerAlchemyMenuPrefab, _staticCanvas, _player, _inventory);
+                alchemy.Initialize(buildsConfig, _staticCanvas, _player, _inventory);
                 return alchemy;
+            }
+            else if(instance is RangedAttackTower rangedAttackTower)
+            {
+                rangedAttackTower.Initialize(buildsConfig, _staticCanvas, _player, _inventory, _dynamicCanvas, _textDamage, _layerMask, _projectile);
+                return rangedAttackTower;
             }
             else
             {

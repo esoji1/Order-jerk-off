@@ -1,4 +1,5 @@
 ﻿using Assets._Project.Scripts.Craft;
+using Assets._Project.Scripts.ScriptableObjects.Configs;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
@@ -10,9 +11,9 @@ namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
         private Crafts _crafts;
         private ItemTextView _itemTextView;
 
-        public void Initialize(GameObject window, Canvas staticCanvas, Player.Player player, Sctipts.Inventory.Inventory inventory)
+        public void Initialize(BuildsConfig config, Canvas staticCanvas, Player.Player player, Sctipts.Inventory.Inventory inventory)
         {
-            base.Initialize(window, staticCanvas, player);
+            base.Initialize(config, staticCanvas, player);
 
             _inventory = inventory;
 

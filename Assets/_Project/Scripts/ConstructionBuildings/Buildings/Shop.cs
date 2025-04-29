@@ -1,4 +1,5 @@
 using Assets._Project.Scripts.Inventory;
+using Assets._Project.Scripts.ScriptableObjects.Configs;
 using Assets._Project.Sctipts.Inventory;
 using UnityEngine;
 
@@ -11,9 +12,9 @@ namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
         private SellItemsStore _sellItemsStore;
         private InformationAboutItemShopView _informationAboutItemView;
 
-        public void Initialize(GameObject window, Canvas staticCanvas, Player.Player player, Sctipts.Inventory.Inventory inventory)
+        public void Initialize(BuildsConfig config, Canvas staticCanvas, Player.Player player, Sctipts.Inventory.Inventory inventory)
         {
-            base.Initialize(window, staticCanvas, player);
+            base.Initialize(config, staticCanvas, player);
 
             _inventory = inventory;
 

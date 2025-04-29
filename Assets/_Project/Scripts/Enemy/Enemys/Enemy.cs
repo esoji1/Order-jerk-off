@@ -59,10 +59,12 @@ namespace Assets._Project.Scripts.Enemy
         private Collider2D _targetDamage;
 
         public event Action<int> OnDamage;
+        public event Action<Enemy> OnEnemyDie;
 
         public PointHealth PointHealth => _pointHealth;
         public EnemyConfig Config => _config;
         public LayerMask LayerMask => _layer;
+        public Health Health => _health;
 
         private void Update()
         {
@@ -128,6 +130,7 @@ namespace Assets._Project.Scripts.Enemy
             _enemyView.StartDie();
             _boxCollider2D.enabled = false;
             _agent.isStopped = true;
+            OnEnemyDie?.Invoke(this);
 
             _health.OnDie -= Die;
 

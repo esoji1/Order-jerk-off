@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5203a6b0aeaa5e945aaf3918920e4230, type: 3}
+  m_Name: ShopConfig
+  m_EditorClassIdentifier: 
+  <BaseBuildingPrefab>k__BackingField: {fileID: 2469893090968974888, guid: c531d6dd4e2d3424e818a89cd0799cf4, type: 3}
+  <WindowPrefab>k__BackingField: {fileID: 2290110677882071739, guid: 3cdda57d06a6a324e82ee1443626e0d2, type: 3}
+  <Health>k__BackingField: 70
+  RadiusAttack: 0
+  <Damage>k__BackingField: 0

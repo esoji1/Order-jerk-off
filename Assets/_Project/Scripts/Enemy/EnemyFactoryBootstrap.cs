@@ -1,5 +1,7 @@
 ﻿using Assets._Project.Scripts.ScriptableObjects.Configs;
 using Assets._Project.Sctipts.Core.HealthSystem;
+using NUnit.Framework;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.Enemy
@@ -14,10 +16,12 @@ namespace Assets._Project.Scripts.Enemy
         [SerializeField] private Canvas _dynamic;
         [SerializeField] private LayerMask _layer;
         [SerializeField] private Transform _mainBuildingPoint;
+        [SerializeField] private List<Transform> _points;
 
         private EnemyFactory _enemyFactory;
 
         public EnemyFactory EnemyFactory => _enemyFactory;
+        public List<Transform> Points => _points;
 
         private void Awake()
         {

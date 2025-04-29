@@ -1,5 +1,7 @@
 using Assets._Project.Scripts.ConstructionBuildings.Buildings;
+using Assets._Project.Scripts.ConstructionBuildings.DefensiveBuildings;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +19,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
         [SerializeField] private Button _houseButton;
         [SerializeField] private Button _shopButton;
         [SerializeField] private Button _alchemyButton;
+        [SerializeField] private Button _archerTowerBotton;
 
         private BuildingArea _buildingArea;
         private List<BaseBuilding> _buildingList = new();
@@ -36,6 +39,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
             _houseButton.onClick.AddListener(HouseButtonSpawn);
             _shopButton.onClick.AddListener(ShopButtonSpawn);
             _alchemyButton.onClick.AddListener(AlchemyButtonSpawn);
+            _archerTowerBotton.onClick.AddListener(ArcherTowerButtonSpawn);
 
         }
 
@@ -46,6 +50,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
             _houseButton.onClick.RemoveListener(HouseButtonSpawn);
             _shopButton.onClick.RemoveListener(ShopButtonSpawn);
             _alchemyButton.onClick.RemoveListener(AlchemyButtonSpawn);
+            _archerTowerBotton.onClick.RemoveListener(ArcherTowerButtonSpawn);
         }
 
         private void AssignSpawnZone(BuildingArea buildingArea)
@@ -77,6 +82,14 @@ namespace Assets._Project.Scripts.ConstructionBuildings
             Spawn(TypesBuildings.Alchemy, 20);
         }
 
+        private void ArcherTowerButtonSpawn()
+        {
+            if (IsTheZoneOccupied())
+                return;
+
+            Spawn(TypesBuildings.ArcherTower, 0);
+        }
+
         private bool IsTheZoneOccupied() => _buildingArea.IsZoneOccupied;
 
         private void Spawn(TypesBuildings typesBuildings, int value)
@@ -90,7 +103,11 @@ namespace Assets._Project.Scripts.ConstructionBuildings
             {
                 if (building != null)
                 {
-                    if (building.Type == baseBuilding.Type)
+                    if(baseBuilding.gameObject.TryGetComponent(out RangedAttackTower component))
+                    {
+                        continue;
+                    }
+                    else if (building.Type == baseBuilding.Type)
                     {
                         Destroy(baseBuilding.gameObject);
                         _buildingArea.SetZoneOccupeid(false);

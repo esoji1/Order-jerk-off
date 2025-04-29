@@ -1,5 +1,6 @@
 ﻿using Assets._Project.Scripts.Core;
 using Assets._Project.Scripts.Core.Interface;
+using Assets._Project.Scripts.ScriptableObjects.Configs;
 using DG.Tweening;
 using System;
 using UnityEngine;
@@ -9,6 +10,8 @@ namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
 {
     public abstract class BaseBuilding : MonoBehaviour, IDamage
     {
+        protected BuildsConfig Config;
+
         private GameObject _window;
         private Canvas _staticCanvas;
         private Player.Player _player;
@@ -27,14 +30,14 @@ namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
         public GameObject Window => _window;
         public Player.Player Player => _player;
 
-        public virtual void Initialize(GameObject window, Canvas staticCanvas, Player.Player player)
+        public virtual void Initialize(BuildsConfig config, Canvas staticCanvas, Player.Player player)
         {
-            _window = window;
+            Config = config;
             _staticCanvas = staticCanvas;
             _player = player;
-            _health = new Health(50);
+            _health = new Health(Config.Health);
 
-            _window = Instantiate(window, _staticCanvas.transform);
+            _window = Instantiate(Config.WindowPrefab, _staticCanvas.transform);
             _window.SetActive(false);
 
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();

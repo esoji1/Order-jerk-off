@@ -1,6 +1,5 @@
 ﻿using Assets._Project.Scripts.Weapon.Interface;
 using Assets._Project.Scripts.Weapon.Projectile;
-using NUnit.Framework.Constraints;
 using System.Collections;
 using UnityEngine;
 
@@ -73,7 +72,7 @@ namespace Assets._Project.Scripts.Weapon.Attacks
                     Vector2 direction = (_nearestEnemy.transform.position - _weapon.transform.position).normalized;
                     GameObject bulletGameObject = _spawnProjectile.ProjectileSpawnPoint(_weapon.Projectile.gameObject, direction, _weapon.transform);
                     Projectile.Projectile bullet = bulletGameObject.GetComponent<Projectile.Projectile>();
-                    bullet.Initialize(direction, bullet, _weapon.Config, _weapon, _droppedDamage, _nearestEnemy);
+                    bullet.Initialize(direction, bullet, _weapon.Config.MinDamage, _weapon.Config.MaxDamage, _weapon.WeaponData.ExtraDamage, _droppedDamage, _nearestEnemy);
                 }
             }
         }

@@ -78,7 +78,7 @@ namespace Assets._Project.Scripts.Enemy
         private void SpawnEnemyLogic()
         {
             EnemyTypes enemyType = (EnemyTypes)Random.Range(0, _enemys.GetEnemys.Count);
-            Enemy newEnemy = _enemyFactoryBootstrap.EnemyFactory.Get(enemyType, transform.position, _points, true);
+            Enemy newEnemy = _enemyFactoryBootstrap.EnemyFactory.Get(enemyType, transform.position, _points, false);
 
             if (newEnemy != null)
                 _enemy.Add(newEnemy);

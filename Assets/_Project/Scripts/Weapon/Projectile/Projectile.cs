@@ -1,6 +1,4 @@
 using Assets._Project.Scripts.Core.Interface;
-using Assets._Project.Scripts.DroppedDamage;
-using Assets._Project.Scripts.ScriptableObjects.Configs;
 using UnityEngine;
 
 namespace Assets._Project.Scripts.Weapon.Projectile
@@ -9,10 +7,11 @@ namespace Assets._Project.Scripts.Weapon.Projectile
     {
         private Projectile _projectile;
         private Vector2 _direction;
-        private WeaponConfig _arrow;
-        private Weapons.Weapon _weapon;
         private DroppedDamage.DroppedDamage _droppedDamage;
         private Collider2D _nearestEnemy;
+        private int _minDamage;
+        private int _maxDamage;
+        private int _extraDamage;
 
         private void Update()
         {
@@ -25,7 +24,7 @@ namespace Assets._Project.Scripts.Weapon.Projectile
             {
                 if (damage is Enemy.Enemy enemy)
                 {
-                    int randomDamage = Random.Range(_arrow.MinDamage, _arrow.MaxDamage) + _weapon.WeaponData.ExtraDamage;
+                    int randomDamage = Random.Range(_minDamage, _maxDamage) + _extraDamage;
                     _droppedDamage.SpawnNumber(randomDamage, _nearestEnemy.transform);
                     enemy.Damage(randomDamage);
                     Destroy(_projectile.gameObject);
@@ -34,13 +33,14 @@ namespace Assets._Project.Scripts.Weapon.Projectile
             }
         }
 
-        public void Initialize(Vector2 direction, Projectile projectile, WeaponConfig arrow, Weapons.Weapon weapon, DroppedDamage.DroppedDamage droppedDamage,
+        public void Initialize(Vector2 direction, Projectile projectile, int minDamage, int maxDamage, int extraDamage, DroppedDamage.DroppedDamage droppedDamage,
             Collider2D nearestEnemy)
         {
             _direction = direction.normalized;
             _projectile = projectile;
-            _arrow = arrow;
-            _weapon = weapon;
+            _minDamage = minDamage;
+            _maxDamage = maxDamage;
+            _extraDamage = extraDamage;
             _droppedDamage = droppedDamage;
             _nearestEnemy = nearestEnemy;
         }
@@ -52,6 +52,6 @@ namespace Assets._Project.Scripts.Weapon.Projectile
         }
 
         private void TranslateBullet() =>
-            transform.Translate(_direction * _arrow.AttackSpeed * Time.deltaTime, Space.World);
+            transform.Translate(_direction * 5f * Time.deltaTime, Space.World);
     }
 }
