@@ -1,5 +1,4 @@
 using Assets._Project.Scripts.SelectionGags;
-using Assets._Project.Sctipts.Core.Spawns;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -57,6 +56,7 @@ namespace Assets._Project.Scripts.Enemy
                 if (Time.time >= _nextSpawnTime)
                 {
                     _enemy.RemoveAll(e => e == null || e.gameObject == null);
+
                     if (_enemy.Count < _maxEnemy)
                     {
                         SpawnEnemyLogic();

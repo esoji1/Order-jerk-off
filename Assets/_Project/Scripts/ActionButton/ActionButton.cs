@@ -22,7 +22,7 @@ namespace Assets._Project.Scripts.ActionButton
         public event Action<Grass> OnMiningGrass;
 
         private void Update() =>
-            WithinAttackRadius(_player.Config.VisibilityRadius);
+            WithinVisibilityRadius(_player.Config.VisibilityRadius);
 
         private void OnEnable() =>
             _actionButton.onClick.AddListener(PerformAction);
@@ -76,7 +76,7 @@ namespace Assets._Project.Scripts.ActionButton
             }
         }
 
-        private void WithinAttackRadius(float radiusAttack) =>
-            _collider2D = Physics2D.OverlapCircleAll(transform.position, radiusAttack);
+        private void WithinVisibilityRadius(float visibilityRadius) =>
+            _collider2D = Physics2D.OverlapCircleAll(transform.position, visibilityRadius);
     }
 }

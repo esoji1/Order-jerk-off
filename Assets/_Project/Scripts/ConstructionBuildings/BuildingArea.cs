@@ -15,23 +15,17 @@ namespace Assets._Project.Scripts.ConstructionBuildings
         public int LeftOrRightSide => _leftOrRightSide;
         public BaseBuilding BaseBuilding => _baseBuilding;
 
-        private void Awake()
-        {
+        private void Awake() => 
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        }
 
         public void SetZoneOccupeid(bool value)
         {
             _isZoneOccupied = value;
 
             if (_isZoneOccupied)
-            {
                 _spriteRenderer.gameObject.SetActive(false);
-            }
             else if (_isZoneOccupied == false)
-            {
                 _spriteRenderer.gameObject.SetActive(true);
-            }
         }
 
         public void SetBaseBuilding(BaseBuilding baseBuilding)

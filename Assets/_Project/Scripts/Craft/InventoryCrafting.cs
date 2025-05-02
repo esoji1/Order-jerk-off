@@ -1,7 +1,6 @@
 ﻿using Assets._Project.Scripts.Inventory;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -12,11 +11,11 @@ namespace Assets._Project.Scripts.Craft
     {
         private Sctipts.Inventory.Inventory _inventory;
         private Dictionary<Cell, Sctipts.Craft.Craft> _cellAndCraftDictionary;
-        private Dictionary<Button, UnityAction> _buttonSubscriptions = new Dictionary<Button, UnityAction>(); 
+        private Dictionary<Button, UnityAction> _buttonSubscriptions = new Dictionary<Button, UnityAction>();
 
         public Sctipts.Inventory.Inventory Inventory => _inventory;
 
-        public event System.Action<Sctipts.Craft.Craft> OnClickCraft;
+        public event Action<Sctipts.Craft.Craft> OnClickCraft;
 
         public void Initialize(Sctipts.Inventory.Inventory inventory)
         {
@@ -45,13 +44,12 @@ namespace Assets._Project.Scripts.Craft
         private void UnsubscribeAll()
         {
             foreach (KeyValuePair<Button, UnityAction> pair in _buttonSubscriptions)
-            {
-                if (pair.Key != null) 
+                if (pair.Key != null)
                     pair.Key.onClick.RemoveListener(pair.Value);
-            }
+
             _buttonSubscriptions.Clear();
         }
 
-        private void OnDestroy() => UnsubscribeAll(); 
+        private void OnDestroy() => UnsubscribeAll();
     }
 }

@@ -1,4 +1,4 @@
-namespace Assets._Project.Sctipts.Core.TempData
+namespace Assets._Project.Sctipts.Weapon.TempData
 {
     public class WeaponData
     {

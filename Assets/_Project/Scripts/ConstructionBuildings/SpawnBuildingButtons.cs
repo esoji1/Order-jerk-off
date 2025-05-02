@@ -1,7 +1,6 @@
 using Assets._Project.Scripts.ConstructionBuildings.Buildings;
 using Assets._Project.Scripts.ConstructionBuildings.DefensiveBuildings;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,13 +8,14 @@ namespace Assets._Project.Scripts.ConstructionBuildings
 {
     public class SpawnBuildingButtons : MonoBehaviour
     {
+        [Header("Dependencies")]
         [SerializeField] private ActionButton.ActionButton _actionButton;
         [SerializeField] private BuildingFactoryBootstrap _buildingFactoryBootstrap;
         [SerializeField] private BuildingArea buildingAreaInHouse;
         [SerializeField] private BuildingArea buildingAreaInShope;
         [SerializeField] private Player.Player _player;
 
-        [Header("Bottons")]
+        [Header("Buttons for purchasing buildings")]
         [SerializeField] private Button _houseButton;
         [SerializeField] private Button _shopButton;
         [SerializeField] private Button _alchemyButton;
@@ -40,7 +40,6 @@ namespace Assets._Project.Scripts.ConstructionBuildings
             _shopButton.onClick.AddListener(ShopButtonSpawn);
             _alchemyButton.onClick.AddListener(AlchemyButtonSpawn);
             _archerTowerBotton.onClick.AddListener(ArcherTowerButtonSpawn);
-
         }
 
         private void OnDisable()
@@ -53,10 +52,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
             _archerTowerBotton.onClick.RemoveListener(ArcherTowerButtonSpawn);
         }
 
-        private void AssignSpawnZone(BuildingArea buildingArea)
-        {
-            _buildingArea = buildingArea;
-        }
+        private void AssignSpawnZone(BuildingArea buildingArea) => _buildingArea = buildingArea;
 
         private void HouseButtonSpawn()
         {
@@ -104,9 +100,8 @@ namespace Assets._Project.Scripts.ConstructionBuildings
                 if (building != null)
                 {
                     if(baseBuilding.gameObject.TryGetComponent(out RangedAttackTower component))
-                    {
                         continue;
-                    }
+
                     else if (building.Type == baseBuilding.Type)
                     {
                         Destroy(baseBuilding.gameObject);
@@ -127,13 +122,9 @@ namespace Assets._Project.Scripts.ConstructionBuildings
         private void Flip(BaseBuilding baseBuilding)
         {
             if (_buildingArea.LeftOrRightSide == 1)
-            {
                 baseBuilding.SpriteRenderer.flipX = false;
-            }
             else if (_buildingArea.LeftOrRightSide == -1)
-            {
                 baseBuilding.SpriteRenderer.flipX = true;
-            }
         }
     }
 }

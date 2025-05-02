@@ -1,7 +1,6 @@
-﻿using Assets._Project.Scripts.SelectionGags;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets._Project.Scripts.Core.Spawns
+namespace Assets._Project.Scripts.SelectionGags
 {
     public class SpawnCoin
     {

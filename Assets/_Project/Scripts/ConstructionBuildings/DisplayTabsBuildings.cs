@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -25,15 +24,8 @@ namespace Assets._Project.Scripts.ConstructionBuildings
             _twoButtons.onClick.RemoveListener(HideTwo);
         }
 
-        private void HideFirst()
-        {
-            SetWindowState(_firstWindow);
-        }
-
-        private void HideTwo()
-        {
-            SetWindowState(_twoWindow);
-        }
+        private void HideFirst() => SetWindowState(_firstWindow);
+        private void HideTwo() => SetWindowState(_twoWindow);
 
         private void SetWindowState(GameObject window)
         {

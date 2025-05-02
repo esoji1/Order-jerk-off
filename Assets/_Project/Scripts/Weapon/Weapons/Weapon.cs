@@ -1,6 +1,6 @@
 using Assets._Project.Scripts.Core;
 using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Sctipts.Core.TempData;
+using Assets._Project.Sctipts.Weapon.TempData;
 using TMPro;
 using UnityEngine;
 

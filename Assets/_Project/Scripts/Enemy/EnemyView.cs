@@ -1,12 +1,15 @@
-﻿using UnityEngine;
+﻿using Unity.Collections;
+using UnityEngine;
 
 namespace Assets._Project.Scripts.Enemy
 {
     [RequireComponent(typeof(Animator))]
     public class EnemyView : MonoBehaviour
     {
+        private const string Horizontal = "Horizontal";
+        private const string Vertical = "Vertical";
         private const string Attack = "Attack";
-        private const string Die = "Die";
+        private const string Die = "Dies";
 
         private Animator _animator;
 
@@ -14,12 +17,12 @@ namespace Assets._Project.Scripts.Enemy
 
         public void Initialize() => _animator = GetComponent<Animator>();
 
-        public void UpdateRunX(float value) => _animator.SetFloat("Horizontal", value);
-        public void UpdateRunY(float value) => _animator.SetFloat("Vertical", value);
+        public void UpdateRunX(float value) => _animator.SetFloat(Horizontal, value);
+        public void UpdateRunY(float value) => _animator.SetFloat(Vertical, value);
 
         public void StartAttack() => _animator.SetBool(Attack, true);
         public void StopAttack() => _animator.SetBool(Attack, false);
 
-        public void StartDie() => _animator.Play("Dies");
+        public void StartDie() => _animator.Play(Die);
     }
 }

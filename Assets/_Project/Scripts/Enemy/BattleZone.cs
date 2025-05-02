@@ -22,9 +22,8 @@ namespace Assets._Project.Scripts.Enemy
             _enemys = GetComponentsInChildren<SpawnEnemy>();
 
             foreach (SpawnEnemy item in _enemys)
-            {
                 item.Initialize(this);
-            }
+
             ResizeCollider();
         }
 

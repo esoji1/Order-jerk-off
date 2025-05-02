@@ -4,10 +4,8 @@ namespace Assets._Project.Scripts.Core
 {
     public class SetWeaponPoint
     {
-        public void SetParent(Transform currentItem, Transform parent)
-        {
+        public void SetParent(Transform currentItem, Transform parent) =>
             currentItem.SetParent(parent);
-        }
 
         public void Set(Transform transform)
         {
