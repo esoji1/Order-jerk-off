@@ -1,8 +1,7 @@
-using Assets._Project.Scripts.Inventory;
 using System;
 using UnityEngine;
 
-namespace Assets._Project.Sctipts.Inventory.Items
+namespace _Project.Inventory.Items
 {
     public abstract class BaseItem : MonoBehaviour
     {

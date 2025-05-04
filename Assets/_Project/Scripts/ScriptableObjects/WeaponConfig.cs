@@ -1,7 +1,7 @@
-﻿using Assets._Project.Scripts.Weapon;
+﻿using _Project.Weapon;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.ScriptableObjects.Configs
+namespace _Project.ScriptableObjects.Configs
 {
     [CreateAssetMenu(fileName = "WeaponConfig", menuName = "ScriptableObjects/Configs/WeaponConfig")]
     public class WeaponConfig : ScriptableObject

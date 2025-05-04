@@ -1,10 +1,10 @@
-﻿using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Sctipts.Core.HealthSystem;
+﻿using _Project.Core.HealthSystem;
+using _Project.ScriptableObjects.Configs;
 using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Enemy
+namespace _Project.Enemy
 {
     public class EnemyFactoryBootstrap : MonoBehaviour
     {

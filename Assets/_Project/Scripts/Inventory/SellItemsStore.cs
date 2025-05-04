@@ -1,14 +1,11 @@
-using Assets._Project.Scripts.Inventory;
-using Assets._Project.Scripts.Inventory.Items;
-using Assets._Project.Scripts.Player;
-using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Sctipts.Inventory.Items;
+using _Project.Inventory.Items;
+using _Project.ScriptableObjects.Configs;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Project.Sctipts.Inventory
+namespace _Project.Inventory
 {
     public class SellItemsStore : MonoBehaviour
     {
@@ -16,14 +13,14 @@ namespace Assets._Project.Sctipts.Inventory
         [SerializeField] private List<Cell> _cellList;
         [SerializeField] private ItemData _itemData;
 
-        private Player _player;
+        private Player.Player _player;
         private Inventory _inventory;
 
         private Cell _currentCell;
 
         public event Action<Cell> OnClickItem;
 
-        public void Initialize(Player player, Inventory inventory)
+        public void Initialize(Player.Player player, Inventory inventory)
         {
             _player = player;
             _inventory = inventory;

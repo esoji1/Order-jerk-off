@@ -2,7 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.ExperienceBar
+namespace _Project.ExperienceBar
 {
     public class LevelPlayer : MonoBehaviour
     {

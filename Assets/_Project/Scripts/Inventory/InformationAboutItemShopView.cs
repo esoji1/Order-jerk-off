@@ -1,12 +1,10 @@
-﻿using Assets._Project.Scripts.Weapon;
-using Assets._Project.Sctipts.Core;
-using Assets._Project.Sctipts.Inventory;
-using Assets._Project.Sctipts.ResourceExtraction;
+﻿using _Project.Core;
+using _Project.Weapon;
 using System;
 using TMPro;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Inventory
+namespace _Project.Inventory
 {
     public class InformationAboutItemShopView : MonoBehaviour
     {

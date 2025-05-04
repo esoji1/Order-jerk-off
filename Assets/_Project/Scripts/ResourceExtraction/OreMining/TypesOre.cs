@@ -1,4 +1,4 @@
-namespace Assets._Project.Sctipts.ResourceExtraction.OreMining
+namespace _Project.ResourceExtraction.OreMining
 {
     public enum TypesOre 
     {

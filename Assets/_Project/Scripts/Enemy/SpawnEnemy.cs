@@ -1,8 +1,8 @@
-using Assets._Project.Scripts.SelectionGags;
+using _Project.SelectionGags;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Enemy
+namespace _Project.Enemy
 {
     public class SpawnEnemy : MonoBehaviour
     {
@@ -10,7 +10,7 @@ namespace Assets._Project.Scripts.Enemy
         [SerializeField] private int _maxEnemy;
         [SerializeField] private float _betweenSpawn;
         [SerializeField] private int _amountExperienceDropped;
-        [SerializeField] private List<Enemy> _enemy;
+        [SerializeField] private List<Enemy.Enemys.Enemy> _enemy;
         [SerializeField] private EnemyFactoryBootstrap _enemyFactoryBootstrap;
         [SerializeField] private Experience _experiencePrefab;
         [SerializeField] private List<Transform> _points;
@@ -78,7 +78,7 @@ namespace Assets._Project.Scripts.Enemy
         private void SpawnEnemyLogic()
         {
             EnemyTypes enemyType = (EnemyTypes)Random.Range(0, _enemys.GetEnemys.Count);
-            Enemy newEnemy = _enemyFactoryBootstrap.EnemyFactory.Get(enemyType, transform.position, _points, false);
+            Enemy.Enemys.Enemy newEnemy = _enemyFactoryBootstrap.EnemyFactory.Get(enemyType, transform.position, _points, false);
 
             if (newEnemy != null)
                 _enemy.Add(newEnemy);
@@ -86,7 +86,7 @@ namespace Assets._Project.Scripts.Enemy
 
         private void ClearEnemies()
         {
-            foreach (Enemy enemy in _enemy)
+            foreach (Enemy.Enemys.Enemy enemy in _enemy)
             {
                 if (enemy != null && enemy.gameObject != null)
                 {

@@ -1,9 +1,9 @@
-using Assets._Project.Scripts.Core.Interface;
-using Assets._Project.Scripts.Weapon.Interface;
+using _Project.Core.Interface;
+using _Project.Weapon.Interface;
 using System.Collections;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Weapon.Attacks
+namespace _Project.Weapon.Attacks
 {
     public class MeleeAttack : IBaseWeapon
     {

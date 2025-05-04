@@ -1,8 +1,6 @@
-using NUnit.Framework;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Enemy
+namespace _Project.Enemy
 {
     [RequireComponent(typeof(BoxCollider2D))]
     public class BattleZone : MonoBehaviour

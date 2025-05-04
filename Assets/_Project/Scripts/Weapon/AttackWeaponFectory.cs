@@ -1,8 +1,8 @@
-using Assets._Project.Scripts.Weapon.Interface;
+using _Project.Weapon.Interface;
 using System;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Weapon
+namespace _Project.Weapon
 {
     public class AttackWeaponFectory : MonoBehaviour
     {

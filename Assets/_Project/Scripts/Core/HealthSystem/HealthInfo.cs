@@ -1,9 +1,8 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
 using UnityEngine.UI;
 
-namespace Assets._Project.Sctipts.Core.HealthSystem
+namespace _Project.Core.HealthSystem
 {
     public class HealthInfo : MonoBehaviour
     {

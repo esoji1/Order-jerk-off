@@ -1,10 +1,10 @@
-using Assets._Project.Scripts.ConstructionBuildings.Buildings;
-using Assets._Project.Scripts.ConstructionBuildings.DefensiveBuildings;
+using _Project.ConstructionBuildings.Buildings;
+using _Project.ConstructionBuildings.DefensiveBuildings;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Project.Scripts.ConstructionBuildings
+namespace _Project.ConstructionBuildings
 {
     public class SpawnBuildingButtons : MonoBehaviour
     {
@@ -83,7 +83,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
             if (IsTheZoneOccupied())
                 return;
 
-            Spawn(TypesBuildings.ArcherTower, 0);
+            Spawn(TypesBuildings.ArcherTower, 15);
         }
 
         private bool IsTheZoneOccupied() => _buildingArea.IsZoneOccupied;
@@ -99,7 +99,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
             {
                 if (building != null)
                 {
-                    if(baseBuilding.gameObject.TryGetComponent(out RangedAttackTower component))
+                    if (baseBuilding.gameObject.TryGetComponent(out RangedAttackTower component))
                         continue;
 
                     else if (building.Type == baseBuilding.Type)

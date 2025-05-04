@@ -1,10 +1,10 @@
-﻿using Assets._Project.Scripts.Inventory;
-using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Scripts.Weapon.Projectile;
+﻿using _Project.Inventory;
+using _Project.ScriptableObjects.Configs;
+using _Project.Weapon.Projectile;
 using TMPro;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.ConstructionBuildings
+namespace _Project.ConstructionBuildings
 {
     public class BuildingFactoryBootstrap : MonoBehaviour   
     {
@@ -15,7 +15,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings
         [SerializeField] private Canvas _staticCanvas;
         [SerializeField] private Player.Player _player;
         [SerializeField] private UseWeapons.UseWeapons _useWeapons;
-        [SerializeField] private Sctipts.Inventory.Inventory _inventory;
+        [SerializeField] private Inventory.Inventory _inventory;
         [SerializeField] private InventoryActive _inventoryActive;
         [SerializeField] private TextMeshProUGUI _textDamage;
         [SerializeField] private LayerMask _layerMask;

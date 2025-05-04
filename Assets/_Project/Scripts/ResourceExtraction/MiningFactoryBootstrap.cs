@@ -1,8 +1,8 @@
-using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Sctipts.Core;
+using _Project.Core;
+using _Project.ScriptableObjects.Configs;
 using UnityEngine;
 
-namespace Assets._Project.Sctipts.ResourceExtraction
+namespace _Project.ResourceExtraction
 {
     public class MiningFactoryBootstrap : MonoBehaviour
     {

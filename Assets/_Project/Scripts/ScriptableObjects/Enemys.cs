@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.ScriptableObjects
+namespace _Project.ScriptableObjects
 {
     [CreateAssetMenu(fileName = "Enemys", menuName = "ScriptableObjects/Enemys")]
     public class Enemys : ScriptableObject
     {
-        [field: SerializeField] public List<Enemy.Enemy> GetEnemys;
+        [field: SerializeField] public List<Enemy.Enemys.Enemy> GetEnemys;
     }
 }

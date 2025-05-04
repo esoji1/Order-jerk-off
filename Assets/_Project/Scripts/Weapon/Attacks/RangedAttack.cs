@@ -1,9 +1,9 @@
-﻿using Assets._Project.Scripts.Weapon.Interface;
-using Assets._Project.Scripts.Weapon.Projectile;
+﻿using _Project.Weapon.Interface;
+using _Project.Weapon.Projectile;
 using System.Collections;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Weapon.Attacks
+namespace _Project.Weapon.Attacks
 {
     public class RangedAttack : IBaseWeapon
     {

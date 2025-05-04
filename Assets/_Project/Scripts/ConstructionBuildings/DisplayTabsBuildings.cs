@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Project.Scripts.ConstructionBuildings
+namespace _Project.ConstructionBuildings
 {
     public class DisplayTabsBuildings : MonoBehaviour
     {

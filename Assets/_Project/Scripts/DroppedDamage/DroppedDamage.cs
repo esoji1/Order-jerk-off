@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.DroppedDamage
+namespace _Project.DroppedDamage
 {
     public class DroppedDamage
     {

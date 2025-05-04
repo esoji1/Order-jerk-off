@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.ResourceExtraction.ScissorsMining
+namespace _Project.ResourceExtraction.ScissorsMining
 {
     public class Grass : MonoBehaviour
     {

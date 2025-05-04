@@ -1,7 +1,6 @@
-﻿using Unity.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Assets._Project.Scripts.Enemy
+namespace _Project.Enemy
 {
     [RequireComponent(typeof(Animator))]
     public class EnemyView : MonoBehaviour

@@ -1,7 +1,6 @@
-﻿using Assets._Project.Scripts.Core.HealthSystem;
-using System;
+﻿using System;
 
-namespace Assets._Project.Sctipts.Core.HealthSystem
+namespace _Project.Core.HealthSystem
 {
     public interface IOnDamage
     {

@@ -1,6 +1,6 @@
-﻿using Assets._Project.Scripts.Weapon.Interface;
+﻿using _Project.Weapon.Interface;
 
-namespace Assets._Project.Scripts.Weapon.Weapons
+namespace _Project.Weapon.Weapons
 {
     public class MeleeAttack : Weapon, IMeleeAttack
     {

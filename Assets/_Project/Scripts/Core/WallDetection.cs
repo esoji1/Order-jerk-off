@@ -1,12 +1,12 @@
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Player.Movement
+namespace _Project.Core
 {
     public class WallDetection : MonoBehaviour
     {
         [SerializeField] private float _raycastDistance = 1f;
         [SerializeField] private LayerMask _layer;
-        [SerializeField] private Player _player;
+        [SerializeField] private Player.Player _player;
 
         private bool _isTouchingWall;
         private RaycastHit2D _lastHit;

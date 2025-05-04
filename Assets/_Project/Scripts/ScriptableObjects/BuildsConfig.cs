@@ -1,6 +1,6 @@
-using Assets._Project.Scripts.ConstructionBuildings.Buildings;
+using _Project.ConstructionBuildings.Buildings;
 using UnityEngine;
-namespace Assets._Project.Scripts.ScriptableObjects.Configs
+namespace _Project.ScriptableObjects.Configs
 {
     [CreateAssetMenu(fileName = "BuildsConfig", menuName = "ScriptableObjects/Configs/BuildsConfig")]
     public class BuildsConfig : ScriptableObject
@@ -11,5 +11,6 @@ namespace Assets._Project.Scripts.ScriptableObjects.Configs
         [field: SerializeField] public float RadiusAttack { get; private set; }
         [field: SerializeField] public int Damage { get; private set; }
         [field: SerializeField] public float DelayAttack { get; private set; }
+        [field: SerializeField] public int Price { get; private set; }
     }
 }

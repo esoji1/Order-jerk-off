@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets._Project.Scripts.Core.HealthSystem
+namespace _Project.Core.HealthSystem
 {
     public class PointHealth : MonoBehaviour
     {

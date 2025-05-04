@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets._Project.Sctipts.JoystickMovement
+namespace _Project.JoystickMovement
 {
     public class JoysickForMovement : JoystickHandler
     {

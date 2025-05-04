@@ -1,4 +1,4 @@
-namespace Assets._Project.Scripts.Enemy.MovePoints
+namespace _Project.Enemy.MovePoints
 {
     public interface IMovePoints
     {

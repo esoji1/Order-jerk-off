@@ -1,9 +1,7 @@
-﻿using Assets._Project.Scripts.Weapon;
-using Assets._Project.Sctipts.ResourceExtraction;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.ResourceExtraction.FishingRodMining
+namespace _Project.ResourceExtraction.FishingRodMining
 {
     public class FishingRodMining : BaseMining
     {

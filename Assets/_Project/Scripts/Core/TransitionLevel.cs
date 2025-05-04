@@ -1,8 +1,7 @@
-using Assets._Project.Scripts.Player;
-using Assets._Project.Sctipts.CameraMain;
+using _Project.CameraMain;
 using UnityEngine;
 
-namespace Assets._Project.Sctipts.Core
+namespace _Project.Core
 {
     public class TransitionLevel : MonoBehaviour
     {
@@ -20,7 +19,7 @@ namespace Assets._Project.Sctipts.Core
             if (deltaY > 0)
             {
                 Debug.Log("Âîøåë ÑÂÅÐÕÓ");
-                if (collision.TryGetComponent(out Player player))
+                if (collision.TryGetComponent(out Player.Player player))
                 {
                     player.transform.position -= new Vector3(0f, _addPositionPlayer, 0f);
                     _adaptingColliderResolution.AddTopHeight(-_forward);
@@ -31,7 +30,7 @@ namespace Assets._Project.Sctipts.Core
             {
                 Debug.Log("Âîøåë ÑÍÈÇÓ");
 
-                if (collision.TryGetComponent(out Player player))
+                if (collision.TryGetComponent(out Player.Player player))
                 {
                     player.transform.position += new Vector3(0f, _addPositionPlayer, 0f);
                     _adaptingColliderResolution.AddTopHeight(_forward);

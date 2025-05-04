@@ -1,20 +1,19 @@
-﻿using Assets._Project.Scripts.Core;
-using Assets._Project.Scripts.Core.Interface;
-using Assets._Project.Scripts.ScriptableObjects.Configs;
+﻿using _Project.Core;
+using _Project.Core.Interface;
+using _Project.ScriptableObjects.Configs;
 using DG.Tweening;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
+namespace _Project.ConstructionBuildings.Buildings
 {
     public abstract class BaseBuilding : MonoBehaviour, IDamage
     {
-        protected BuildsConfig Config;
-
         private GameObject _window;
         private Canvas _staticCanvas;
         private Player.Player _player;
+        private BuildsConfig _config;
 
         private Health _health;
 
@@ -29,10 +28,12 @@ namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
         public Type Type => _type;
         public GameObject Window => _window;
         public Player.Player Player => _player;
+        public BuildingArea BuildingArea => _buildingArea;
+        public BuildsConfig Config => _config;
 
         public virtual void Initialize(BuildsConfig config, Canvas staticCanvas, Player.Player player)
         {
-            Config = config;
+            _config = config;
             _staticCanvas = staticCanvas;
             _player = player;
             _health = new Health(Config.Health);
@@ -62,7 +63,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
             _tween.Kill();
 
             _window.SetActive(false);
-            _window.transform.localScale = new Vector3(0, 0,0);
+            _window.transform.localScale = new Vector3(0, 0, 0);
         }
 
         public void Damage(int damage) => _health.TakeDamage(damage);
@@ -71,7 +72,6 @@ namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
         {
             _buildingArea.SetZoneOccupeid(false);
             _buildingArea.SetBaseBuilding(null);
-            Destroy(_window);
             _tween.Kill();
             Destroy(gameObject);
         }
@@ -80,6 +80,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
         {
             _exit.onClick.RemoveListener(Hide);
             _health.OnDie -= Die;
+            Destroy(_window.gameObject);
         }
     }
 }

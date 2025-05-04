@@ -1,9 +1,8 @@
-using Assets._Project.Scripts.Core;
-using Assets._Project.Sctipts.Core;
+using _Project.Core;
 using TMPro;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Weapon
+namespace _Project.Weapon
 {
     public class WeaponFactoryBootstrap : MonoBehaviour
     {

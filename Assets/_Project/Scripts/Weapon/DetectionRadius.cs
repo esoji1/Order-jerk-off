@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Weapon
+namespace _Project.Weapon
 {
     public class DetectionRadius
     {

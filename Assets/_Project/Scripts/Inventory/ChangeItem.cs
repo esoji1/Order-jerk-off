@@ -1,12 +1,9 @@
-﻿using Assets._Project.Scripts.Inventory;
-using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Scripts.UseWeapons;
-using Assets._Project.Scripts.Weapon;
-using System;
+﻿using _Project.ScriptableObjects.Configs;
+using _Project.Weapon;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Project.Sctipts.Inventory
+namespace _Project.Inventory
 {
     public class ChangeItem : MonoBehaviour
     {
@@ -16,7 +13,7 @@ namespace Assets._Project.Sctipts.Inventory
 
         private Inventory _inventory;
         private InventoryActive _inventoryActive;
-        private UseWeapons _useWeapons;
+        private UseWeapons.UseWeapons _useWeapons;
 
         private bool _isOpen;
         private bool _isWeaponEquipped;
@@ -33,7 +30,7 @@ namespace Assets._Project.Sctipts.Inventory
             }
         }
 
-        public void Initialize(UseWeapons useWeapons, Inventory inventory, InventoryActive inventoryActive)
+        public void Initialize(UseWeapons.UseWeapons useWeapons, Inventory inventory, InventoryActive inventoryActive)
         {
             _useWeapons = useWeapons;
             _inventory = inventory;

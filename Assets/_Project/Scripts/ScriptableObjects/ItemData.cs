@@ -1,9 +1,8 @@
-using Assets._Project.Scripts.Inventory.Items;
-using Assets._Project.Sctipts.Inventory.Items;
+using _Project.Inventory.Items;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.ScriptableObjects.Configs
+namespace _Project.ScriptableObjects.Configs
 {
     [CreateAssetMenu(fileName = "ItemData", menuName = "ScriptableObjects/Configs/ItemData")]
     public class ItemData : ScriptableObject

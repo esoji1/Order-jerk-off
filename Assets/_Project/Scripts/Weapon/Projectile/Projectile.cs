@@ -1,7 +1,7 @@
-using Assets._Project.Scripts.Core.Interface;
+using _Project.Core.Interface;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Weapon.Projectile
+namespace _Project.Weapon.Projectile
 {
     public class Projectile : MonoBehaviour
     {
@@ -22,7 +22,7 @@ namespace Assets._Project.Scripts.Weapon.Projectile
         {
             if (collision.TryGetComponent(out IDamage damage))
             {
-                if (damage is Enemy.Enemy enemy)
+                if (damage is Enemy.Enemys.Enemy enemy)
                 {
                     int randomDamage = Random.Range(_minDamage, _maxDamage) + _extraDamage;
                     _droppedDamage.SpawnNumber(randomDamage, _nearestEnemy.transform);

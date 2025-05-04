@@ -1,16 +1,17 @@
-using Assets._Project.Scripts.ConstructionBuildings.Buildings;
-using Assets._Project.Scripts.Player;
-using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Scripts.Weapon.Projectile;
-using Assets._Project.Scripts.Weapon;
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using _Project.Core.Points;
+using UnityEngine.UI;
+using _Project.Player;
+using _Project.Weapon;
+using _Project.Weapon.Projectile;
+using _Project.ScriptableObjects.Configs;
 
-namespace Assets._Project.Scripts.ConstructionBuildings.DefensiveBuildings
+namespace _Project.ConstructionBuildings.DefensiveBuildings
 {
     [RequireComponent(typeof(CircleRadiusVisualizer))]
-    public class RangedAttackTower : BaseBuilding
+    public class RangedAttackTower : Buildings.BaseBuilding
     {
         private CircleRadiusVisualizer _circleRadiusVisualizer;
         private DetectionRadius _enemyDetectionRadius;
@@ -18,11 +19,12 @@ namespace Assets._Project.Scripts.ConstructionBuildings.DefensiveBuildings
         private SpawnProjectile _spawnProjectile;
         private Projectile _projectile;
         private LayerMask _layerMask;
+        private SellBuilding _sellBuilding;
 
         private Coroutine _attackCoroutine;
         private Collider2D _nearestEnemy;
 
-        public void Initialize(BuildsConfig config, Canvas staticCanvas, Player.Player player, Sctipts.Inventory.Inventory inventory, Canvas dynamic,
+        public void Initialize(BuildsConfig config, Canvas staticCanvas, Player.Player player, Inventory.Inventory inventory, Canvas dynamic,
             TextMeshProUGUI textDamage, LayerMask layer, Projectile projectile)
         {
             base.Initialize(config, staticCanvas, player);
@@ -32,6 +34,10 @@ namespace Assets._Project.Scripts.ConstructionBuildings.DefensiveBuildings
 
             _circleRadiusVisualizer = GetComponent<CircleRadiusVisualizer>();
             _circleRadiusVisualizer.Initialize(transform);
+
+            _sellBuilding = Window.GetComponentInChildren<SellBuilding>();
+            PointSell pointSell = Window.GetComponentInChildren<PointSell>();
+            _sellBuilding.Initialize(this, pointSell.GetComponent<Button>());
 
             _enemyDetectionRadius = new DetectionRadius(transform, layer);
             _droppedDamage = new DroppedDamage.DroppedDamage(textDamage, dynamic);
@@ -83,7 +89,6 @@ namespace Assets._Project.Scripts.ConstructionBuildings.DefensiveBuildings
         {
             while (true)
             {
-
                 if (_nearestEnemy != null)
                 {
                     Vector2 direction = (_nearestEnemy.transform.position - transform.position).normalized;

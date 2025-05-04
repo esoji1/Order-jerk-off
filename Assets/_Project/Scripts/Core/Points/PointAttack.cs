@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets._Project.Sctipts.Core
+namespace _Project.Core
 {
     public class PointAttack : MonoBehaviour
     {

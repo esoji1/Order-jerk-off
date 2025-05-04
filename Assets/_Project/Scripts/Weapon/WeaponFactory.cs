@@ -1,13 +1,11 @@
-﻿using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Scripts.Weapon.Interface;
-using Assets._Project.Scripts.Weapon.Projectile;
-using Assets._Project.Scripts.Weapon.Weapons;
-using Assets._Project.Sctipts.Core;
+﻿using _Project.Core;
+using _Project.ScriptableObjects.Configs;
+using _Project.Weapon.Interface;
 using System;
 using TMPro;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Weapon
+namespace _Project.Weapon
 {
     public class WeaponFactory
     {
@@ -68,7 +66,7 @@ namespace Assets._Project.Scripts.Weapon
             }
             else if (instance is IRangedAttack)
             {
-                if (instance is RangedAttack rangedAttack)
+                if (instance is Weapons.RangedAttack rangedAttack)
                 {
                     rangedAttack.Initialize(config, point, _canvas, _textDamage, _player, _projectile);
                     return instance;

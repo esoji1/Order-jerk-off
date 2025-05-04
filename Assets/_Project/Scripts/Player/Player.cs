@@ -1,18 +1,15 @@
-using Assets._Project.Scripts.Core;
-using Assets._Project.Scripts.Core.HealthSystem;
-using Assets._Project.Scripts.Core.Interface;
-using Assets._Project.Scripts.ExperienceBar;
-using Assets._Project.Scripts.Player.Movement;
-using Assets._Project.Scripts.Player.Pumping;
-using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Scripts.SelectionGags;
-using Assets._Project.Sctipts.Core;
-using Assets._Project.Sctipts.Core.HealthSystem;
-using Assets._Project.Sctipts.JoystickMovement;
+using _Project.Core;
+using _Project.Core.HealthSystem;
+using _Project.Core.Interface;
+using _Project.ExperienceBar;
+using _Project.JoystickMovement;
+using _Project.Player.Pumping;
+using _Project.ScriptableObjects.Configs;
+using _Project.SelectionGags;
 using System;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Player
+namespace _Project.Player
 {
     public class Player : MonoBehaviour, IGagsPicker, IOnDamage, IDamage
     {

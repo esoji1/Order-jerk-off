@@ -1,6 +1,6 @@
 using System;
 
-namespace Assets._Project.Scripts.Player.Pumping
+namespace _Project.Player.Pumping
 {
     [Serializable]
     public class PlayerCharacteristics

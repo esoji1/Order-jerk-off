@@ -1,4 +1,4 @@
-﻿namespace Assets._Project.Scripts.Core
+﻿namespace _Project.Core
 {
     public enum TypesScene
     {

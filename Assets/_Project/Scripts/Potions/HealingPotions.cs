@@ -1,16 +1,16 @@
-﻿using Assets._Project.Scripts.Inventory;
+﻿using _Project.Inventory;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Project.Scripts.Potions
+namespace _Project.Potions
 {
     public class HealingPotions : MonoBehaviour
     {
         [SerializeField] private int _amountHeal;
         [SerializeField] private Player.Player _player;
         [SerializeField] private Button _buttonHeal;
-        [SerializeField] private Sctipts.Inventory.Inventory _inventory;
+        [SerializeField] private Inventory.Inventory _inventory;
         [SerializeField] private TextMeshProUGUI _textNumberHilokas;
 
         private bool _isHealingPotions;

@@ -1,4 +1,4 @@
-﻿namespace Assets._Project.Scripts.Inventory
+﻿namespace _Project.Inventory
 {
     public enum ItemCategory
     {

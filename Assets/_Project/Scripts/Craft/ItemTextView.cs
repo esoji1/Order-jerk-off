@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Craft
+namespace _Project.Craft
 {
     public class ItemTextView : MonoBehaviour
     {
@@ -18,7 +18,7 @@ namespace Assets._Project.Scripts.Craft
             _inventoryCrafting.OnClickCraft += UpdateText;
         }
 
-        private void UpdateText(Sctipts.Craft.Craft craft)
+        private void UpdateText(Craft craft)
         {
             StringBuilder textCtaft = new StringBuilder();
 

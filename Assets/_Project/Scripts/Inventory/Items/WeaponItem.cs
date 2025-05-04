@@ -1,7 +1,7 @@
-using Assets._Project.Scripts.Weapon;
+using _Project.Weapon;
 using System;
 
-namespace Assets._Project.Sctipts.Inventory.Items
+namespace _Project.Inventory.Items
 {
     public class WeaponItem : BaseItem
     {

@@ -1,7 +1,6 @@
-﻿using Assets._Project.Sctipts.ResourceExtraction;
-using System.Collections;
+﻿using System.Collections;
 
-namespace Assets._Project.Scripts.ResourceExtraction.ScissorsMining
+namespace _Project.ResourceExtraction.ScissorsMining
 {
     public class Scissors : BaseMining
     {

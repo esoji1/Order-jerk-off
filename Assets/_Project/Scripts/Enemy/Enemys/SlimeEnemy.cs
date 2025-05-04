@@ -1,4 +1,4 @@
-namespace Assets._Project.Scripts.Enemy.Enemys
+namespace _Project.Enemy.Enemys
 {
     public class SlimeEnemy : Enemy
     {

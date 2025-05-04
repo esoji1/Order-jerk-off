@@ -1,9 +1,8 @@
-using Assets._Project.Scripts.Craft;
-using Assets._Project.Sctipts.Inventory.Items;
+using _Project.Inventory.Items;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets._Project.Sctipts.Craft
+namespace _Project.Craft
 {
     public class Craft : MonoBehaviour
     {

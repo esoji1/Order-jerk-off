@@ -1,12 +1,12 @@
-using Assets._Project.Scripts.Enemy;
-using Assets._Project.Scripts.ScriptableObjects.Configs;
+using _Project.Enemy;
+using _Project.ScriptableObjects.Configs;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Wave
+namespace _Project.Wave
 {
     public class EnemyWaveSpawner : MonoBehaviour
     {
@@ -17,7 +17,7 @@ namespace Assets._Project.Scripts.Wave
 
         private WaveView _waveView;
 
-        private List<Enemy.Enemy> _activeEnemies = new();
+        private List<Enemy.Enemys.Enemy> _activeEnemies = new();
         private int _currentWaveIndex = 0;
         private bool _isSpawning = false;
 
@@ -87,7 +87,7 @@ namespace Assets._Project.Scripts.Wave
             {
                 for (int i = 0; i < group.Count; i++)
                 {
-                    Enemy.Enemy newEnemy = _bootstrapEnemy.EnemyFactory.Get(group.EnemyTypes,
+                    Enemy.Enemys.Enemy newEnemy = _bootstrapEnemy.EnemyFactory.Get(group.EnemyTypes,
                         _bootstrapEnemy.Points[UnityEngine.Random.Range(0, _bootstrapEnemy.Points.Count)].position, _bootstrapEnemy.Points, false);
 
                     _activeEnemies.Add(newEnemy);
@@ -98,7 +98,7 @@ namespace Assets._Project.Scripts.Wave
             }
         }
 
-        private void HandleEnemyDeath(Enemy.Enemy enemy)
+        private void HandleEnemyDeath(Enemy.Enemys.Enemy enemy)
         {
             if (_activeEnemies.Contains(enemy))
                 _activeEnemies.Remove(enemy);

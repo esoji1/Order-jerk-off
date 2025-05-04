@@ -1,4 +1,4 @@
-namespace Assets._Project.Sctipts.ResourceExtraction
+namespace _Project.ResourceExtraction
 {
     public enum TypesMining
     {

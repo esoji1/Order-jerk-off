@@ -1,18 +1,17 @@
-using Assets._Project.Scripts.Player;
 using UnityEngine;
 
-namespace Assets._Project.Sctipts.Core.HealthSystem
+namespace _Project.Core.HealthSystem
 {
     public class HealthView : MonoBehaviour
     {
         private HealthInfo _healthInfo;
         private IOnDamage _onDamage;
-        private Player _player;
+        private Player.Player _player;
 
         private int _currentHp;
         private int _maxHp;
 
-        public void Initialize(IOnDamage onDamage, int maxHealth, HealthInfo healthInfo, Player player)
+        public void Initialize(IOnDamage onDamage, int maxHealth, HealthInfo healthInfo, Player.Player player)
         {
             _maxHp = maxHealth;
             _currentHp = maxHealth;

@@ -1,18 +1,17 @@
-using Assets._Project.Scripts.Inventory;
-using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Sctipts.Inventory;
+using _Project.Inventory;
+using _Project.ScriptableObjects.Configs;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
+namespace _Project.ConstructionBuildings.Buildings
 {
     public class Shop : BaseBuilding
     {
-        private Sctipts.Inventory.Inventory _inventory;
+        private Inventory.Inventory _inventory;
 
         private SellItemsStore _sellItemsStore;
         private InformationAboutItemShopView _informationAboutItemView;
 
-        public void Initialize(BuildsConfig config, Canvas staticCanvas, Player.Player player, Sctipts.Inventory.Inventory inventory)
+        public void Initialize(BuildsConfig config, Canvas staticCanvas, Player.Player player, Inventory.Inventory inventory)
         {
             base.Initialize(config, staticCanvas, player);
 

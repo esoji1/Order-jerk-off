@@ -1,10 +1,10 @@
-using Assets._Project.Scripts.ExperienceBar;
-using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Sctipts.Core.HealthSystem;
-using Assets._Project.Sctipts.JoystickMovement;
+using _Project.Core.HealthSystem;
+using _Project.ExperienceBar;
+using _Project.JoystickMovement;
+using _Project.ScriptableObjects.Configs;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Player
+namespace _Project.Player
 {
     public class PlayerBootstarp : MonoBehaviour
     {

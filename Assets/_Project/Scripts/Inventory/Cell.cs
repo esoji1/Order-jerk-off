@@ -1,8 +1,8 @@
-﻿using Assets._Project.Sctipts.Inventory.Items;
+﻿using _Project.Inventory.Items;
 using TMPro;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Inventory
+namespace _Project.Inventory
 {
     public class Cell : MonoBehaviour
     {

@@ -1,8 +1,7 @@
-﻿using Assets._Project.Sctipts.Inventory.Items;
-using Assets._Project.Sctipts.ResourceExtraction;
+﻿using _Project.ResourceExtraction;
 using System;
 
-namespace Assets._Project.Scripts.Inventory.Items
+namespace _Project.Inventory.Items
 {
     public class MiningItem : BaseItem
     {

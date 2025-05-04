@@ -1,8 +1,7 @@
-using Assets._Project.Scripts.Core;
-using Assets._Project.Scripts.Weapon;
+using _Project.Weapon;
 using UnityEngine;
 
-namespace Assets._Project.Sctipts.Core
+namespace _Project.Core
 {
     public class RadiusMovementTrigger : MonoBehaviour
     {

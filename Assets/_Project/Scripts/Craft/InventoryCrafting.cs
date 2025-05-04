@@ -1,32 +1,32 @@
-﻿using Assets._Project.Scripts.Inventory;
+﻿using _Project.Inventory;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-namespace Assets._Project.Scripts.Craft
+namespace _Project.Craft
 {
     public class InventoryCrafting : MonoBehaviour
     {
-        private Sctipts.Inventory.Inventory _inventory;
-        private Dictionary<Cell, Sctipts.Craft.Craft> _cellAndCraftDictionary;
+        private Inventory.Inventory _inventory;
+        private Dictionary<Cell, Craft> _cellAndCraftDictionary;
         private Dictionary<Button, UnityAction> _buttonSubscriptions = new Dictionary<Button, UnityAction>();
 
-        public Sctipts.Inventory.Inventory Inventory => _inventory;
+        public Inventory.Inventory Inventory => _inventory;
 
-        public event Action<Sctipts.Craft.Craft> OnClickCraft;
+        public event Action<Craft> OnClickCraft;
 
-        public void Initialize(Sctipts.Inventory.Inventory inventory)
+        public void Initialize(Inventory.Inventory inventory)
         {
             UnsubscribeAll();
 
             _inventory = inventory;
-            _cellAndCraftDictionary = new Dictionary<Cell, Sctipts.Craft.Craft>();
+            _cellAndCraftDictionary = new Dictionary<Cell, Craft>();
 
             foreach (Cell cell in GetComponentsInChildren<Cell>())
             {
-                Sctipts.Craft.Craft craftComponent = cell.GetComponent<Sctipts.Craft.Craft>();
+                Craft craftComponent = cell.GetComponent<Craft>();
                 _cellAndCraftDictionary.Add(cell, craftComponent);
 
                 if (cell.Item != null && cell.Item.TryGetComponent(out Button button))
@@ -39,7 +39,7 @@ namespace Assets._Project.Scripts.Craft
             }
         }
 
-        private void OnClick(Sctipts.Craft.Craft craft) => OnClickCraft?.Invoke(craft);
+        private void OnClick(Craft craft) => OnClickCraft?.Invoke(craft);
 
         private void UnsubscribeAll()
         {

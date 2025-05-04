@@ -1,10 +1,10 @@
-using Assets._Project.Scripts.Core;
-using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Sctipts.Weapon.TempData;
+using _Project.Core;
+using _Project.ScriptableObjects.Configs;
+using _Project.Weapon.TempData;
 using TMPro;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Weapon.Weapons
+namespace _Project.Weapon.Weapons
 {
     [RequireComponent(typeof(AttackWeaponFectory))]
     public abstract class Weapon : MonoBehaviour

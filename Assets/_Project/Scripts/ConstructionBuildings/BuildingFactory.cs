@@ -1,13 +1,13 @@
-using Assets._Project.Scripts.ConstructionBuildings.Buildings;
-using Assets._Project.Scripts.ConstructionBuildings.DefensiveBuildings;
-using Assets._Project.Scripts.Inventory;
-using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Scripts.Weapon.Projectile;
+using _Project.ConstructionBuildings.Buildings;
+using _Project.ConstructionBuildings.DefensiveBuildings;
+using _Project.Inventory;
+using _Project.ScriptableObjects.Configs;
+using _Project.Weapon.Projectile;
 using System;
 using TMPro;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.ConstructionBuildings
+namespace _Project.ConstructionBuildings
 {
     public class BuildingFactory
     {
@@ -19,14 +19,14 @@ namespace Assets._Project.Scripts.ConstructionBuildings
         private Canvas _dynamicCanvas;
         private Player.Player _player; 
         private UseWeapons.UseWeapons _useWeapons;
-        private Sctipts.Inventory.Inventory _inventory;
+        private Inventory.Inventory _inventory;
         private InventoryActive _inventoryActive;
         private TextMeshProUGUI _textDamage;
         private LayerMask _layerMask;
         private Projectile _projectile;
 
         public BuildingFactory(BuildsConfig housConfig, BuildsConfig shopConfig, BuildsConfig alchemyConfig, BuildsConfig archerTowerConfig, Canvas staticCanvas, 
-            Player.Player player, UseWeapons.UseWeapons useWeapons, Sctipts.Inventory.Inventory inventory, InventoryActive inventoryActive, Canvas dynamicCanvas, TextMeshProUGUI textDamage,
+            Player.Player player, UseWeapons.UseWeapons useWeapons,Inventory.Inventory inventory, InventoryActive inventoryActive, Canvas dynamicCanvas, TextMeshProUGUI textDamage,
             LayerMask layerMask, Projectile projectile)
         {
             _houseConfig = housConfig;

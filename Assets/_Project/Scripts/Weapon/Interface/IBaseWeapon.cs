@@ -1,4 +1,4 @@
-﻿namespace Assets._Project.Scripts.Weapon.Interface
+﻿namespace _Project.Weapon.Interface
 {
     public interface IBaseWeapon
     {

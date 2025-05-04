@@ -1,4 +1,4 @@
-﻿namespace Assets._Project.Scripts.Enemy
+﻿namespace _Project.Enemy
 {
     public enum EnemyTypes
     {

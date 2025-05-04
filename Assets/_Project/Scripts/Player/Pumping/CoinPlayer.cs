@@ -1,7 +1,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Player.Pumping
+namespace _Project.Player.Pumping
 {
     public class CoinPlayer : MonoBehaviour
     {

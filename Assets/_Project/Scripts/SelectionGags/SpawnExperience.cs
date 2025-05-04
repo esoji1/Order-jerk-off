@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets._Project.Scripts.SelectionGags
+namespace _Project.SelectionGags
 {
     public class SpawnExperience
     {

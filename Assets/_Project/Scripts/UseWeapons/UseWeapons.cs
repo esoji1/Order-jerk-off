@@ -1,10 +1,10 @@
-using Assets._Project.Scripts.Core;
-using Assets._Project.Scripts.Weapon;
-using Assets._Project.Scripts.Weapon.Interface;
+using _Project.Core;
+using _Project.Weapon;
+using _Project.Weapon.Interface;
 using System;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.UseWeapons
+namespace _Project.UseWeapons
 {
     public class UseWeapons : MonoBehaviour
     {

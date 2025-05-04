@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-namespace Assets._Project.Scripts.ScriptableObjects.Configs
+namespace _Project.ScriptableObjects.Configs
 {
     [CreateAssetMenu(fileName = "EnemyConfig", menuName = "ScriptableObjects/Configs/EnemyConfig")]
     public class EnemyConfig : ScriptableObject
     {
-        [field: SerializeField] public Enemy.Enemy Prefab;
+        [field: SerializeField] public Enemy.Enemys.Enemy Prefab;
         [field: SerializeField] public int Health;
         [field: SerializeField] public float Speed;
         [field: SerializeField] public float AttackRadius;

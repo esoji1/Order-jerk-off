@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets._Project.Scripts.Weapon.Projectile
+namespace _Project.Weapon.Projectile
 {
     public class SpawnProjectile
     {

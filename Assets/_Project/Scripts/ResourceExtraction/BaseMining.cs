@@ -1,10 +1,10 @@
-using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Scripts.Weapon;
-using Assets._Project.Sctipts.Core;
+using _Project.Core;
+using _Project.ScriptableObjects.Configs;
+using _Project.Weapon;
 using System.Collections;
 using UnityEngine;
 
-namespace Assets._Project.Sctipts.ResourceExtraction
+namespace _Project.ResourceExtraction
 {
     public abstract class BaseMining : MonoBehaviour
     {

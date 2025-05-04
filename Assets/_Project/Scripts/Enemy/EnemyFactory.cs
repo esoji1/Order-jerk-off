@@ -1,12 +1,11 @@
-﻿using Assets._Project.Scripts.Enemy.Enemys;
-using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Scripts.Weapon;
-using Assets._Project.Sctipts.Core.HealthSystem;
+﻿using _Project.Core.HealthSystem;
+using _Project.Enemy.Enemys;
+using _Project.ScriptableObjects.Configs;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Enemy
+namespace _Project.Enemy
 {
     public class EnemyFactory
     {
@@ -33,11 +32,11 @@ namespace Assets._Project.Scripts.Enemy
             _mainBuildingPoint = mainBuildingPoint;
         }
 
-        public Enemy Get(EnemyTypes enemyType, Vector3 position, List<Transform> points, bool _isMoveRandomPoints)
+        public Enemy.Enemys.Enemy Get(EnemyTypes enemyType, Vector3 position, List<Transform> points, bool _isMoveRandomPoints)
         {
             EnemyConfig config = GetConfigBy(enemyType);
-            Enemy instance = UnityEngine.Object.Instantiate(config.Prefab, position, Quaternion.identity, null);
-            Enemy baseEnemy = InitializeObject(instance, config, points, _isMoveRandomPoints);
+            Enemy.Enemys.Enemy instance = UnityEngine.Object.Instantiate(config.Prefab, position, Quaternion.identity, null);
+            Enemy.Enemys.Enemy baseEnemy = InitializeObject(instance, config, points, _isMoveRandomPoints);
             return baseEnemy;
         }
 
@@ -56,7 +55,7 @@ namespace Assets._Project.Scripts.Enemy
             }
         }
 
-        private Enemy InitializeObject(Enemy instance, EnemyConfig config, List<Transform> points, bool _isMoveRandomPoints)
+        private Enemy.Enemys.Enemy InitializeObject(Enemy.Enemys.Enemy instance, EnemyConfig config, List<Transform> points, bool _isMoveRandomPoints)
         {
             if (instance is PlantPredatorEnemy || instance is SlimeEnemy)
             {

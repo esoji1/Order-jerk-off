@@ -1,9 +1,8 @@
-using Assets._Project.Scripts.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Assets._Project.Sctipts.Core
+namespace _Project.Core
 {
     public class MenuButtonManager : MonoBehaviour
     {

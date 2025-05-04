@@ -1,7 +1,7 @@
 using Unity.Cinemachine;
 using UnityEngine;
     
-namespace Assets._Project.Sctipts.CameraMain
+namespace _Project.CameraMain
 {
     public class AdaptingColliderResolution : MonoBehaviour
     {

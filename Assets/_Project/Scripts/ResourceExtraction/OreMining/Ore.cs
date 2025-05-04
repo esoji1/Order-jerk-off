@@ -1,8 +1,7 @@
-﻿using Assets._Project.Sctipts.ResourceExtraction.OreMining;
-using System;
+﻿using System;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.ResourceExtraction.OreMining
+namespace _Project.ResourceExtraction.OreMining
 {
     public class Ore : MonoBehaviour
     {

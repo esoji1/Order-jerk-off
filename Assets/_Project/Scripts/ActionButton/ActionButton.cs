@@ -1,13 +1,13 @@
-using Assets._Project.Scripts.ConstructionBuildings;
-using Assets._Project.Scripts.Enemy;
-using Assets._Project.Scripts.ResourceExtraction.FishingRodMining;
-using Assets._Project.Scripts.ResourceExtraction.OreMining;
-using Assets._Project.Scripts.ResourceExtraction.ScissorsMining;
+using _Project.ConstructionBuildings;
+using _Project.Enemy;
+using _Project.ResourceExtraction.FishingRodMining;
+using _Project.ResourceExtraction.OreMining;
+using _Project.ResourceExtraction.ScissorsMining;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Project.Scripts.ActionButton
+namespace _Project.ActionButton
 {
     public class ActionButton : MonoBehaviour
     {

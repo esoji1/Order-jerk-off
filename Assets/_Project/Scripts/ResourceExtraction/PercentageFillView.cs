@@ -2,7 +2,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.ResourceExtraction
+namespace _Project.ResourceExtraction
 {
     public class PercentageFillView : MonoBehaviour
     {

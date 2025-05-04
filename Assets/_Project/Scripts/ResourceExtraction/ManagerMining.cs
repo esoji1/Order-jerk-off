@@ -1,25 +1,20 @@
-using Assets._Project.Scripts.ActionButton;
-using Assets._Project.Scripts.Core;
-using Assets._Project.Scripts.Inventory;
-using Assets._Project.Scripts.Inventory.Items;
-using Assets._Project.Scripts.Player;
-using Assets._Project.Scripts.ResourceExtraction;
-using Assets._Project.Scripts.ResourceExtraction.FishingRodMining;
-using Assets._Project.Scripts.ResourceExtraction.OreMining;
-using Assets._Project.Scripts.ResourceExtraction.ScissorsMining;
-using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Scripts.UseWeapons;
-using Assets._Project.Sctipts.Inventory.Items;
+using _Project.Core;
+using _Project.Inventory;
+using _Project.Inventory.Items;
+using _Project.ResourceExtraction.FishingRodMining;
+using _Project.ResourceExtraction.OreMining;
+using _Project.ResourceExtraction.ScissorsMining;
+using _Project.ScriptableObjects.Configs;
 using System;
 using UnityEngine;
 
-namespace Assets._Project.Sctipts.ResourceExtraction
+namespace _Project.ResourceExtraction
 {
     public class ManagerMining : MonoBehaviour
     {
-        [SerializeField] private Player _player;
-        [SerializeField] private UseWeapons _useWeapons;
-        [SerializeField] private ActionButton _actionButton;
+        [SerializeField] private Player.Player _player;
+        [SerializeField] private UseWeapons.UseWeapons _useWeapons;
+        [SerializeField] private ActionButton.ActionButton _actionButton;
         [SerializeField] private MiningFactoryBootstrap _mineringFactoryBootstrap;
         [SerializeField] private Inventory.Inventory _inventory;
         [SerializeField] private InventoryActive _inventoryActive;

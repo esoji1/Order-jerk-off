@@ -1,7 +1,7 @@
-﻿using Assets._Project.Sctipts.Inventory.Items;
+﻿using _Project.Potions;
 using System;
 
-namespace Assets._Project.Scripts.Inventory.Items
+namespace _Project.Inventory.Items
 {
     public class PotionItem : BaseItem
     {

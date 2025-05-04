@@ -1,7 +1,7 @@
-using Assets._Project.Scripts.ConstructionBuildings.Buildings;
+using _Project.ConstructionBuildings.Buildings;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.ConstructionBuildings
+namespace _Project.ConstructionBuildings
 {
     public class BuildingArea : MonoBehaviour
     {

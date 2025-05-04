@@ -1,4 +1,4 @@
-﻿namespace Assets._Project.Scripts.ResourceExtraction.ScissorsMining
+﻿namespace _Project.ResourceExtraction.ScissorsMining
 {
     public enum TypesGrasses
     {

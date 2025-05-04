@@ -1,13 +1,10 @@
-﻿using Assets._Project.Scripts.Inventory.Items;
-using Assets._Project.Sctipts.Inventory.Items;
-using Assets._Project.Sctipts.ResourceExtraction;
+﻿using _Project.Inventory.Items;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Project.Scripts.Inventory
+namespace _Project.Inventory
 {
     public class InventoryActive : MonoBehaviour
     {

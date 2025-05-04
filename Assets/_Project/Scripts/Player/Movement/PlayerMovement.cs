@@ -1,7 +1,7 @@
-using Assets._Project.Sctipts.JoystickMovement;
+using _Project.JoystickMovement;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Player
+namespace _Project.Player
 {
     public class PlayerMovement
     {

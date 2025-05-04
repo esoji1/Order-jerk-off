@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Assets._Project.Scripts.Enemy.MovePoints
+namespace _Project.Enemy.MovePoints
 {
     public class RandomMovePoints : MonoBehaviour, IMovePoints
     {
@@ -11,7 +11,7 @@ namespace Assets._Project.Scripts.Enemy.MovePoints
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.TryGetComponent(out Enemy _))
+            if (other.gameObject.TryGetComponent(out Enemy.Enemys.Enemy _))
                 _agent.ResetPath();
         }
 

@@ -1,31 +1,24 @@
-using Assets._Project.Scripts.ConstructionBuildings.Buildings;
-using Assets._Project.Scripts.Core;
-using Assets._Project.Scripts.Core.HealthSystem;
-using Assets._Project.Scripts.Core.Interface;
-using Assets._Project.Scripts.Enemy.MovePoints;
-using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Scripts.SelectionGags;
-using Assets._Project.Scripts.Weapon;
-using Assets._Project.Sctipts.Core;
-using Assets._Project.Sctipts.Core.HealthSystem;
+using _Project.ConstructionBuildings.Buildings;
+using _Project.Core;
+using _Project.Core.HealthSystem;
+using _Project.Core.Interface;
+using _Project.Enemy.MovePoints;
+using _Project.ScriptableObjects.Configs;
+using _Project.SelectionGags;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Assets._Project.Scripts.Enemy
+namespace _Project.Enemy.Enemys
 {
     [RequireComponent(typeof(RadiusMovementTrigger), typeof(Rigidbody2D), typeof(BoxCollider2D))]
     public abstract class Enemy : MonoBehaviour, IDamage, IOnDamage
     {
-        protected WeaponFactoryBootstrap WeaponFactoryBootstrap;
-        protected SetWeaponPoint SetWeaponPoint;
-        protected PointRotation PointRotation;
-
         private EnemyConfig _config;
-        private SelectionGags.Experience _prefabExperience;
-        private SelectionGags.Coin _prefabCoin;
+        private Experience _prefabExperience;
+        private Coin _prefabCoin;
         private HealthInfo _healthInfoPrefab;
         private HealthView _healthViewPrefab;
         private Canvas _dynamic;
@@ -64,6 +57,7 @@ namespace Assets._Project.Scripts.Enemy
         public EnemyConfig Config => _config;
         public LayerMask LayerMask => _layer;
         public Health Health => _health;
+        public EnemyView EnemyView => _enemyView;
 
         private void Update()
         {
@@ -101,7 +95,6 @@ namespace Assets._Project.Scripts.Enemy
             _health = new Health(_config.Health);
             _spawnExperience = new SpawnExperience(_prefabExperience, _config.AmountExperienceDropped);
             _spawnCoin = new SpawnCoin(_prefabCoin, _config.AmountGoldDropped);
-            SetWeaponPoint = new SetWeaponPoint();
 
             _enemyView.Initialize();
 
@@ -255,7 +248,6 @@ namespace Assets._Project.Scripts.Enemy
             _pointCoin = GetComponentInChildren<PointCoin>();
             _pointHealth = GetComponentInChildren<PointHealth>();
             _radiusMovementTrigger = GetComponent<RadiusMovementTrigger>();
-            PointRotation = GetComponentInChildren<PointRotation>();
             _agent = GetComponent<NavMeshAgent>();
             _enemyView = GetComponentInChildren<EnemyView>();
             _boxCollider2D = GetComponent<BoxCollider2D>();

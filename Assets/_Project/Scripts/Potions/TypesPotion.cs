@@ -1,6 +1,7 @@
-using UnityEngine;
-
-public enum TypesPotion
+namespace _Project.Potions
 {
-    Hilka
+    public enum TypesPotion
+    {
+        Hilka
+    }
 }

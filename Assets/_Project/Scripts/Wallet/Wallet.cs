@@ -1,6 +1,6 @@
 using System;
 
-namespace Assets._Project.Scripts.Wallet
+namespace _Project.Wallet
 {
     public class Wallet
     {

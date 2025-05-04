@@ -1,9 +1,9 @@
-﻿using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Scripts.Weapon.Interface;
+﻿using _Project.ScriptableObjects.Configs;
+using _Project.Weapon.Interface;
 using TMPro;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Weapon.Weapons
+namespace _Project.Weapon.Weapons
 {
     public class RangedAttack : Weapon, IRangedAttack
     {

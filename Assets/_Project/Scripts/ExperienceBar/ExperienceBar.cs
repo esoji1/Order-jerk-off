@@ -1,9 +1,8 @@
-﻿using Assets._Project.Scripts.Player.Pumping;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Project.Scripts.ExperienceBar
+namespace _Project.ExperienceBar
 {
     public class ExperienceBar : MonoBehaviour
     {

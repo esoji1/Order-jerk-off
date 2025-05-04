@@ -1,4 +1,4 @@
-﻿namespace Assets._Project.Scripts.ConstructionBuildings
+﻿namespace _Project.ConstructionBuildings
 {
     public enum TypesBuildings
     {

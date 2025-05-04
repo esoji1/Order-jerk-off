@@ -1,7 +1,7 @@
-using Assets._Project.Scripts.ScriptableObjects.Configs;
+using _Project.ScriptableObjects.Configs;
 using UnityEngine;
 
-namespace Assets._Project.Sctipts.Core
+namespace _Project.Core
 {
     public class WeaponConfigs : MonoBehaviour
     {

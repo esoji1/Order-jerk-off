@@ -1,18 +1,17 @@
-using Assets._Project.Scripts.Core.Points;
-using Assets._Project.Scripts.Inventory;
-using Assets._Project.Scripts.Player.Pumping;
-using Assets._Project.Scripts.ScriptableObjects.Configs;
-using Assets._Project.Sctipts.Core;
-using Assets._Project.Sctipts.Inventory;
+using _Project.Core;
+using _Project.Core.Points;
+using _Project.Inventory;
+using _Project.Player.Pumping;
+using _Project.ScriptableObjects.Configs;
 using System.Linq;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
+namespace _Project.ConstructionBuildings.Buildings
 {
     public class House : BaseBuilding
     {
         private UseWeapons.UseWeapons _useWeapons;
-        private Sctipts.Inventory.Inventory _inventory;
+        private Inventory.Inventory _inventory;
         private InventoryActive _inventoryActive;
 
         private CharacteristicsView _characteristicsView;
@@ -21,7 +20,7 @@ namespace Assets._Project.Scripts.ConstructionBuildings.Buildings
         private InformationAboutItemView _informationAboutItemView;
 
         public void Initialize(BuildsConfig config, Canvas staticCanvas, Player.Player player, UseWeapons.UseWeapons useWeapons,
-            Sctipts.Inventory.Inventory inventory, InventoryActive inventoryActive)
+            Inventory.Inventory inventory, InventoryActive inventoryActive)
         {
             base.Initialize(config, staticCanvas, player);
 

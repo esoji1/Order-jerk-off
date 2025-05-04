@@ -1,7 +1,7 @@
-using Assets._Project.Sctipts.ResourceExtraction;
+using _Project.ResourceExtraction;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.ScriptableObjects.Configs
+namespace _Project.ScriptableObjects.Configs
 {
     [CreateAssetMenu(fileName = "MiningConfig", menuName = "ScriptableObjects/Configs/MiningConfig")]
     public class MiningConfig : ScriptableObject

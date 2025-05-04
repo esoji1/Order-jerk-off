@@ -1,7 +1,7 @@
-using Assets._Project.Scripts.Enemy;
+using _Project.Enemy;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.ScriptableObjects.Configs
+namespace _Project.ScriptableObjects.Configs
 {
     [CreateAssetMenu(menuName = "ScriptableObjects/Configs/EnemySpawner/EnemyGroup", fileName = "EnemyGroup")]
     public class EnemyGroup : ScriptableObject

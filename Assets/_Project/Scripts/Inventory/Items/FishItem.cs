@@ -1,8 +1,7 @@
-﻿using Assets._Project.Scripts.ResourceExtraction.FishingRodMining;
-using Assets._Project.Sctipts.Inventory.Items;
+﻿using _Project.ResourceExtraction.FishingRodMining;
 using System;
 
-namespace Assets._Project.Scripts.Inventory.Items
+namespace _Project.Inventory.Items
 {
     public class FishItem : BaseItem
     {

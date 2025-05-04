@@ -1,20 +1,18 @@
-using Assets._Project.Scripts.Inventory;
-using Assets._Project.Scripts.Player;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Project.Sctipts.Inventory
+namespace _Project.Inventory
 {
     public class SaleItem : MonoBehaviour
     {
         [SerializeField] private Button _sell;
 
         private Inventory _inventory;
-        private Player _player;
+        private Player.Player _player;
 
         private Cell _currentCell;
 
-        public void Initialize(Player player, Inventory inventor)
+        public void Initialize(Player.Player player, Inventory inventor)
         {
             _player = player;
             _inventory = inventor;

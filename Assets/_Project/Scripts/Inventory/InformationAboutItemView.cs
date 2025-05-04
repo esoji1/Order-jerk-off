@@ -1,19 +1,19 @@
-﻿using Assets._Project.Scripts.Weapon;
-using Assets._Project.Sctipts.Core;
+﻿using _Project.Core;
+using _Project.Weapon;
 using System;
 using TMPro;
 using UnityEngine;
 
-namespace Assets._Project.Scripts.Inventory
+namespace _Project.Inventory
 {
     public class InformationAboutItemView : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _textInfoItem;
 
-        private Sctipts.Inventory.Inventory _inventory;
+        private Inventory _inventory;
         private InventoryActive _inventoryActive;
 
-        public void Initialize(Sctipts.Inventory.Inventory inventory, InventoryActive inventoryActive)
+        public void Initialize(Inventory inventory, InventoryActive inventoryActive)
         {
             _inventory = inventory;
             _inventoryActive = inventoryActive;

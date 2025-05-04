@@ -1,6 +1,6 @@
 ﻿using TMPro;
 
-namespace Assets._Project.Scripts.Wave
+namespace _Project.Wave
 {
     public class WaveView
     {

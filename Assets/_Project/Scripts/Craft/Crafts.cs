@@ -1,8 +1,8 @@
-﻿using Assets._Project.Scripts.Inventory;
+﻿using _Project.Inventory;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Assets._Project.Scripts.Craft
+namespace _Project.Craft
 {
     public class Crafts : MonoBehaviour
     {
@@ -10,7 +10,7 @@ namespace Assets._Project.Scripts.Craft
 
         private InventoryCrafting _inventoryCrafting;
 
-        private Sctipts.Craft.Craft _currentCraft;
+        private Craft _currentCraft;
 
         public void Initialize(InventoryCrafting inventoryCrafting)
         {
@@ -91,7 +91,7 @@ namespace Assets._Project.Scripts.Craft
             }
         }
 
-        private void ChangeCraftItem(Sctipts.Craft.Craft craft) => _currentCraft = craft;
+        private void ChangeCraftItem(Craft craft) => _currentCraft = craft;
 
         private void OnDestroy()
         {
