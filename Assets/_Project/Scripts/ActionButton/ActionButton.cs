@@ -22,7 +22,7 @@ namespace _Project.ActionButton
         public event Action<Grass> OnMiningGrass;
 
         private void Update() =>
-            WithinVisibilityRadius(_player.Config.VisibilityRadius);
+            WithinVisibilityRadius(_player.Config.RadiusInteractionWithWorld);
 
         private void OnEnable() =>
             _actionButton.onClick.AddListener(PerformAction);

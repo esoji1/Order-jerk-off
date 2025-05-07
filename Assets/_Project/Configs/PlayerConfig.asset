@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
   Speed: 2
-  VisibilityRadius: 0.2
+  RadiusInteractionWithWorld: 0.2
   Health: 100
   LayerEnemy:
     serializedVersion: 2
     m_Bits: 128
+  VisibilityRadius: 1.5

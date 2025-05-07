@@ -191,6 +191,12 @@ namespace _Project.Player
                 }
             }
 
+            if (_weapon == null)
+            {
+                _circleRadiusVisualizer.DrawRadius(_config.VisibilityRadius);
+                return;
+            }
+
             _circleRadiusVisualizer.DrawRadius(_weapon.Config.VisibilityRadius);
         }
 

@@ -20,6 +20,7 @@ namespace _Project.ConstructionBuildings
         private Player.Player _player; 
         private UseWeapons.UseWeapons _useWeapons;
         private Inventory.Inventory _inventory;
+        private InventoryActivePotions _inventoryActivePotions;
         private InventoryActive _inventoryActive;
         private TextMeshProUGUI _textDamage;
         private LayerMask _layerMask;
@@ -27,7 +28,7 @@ namespace _Project.ConstructionBuildings
 
         public BuildingFactory(BuildsConfig housConfig, BuildsConfig shopConfig, BuildsConfig alchemyConfig, BuildsConfig archerTowerConfig, Canvas staticCanvas, 
             Player.Player player, UseWeapons.UseWeapons useWeapons,Inventory.Inventory inventory, InventoryActive inventoryActive, Canvas dynamicCanvas, TextMeshProUGUI textDamage,
-            LayerMask layerMask, Projectile projectile)
+            LayerMask layerMask, Projectile projectile, InventoryActivePotions inventoryActivePotions)
         {
             _houseConfig = housConfig;
             _shopConfig = shopConfig;
@@ -42,6 +43,7 @@ namespace _Project.ConstructionBuildings
             _textDamage = textDamage;
             _layerMask = layerMask;
             _projectile = projectile;
+            _inventoryActivePotions = inventoryActivePotions;
         }
 
         public BaseBuilding Get(TypesBuildings typesBuildings, Vector3 position)
@@ -77,7 +79,7 @@ namespace _Project.ConstructionBuildings
         {
             if (instance is House house)
             {
-                house.Initialize(buildsConfig, _staticCanvas, _player, _useWeapons, _inventory, _inventoryActive);
+                house.Initialize(buildsConfig, _staticCanvas, _player, _useWeapons, _inventory, _inventoryActive, _inventoryActivePotions);
                 return house;
             }
             else if(instance is Shop shop)

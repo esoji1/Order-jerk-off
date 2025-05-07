@@ -21,6 +21,7 @@ namespace _Project.ConstructionBuildings
         [SerializeField] private LayerMask _layerMask;
         [SerializeField] private Projectile _projectile; 
         [SerializeField] private Canvas _dynamicCanvas;
+        [SerializeField] private InventoryActivePotions _inventoryActivePotions;
 
         private BuildingFactory _buildingFactory;
 
@@ -29,7 +30,7 @@ namespace _Project.ConstructionBuildings
         private void Awake()
         {
             _buildingFactory = new BuildingFactory(_houseConfig, _shopConfig, _alchemyConfig, _archerTowerConfig, _staticCanvas, _player, _useWeapons, _inventory, _inventoryActive, 
-                _dynamicCanvas, _textDamage, _layerMask, _projectile);
+                _dynamicCanvas, _textDamage, _layerMask, _projectile, _inventoryActivePotions);
         }
     }
 }

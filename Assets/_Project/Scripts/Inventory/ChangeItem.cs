@@ -1,5 +1,6 @@
 ﻿using _Project.ScriptableObjects.Configs;
 using _Project.Weapon;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,12 +14,14 @@ namespace _Project.Inventory
 
         private Inventory _inventory;
         private InventoryActive _inventoryActive;
+        private InventoryActivePotions _inventoryActivePotions;
         private UseWeapons.UseWeapons _useWeapons;
 
         private bool _isOpen;
         private bool _isWeaponEquipped;
         private Cell _clickedCellInventoryActive;
         private Cell _clickedCellInventory;
+        private Cell _clickedCellInventoryActivePotion;
 
 
         private void Update()
@@ -30,24 +33,30 @@ namespace _Project.Inventory
             }
         }
 
-        public void Initialize(UseWeapons.UseWeapons useWeapons, Inventory inventory, InventoryActive inventoryActive)
+        public void Initialize(UseWeapons.UseWeapons useWeapons, Inventory inventory, InventoryActive inventoryActive, InventoryActivePotions inventoryActivePotions)
         {
             _useWeapons = useWeapons;
             _inventory = inventory;
             _inventoryActive = inventoryActive;
+            _inventoryActivePotions = inventoryActivePotions;
 
             _inventory.OnClickedItem += ClicedItemInventory;
             _inventoryActive.OnClickedItem += ClicedItemInventoryActive;
+            _inventoryActivePotions.OnClickedItem += ClicedItemInventoryActivePotions;
 
             _putOnButton.onClick.AddListener(PutOn);
             _takeOffButton.onClick.AddListener(TakeOff);
         }
+
 
         private void ClicedItemInventoryActive(Cell cell) =>
             _clickedCellInventoryActive = cell;
 
         private void ClicedItemInventory(Cell cell) =>
             _clickedCellInventory = cell;
+
+        private void ClicedItemInventoryActivePotions(Cell cell) =>
+            _clickedCellInventoryActivePotion = cell;
 
         private void UpdateCurrentWeaponInHand()
         {
@@ -77,6 +86,12 @@ namespace _Project.Inventory
                 _isWeaponEquipped = true;
                 return;
             }
+            else if (_clickedCellInventory.Item.Category == ItemCategory.Potions)
+            {
+                _inventoryActivePotions.AddItemInCell(_clickedCellInventory.Item);
+                _inventory.SubtractItems(_clickedCellInventory, 1);
+                return;
+            }
 
             _inventoryActive.AddItemInCell(_clickedCellInventory.Item);
             _inventory.SubtractItems(_clickedCellInventory, 1);
@@ -84,9 +99,16 @@ namespace _Project.Inventory
 
         private void TakeOff()
         {
+            if(_clickedCellInventoryActivePotion != null && _clickedCellInventoryActivePotion.Item != null)
+            {
+                _inventory.AddItemInCell(_clickedCellInventoryActivePotion.Item);
+                _inventoryActivePotions.SubtractItems(_clickedCellInventoryActivePotion, 1);
+                return;
+            }
+
             if (_clickedCellInventoryActive == null || _clickedCellInventoryActive.Item == null)
                 return;
-
+            
             if (_clickedCellInventoryActive.Item.Category == ItemCategory.Weapon)
             {
                 _inventory.AddItemInCell(_clickedCellInventoryActive.Item);

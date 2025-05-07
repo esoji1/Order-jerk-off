@@ -10,7 +10,7 @@ namespace _Project.Potions
         [SerializeField] private int _amountHeal;
         [SerializeField] private Player.Player _player;
         [SerializeField] private Button _buttonHeal;
-        [SerializeField] private Inventory.Inventory _inventory;
+        [SerializeField] private InventoryActivePotions _inventoryPotions;
         [SerializeField] private TextMeshProUGUI _textNumberHilokas;
 
         private bool _isHealingPotions;
@@ -23,13 +23,13 @@ namespace _Project.Potions
         private void OnEnable()
         {
             _buttonHeal.onClick.AddListener(Use);
-            _inventory.OnAddItem += UpdateNumberHilokas;
+            _inventoryPotions.OnAddItem += UpdateNumberHilokas;
         }
 
         private void OnDisable()
         {
             _buttonHeal.onClick.RemoveListener(Use);
-            _inventory.OnAddItem -= UpdateNumberHilokas;
+            _inventoryPotions.OnAddItem -= UpdateNumberHilokas;
         }
 
         private void Use()
@@ -47,7 +47,7 @@ namespace _Project.Potions
             {
                 _player.Health.AddHealth(amountToHeal);
                 _player.HealthView.AddHealth(amountToHeal);
-                foreach (Cell cell in _inventory.CellList)
+                foreach (Cell cell in _inventoryPotions.CellList)
                 {
                     if (cell.Item != null)
                     {
@@ -69,7 +69,7 @@ namespace _Project.Potions
 
         private void UpdateNumberHilokas()
         {
-            foreach (Cell cell in _inventory.CellList)
+            foreach (Cell cell in _inventoryPotions.CellList)
             {
                 if (cell.Item != null)
                 {
@@ -83,13 +83,13 @@ namespace _Project.Potions
 
         private void CheckItemInInventory()
         {
-            for (int i = 0; i < _inventory.CellList.Count; i++)
+            for (int i = 0; i < _inventoryPotions.CellList.Count; i++)
             {
-                if (_inventory.CellList[i].Item == null)
+                if (_inventoryPotions.CellList[i].Item == null)
                 {
                     _isHealingPotions = false;
                 }
-                else if (_inventory.CellList[i].Item.GetItemType().Equals(TypesPotion.Hilka))
+                else if (_inventoryPotions.CellList[i].Item.GetItemType().Equals(TypesPotion.Hilka))
                 {
                     _isHealingPotions = true;
                     break;

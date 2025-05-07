@@ -1,28 +1,43 @@
 ﻿using _Project.Core;
 using _Project.Weapon;
+using DG.Tweening;
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace _Project.Inventory
 {
     public class InformationAboutItemView : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _textInfoItem;
+        [SerializeField] private GameObject _itemDescriptionWindow;
+        [SerializeField] private Button _exit;
 
         private Inventory _inventory;
         private InventoryActive _inventoryActive;
+        private InventoryActivePotions _inventoryActivePotion;
 
-        public void Initialize(Inventory inventory, InventoryActive inventoryActive)
+        private Tween _tween;
+
+        public void Initialize(Inventory inventory, InventoryActive inventoryActive, InventoryActivePotions inventoryActivePotion)
         {
             _inventory = inventory;
             _inventoryActive = inventoryActive;
+            _inventoryActivePotion = inventoryActivePotion;
+
             _inventory.OnClickedItem += Show;
             _inventoryActive.OnClickedItem += Show;
+            _inventoryActivePotion.OnClickedItem += Show;
+            _exit.onClick.AddListener(Hide);
         }
 
         private void Show(Cell cell)
         {
+            _itemDescriptionWindow.SetActive(true);
+            _tween = _itemDescriptionWindow.transform
+                .DOScale(new Vector3(0.6f, 1f, 1f), 0.5f);
+
             if (cell.Item.Category == ItemCategory.Weapon)
             {
                 Enum weaponItem = cell.Item.GetItemType();
@@ -32,6 +47,14 @@ namespace _Project.Inventory
             {
                 ChangeTextForItem(cell);
             }
+        }
+
+        public void Hide()
+        {
+            _tween.Kill();
+
+            _itemDescriptionWindow.SetActive(false);
+            _itemDescriptionWindow.transform.localScale = new Vector3(0, 0, 0);
         }
 
         private void ChangeTextForWeapon(Enum weaponType, Cell cell)
@@ -66,6 +89,8 @@ namespace _Project.Inventory
         {
             _inventory.OnClickedItem -= Show;
             _inventoryActive.OnClickedItem -= Show;
+            _inventoryActivePotion.OnClickedItem -= Show;
+            _exit.onClick.RemoveListener(Hide);
         }
     }
 }
