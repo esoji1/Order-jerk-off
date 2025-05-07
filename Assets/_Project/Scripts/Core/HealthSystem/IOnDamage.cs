@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _Project.Core.Points;
+using System;
 
 namespace _Project.Core.HealthSystem
 {

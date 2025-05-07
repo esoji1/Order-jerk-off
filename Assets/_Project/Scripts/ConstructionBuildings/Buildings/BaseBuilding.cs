@@ -1,8 +1,10 @@
 ﻿using _Project.Core;
 using _Project.Core.Interface;
+using _Project.Core.Points;
 using _Project.ScriptableObjects.Configs;
 using DG.Tweening;
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,6 +22,7 @@ namespace _Project.ConstructionBuildings.Buildings
         private SpriteRenderer _spriteRenderer;
         private Button _exit;
         private Type _type;
+        private TextMeshProUGUI _healthText;
 
         private BuildingArea _buildingArea;
         private Tween _tween;
@@ -43,7 +46,10 @@ namespace _Project.ConstructionBuildings.Buildings
 
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
             _exit = _window.GetComponentInChildren<Exit>().GetComponent<Button>();
+            _healthText = _window.GetComponentInChildren<PointHealth>().GetComponent<TextMeshProUGUI>();
             _type = GetType();
+
+            UpdateHealthText();
 
             _exit.onClick.AddListener(Hide);
             _health.OnDie += Die;
@@ -66,7 +72,14 @@ namespace _Project.ConstructionBuildings.Buildings
             _window.transform.localScale = new Vector3(0, 0, 0);
         }
 
-        public void Damage(int damage) => _health.TakeDamage(damage);
+        public void Damage(int damage)
+        {
+            _health.TakeDamage(damage);
+            UpdateHealthText();
+        }
+
+        private void UpdateHealthText() => 
+            _healthText.text = "Здоровье: " + _health.HealthValue.ToString();
 
         private void Die()
         {

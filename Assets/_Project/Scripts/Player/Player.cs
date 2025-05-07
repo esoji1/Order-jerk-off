@@ -1,6 +1,7 @@
 using _Project.Core;
 using _Project.Core.HealthSystem;
 using _Project.Core.Interface;
+using _Project.Core.Points;
 using _Project.ExperienceBar;
 using _Project.JoystickMovement;
 using _Project.Player.Pumping;
