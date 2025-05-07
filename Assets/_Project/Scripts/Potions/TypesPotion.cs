@@ -2,6 +2,8 @@ namespace _Project.Potions
 {
     public enum TypesPotion
     {
-        Hilka
+        Hilka = 0,
+        SpeedUp,
+        Explosion
     }
 }

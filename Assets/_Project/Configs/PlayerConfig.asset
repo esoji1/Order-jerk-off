@@ -18,4 +18,4 @@ MonoBehaviour:
   LayerEnemy:
     serializedVersion: 2
     m_Bits: 128
-  VisibilityRadius: 1.5
+  VisibilityRadius: 2
