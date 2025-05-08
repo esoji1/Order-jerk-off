@@ -8,125 +8,177 @@ namespace _Project.Potions
 {
     public class ExplosivePotion : BasePotion
     {
-        [SerializeField] private int _damage;
-        [SerializeField] private int _radiusAttack;
+        //[SerializeField] private int _damage;
+        //[SerializeField] private int _radiusAttack;
 
-        private InventoryActivePotions _inventoryPotions;
-        private Player.Player _player;
+        //private InventoryActivePotions InventoryPotions;
+        //private Player.Player Player;
+        //private ParticleSystem _bom;
+        //private Explosion _explosion;
+
+        //private TextMeshProUGUI TextNumber;
+        //private Button _buttonExplosive;
+
+        //private bool _isExplosivePotions;
+        //private DetectionRadius _enemyDetectionRadius;
+        //private Collider2D _nearestEnemy;
+
+        //private void Start()
+        //{
+        //    _enemyDetectionRadius = new DetectionRadius(Player.transform, Player.Config.LayerEnemy);
+
+        //    UpdateNumberExplosion();
+        //}
+
+        //private void Update()
+        //{
+        //    _enemyDetectionRadius.Detection(Player.Config.VisibilityRadius);
+        //    _nearestEnemy = _enemyDetectionRadius.GetNearestEnemy();
+        //}
+
+        //public void Initialize(Player.Player player, InventoryActivePotions inventoryPotions, ParticleSystem bom, Explosion explosion)
+        //{
+        //    ExtractComponents();
+
+        //    Player = player;
+        //    InventoryPotions = inventoryPotions;
+        //    _bom = bom;
+        //    _explosion = explosion;
+
+        //    _buttonExplosive.onClick.AddListener(Use);
+        //    InventoryPotions.OnAddItem += UpdateNumberExplosion;
+        //}
+
+        //private void ExtractComponents()
+        //{
+        //    TextNumber = GetComponentInChildren<TextMeshProUGUI>();
+        //    _buttonExplosive = GetComponent<Button>();
+        //}
+
+        //private void Use()
+        //{
+        //    CheckItemInInventory();
+
+        //    if (_isExplosivePotions == false)
+        //        return;
+
+        //    foreach (Cell cell in InventoryPotions.CellList)
+        //    {
+        //        if (cell.Item != null)
+        //        {
+        //            if (cell.Item.GetItemType().Equals(TypesPotion.Explosion))
+        //            {
+        //                if (Attack())
+        //                {
+        //                    cell.SubtractNumberItems(1);
+        //                    TextNumber.text = cell.NumberItems.ToString();
+        //                    if (cell.NumberItems <= 0)
+        //                    {
+        //                        cell.SetIsCellBusy(false);
+        //                        Destroy(cell.Item.gameObject);
+        //                        cell.Item = null;
+        //                        Destroy(gameObject);
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+
+        //private void UpdateNumberExplosion()
+        //{
+        //    foreach (Cell cell in InventoryPotions.CellList)
+        //    {
+        //        if (cell.Item != null)
+        //        {
+        //            if (cell.Item.GetItemType().Equals(TypesPotion.Explosion))
+        //            {
+        //                TextNumber.text = cell.NumberItems.ToString();
+        //            }
+        //        }
+        //    }
+        //}
+
+        //private void CheckItemInInventory()
+        //{
+        //    for (int i = 0; i < InventoryPotions.CellList.Count; i++)
+        //    {
+        //        if (InventoryPotions.CellList[i].Item == null)
+        //        {
+        //            _isExplosivePotions = false;
+        //        }
+        //        else if (InventoryPotions.CellList[i].Item.GetItemType().Equals(TypesPotion.Explosion))
+        //        {
+        //            _isExplosivePotions = true;
+        //            break;
+        //        }
+        //    }
+        //}
+
+        //private bool Attack()
+        //{
+        //    if (_nearestEnemy != null)
+        //    {
+        //        Vector2 direction = (_nearestEnemy.transform.position - Player.transform.position).normalized;
+        //        GameObject explosion = Instantiate(_explosion.gameObject, Player.transform.position, Quaternion.identity, null);
+        //        Explosion explosion1 = explosion.GetComponent<Explosion>();
+        //        explosion1.Initialize(Player, direction, _damage, _radiusAttack, _bom);
+        //        return true;
+        //    }
+
+        //    return false;   
+        //}
+
+        //private void OnDestroy()
+        //{
+        //    _buttonExplosive.onClick.RemoveListener(Use);
+        //    InventoryPotions.OnAddItem -= UpdateNumberExplosion;
+        //}
         private ParticleSystem _bom;
         private Explosion _explosion;
-
-        private TextMeshProUGUI _textNumber;
-        private Button _buttonExplosive;
-
-        private bool _isExplosivePotions;
         private DetectionRadius _enemyDetectionRadius;
         private Collider2D _nearestEnemy;
 
-        private void Start()
+        public void Initialize(Player.Player player, InventoryActivePotions inventoryPotions,
+            ParticleSystem bom, Explosion explosion, ManagerPotion managerPotion)
         {
-            _enemyDetectionRadius = new DetectionRadius(_player.transform, _player.Config.LayerEnemy);
+            base.Initialize(player, inventoryPotions, managerPotion);
+            _bom = bom;
+            _explosion = explosion;
+            PotionType = TypesPotion.Explosion;
+        }
 
-            UpdateNumberExplosion();
+        private void Awake()
+        {
+            PotionType = TypesPotion.Explosion;
         }
 
         private void Update()
         {
-            _enemyDetectionRadius.Detection(_player.Config.VisibilityRadius);
-            _nearestEnemy = _enemyDetectionRadius.GetNearestEnemy();
-        }
-
-        public void Initialize(Player.Player player, InventoryActivePotions inventoryPotions, ParticleSystem bom, Explosion explosion)
-        {
-            ExtractComponents();
-
-            _player = player;
-            _inventoryPotions = inventoryPotions;
-            _bom = bom;
-            _explosion = explosion;
-
-            _buttonExplosive.onClick.AddListener(Use);
-            _inventoryPotions.OnAddItem += UpdateNumberExplosion;
-        }
-
-        private void ExtractComponents()
-        {
-            _textNumber = GetComponentInChildren<TextMeshProUGUI>();
-            _buttonExplosive = GetComponent<Button>();
-        }
-
-        private void Use()
-        {
-            //CheckItemInInventory();
-
-            //if (_isExplosivePotions == false)
-            //return;
-
-            //foreach (Cell cell in _inventoryPotions.CellList)
-            //{
-            //    if (cell.Item != null)
-            //    {
-            //        if (cell.Item.GetItemType().Equals(TypesPotion.Explosion))
-            //        {
-            Attack();
-            //            cell.SubtractNumberItems(1);
-            //            _textNumber.text = cell.NumberItems.ToString();
-            //            if (cell.NumberItems <= 0)
-            //            {
-            //                cell.SetIsCellBusy(false);
-            //                Destroy(cell.Item.gameObject);
-            //                cell.Item = null;
-            //            }
-            //        }
-            //    }
-            //}
-        }
-
-        private void UpdateNumberExplosion()
-        {
-            foreach (Cell cell in _inventoryPotions.CellList)
+            if (_enemyDetectionRadius == null && Player != null)
             {
-                if (cell.Item != null)
-                {
-                    if (cell.Item.GetItemType().Equals(TypesPotion.Explosion))
-                    {
-                        _textNumber.text = cell.NumberItems.ToString();
-                    }
-                }
+                _enemyDetectionRadius = new DetectionRadius(Player.transform, Player.Config.LayerEnemy);
+            }
+
+            if (_enemyDetectionRadius != null)
+            {
+                _enemyDetectionRadius.Detection(Player.Config.VisibilityRadius);
+                _nearestEnemy = _enemyDetectionRadius.GetNearestEnemy();
             }
         }
 
-        private void CheckItemInInventory()
-        {
-            for (int i = 0; i < _inventoryPotions.CellList.Count; i++)
-            {
-                if (_inventoryPotions.CellList[i].Item == null)
-                {
-                    _isExplosivePotions = false;
-                }
-                else if (_inventoryPotions.CellList[i].Item.GetItemType().Equals(TypesPotion.Explosion))
-                {
-                    _isExplosivePotions = true;
-                    break;
-                }
-            }
-        }
-
-        private void Attack()
+        protected override bool ApplyEffect()
         {
             if (_nearestEnemy != null)
             {
-                Vector2 direction = (_nearestEnemy.transform.position - _player.transform.position).normalized;
-                GameObject explosion = Instantiate(_explosion.gameObject, _player.transform.position, Quaternion.identity, null);
+                Vector2 direction = (_nearestEnemy.transform.position - Player.transform.position).normalized;
+                GameObject explosion = Instantiate(_explosion.gameObject, Player.transform.position, Quaternion.identity, null);
                 Explosion explosion1 = explosion.GetComponent<Explosion>();
-                explosion1.Initialize(_player, direction, _damage, _radiusAttack, _bom);
+                explosion1.Initialize(Player, direction, _effectValue, _secondaryValue, _bom);
+                return true;
             }
-        }
 
-        private void OnDestroy()
-        {
-            _buttonExplosive.onClick.RemoveListener(Use);
-            _inventoryPotions.OnAddItem -= UpdateNumberExplosion;
+            return false;
         }
     }
 }

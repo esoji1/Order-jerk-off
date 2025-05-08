@@ -13,9 +13,10 @@ namespace _Project.Potions
         private Transform _content;
         private ParticleSystem _bom;
         private Explosion _explosion;
+        private ManagerPotion _managerPotion;
 
         public PotionFactory(PotionConfig explosionConfig, PotionConfig healingConfig, Player.Player player, InventoryActivePotions inventoryActivePotions, Transform content,
-            ParticleSystem bom, Explosion explosion)
+            ParticleSystem bom, Explosion explosion, ManagerPotion managerPotion)
         {
             _explosionConfig = explosionConfig;
             _healingConfig = healingConfig;
@@ -24,6 +25,7 @@ namespace _Project.Potions
             _content = content;
             _bom = bom;
             _explosion = explosion;
+            _managerPotion = managerPotion;
         }
 
         public BasePotion Get(TypesPotion potionType)
@@ -54,12 +56,12 @@ namespace _Project.Potions
         {
             if (instance is HealingPotions healingPotions)
             {
-                healingPotions.Initialize(_player, _inventoryActivePotions);
+                healingPotions.Initialize(_player, _inventoryActivePotions, _managerPotion);
                 return healingPotions;
             }
             else if(instance is ExplosivePotion explosivePotion)
             {
-                explosivePotion.Initialize(_player, _inventoryActivePotions, _bom, _explosion);
+                explosivePotion.Initialize(_player, _inventoryActivePotions, _bom, _explosion, _managerPotion);
                 return explosivePotion;
             }
             else

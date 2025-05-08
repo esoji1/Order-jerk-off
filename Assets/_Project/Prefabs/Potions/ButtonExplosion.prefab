@@ -134,12 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65a120242f0b9a6419fd4c6b641bfc57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 15
-  _radiusAttack: 1
-  _bom: {fileID: 2755439877533770091, guid: 07865adf511fcec40b5c61b702385341, type: 3}
-  _explosion: {fileID: 1585342217091444098, guid: 024bb9eed046f614981e4a2969e9b794, type: 3}
-  _textNumber: {fileID: 3040539647704929659}
-  _buttonExplosive: {fileID: 6987949413180433506}
+  _effectValue: 15
+  _secondaryValue: 1
 --- !u!1 &4402778631641242595
 GameObject:
   m_ObjectHideFlags: 0

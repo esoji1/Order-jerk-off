@@ -24,6 +24,11 @@ namespace _Project.Potions
             _changeItem.OnSubstractPotion += SubstractPotion;
         }
 
+        public void SubtractNumberItems(TypesPotion type)
+        {
+            IdentifyPotionSubstract(type);
+        }
+
         private void OnDestroy()
         {
             _changeItem.OnAddPotion -= AddPotion;
@@ -125,9 +130,12 @@ namespace _Project.Potions
         {
             for (int i = 0; i < _inventory.CellList.Count; i++)
             {
-                if (_inventory.CellList[i].Item.Category == ItemCategory.Potions)
+                if (_inventory.CellList[i].Item != null)
                 {
-                    return true;
+                    if (_inventory.CellList[i].Item.Category == ItemCategory.Potions)
+                    {
+                        return true;
+                    }
                 }
             }
             return false;

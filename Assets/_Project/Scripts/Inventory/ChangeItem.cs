@@ -106,6 +106,7 @@ namespace _Project.Inventory
                 OnSubstractPotion?.Invoke(_clickedCellInventoryActivePotion.Item.GetItemType());
                 _inventory.AddItemInCell(_clickedCellInventoryActivePotion.Item);
                 _inventoryActivePotions.SubtractItems(_clickedCellInventoryActivePotion, 1);
+                _clickedCellInventoryActivePotion = null;
                 return;
             }
 

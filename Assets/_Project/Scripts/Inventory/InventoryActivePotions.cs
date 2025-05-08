@@ -71,6 +71,7 @@ namespace _Project.Inventory
         {
             cell.SubtractNumberItems(numberSubtract);
             OnSubstartcItem?.Invoke(cell.Item.GetItemType());
+            OnAddItem?.Invoke();
             if (cell.NumberItems <= 0)
             {
                 cell.SetIsCellBusy(false);
