@@ -36,6 +36,7 @@ MonoBehaviour:
   - {fileID: 5875518255924871237, guid: 50d1c9cb486bee345899874e7d59a728, type: 3}
   - {fileID: 6967535910018881431, guid: 4cc486655c7a7e043aa662c9ae244bb3, type: 3}
   - {fileID: 7634357527481193883, guid: 9457e9dbdbb77d843b3a3fa8cd5abfbd, type: 3}
+  - {fileID: 3243667652393692559, guid: d0aa8378ec5799c4eb32eaa7be607655, type: 3}
   <WeaponItems>k__BackingField:
   - {fileID: 4491079388801751820, guid: 619ab93890da3734da3123dad3bed16e, type: 3}
   - {fileID: -8735090903098058742, guid: 3df611a187bf9cf469b63666f6b625e0, type: 3}
@@ -58,3 +59,4 @@ MonoBehaviour:
   - {fileID: 7634357527481193883, guid: 9457e9dbdbb77d843b3a3fa8cd5abfbd, type: 3}
   <PotionsItems>k__BackingField:
   - {fileID: 3508112910833085988, guid: 125aaf28956452f4db07494b711a212f, type: 3}
+  - {fileID: 3243667652393692559, guid: d0aa8378ec5799c4eb32eaa7be607655, type: 3}

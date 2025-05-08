@@ -2,6 +2,7 @@ using _Project.Core;
 using _Project.Core.Points;
 using _Project.Inventory;
 using _Project.Player.Pumping;
+using _Project.Potions;
 using _Project.ScriptableObjects.Configs;
 using System.Linq;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace _Project.ConstructionBuildings.Buildings
         private Inventory.Inventory _inventory;
         private InventoryActive _inventoryActive;
         private InventoryActivePotions _inventoryActivePotions;
+        private ManagerPotion _managerPotion;
 
         private CharacteristicsView _characteristicsView;
         private ChangeItem _changeItem;
@@ -21,7 +23,7 @@ namespace _Project.ConstructionBuildings.Buildings
         private InformationAboutItemView _informationAboutItemView;
 
         public void Initialize(BuildsConfig config, Canvas staticCanvas, Player.Player player, UseWeapons.UseWeapons useWeapons,
-            Inventory.Inventory inventory, InventoryActive inventoryActive, InventoryActivePotions inventoryActivePotions)
+            Inventory.Inventory inventory, InventoryActive inventoryActive, InventoryActivePotions inventoryActivePotions, ManagerPotion managerPotion)
         {
             base.Initialize(config, staticCanvas, player);
 
@@ -29,6 +31,7 @@ namespace _Project.ConstructionBuildings.Buildings
             _inventoryActive = inventoryActive;
             _inventoryActivePotions = inventoryActivePotions;
             _useWeapons = useWeapons;
+            _managerPotion = managerPotion;
 
             _characteristicsView = Window.GetComponentInChildren<CharacteristicsView>();
             _characteristicsView.Initialize(Player);
@@ -45,6 +48,8 @@ namespace _Project.ConstructionBuildings.Buildings
 
             _changeItem = Window.GetComponentInChildren<ChangeItem>();
             _changeItem.Initialize(_useWeapons, inventory, inventoryActive, inventoryActivePotions);
+
+            _managerPotion.Initialize(_changeItem);
 
             _saleItem = Window.GetComponentInChildren<SaleItem>();
             _saleItem.Initialize(Player, inventory);

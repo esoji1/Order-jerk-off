@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 namespace _Project.Potions
 {
-    public class HealingPotions : MonoBehaviour
+    public class HealingPotions : BasePotion
     {
         [SerializeField] private int _amountHeal;
-        [SerializeField] private Player.Player _player;
-        [SerializeField] private Button _buttonHeal;
-        [SerializeField] private InventoryActivePotions _inventoryPotions;
-        [SerializeField] private TextMeshProUGUI _textNumberHilokas;
 
+        private Player.Player _player;
+        private InventoryActivePotions _inventoryPotions;
+
+        private TextMeshProUGUI _textNumber;
+        private Button _buttonHeal;
+        
         private bool _isHealingPotions;
 
         private void Start()
@@ -20,16 +22,21 @@ namespace _Project.Potions
             UpdateNumberHilokas();
         }
 
-        private void OnEnable()
+        public void Initialize(Player.Player player, InventoryActivePotions inventoryPotions)
         {
+            ExtractComponents();
+
+            _player = player;
+            _inventoryPotions = inventoryPotions;
+
             _buttonHeal.onClick.AddListener(Use);
             _inventoryPotions.OnAddItem += UpdateNumberHilokas;
         }
 
-        private void OnDisable()
+        private void ExtractComponents()
         {
-            _buttonHeal.onClick.RemoveListener(Use);
-            _inventoryPotions.OnAddItem -= UpdateNumberHilokas;
+            _textNumber = GetComponentInChildren<TextMeshProUGUI>();
+            _buttonHeal = GetComponent<Button>();
         }
 
         private void Use()
@@ -54,7 +61,7 @@ namespace _Project.Potions
                         if (cell.Item.GetItemType().Equals(TypesPotion.Hilka))
                         {
                             cell.SubtractNumberItems(1);
-                            _textNumberHilokas.text = cell.NumberItems.ToString();
+                            _textNumber.text = cell.NumberItems.ToString();
                             if (cell.NumberItems <= 0)
                             {
                                 cell.SetIsCellBusy(false);
@@ -75,7 +82,7 @@ namespace _Project.Potions
                 {
                     if (cell.Item.GetItemType().Equals(TypesPotion.Hilka))
                     {
-                        _textNumberHilokas.text = cell.NumberItems.ToString();
+                        _textNumber.text = cell.NumberItems.ToString();
                     }
                 }
             }
@@ -95,6 +102,12 @@ namespace _Project.Potions
                     break;
                 }
             }
+        }
+
+        private void OnDestroy()
+        {
+            _buttonHeal.onClick.RemoveListener(Use);
+            _inventoryPotions.OnAddItem -= UpdateNumberHilokas;
         }
     }
 }

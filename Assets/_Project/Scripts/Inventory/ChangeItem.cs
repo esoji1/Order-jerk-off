@@ -23,6 +23,8 @@ namespace _Project.Inventory
         private Cell _clickedCellInventory;
         private Cell _clickedCellInventoryActivePotion;
 
+        public event Action<Enum> OnAddPotion;
+        public event Action<Enum> OnSubstractPotion;
 
         private void Update()
         {
@@ -47,7 +49,6 @@ namespace _Project.Inventory
             _putOnButton.onClick.AddListener(PutOn);
             _takeOffButton.onClick.AddListener(TakeOff);
         }
-
 
         private void ClicedItemInventoryActive(Cell cell) =>
             _clickedCellInventoryActive = cell;
@@ -88,6 +89,7 @@ namespace _Project.Inventory
             }
             else if (_clickedCellInventory.Item.Category == ItemCategory.Potions)
             {
+                OnAddPotion?.Invoke(_clickedCellInventory.Item.GetItemType());
                 _inventoryActivePotions.AddItemInCell(_clickedCellInventory.Item);
                 _inventory.SubtractItems(_clickedCellInventory, 1);
                 return;
@@ -101,6 +103,7 @@ namespace _Project.Inventory
         {
             if(_clickedCellInventoryActivePotion != null && _clickedCellInventoryActivePotion.Item != null)
             {
+                OnSubstractPotion?.Invoke(_clickedCellInventoryActivePotion.Item.GetItemType());
                 _inventory.AddItemInCell(_clickedCellInventoryActivePotion.Item);
                 _inventoryActivePotions.SubtractItems(_clickedCellInventoryActivePotion, 1);
                 return;

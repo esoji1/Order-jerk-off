@@ -6,16 +6,18 @@ using UnityEngine.UI;
 
 namespace _Project.Potions
 {
-    public class ExplosivePotion : MonoBehaviour
+    public class ExplosivePotion : BasePotion
     {
         [SerializeField] private int _damage;
         [SerializeField] private int _radiusAttack;
-        [SerializeField] private Player.Player _player;
-        [SerializeField] private Button _buttonExplosive;
-        [SerializeField] private InventoryActivePotions _inventoryPotions;
-        [SerializeField] private TextMeshProUGUI _textNumber;
-        [SerializeField] private Explosion _explosion;
-        [SerializeField] private ParticleSystem _bom;
+
+        private InventoryActivePotions _inventoryPotions;
+        private Player.Player _player;
+        private ParticleSystem _bom;
+        private Explosion _explosion;
+
+        private TextMeshProUGUI _textNumber;
+        private Button _buttonExplosive;
 
         private bool _isExplosivePotions;
         private DetectionRadius _enemyDetectionRadius;
@@ -34,16 +36,23 @@ namespace _Project.Potions
             _nearestEnemy = _enemyDetectionRadius.GetNearestEnemy();
         }
 
-        private void OnEnable()
+        public void Initialize(Player.Player player, InventoryActivePotions inventoryPotions, ParticleSystem bom, Explosion explosion)
         {
+            ExtractComponents();
+
+            _player = player;
+            _inventoryPotions = inventoryPotions;
+            _bom = bom;
+            _explosion = explosion;
+
             _buttonExplosive.onClick.AddListener(Use);
             _inventoryPotions.OnAddItem += UpdateNumberExplosion;
         }
 
-        private void OnDisable()
+        private void ExtractComponents()
         {
-            _buttonExplosive.onClick.RemoveListener(Use);
-            _inventoryPotions.OnAddItem -= UpdateNumberExplosion;
+            _textNumber = GetComponentInChildren<TextMeshProUGUI>();
+            _buttonExplosive = GetComponent<Button>();
         }
 
         private void Use()
@@ -51,7 +60,7 @@ namespace _Project.Potions
             //CheckItemInInventory();
 
             //if (_isExplosivePotions == false)
-                //return;
+            //return;
 
             //foreach (Cell cell in _inventoryPotions.CellList)
             //{
@@ -59,7 +68,7 @@ namespace _Project.Potions
             //    {
             //        if (cell.Item.GetItemType().Equals(TypesPotion.Explosion))
             //        {
-                        Attack();
+            Attack();
             //            cell.SubtractNumberItems(1);
             //            _textNumber.text = cell.NumberItems.ToString();
             //            if (cell.NumberItems <= 0)
@@ -112,6 +121,12 @@ namespace _Project.Potions
                 Explosion explosion1 = explosion.GetComponent<Explosion>();
                 explosion1.Initialize(_player, direction, _damage, _radiusAttack, _bom);
             }
+        }
+
+        private void OnDestroy()
+        {
+            _buttonExplosive.onClick.RemoveListener(Use);
+            _inventoryPotions.OnAddItem -= UpdateNumberExplosion;
         }
     }
 }

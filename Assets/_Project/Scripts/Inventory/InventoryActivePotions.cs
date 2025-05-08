@@ -20,6 +20,7 @@ namespace _Project.Inventory
 
         public event Action<Cell> OnClickedItem;
         public event Action OnAddItem;
+        public event Action<Enum> OnSubstartcItem;
 
         public List<Cell> CellList => _cellPotionsList;
         public bool IsOpen => _isOpen;
@@ -69,7 +70,7 @@ namespace _Project.Inventory
         public bool SubtractItems(Cell cell, int numberSubtract)
         {
             cell.SubtractNumberItems(numberSubtract);
-            OnAddItem?.Invoke();
+            OnSubstartcItem?.Invoke(cell.Item.GetItemType());
             if (cell.NumberItems <= 0)
             {
                 cell.SetIsCellBusy(false);

@@ -53,6 +53,7 @@ namespace _Project.Inventory
                     _cellList[i].SetIsCellBusy(true);
                     SetupItemButton(_cellList[i]);
                     UpdateCellInNumberItems(_cellList[i]);
+                    OnAddItem?.Invoke();
                     break;
                 }
                 else if (_cellList[i].Item.Name == item.Name && _cellList[i].Item != null)
@@ -110,7 +111,6 @@ namespace _Project.Inventory
         private void UpdateCellInNumberItems(Cell cell)
         {
             cell.AddNumberItems(1);
-            OnAddItem?.Invoke();
         }
     }
 }
