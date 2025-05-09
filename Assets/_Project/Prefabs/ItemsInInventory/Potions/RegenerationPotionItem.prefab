@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4704929228616946384, guid: 93bb9d0266ee6164f904acac75c3348b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f94830fd7930e9b4dabfcbb45bd98244, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Id: 15
   Name: "\u0425\u0438\u043B\u044F\u0449\u0438\u0435 \u0437\u0435\u043B\u044C\u0435"
-  Sprite: {fileID: 4704929228616946384, guid: 93bb9d0266ee6164f904acac75c3348b, type: 3}
+  Sprite: {fileID: 21300000, guid: f94830fd7930e9b4dabfcbb45bd98244, type: 3}
   Category: 3
   Price: 5
   Description: "\u041B\u0435\u0447\u0438\u0442 \u0440\u0430\u043D\u044B, \u0432\u043E\u0441\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u0435\u0442
