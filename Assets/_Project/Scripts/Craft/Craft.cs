@@ -1,15 +1,13 @@
 using _Project.Inventory.Items;
+using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace _Project.Craft
 {
-    public class Craft : MonoBehaviour
+    [Serializable]
+    public class Craft 
     {
-        [SerializeField] private BaseItem _craftItem;
-        [SerializeField] private List<QuantityItemCraft> _list;
-
-        public BaseItem CraftItem => _craftItem;
-        public List<QuantityItemCraft> List => _list;
+        public BaseItem CraftItem;
+        public List<QuantityItemCraft> List;
     }
 }

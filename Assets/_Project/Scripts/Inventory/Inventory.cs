@@ -18,7 +18,9 @@ namespace _Project.Inventory
         public bool IsAddItem;
 
         public event Action<Cell> OnClickedItem;
-        public event Action OnAddItem;
+        public event Action<Cell> OnAddItem;
+        public event Action<Cell> OnSubstractItem;
+        public event Action<BaseItem> OnRemoveCell;
 
         public List<Cell> CellList => _cellList;
 
@@ -53,7 +55,6 @@ namespace _Project.Inventory
                     _cellList[i].SetIsCellBusy(true);
                     SetupItemButton(_cellList[i]);
                     UpdateCellInNumberItems(_cellList[i]);
-                    OnAddItem?.Invoke();
                     break;
                 }
                 else if (_cellList[i].Item.Name == item.Name && _cellList[i].Item != null)
@@ -67,9 +68,11 @@ namespace _Project.Inventory
         public bool SubtractItems(Cell cell, int numberSubtract)
         {
             cell.SubtractNumberItems(numberSubtract);
+            OnSubstractItem?.Invoke(cell);
 
             if (cell.NumberItems <= 0)
             {
+                OnRemoveCell?.Invoke(cell.Item);
                 cell.SetIsCellBusy(false);
                 Destroy(cell.Item.gameObject);
                 cell.Item = null;
@@ -110,7 +113,8 @@ namespace _Project.Inventory
 
         private void UpdateCellInNumberItems(Cell cell)
         {
-            cell.AddNumberItems(1);
+            cell.AddNumberItems(1); 
+            OnAddItem?.Invoke(cell);
         }
     }
 }

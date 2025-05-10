@@ -33,15 +33,15 @@ namespace _Project.Inventory
 
             if (_currentCell.NumberItems > 0)
             {
-                _currentCell.SubtractNumberItems(1);
+               // _currentCell.SubtractNumberItems(1);
                 _player.Wallet.AddMoney(_currentCell.Item.Price);
-
-                if (_currentCell.NumberItems <= 0)
-                {
-                    _currentCell.SetIsCellBusy(false);
-                    Destroy(_currentCell.Item.gameObject);
-                    _currentCell.Item = null;
-                }
+                _inventory.SubtractItems(_currentCell, 1);
+                //if (_currentCell.NumberItems <= 0)
+                //{
+                //    _currentCell.SetIsCellBusy(false);
+                //    Destroy(_currentCell.Item.gameObject);
+                //    _currentCell.Item = null;
+                //}
             }
         }
 

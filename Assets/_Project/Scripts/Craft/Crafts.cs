@@ -1,4 +1,7 @@
 ﻿using _Project.Inventory;
+using _Project.Inventory.AlchemyInventory;
+using Assets._Project.Scripts.ScriptableObjects;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,96 +10,125 @@ namespace _Project.Craft
     public class Crafts : MonoBehaviour
     {
         [SerializeField] private Button _craftButton;
+        [SerializeField] private CraftData craftData;
 
-        private InventoryCrafting _inventoryCrafting;
+        private InventoryActiveGrass _inventoryActiveGrass;
+        private Inventory.Inventory _inventory;
 
         private Craft _currentCraft;
 
-        public void Initialize(InventoryCrafting inventoryCrafting)
-        {
-            _inventoryCrafting = inventoryCrafting;
+        private void OnEnable() => _craftButton.onClick.AddListener(Craft);
 
-            _inventoryCrafting.OnClickCraft += ChangeCraftItem;
-            _craftButton.onClick.AddListener(Craft);
+        private void OnDisable() => _craftButton.onClick.RemoveListener(Craft);
+
+        public void Initialize(InventoryActiveGrass inventoryActiveGrass, Inventory.Inventory inventory)
+        {
+            _inventoryActiveGrass = inventoryActiveGrass;
+            _inventory = inventory;
         }
 
         private void Craft()
         {
-            if (_currentCraft == null)
-                return;
-
-            if (HasAllIngredients() == false)
+            if (HasAllIngredients())
             {
-                Debug.Log("Not enough ingredients for crafting");
-                return;
+                RemoveIngredients();
+                Debug.Log($"Крафт успешен!");
             }
-
-            RemoveIngredients();
-
-            _inventoryCrafting.Inventory.AddItemInCell(_currentCraft.CraftItem);
         }
 
         private bool HasAllIngredients()
         {
-            foreach (QuantityItemCraft item in _currentCraft.List)
+            foreach (Craft craft in craftData.Crafts)
             {
-                int totalQuantity = 0;
+                bool canCraft = true;
 
-                foreach (Cell cell in _inventoryCrafting.Inventory.CellList)
+                foreach (QuantityItemCraft requiredItem in craft.List)
                 {
-                    if (cell.Item == null) continue;
+                    int totalInInventory = 0;
 
-                    if (item.Item.GetItemType().Equals(cell.Item.GetItemType()))
+                    foreach (Cell cell in _inventoryActiveGrass.Cell)
                     {
-                        totalQuantity += cell.NumberItems;
-                        if (totalQuantity >= item.Quantity)
-                            break;
+                        if (cell.Item == null)
+                            continue;
+
+                        if (cell.Item.GetItemType().Equals(requiredItem.Item.GetItemType()))
+                        {
+                            totalInInventory += cell.NumberItems;
+                            if (totalInInventory >= requiredItem.Quantity)
+                                break;
+                        }
+                    }
+
+                    if (totalInInventory < requiredItem.Quantity)
+                    {
+                        canCraft = false;
+                        break;
                     }
                 }
 
-                if (totalQuantity < item.Quantity)
-                    return false;
+                if (canCraft)
+                {
+                    _currentCraft = craft;
+                    return true;
+                }
             }
 
-            return true;
+            Debug.Log("Недостаточно предметов для любого крафта");
+            return false;
         }
 
         private void RemoveIngredients()
         {
-            foreach (QuantityItemCraft item in _currentCraft.List)
+            if (_currentCraft == null)
             {
-                int remainingToRemove = item.Quantity;
+                Debug.LogWarning("Нет активного крафта!");
+                return;
+            }
 
-                foreach (Cell cell in _inventoryCrafting.Inventory.CellList)
+            foreach (QuantityItemCraft requiredItem in _currentCraft.List)
+            {
+                int remainingToRemove = requiredItem.Quantity;
+
+                foreach (Cell cell in _inventoryActiveGrass.Cell)
                 {
+                    if (remainingToRemove <= 0) break;
                     if (cell.Item == null) continue;
 
-                    if (item.Item.GetItemType().Equals(cell.Item.GetItemType()))
+                    if (requiredItem.Item.GetItemType().Equals(cell.Item.GetItemType()))
                     {
                         int canRemove = Mathf.Min(cell.NumberItems, remainingToRemove);
-                        cell.SubtractNumberItems(canRemove);
+
+                        RemoveFromMainInventory(cell.Item.GetItemType(), canRemove);
+                        _inventoryActiveGrass.SubtractItems(cell, canRemove);
+
                         remainingToRemove -= canRemove;
-
-                        if (cell.NumberItems <= 0)
-                        {
-                            cell.SetIsCellBusy(false);
-                            Destroy(cell.Item.gameObject);
-                            cell.Item = null;
-                        }
-
-                        if (remainingToRemove <= 0)
-                            break;
                     }
                 }
+
+                if (remainingToRemove > 0)
+                {
+                    Debug.LogError($"Не удалось удалить все предметы для {requiredItem.Item.GetItemType()}");
+                }
             }
+
+            _inventory.AddItemInCell(_currentCraft.CraftItem);
+            _currentCraft = null;
         }
 
-        private void ChangeCraftItem(Craft craft) => _currentCraft = craft;
-
-        private void OnDestroy()
+        private void RemoveFromMainInventory(Enum itemType, int count)
         {
-            _inventoryCrafting.OnClickCraft -= ChangeCraftItem;
-            _craftButton.onClick.RemoveListener(Craft);
+            foreach (Cell cell in _inventory.CellList)
+            {
+                if (count <= 0) break;
+                if (cell.Item == null) continue;
+
+                if (itemType.Equals(cell.Item.GetItemType()))
+                {
+                    int canRemove = Mathf.Min(cell.NumberItems, count);
+                    _inventory.SubtractItems(cell, canRemove);
+                    count -= canRemove;
+                }
+            }
         }
     }
 }

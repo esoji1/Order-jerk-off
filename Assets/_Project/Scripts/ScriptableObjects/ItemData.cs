@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace _Project.ScriptableObjects.Configs
 {
-    [CreateAssetMenu(fileName = "ItemData", menuName = "ScriptableObjects/Configs/ItemData")]
+    [CreateAssetMenu(fileName = "ItemData", menuName = "ScriptableObjects/Data/ItemData")]
     public class ItemData : ScriptableObject
     {
         [field: SerializeField] public BaseItem WoodenAxeItem { get; private set; }

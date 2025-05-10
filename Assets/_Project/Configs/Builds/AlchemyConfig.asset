@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AlchemyConfig
   m_EditorClassIdentifier: 
   <BaseBuildingPrefab>k__BackingField: {fileID: 1062519894374596176, guid: 60b8488be49f6954b9b9cf3ec06947cd, type: 3}
-  <WindowPrefab>k__BackingField: {fileID: 3021907878030942492, guid: 3d6998f1f40d9a346891aa09aa5d30b7, type: 3}
+  <WindowPrefab>k__BackingField: {fileID: 8698321780790830980, guid: 3d6998f1f40d9a346891aa09aa5d30b7, type: 3}
   <Health>k__BackingField: 70
   <RadiusAttack>k__BackingField: 0
   <Damage>k__BackingField: 0
