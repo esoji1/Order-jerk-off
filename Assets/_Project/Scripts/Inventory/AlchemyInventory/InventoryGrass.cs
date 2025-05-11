@@ -27,7 +27,7 @@ namespace _Project.Inventory
             _inventory.OnRemoveCell += RemoveItem;
             _inventory.OnSubstractItem += UpdateCountItem;
 
-            AddItemInCell(_cellList[0]);
+            UpdateItem();
         }
 
         public void AddItemInCell(Cell cell)
@@ -99,6 +99,30 @@ namespace _Project.Inventory
                 {
                     _cellList[i].NumberItems = cell.NumberItems;
                     _cellList[i].AddNumberItems(0);
+                }
+            }
+        }
+
+        private void UpdateItem()
+        {
+            for (int i = 0; i < _inventory.CellList.Count; i++)
+            {
+                if (_inventory.CellList[i].Item != null)
+                {
+                    for (int j = 0; j < _cellList.Length; j++)
+                    {
+                        if (_cellList[j].Item != null)
+                        {
+                            if (_cellList[j].Item.GetItemType().Equals(_inventory.CellList[i].Item.GetItemType()))
+                            {
+                                _cellList[j].NumberItems = _inventory.CellList[i].NumberItems;
+                                _cellList[j].AddNumberItems(0);
+                                _cellList[j].SetIsCellBusy(true);
+                                SetupItemButton(_cellList[j]);
+                                break;
+                            }
+                        }
+                    }
                 }
             }
         }

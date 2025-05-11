@@ -18372,10 +18372,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8633670012818227073, guid: 3d6998f1f40d9a346891aa09aa5d30b7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8698321780790830980, guid: 3d6998f1f40d9a346891aa09aa5d30b7, type: 3}
       propertyPath: m_Name
       value: PlayerAlchemyMenu

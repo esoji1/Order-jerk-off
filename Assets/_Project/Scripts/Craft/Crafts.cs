@@ -81,7 +81,7 @@ namespace _Project.Craft
         {
             if (_currentCraft == null)
             {
-                Debug.LogWarning("Нет активного крафта!");
+                Debug.Log("Нет активного крафта!");
                 return;
             }
 
@@ -103,11 +103,6 @@ namespace _Project.Craft
 
                         remainingToRemove -= canRemove;
                     }
-                }
-
-                if (remainingToRemove > 0)
-                {
-                    Debug.LogError($"Не удалось удалить все предметы для {requiredItem.Item.GetItemType()}");
                 }
             }
 
