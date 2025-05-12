@@ -27,8 +27,12 @@ namespace _Project.Potions
 
         private IEnumerator TimeUsePotion()
         {
-            Player.PlayerData.Speed = EffectValue;
+            if (_isClick == false)
+                yield break;
+
             _isClick = false;
+            Player.PlayerData.Speed = EffectValue;
+
             yield return new WaitForSeconds(SecondaryValue);
             Player.PlayerData.Speed = 0;
             _isClick = true;
