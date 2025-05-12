@@ -13,7 +13,7 @@ namespace _Project.Potions
         {
             int currentHealth = Player.Health.HealthValue;
             int maxHealth = Player.PlayerCharacteristics.Health;
-            int amountToHeal = Mathf.Clamp(_effectValue, 0, maxHealth - currentHealth);
+            int amountToHeal = Mathf.Clamp(EffectValue, 0, maxHealth - currentHealth);
 
             if (amountToHeal > 0)
             {

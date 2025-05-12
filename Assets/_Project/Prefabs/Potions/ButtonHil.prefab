@@ -270,5 +270,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11737ec855f728542bc23d2af3f4e2e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _effectValue: 5
-  _secondaryValue: 0
+  EffectValue: 5
+  SecondaryValue: 0

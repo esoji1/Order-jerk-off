@@ -20,7 +20,6 @@ namespace _Project.Potions
         {
             Collider2D[] collider2D = Physics2D.OverlapCircleAll(transform.position, _radiusAttack, _player.Config.LayerEnemy);
             bool isFirstSpawm = false;
-            ;
 
             foreach (Collider2D collider in collider2D)
             {

@@ -7,7 +7,7 @@ namespace _Project.Potions
 {
     public class PotionFactory
     {
-        private PotionConfig _explosionConfig, _healingConfig;
+        private PotionConfig _explosionConfig, _healingConfig, _speedConfig;
         private Player.Player _player;
         private InventoryActivePotions _inventoryActivePotions;
         private Transform _content;
@@ -15,11 +15,12 @@ namespace _Project.Potions
         private Explosion _explosion;
         private ManagerPotion _managerPotion;
 
-        public PotionFactory(PotionConfig explosionConfig, PotionConfig healingConfig, Player.Player player, InventoryActivePotions inventoryActivePotions, Transform content,
+        public PotionFactory(PotionConfig explosionConfig, PotionConfig healingConfig, PotionConfig speedConfig, Player.Player player, InventoryActivePotions inventoryActivePotions, Transform content,
             ParticleSystem bom, Explosion explosion, ManagerPotion managerPotion)
         {
             _explosionConfig = explosionConfig;
             _healingConfig = healingConfig;
+            _speedConfig = speedConfig;
             _player = player;
             _inventoryActivePotions = inventoryActivePotions;
             _content = content;
@@ -33,7 +34,7 @@ namespace _Project.Potions
             PotionConfig config = GetConfigBy(potionType);
             BasePotion instance = UnityEngine.Object.Instantiate(config.Prefab, _content);
             instance.gameObject.transform.SetParent(_content);
-            BasePotion basePotion = InitializeObject(instance, config);
+            BasePotion basePotion = InitializeObject(instance);
             return basePotion;
         }
 
@@ -47,12 +48,15 @@ namespace _Project.Potions
                 case TypesPotion.Explosion:
                     return _explosionConfig;
 
+                case TypesPotion.SpeedUp:
+                    return _speedConfig;
+
                 default:
                     throw new ArgumentException(nameof(potionType));
             }
         }
 
-        private BasePotion InitializeObject(BasePotion instance, PotionConfig config)
+        private BasePotion InitializeObject(BasePotion instance)
         {
             if (instance is HealingPotions healingPotions)
             {
@@ -63,6 +67,11 @@ namespace _Project.Potions
             {
                 explosivePotion.Initialize(_player, _inventoryActivePotions, _bom, _explosion, _managerPotion);
                 return explosivePotion;
+            }
+            else if(instance is SpeedPotions speddPotion)
+            {
+                speddPotion.Initialize(_player, _inventoryActivePotions, _managerPotion);
+                return speddPotion;
             }
             else
             {

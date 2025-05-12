@@ -5,6 +5,7 @@ using _Project.Core.Points;
 using _Project.ExperienceBar;
 using _Project.JoystickMovement;
 using _Project.Player.Pumping;
+using _Project.Player.TempData;
 using _Project.ScriptableObjects.Configs;
 using _Project.SelectionGags;
 using System;
@@ -29,6 +30,7 @@ namespace _Project.Player
         private Flip _flip;
         private Health _health;
         private Wallet.Wallet _wallet;
+        private PlayerData _playerData;
 
         private PlayerView _playerView;
         private PointHealth _pointHealth;
@@ -45,7 +47,7 @@ namespace _Project.Player
         public event Action OnUp;
         public event Action OnAddExperience;
 
-        public float Speed => _config.Speed;
+        public float Speed => _config.Speed + _playerData.Speed;
         public JoysickForMovement JoysickForMovement => _joysickForMovement;
         public WallDetection[] WallDetection => _wallDetection;
         public PlayerConfig Config => _config;
@@ -56,6 +58,7 @@ namespace _Project.Player
         public Wallet.Wallet Wallet => _wallet;
         public HealthView HealthView => _healthView;
         public Health Health => _health;
+        public PlayerData PlayerData => _playerData;    
 
         private void Update()
         {
@@ -87,7 +90,6 @@ namespace _Project.Player
             _levelPlayer.OnLevelUp += ImproveCharacteristics;
             _health.OnDie += Die;
             _useWeapons.OnChangeWeapon += AppropriateWeapons;
-
         }
 
         public void AddExperience(int value)
@@ -120,6 +122,7 @@ namespace _Project.Player
             _playerMovement = new PlayerMovement(_joysickForMovement, this);
             _flip = new Flip();
             _wallet = new Wallet.Wallet(0);
+            _playerData = new PlayerData();
             _playerView.Initialize();
 
             _healthInfo = _healthInfoPrefab;

@@ -94,6 +94,20 @@ namespace _Project.Potions
                             _potion[TypesPotion.Explosion] = 1;
                         }
                         break;
+
+                    case TypesPotion.SpeedUp:
+                        if (_potionObjects.ContainsKey(TypesPotion.SpeedUp))
+                        {
+                            Debug.Log("Снова");
+                            _potion[TypesPotion.SpeedUp]++;
+                        }
+                        else
+                        {
+                            BasePotion potion = _bootstrapFactoryPotion.Factory.Get(TypesPotion.SpeedUp);
+                            _potionObjects[TypesPotion.SpeedUp] = potion;
+                            _potion[TypesPotion.SpeedUp] = 1;
+                        }
+                        break;
                 }
             }
         }
@@ -120,6 +134,16 @@ namespace _Project.Potions
                         {
                             Destroy(_potionObjects[TypesPotion.Explosion].gameObject);
                             _potionObjects.Remove(TypesPotion.Explosion);
+                        }
+                        break;
+
+                    case TypesPotion.SpeedUp:
+                        _potion[TypesPotion.SpeedUp]--;
+
+                        if (_potion[TypesPotion.SpeedUp] <= 0)
+                        {
+                            Destroy(_potionObjects[TypesPotion.SpeedUp].gameObject);
+                            _potionObjects.Remove(TypesPotion.SpeedUp);
                         }
                         break;
                 }
