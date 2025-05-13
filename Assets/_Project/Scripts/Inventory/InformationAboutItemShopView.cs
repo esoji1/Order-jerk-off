@@ -1,4 +1,5 @@
 ﻿using _Project.Core;
+using _Project.Inventory.Items;
 using _Project.Weapon;
 using System;
 using TMPro;
@@ -46,10 +47,12 @@ namespace _Project.Inventory
 
         private void ChangeText(Cell cell, float visibilityRadius, int minDamage, int maxDamage)
         {
+            WeaponItem weaponItem = cell.Item as WeaponItem;
             _textInfoItem.text = $"{cell.Item.Name}\n " +
                 $"Цена: {cell.Item.Price}\n " +
                 $"Радиус атаки: {visibilityRadius}\n " +
-                $"Урон: {minDamage}  -  {maxDamage}";
+                $"Урон: {minDamage}  -  {maxDamage} + прокачка: {weaponItem.ImprovementWeaponData.Damage}\n" +
+                $"Уровень оружия: {weaponItem.Level}";
         }
 
         private void ChangeTextForMining(Cell cell)

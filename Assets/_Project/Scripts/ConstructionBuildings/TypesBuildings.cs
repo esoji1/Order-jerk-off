@@ -5,6 +5,7 @@
         House = 0,
         Shop,
         Alchemy,
-        ArcherTower
+        ArcherTower,
+        Forge
     }
 }

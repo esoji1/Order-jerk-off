@@ -15,11 +15,12 @@ namespace _Project.ConstructionBuildings.Buildings
         private ChangeItemGrass _changeItemGrass;
         private ControllInventoryGrass _controllInventoryGrass;
 
-        public void Initialize(BuildsConfig config, Canvas staticCanvas, Player.Player player, Inventory.Inventory inventory, ControllInventoryGrass _controllInventoryGrass)
+        public void Initialize(BuildsConfig config, Canvas staticCanvas, Player.Player player, Inventory.Inventory inventory, ControllInventoryGrass controllInventoryGrass)
         {
             base.Initialize(config, staticCanvas, player);
 
             _inventory = inventory;
+            _controllInventoryGrass = controllInventoryGrass;
 
             _inventoryGrass = Window.GetComponentInChildren<InventoryGrass>();
             _inventoryGrass.Initialize(Window.GetComponentInChildren<InventoryGrass>().GetComponentsInChildren<Cell>(), _inventory);

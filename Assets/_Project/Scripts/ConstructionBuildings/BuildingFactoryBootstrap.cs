@@ -10,10 +10,7 @@ namespace _Project.ConstructionBuildings
 {
     public class BuildingFactoryBootstrap : MonoBehaviour   
     {
-        [SerializeField] private BuildsConfig _houseConfig;
-        [SerializeField] private BuildsConfig _shopConfig;
-        [SerializeField] private BuildsConfig _alchemyConfig;
-        [SerializeField] private BuildsConfig _archerTowerConfig;
+        [SerializeField] private BuildsConfig _houseConfig, _shopConfig, _alchemyConfig, _archerTowerConfig, _forgeConfig;
         [SerializeField] private Canvas _staticCanvas;
         [SerializeField] private Player.Player _player;
         [SerializeField] private UseWeapons.UseWeapons _useWeapons;
@@ -33,7 +30,7 @@ namespace _Project.ConstructionBuildings
 
         private void Awake()
         {
-            _buildingFactory = new BuildingFactory(_houseConfig, _shopConfig, _alchemyConfig, _archerTowerConfig, _staticCanvas, _player, _useWeapons, _inventory, _inventoryActive, 
+            _buildingFactory = new BuildingFactory(_houseConfig, _shopConfig, _alchemyConfig, _archerTowerConfig, _forgeConfig, _staticCanvas, _player, _useWeapons, _inventory, _inventoryActive, 
                 _dynamicCanvas, _textDamage, _layerMask, _projectile, _inventoryActivePotions, _managerPotion, _controllInventoryGrass);
         }
     }

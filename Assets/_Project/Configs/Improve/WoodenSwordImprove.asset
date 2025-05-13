@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e480ce7501d0bb41b1401213cd98180, type: 3}
+  m_Name: WoodenSwordImprove
+  m_EditorClassIdentifier: 
+  <Item>k__BackingField: {fileID: 3398061218366655883, guid: dd54e488ae1c2ce458c3e4bc0489f20d, type: 3}
+  <ImproveTwoLevel>k__BackingField:
+    CraftItem: {fileID: 0}
+    List:
+    - Item: {fileID: 4601046106296165302, guid: 9cf719d04e076ce4aaa811f9be8f3477, type: 3}
+      Quantity: 2
+    - Item: {fileID: 5875518255924871237, guid: 50d1c9cb486bee345899874e7d59a728, type: 3}
+      Quantity: 3
+    - Item: {fileID: 2182497842507453036, guid: 04fc51f7551996f46a9b776ec860d4e7, type: 3}
+      Quantity: 1
+  <ImproveThreeLevel>k__BackingField:
+    CraftItem: {fileID: 0}
+    List:
+    - Item: {fileID: 2182497842507453036, guid: 04fc51f7551996f46a9b776ec860d4e7, type: 3}
+      Quantity: 5
+    - Item: {fileID: 4601046106296165302, guid: 9cf719d04e076ce4aaa811f9be8f3477, type: 3}
+      Quantity: 4
+    - Item: {fileID: 5875518255924871237, guid: 50d1c9cb486bee345899874e7d59a728, type: 3}
+      Quantity: 6

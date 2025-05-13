@@ -1,4 +1,5 @@
 using _Project.Core;
+using _Project.Improvements;
 using _Project.ScriptableObjects.Configs;
 using _Project.Weapon.TempData;
 using TMPro;
@@ -21,6 +22,8 @@ namespace _Project.Weapon.Weapons
 
         private SpriteRenderer _spriteRenderer;
 
+        private ImprovementWeaponData _improvementWeaponData;
+
         public WeaponConfig Config => _config;
         public AttackMeleeView AttackMeleeView => _attackMeleeView;
         public Transform Point => _pointRotation;
@@ -30,6 +33,7 @@ namespace _Project.Weapon.Weapons
         public TextMeshProUGUI TextDamage => _textDamage;
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
         public Player.Player Player => _player;
+        public ImprovementWeaponData ImprovementWeaponData => _improvementWeaponData;
 
         public virtual void Initialize(WeaponConfig config, Transform pointRotation, Canvas canvas, TextMeshProUGUI textDamage, Player.Player player)
         {
@@ -44,5 +48,8 @@ namespace _Project.Weapon.Weapons
 
             _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         }
+
+        public void SetImprovementWeaponData(ImprovementWeaponData improvementWeaponData) => 
+            _improvementWeaponData = improvementWeaponData;
     }
 }

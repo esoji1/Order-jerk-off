@@ -20,6 +20,7 @@ namespace _Project.ConstructionBuildings
         [SerializeField] private Button _shopButton;
         [SerializeField] private Button _alchemyButton;
         [SerializeField] private Button _archerTowerBotton;
+        [SerializeField] private Button _forgeBotton;
 
         private BuildingArea _buildingArea;
         private List<BaseBuilding> _buildingList = new();
@@ -40,6 +41,7 @@ namespace _Project.ConstructionBuildings
             _shopButton.onClick.AddListener(ShopButtonSpawn);
             _alchemyButton.onClick.AddListener(AlchemyButtonSpawn);
             _archerTowerBotton.onClick.AddListener(ArcherTowerButtonSpawn);
+            _forgeBotton.onClick.AddListener(ForgeButtonSpawn);
         }
 
         private void OnDisable()
@@ -50,6 +52,7 @@ namespace _Project.ConstructionBuildings
             _shopButton.onClick.RemoveListener(ShopButtonSpawn);
             _alchemyButton.onClick.RemoveListener(AlchemyButtonSpawn);
             _archerTowerBotton.onClick.RemoveListener(ArcherTowerButtonSpawn);
+            _forgeBotton.onClick.RemoveListener(ForgeButtonSpawn);
         }
 
         private void AssignSpawnZone(BuildingArea buildingArea) => _buildingArea = buildingArea;
@@ -84,6 +87,14 @@ namespace _Project.ConstructionBuildings
                 return;
 
             Spawn(TypesBuildings.ArcherTower, 15);
+        }
+
+        private void ForgeButtonSpawn()
+        {
+            if (IsTheZoneOccupied())
+                return;
+
+            Spawn(TypesBuildings.Forge, 40);
         }
 
         private bool IsTheZoneOccupied() => _buildingArea.IsZoneOccupied;

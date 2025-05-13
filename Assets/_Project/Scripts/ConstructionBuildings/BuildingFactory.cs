@@ -13,10 +13,7 @@ namespace _Project.ConstructionBuildings
 {
     public class BuildingFactory
     {
-        private BuildsConfig _houseConfig;
-        private BuildsConfig _shopConfig;
-        private BuildsConfig _alchemyConfig;
-        private BuildsConfig _archerTowerConfig;
+        private BuildsConfig _houseConfig, _shopConfig, _alchemyConfig, _archerTowerConfig, _forgeConfig;
         private Canvas _staticCanvas;
         private Canvas _dynamicCanvas;
         private Player.Player _player; 
@@ -30,14 +27,16 @@ namespace _Project.ConstructionBuildings
         private ManagerPotion _managerPotion;
         private ControllInventoryGrass _controllInventoryGrass;
 
-        public BuildingFactory(BuildsConfig housConfig, BuildsConfig shopConfig, BuildsConfig alchemyConfig, BuildsConfig archerTowerConfig, Canvas staticCanvas, 
-            Player.Player player, UseWeapons.UseWeapons useWeapons,Inventory.Inventory inventory, InventoryActive inventoryActive, Canvas dynamicCanvas, TextMeshProUGUI textDamage,
-            LayerMask layerMask, Projectile projectile, InventoryActivePotions inventoryActivePotions, ManagerPotion managerPotion, ControllInventoryGrass controllInventoryGrass)
+        public BuildingFactory(BuildsConfig housConfig, BuildsConfig shopConfig, BuildsConfig alchemyConfig, BuildsConfig archerTowerConfig, BuildsConfig forgeConfig,
+            Canvas staticCanvas, Player.Player player, UseWeapons.UseWeapons useWeapons,Inventory.Inventory inventory,
+            InventoryActive inventoryActive, Canvas dynamicCanvas, TextMeshProUGUI textDamage, LayerMask layerMask, Projectile projectile, 
+            InventoryActivePotions inventoryActivePotions, ManagerPotion managerPotion, ControllInventoryGrass controllInventoryGrass)
         {
             _houseConfig = housConfig;
             _shopConfig = shopConfig;
             _alchemyConfig = alchemyConfig;
             _archerTowerConfig = archerTowerConfig;
+            _forgeConfig = forgeConfig;
             _staticCanvas = staticCanvas;
             _player = player;
             _useWeapons = useWeapons;
@@ -76,6 +75,9 @@ namespace _Project.ConstructionBuildings
                case TypesBuildings.ArcherTower:
                    return _archerTowerConfig;
 
+                case TypesBuildings.Forge:
+                    return _forgeConfig;
+
                 default:
                     throw new ArgumentException($"not {typesBuildings}");
             }
@@ -102,6 +104,11 @@ namespace _Project.ConstructionBuildings
             {
                 rangedAttackTower.Initialize(buildsConfig, _staticCanvas, _player, _inventory, _dynamicCanvas, _textDamage, _layerMask, _projectile);
                 return rangedAttackTower;
+            }
+            else if (instance is Forge forge)
+            {
+                forge.Initialize(buildsConfig, _staticCanvas, _player, _inventory);
+                return forge;
             }
             else
             {

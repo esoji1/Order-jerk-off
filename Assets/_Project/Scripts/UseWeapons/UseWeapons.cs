@@ -1,4 +1,5 @@
 using _Project.Core;
+using _Project.Inventory.Items;
 using _Project.Weapon;
 using _Project.Weapon.Interface;
 using System;
@@ -36,7 +37,7 @@ namespace _Project.UseWeapons
             GetWeapon();
         }
 
-        public void SetWeapon(Enum weaponType)
+        public void SetWeapon(Enum weaponType, WeaponItem weaponItem)
         {
             if (weaponType == null)
             {
@@ -48,15 +49,15 @@ namespace _Project.UseWeapons
 
             if (weaponType.Equals(WeaponTypes.WoodenSwordPlayer))
             {
-                SetWeaponParent(WeaponTypes.WoodenSwordPlayer);
+                SetWeaponParent(WeaponTypes.WoodenSwordPlayer, weaponItem);
             }
             else if (weaponType.Equals(WeaponTypes.WoodenAxePlayer))
             {
-                SetWeaponParent(WeaponTypes.WoodenAxePlayer);
+                SetWeaponParent(WeaponTypes.WoodenAxePlayer, weaponItem);
             }
             else if (weaponType.Equals(WeaponTypes.WoodenOnionPlayer))
             {
-                SetWeaponParent(WeaponTypes.WoodenOnionPlayer);
+                SetWeaponParent(WeaponTypes.WoodenOnionPlayer, weaponItem);
             }
         }
 
@@ -66,7 +67,7 @@ namespace _Project.UseWeapons
                 _weapon.gameObject.SetActive(value);
         }
 
-        private void SetWeaponParent(WeaponTypes weaponType)
+        private void SetWeaponParent(WeaponTypes weaponType, WeaponItem weaponItem)
         {
             if (_baseWeapon != null && _weapon != null)
             {
@@ -76,6 +77,7 @@ namespace _Project.UseWeapons
             }
 
             Weapon.Weapons.Weapon weapon = _weaponFactoryBootstrap.Factory.Get(weaponType, transform.position, transform);
+            weapon.SetImprovementWeaponData(weaponItem.ImprovementWeaponData);
             _setWeaponPoint.SetParent(weapon.transform, transform);
             _setWeaponPoint.Set(weapon.transform);
         }

@@ -97,13 +97,15 @@ namespace _Project.Weapon.Attacks
         {
             _weapon.StartCoroutine(_attackMeleeView.StartAttack(_weapon.Point, angle, _weapon.Config.AttackSpeed));
             ApplyDamageEnemy();
-            yield return new WaitForSeconds(_weapon.Config.ReturnInitialAttackPosition - _weapon.WeaponData.ReturnInitialAttackPosition);
+            yield return new WaitForSeconds((_weapon.Config.ReturnInitialAttackPosition - _weapon.WeaponData.ReturnInitialAttackPosition)
+                - _weapon.ImprovementWeaponData.ReturnInitialAttackPosition);
         }
 
         private IEnumerator ReturnOriginalPosition(float angle)
         {
             _weapon.StartCoroutine(_attackMeleeView.StartAttack(_weapon.Point, angle, _weapon.Config.AttackSpeed));
-            yield return new WaitForSeconds(_weapon.Config.ReturnInitialAttackPosition - _weapon.WeaponData.ReturnInitialAttackPosition);
+            yield return new WaitForSeconds((_weapon.Config.ReturnInitialAttackPosition - _weapon.WeaponData.ReturnInitialAttackPosition)
+                - _weapon.ImprovementWeaponData.ReturnInitialAttackPosition);
         }
 
         private void ApplyDamageEnemy()
@@ -112,7 +114,7 @@ namespace _Project.Weapon.Attacks
             {
                 int randomDamage = Random.Range(_weapon.Config.MinDamage, _weapon.Config.MaxDamage) + _weapon.WeaponData.ExtraDamage;
                 if (_nearestEnemy.TryGetComponent(out Player.Player _) == false)
-                    _droppedDamage.SpawnNumber(randomDamage, _nearestEnemy.transform);
+                    _droppedDamage.SpawnNumber(randomDamage + _weapon.ImprovementWeaponData.Damage, _nearestEnemy.transform);
                 damage.Damage(randomDamage);
             }
         }

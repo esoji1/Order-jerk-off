@@ -1,4 +1,5 @@
-﻿using _Project.ScriptableObjects.Configs;
+﻿using _Project.Inventory.Items;
+using _Project.ScriptableObjects.Configs;
 using _Project.Weapon;
 using System;
 using UnityEngine;
@@ -81,8 +82,10 @@ namespace _Project.Inventory
                 if (_isWeaponEquipped)
                     return;
 
+                WeaponItem weaponItem = _clickedCellInventory.Item as WeaponItem;
+
                 _inventoryActive.AddItemInCell(_clickedCellInventory.Item);
-                _useWeapons.SetWeapon(_clickedCellInventory.Item.GetItemType());
+                _useWeapons.SetWeapon(_clickedCellInventory.Item.GetItemType(), weaponItem);
                 _inventory.SubtractItems(_clickedCellInventory, 1);
                 _isWeaponEquipped = true;
                 return;
@@ -117,7 +120,7 @@ namespace _Project.Inventory
             {
                 _inventory.AddItemInCell(_clickedCellInventoryActive.Item);
                 _inventoryActive.SubtractItems(_clickedCellInventoryActive, 1);
-                _useWeapons.SetWeapon(null);
+                _useWeapons.SetWeapon(null, null);
                 _isWeaponEquipped = false;
                 return;
             }
