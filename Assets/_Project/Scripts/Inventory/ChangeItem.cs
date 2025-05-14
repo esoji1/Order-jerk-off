@@ -86,7 +86,6 @@ namespace _Project.Inventory
 
                 _useWeapons.SetWeapon(_clickedCellInventory.Item.GetItemType(), weaponItem);
                 _inventoryActive.MoveItemToCell(_clickedCellInventory.Item, _clickedCellInventory);
-                //_inventory.SubtractItems(_clickedCellInventory, 1);
                 _isWeaponEquipped = true;
                 return;
             }
@@ -119,7 +118,6 @@ namespace _Project.Inventory
             if (_clickedCellInventoryActive.Item.Category == ItemCategory.Weapon)
             {
                 _inventory.MoveItemToCell(_clickedCellInventoryActive.Item, _clickedCellInventoryActive);
-                //_inventoryActive.SubtractItems(_clickedCellInventoryActive, 1);
                 _useWeapons.SetWeapon(null, null);
                 _isWeaponEquipped = false;
                 return;

@@ -50,6 +50,7 @@ namespace _Project.ConstructionBuildings.Buildings
             _type = GetType();
 
             UpdateHealthText();
+            _window.SetActive(true);
 
             _exit.onClick.AddListener(Hide);
             _health.OnDie += Die;

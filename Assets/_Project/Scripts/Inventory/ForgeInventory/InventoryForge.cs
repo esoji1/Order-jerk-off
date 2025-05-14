@@ -28,31 +28,30 @@ namespace _Project.Inventory.ForgeInventory
             _cellList = cellList;
             _inventory = inventory;
 
-            _inventory.OnAddItem += AddItemInCell;
-            _inventory.OnSubstractItem += UpdateCountItem;
-            _inventory.OnRemoveCell += RemoveItem;
             UpdateItem();
         }
 
-        public void AddItemInCell(Cell cell)
+        public void MoveItemToCell(BaseItem item, Cell cell)
         {
-            if (cell.Item.Category != ItemCategory.Weapon)
-                return;
-
             for (int i = 0; i < _cellList.Count; i++)
             {
-                if (_cellList[i].IsCellBusy == false)
+                if (_cellList[i].IsCellBusy)
                 {
-                    BaseItem itemSpawn = Instantiate(cell.Item, _cellList[i].transform);
-                    _cellList[i].Item = itemSpawn;
+                    continue;
+                }
+                else if (_cellList[i].IsCellBusy == false && item != null)
+                {
+                    item.transform.SetParent(_cellList[i].transform);
+                    item.transform.localPosition = new Vector3(0f, 0f, 0f);
+                    item.transform.localScale = new Vector3(1f, 1f, 1f);
+                    _cellList[i].Item = item;
                     _cellList[i].SetIsCellBusy(true);
                     SetupItemButton(_cellList[i]);
                     UpdateCellInNumberItems(_cellList[i]);
-                    break;
-                }
-                else if (_cellList[i].Item.Name == cell.Item.Name && _cellList[i].Item != null)
-                {
-                    UpdateCountItem(cell);
+                    cell.SetIsCellBusy(false);
+                    cell.Item = null;
+                    cell.NumberItems = 0;
+                    cell.AddNumberItems(0);
                     break;
                 }
             }
@@ -87,40 +86,9 @@ namespace _Project.Inventory.ForgeInventory
 
         private void UpdateItem()
         {
-            int index = 0;
-
             for (int i = 0; i < _inventory.CellList.Count; i++)
             {
-                if (_inventory.CellList[i].Item != null && _inventory.CellList[i].Item.Category == ItemCategory.Weapon)
-                {
-                    if (_cellList[index].IsCellBusy == false)
-                    {
-                        BaseItem itemSpawn = Instantiate(_inventory.CellList[i].Item, _cellList[index].transform);
-                        _cellList[index].Item = itemSpawn;
-                        _cellList[index].SetIsCellBusy(true);
-                        SetupItemButton(_cellList[index]);
-                        _cellList[index].NumberItems = _inventory.CellList[i].NumberItems;
-                        _cellList[index].AddNumberItems(0);
-                        index++;
-                    }
-                }
-            }
-        }
-
-        private void RemoveItem(BaseItem item)
-        {
-            for (int i = 0; i < _cellList.Count; i++)
-            {
-                if (_cellList[i].Item != null)
-                {
-                    if (_cellList[i].Item.GetItemType().Equals(item.GetItemType()))
-                    {
-                        _cellList[i].NumberItems = 0;
-                        _cellList[i].SetIsCellBusy(false);
-                        Destroy(_cellList[i].Item.gameObject);
-                        _cellList[i].Item = null;
-                    }
-                }
+                MoveItemToCell(_inventory.CellList[i].Item, _inventory.CellList[i]);
             }
         }
 
@@ -156,13 +124,6 @@ namespace _Project.Inventory.ForgeInventory
         private void UpdateCellInNumberItems(Cell cell)
         {
             cell.AddNumberItems(1);
-        }
-
-        private void OnDestroy()
-        {
-            _inventory.OnAddItem -= AddItemInCell;
-            _inventory.OnSubstractItem -= UpdateCountItem;
-            _inventory.OnRemoveCell -= RemoveItem;
         }
     }
 }

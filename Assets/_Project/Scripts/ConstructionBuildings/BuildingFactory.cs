@@ -2,6 +2,7 @@ using _Project.ConstructionBuildings.Buildings;
 using _Project.ConstructionBuildings.DefensiveBuildings;
 using _Project.Inventory;
 using _Project.Inventory.AlchemyInventory;
+using _Project.Inventory.ForgeInventory;
 using _Project.Potions;
 using _Project.ScriptableObjects.Configs;
 using _Project.Weapon.Projectile;
@@ -26,11 +27,13 @@ namespace _Project.ConstructionBuildings
         private Projectile _projectile;
         private ManagerPotion _managerPotion;
         private ControllInventoryGrass _controllInventoryGrass;
+        private ControllInventoryForge _controllInventoryForge;
 
         public BuildingFactory(BuildsConfig housConfig, BuildsConfig shopConfig, BuildsConfig alchemyConfig, BuildsConfig archerTowerConfig, BuildsConfig forgeConfig,
             Canvas staticCanvas, Player.Player player, UseWeapons.UseWeapons useWeapons,Inventory.Inventory inventory,
             InventoryActive inventoryActive, Canvas dynamicCanvas, TextMeshProUGUI textDamage, LayerMask layerMask, Projectile projectile, 
-            InventoryActivePotions inventoryActivePotions, ManagerPotion managerPotion, ControllInventoryGrass controllInventoryGrass)
+            InventoryActivePotions inventoryActivePotions, ManagerPotion managerPotion, ControllInventoryGrass controllInventoryGrass,
+            ControllInventoryForge controllInventoryForge)
         {
             _houseConfig = housConfig;
             _shopConfig = shopConfig;
@@ -49,6 +52,7 @@ namespace _Project.ConstructionBuildings
             _inventoryActivePotions = inventoryActivePotions;
             _managerPotion = managerPotion;
             _controllInventoryGrass = controllInventoryGrass;
+            _controllInventoryForge = controllInventoryForge;
         }
 
         public BaseBuilding Get(TypesBuildings typesBuildings, Vector3 position)
@@ -107,7 +111,7 @@ namespace _Project.ConstructionBuildings
             }
             else if (instance is Forge forge)
             {
-                forge.Initialize(buildsConfig, _staticCanvas, _player, _inventory);
+                forge.Initialize(buildsConfig, _staticCanvas, _player, _inventory, _controllInventoryForge);
                 return forge;
             }
             else

@@ -13,12 +13,15 @@ namespace _Project.ConstructionBuildings.Buildings
         private InventoryForge _inventoryForge;
         private InventoryOre _inventoryOre;
         private Improvements.Improvements _improvements;
+        private ControllInventoryForge _controllInventoryForge;
 
-        public void Initialize(BuildsConfig config, Canvas staticCanvas, Player.Player player, Inventory.Inventory inventory)
+        public void Initialize(BuildsConfig config, Canvas staticCanvas, Player.Player player, Inventory.Inventory inventory,
+            ControllInventoryForge controllInventoryForge)
         {
             base.Initialize(config, staticCanvas, player);
 
             _inventory = inventory;
+            _controllInventoryForge = controllInventoryForge;
 
             _inventoryForge = Window.GetComponentInChildren<InventoryForge>();
             _inventoryForge.Initialize(Window.GetComponentInChildren<PointContent>().GetComponent<RectTransform>(), 
@@ -29,6 +32,8 @@ namespace _Project.ConstructionBuildings.Buildings
 
             _improvements = Window.GetComponentInChildren<Improvements.Improvements>();
             _improvements.Initialize(_inventory, _inventoryForge);
+
+            _controllInventoryForge.Initialize(inventory, _inventoryForge, Window);
         }
     }
 }

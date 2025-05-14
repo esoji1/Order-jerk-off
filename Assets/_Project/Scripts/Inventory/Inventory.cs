@@ -93,14 +93,15 @@ namespace _Project.Inventory
                 {
                     continue;
                 }
-                else if (_cellList[i].IsCellBusy == false)
+                else if (_cellList[i].IsCellBusy == false && item != null)
                 {
                     item.transform.SetParent(_cellList[i].transform);
                     item.transform.localPosition = new Vector3(0f, 0f, 0f);
+                    item.transform.localScale = new Vector3(1f, 1f, 1f);
                     _cellList[i].Item = item;
                     _cellList[i].SetIsCellBusy(true);
                     SetupItemButton(_cellList[i]);
-                    UpdateCellInNumberItems(_cellList[i]);
+                    _cellList[i].AddNumberItems(1);
                     cell.SetIsCellBusy(false);
                     cell.Item = null;
                     cell.NumberItems = 0;

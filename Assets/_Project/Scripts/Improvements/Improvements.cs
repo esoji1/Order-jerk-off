@@ -47,18 +47,7 @@ namespace _Project.Improvements
         private void Craft()
         {
             WeaponItem weaponItem = _clickitem.Item as WeaponItem;
-            foreach (Cell item in _inventory.CellList)
-            {
-                if (item.Item.GetItemType().Equals(weaponItem.GetItemType()))
-                {
-                    if(item.Item is WeaponItem weapon)
-                    {
-                        weapon.ImprovementWeaponData.Damage = 10;
-                        break;
-                    }
-                }
-            }
-
+            weaponItem.ImprovementWeaponData.Damage = 10;
             //if (HasAllIngredients())
             //{
             //    RemoveIngredients();

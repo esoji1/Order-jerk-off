@@ -1,5 +1,6 @@
 ﻿using _Project.Inventory;
 using _Project.Inventory.AlchemyInventory;
+using _Project.Inventory.ForgeInventory;
 using _Project.Potions;
 using _Project.ScriptableObjects.Configs;
 using _Project.Weapon.Projectile;
@@ -23,6 +24,7 @@ namespace _Project.ConstructionBuildings
         [SerializeField] private InventoryActivePotions _inventoryActivePotions;
         [SerializeField] private ManagerPotion _managerPotion;
         [SerializeField] private ControllInventoryGrass _controllInventoryGrass;
+        [SerializeField] private ControllInventoryForge _controllInventoryForge;
 
         private BuildingFactory _buildingFactory;
 
@@ -30,8 +32,9 @@ namespace _Project.ConstructionBuildings
 
         private void Awake()
         {
-            _buildingFactory = new BuildingFactory(_houseConfig, _shopConfig, _alchemyConfig, _archerTowerConfig, _forgeConfig, _staticCanvas, _player, _useWeapons, _inventory, _inventoryActive, 
-                _dynamicCanvas, _textDamage, _layerMask, _projectile, _inventoryActivePotions, _managerPotion, _controllInventoryGrass);
+            _buildingFactory = new BuildingFactory(_houseConfig, _shopConfig, _alchemyConfig, _archerTowerConfig, _forgeConfig, 
+                _staticCanvas, _player, _useWeapons, _inventory, _inventoryActive, _dynamicCanvas, _textDamage, _layerMask, 
+                _projectile, _inventoryActivePotions, _managerPotion, _controllInventoryGrass, _controllInventoryForge);
         }
     }
 }
