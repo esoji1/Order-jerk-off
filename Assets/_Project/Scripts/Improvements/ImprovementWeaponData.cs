@@ -4,6 +4,6 @@
     {
         public int Damage;
         public int SpeedAttack;
-        public int ReturnInitialAttackPosition;
+        public float ReturnInitialAttackPosition;
     }
 }

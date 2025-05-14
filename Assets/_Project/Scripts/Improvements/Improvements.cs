@@ -29,6 +29,7 @@ namespace _Project.Improvements
 
         private Improve _currentImprove;
         private Cell _clickitem;
+        private WeaponItem _weaponItem;
 
         private void OnEnable() => _improveButton.onClick.AddListener(Craft);
 
@@ -46,13 +47,10 @@ namespace _Project.Improvements
 
         private void Craft()
         {
-            WeaponItem weaponItem = _clickitem.Item as WeaponItem;
-            weaponItem.ImprovementWeaponData.Damage = 10;
-            //if (HasAllIngredients())
-            //{
-            //    RemoveIngredients();
-            //    Debug.Log($"Улучшение успешено!");
-            //}
+            if (HasAllIngredients())
+            {
+                RemoveIngredients();
+            }
         }
 
         private bool HasAllIngredients()
@@ -63,13 +61,16 @@ namespace _Project.Improvements
             {
                 if (improve.Item.GetItemType().Equals(_clickitem.Item.GetItemType()))
                 {
-                    WeaponItem weaponItem = _clickitem.Item as WeaponItem;
+                    _weaponItem = _clickitem.Item as WeaponItem;
 
                     _currentImprove = improve;
-                    level = weaponItem.Level;
+                    level = _weaponItem.Level;
                     break;
                 }
             }
+
+            if (_weaponItem == null)
+                return false;
 
             if (level == 1)
             {
@@ -95,6 +96,7 @@ namespace _Project.Improvements
                     if (totalInInventory < requiredItem.Quantity)
                     {
                         canImprove = false;
+                        Debug.Log("не хватает чтобы вкачать до 2!");
                         break;
                     }
                 }
@@ -102,6 +104,49 @@ namespace _Project.Improvements
                 if (canImprove)
                 {
                     level++;
+                    _weaponItem.SetLevel(level);
+                    _weaponItem.ImprovementWeaponData.Damage = 10;
+                    _weaponItem.ImprovementWeaponData.ReturnInitialAttackPosition = 0.1f;
+                    Debug.Log("Хватает чтобы вкачать, ура 2");
+                    return true;
+                }
+            }
+            if (level == 2)
+            {
+                bool canImprove = true;
+
+                foreach (QuantityItemCraft requiredItem in _currentImprove.ImproveThreeLevel.List)
+                {
+                    int totalInInventory = 0;
+
+                    foreach (Cell cell in _inventory.CellList)
+                    {
+                        if (cell.Item == null)
+                            continue;
+
+                        if (cell.Item.GetItemType().Equals(requiredItem.Item.GetItemType()))
+                        {
+                            totalInInventory += cell.NumberItems;
+                            if (totalInInventory >= requiredItem.Quantity)
+                                break;
+                        }
+                    }
+
+                    if (totalInInventory < requiredItem.Quantity)
+                    {
+                        canImprove = false;
+                        Debug.Log("не хватает чтобы вкачать до 3!");
+                        break;
+                    }
+                }
+
+                if (canImprove)
+                {
+                    level++;
+                    _weaponItem.SetLevel(level);
+                    _weaponItem.ImprovementWeaponData.Damage = 20;
+                    _weaponItem.ImprovementWeaponData.ReturnInitialAttackPosition = 0.2f;
+                    Debug.Log("Хватает чтобы вкачать, ура 3");
                     return true;
                 }
             }
@@ -114,29 +159,50 @@ namespace _Project.Improvements
 
         private void RemoveIngredients()
         {
-            //if (_currentImprove == null)
-            //    return;
+            if (_currentImprove == null)
+                return;
 
-            //foreach (QuantityItemCraft requiredItem in _currentImprove.List)
-            //{
-            //    int remainingToRemove = requiredItem.Quantity;
+            if (_weaponItem.Level == 2)
+            {
+                foreach (QuantityItemCraft requiredItem in _currentImprove.ImproveTwoLevel.List)
+                {
+                    int remainingToRemove = requiredItem.Quantity;
 
-            //    foreach (Cell cell in _inventory.CellList)
-            //    {
-            //        if (remainingToRemove <= 0) break;
-            //        if (cell.Item == null) continue;
+                    foreach (Cell cell in _inventory.CellList)
+                    {
+                        if (remainingToRemove <= 0) break;
+                        if (cell.Item == null) continue;
 
-            //        if (requiredItem.Item.GetItemType().Equals(cell.Item.GetItemType()))
-            //        {
-            //            int canRemove = Mathf.Min(cell.NumberItems, remainingToRemove);
-            //            _inventory.SubtractItems(cell, canRemove);
-            //            remainingToRemove -= canRemove;
-            //        }
-            //    }
-            //}
+                        if (requiredItem.Item.GetItemType().Equals(cell.Item.GetItemType()))
+                        {
+                            int canRemove = Mathf.Min(cell.NumberItems, remainingToRemove);
+                            _inventory.SubtractItems(cell, canRemove);
+                            remainingToRemove -= canRemove;
+                        }
+                    }
+                }
+            }
+            else if(_weaponItem.Level == 3)
+            {
+                foreach (QuantityItemCraft requiredItem in _currentImprove.ImproveThreeLevel.List)
+                {
+                    int remainingToRemove = requiredItem.Quantity;
 
-            //_inventory.AddItemInCell(_currentImprove.CraftItem);
-            //_currentImprove = null;
+                    foreach (Cell cell in _inventory.CellList)
+                    {
+                        if (remainingToRemove <= 0) break;
+                        if (cell.Item == null) continue;
+
+                        if (requiredItem.Item.GetItemType().Equals(cell.Item.GetItemType()))
+                        {
+                            int canRemove = Mathf.Min(cell.NumberItems, remainingToRemove);
+                            _inventory.SubtractItems(cell, canRemove);
+                            remainingToRemove -= canRemove;
+                        }
+                    }
+                }
+            }
+            _currentImprove = null;
         }
 
         private void OnDestroy()

@@ -39,7 +39,7 @@ namespace _Project.Inventory.ForgeInventory
                 {
                     continue;
                 }
-                else if (_cellList[i].IsCellBusy == false && item != null)
+                else if (_cellList[i].IsCellBusy == false && item != null && item.Category == ItemCategory.Weapon)
                 {
                     item.transform.SetParent(_cellList[i].transform);
                     item.transform.localPosition = new Vector3(0f, 0f, 0f);
