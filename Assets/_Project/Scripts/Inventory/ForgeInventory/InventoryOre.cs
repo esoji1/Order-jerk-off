@@ -112,9 +112,12 @@ namespace _Project.Inventory.ForgeInventory
 
         private void OnDestroy()
         {
-            _inventory.OnAddItem -= AddItemInCell;
-            _inventory.OnRemoveCell -= RemoveItem;
-            _inventory.OnSubstractItem -= UpdateCountItem;
+            if (_inventory != null)
+            {
+                _inventory.OnAddItem -= AddItemInCell;
+                _inventory.OnRemoveCell -= RemoveItem;
+                _inventory.OnSubstractItem -= UpdateCountItem;
+            }
         }
     }
 }

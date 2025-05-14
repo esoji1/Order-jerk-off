@@ -3,7 +3,8 @@ using _Project.Inventory;
 using _Project.Inventory.ForgeInventory;
 using _Project.Inventory.Items;
 using Assets._Project.Scripts.ScriptableObjects;
-using System;
+using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +15,12 @@ namespace _Project.Improvements
         private const int MaxLevel = 3;
 
         [SerializeField] private Button _improveButton;
+        [SerializeField] private Button _exitButton;
         [SerializeField] private Improve[] _improveData;
+
+        [SerializeField] private GameObject _window;
+        [SerializeField] private Image _iconWeapon;
+        [SerializeField] private TextMeshProUGUI _textLevel;
 
         [Header("Improvements")]
         [Header("Two level")]
@@ -30,6 +36,7 @@ namespace _Project.Improvements
         private Improve _currentImprove;
         private Cell _clickitem;
         private WeaponItem _weaponItem;
+        private Tween _tween;
 
         private void OnEnable() => _improveButton.onClick.AddListener(Craft);
 
@@ -41,9 +48,17 @@ namespace _Project.Improvements
             _inventoryForge = inventoryForge;
 
             _inventoryForge.OnClickedItem += ChangeItemImprove;
+            _exitButton.onClick.AddListener(Hide);
         }
 
-        private void ChangeItemImprove(Cell cell) => _clickitem = cell;
+        private void ChangeItemImprove(Cell cell)
+        {
+            _clickitem = cell;
+            _weaponItem = _clickitem.Item as WeaponItem;
+            _iconWeapon.sprite = _weaponItem.Sprite;
+            _textLevel.text = $"Уровень оружия: {_weaponItem.Level}";
+            Show();
+        }
 
         private void Craft()
         {
@@ -51,6 +66,21 @@ namespace _Project.Improvements
             {
                 RemoveIngredients();
             }
+        }
+
+        public void Show()
+        {
+            _window.SetActive(true);
+            _tween = _window.transform
+                .DOScale(1, 0.5f);
+        }
+
+        public void Hide()
+        {
+            _tween.Kill();
+
+            _window.SetActive(false);
+            _window.transform.localScale = new Vector3(0, 0, 0);
         }
 
         private bool HasAllIngredients()
@@ -62,6 +92,8 @@ namespace _Project.Improvements
                 if (improve.Item.GetItemType().Equals(_clickitem.Item.GetItemType()))
                 {
                     _weaponItem = _clickitem.Item as WeaponItem;
+                    _iconWeapon.sprite = _weaponItem.Sprite;
+                    _textLevel.text = $"Уровень оружия: {_weaponItem.Level}";
 
                     _currentImprove = improve;
                     level = _weaponItem.Level;
@@ -105,6 +137,7 @@ namespace _Project.Improvements
                 {
                     level++;
                     _weaponItem.SetLevel(level);
+                    _textLevel.text = $"Уровень оружия: {_weaponItem.Level}";
                     _weaponItem.ImprovementWeaponData.Damage = 10;
                     _weaponItem.ImprovementWeaponData.ReturnInitialAttackPosition = 0.1f;
                     Debug.Log("Хватает чтобы вкачать, ура 2");
@@ -144,6 +177,7 @@ namespace _Project.Improvements
                 {
                     level++;
                     _weaponItem.SetLevel(level);
+                    _textLevel.text = $"Уровень оружия: {_weaponItem.Level}";
                     _weaponItem.ImprovementWeaponData.Damage = 20;
                     _weaponItem.ImprovementWeaponData.ReturnInitialAttackPosition = 0.2f;
                     Debug.Log("Хватает чтобы вкачать, ура 3");
@@ -155,7 +189,7 @@ namespace _Project.Improvements
 
             return false;
         }
-           
+
 
         private void RemoveIngredients()
         {
@@ -182,7 +216,7 @@ namespace _Project.Improvements
                     }
                 }
             }
-            else if(_weaponItem.Level == 3)
+            else if (_weaponItem.Level == 3)
             {
                 foreach (QuantityItemCraft requiredItem in _currentImprove.ImproveThreeLevel.List)
                 {
@@ -207,7 +241,9 @@ namespace _Project.Improvements
 
         private void OnDestroy()
         {
-            _inventoryForge.OnClickedItem -= ChangeItemImprove;
+            if (_inventoryForge != null)
+                _inventoryForge.OnClickedItem -= ChangeItemImprove;
+            _exitButton.onClick.RemoveListener(Hide);
         }
     }
 }
