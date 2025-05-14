@@ -48,22 +48,68 @@ namespace _Project.Inventory
         {
             for (int i = 0; i < _cellList.Count; i++)
             {
-                if (_cellList[i].IsCellBusy == false)
+                if (!(item as WeaponItem))
                 {
-                    BaseItem itemSpawn = Instantiate(item, _cellList[i].transform);
-                    _cellList[i].Item = itemSpawn;
+                    if (_cellList[i].IsCellBusy == false)
+                    {
+                        BaseItem itemSpawn = Instantiate(item, _cellList[i].transform);
+
+                        _cellList[i].Item = itemSpawn;
+                        _cellList[i].SetIsCellBusy(true);
+                        SetupItemButton(_cellList[i]);
+                        UpdateCellInNumberItems(_cellList[i]);
+                        break;
+                    }
+                    else if (_cellList[i].Item.Name == item.Name && _cellList[i].Item != null)
+                    {
+                        UpdateCellInNumberItems(_cellList[i]);
+                        break;
+                    }
+                }
+                else
+                {
+                    if (_cellList[i].IsCellBusy)
+                    {
+                        continue;
+                    }
+                    else if (_cellList[i].IsCellBusy == false)
+                    {
+                        BaseItem itemSpawn = Instantiate(item, _cellList[i].transform);
+                        _cellList[i].Item = itemSpawn;
+                        _cellList[i].SetIsCellBusy(true);
+                        SetupItemButton(_cellList[i]);
+                        UpdateCellInNumberItems(_cellList[i]);
+                        break;
+                    }
+                }
+            }
+        }
+
+        public void MoveItemToCell(BaseItem item, Cell cell)
+        {
+            for (int i = 0; i < _cellList.Count; i++)
+            {
+                if (_cellList[i].IsCellBusy)
+                {
+                    continue;
+                }
+                else if (_cellList[i].IsCellBusy == false)
+                {
+                    item.transform.SetParent(_cellList[i].transform);
+                    item.transform.localPosition = new Vector3(0f, 0f, 0f);
+                    _cellList[i].Item = item;
                     _cellList[i].SetIsCellBusy(true);
                     SetupItemButton(_cellList[i]);
                     UpdateCellInNumberItems(_cellList[i]);
-                    break;
-                }
-                else if (_cellList[i].Item.Name == item.Name && _cellList[i].Item != null)
-                {
-                    UpdateCellInNumberItems(_cellList[i]);
+                    cell.SetIsCellBusy(false);
+                    cell.Item = null;
+                    cell.NumberItems = 0;
+                    cell.AddNumberItems(0);
                     break;
                 }
             }
         }
+
 
         public bool SubtractItems(Cell cell, int numberSubtract)
         {
@@ -113,7 +159,7 @@ namespace _Project.Inventory
 
         private void UpdateCellInNumberItems(Cell cell)
         {
-            cell.AddNumberItems(1); 
+            cell.AddNumberItems(1);
             OnAddItem?.Invoke(cell);
         }
     }

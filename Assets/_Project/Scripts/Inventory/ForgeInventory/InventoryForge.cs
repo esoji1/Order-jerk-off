@@ -29,6 +29,8 @@ namespace _Project.Inventory.ForgeInventory
             _inventory = inventory;
 
             _inventory.OnAddItem += AddItemInCell;
+            _inventory.OnSubstractItem += UpdateCountItem;
+            _inventory.OnRemoveCell += RemoveItem;
             UpdateItem();
         }
 
@@ -50,7 +52,7 @@ namespace _Project.Inventory.ForgeInventory
                 }
                 else if (_cellList[i].Item.Name == cell.Item.Name && _cellList[i].Item != null)
                 {
-                    UpdateCellInNumberItems(_cellList[i]);
+                    UpdateCountItem(cell);
                     break;
                 }
             }
@@ -71,6 +73,18 @@ namespace _Project.Inventory.ForgeInventory
             return true;
         }
 
+        private void UpdateCountItem(Cell cell)
+        {
+            for (int i = 0; i < _cellList.Count; i++)
+            {
+                if (_cellList[i].Item != null && cell.Item.GetItemType().Equals(_cellList[i].Item.GetItemType()))
+                {
+                    _cellList[i].NumberItems = cell.NumberItems;
+                    _cellList[i].AddNumberItems(0);
+                }
+            }
+        }
+
         private void UpdateItem()
         {
             int index = 0;
@@ -88,6 +102,23 @@ namespace _Project.Inventory.ForgeInventory
                         _cellList[index].NumberItems = _inventory.CellList[i].NumberItems;
                         _cellList[index].AddNumberItems(0);
                         index++;
+                    }
+                }
+            }
+        }
+
+        private void RemoveItem(BaseItem item)
+        {
+            for (int i = 0; i < _cellList.Count; i++)
+            {
+                if (_cellList[i].Item != null)
+                {
+                    if (_cellList[i].Item.GetItemType().Equals(item.GetItemType()))
+                    {
+                        _cellList[i].NumberItems = 0;
+                        _cellList[i].SetIsCellBusy(false);
+                        Destroy(_cellList[i].Item.gameObject);
+                        _cellList[i].Item = null;
                     }
                 }
             }
@@ -125,6 +156,13 @@ namespace _Project.Inventory.ForgeInventory
         private void UpdateCellInNumberItems(Cell cell)
         {
             cell.AddNumberItems(1);
+        }
+
+        private void OnDestroy()
+        {
+            _inventory.OnAddItem -= AddItemInCell;
+            _inventory.OnSubstractItem -= UpdateCountItem;
+            _inventory.OnRemoveCell -= RemoveItem;
         }
     }
 }

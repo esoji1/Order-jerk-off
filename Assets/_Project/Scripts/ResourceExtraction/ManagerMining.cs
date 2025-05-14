@@ -1,4 +1,5 @@
 using _Project.Core;
+using _Project.Improvements;
 using _Project.Inventory;
 using _Project.Inventory.Items;
 using _Project.ResourceExtraction.FishingRodMining;

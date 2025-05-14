@@ -1,4 +1,5 @@
-﻿using _Project.Inventory.Items;
+﻿using _Project.Improvements;
+using _Project.Inventory.Items;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,6 +52,7 @@ namespace _Project.Inventory
                 if (_cellWeaponList[i].IsCellBusy == false)
                 {
                     BaseItem itemSpawn = Instantiate(item, _cellWeaponList[i].transform);
+
                     _cellWeaponList[i].Item = itemSpawn;
                     _cellWeaponList[i].SetIsCellBusy(true);
                     SetupItemButton(_cellWeaponList[i]);
@@ -60,6 +62,31 @@ namespace _Project.Inventory
                 else if (_cellWeaponList[i].Item.Name == item.Name && _cellWeaponList[i].Item != null)
                 {
                     UpdateCellInNumberItems(_cellWeaponList[i]);
+                    break;
+                }
+            }
+        }
+
+        public void MoveItemToCell(BaseItem item, Cell cell)
+        {
+            for (int i = 0; i < _cellWeaponList.Count; i++)
+            {
+                if (_cellWeaponList[i].IsCellBusy)
+                {
+                    continue;
+                }
+                else if (_cellWeaponList[i].IsCellBusy == false)
+                {
+                    item.transform.SetParent(_cellWeaponList[i].transform);
+                    item.transform.localPosition = new Vector3(0f, 0f, 0f);
+                    _cellWeaponList[i].Item = item;
+                    _cellWeaponList[i].SetIsCellBusy(true);
+                    SetupItemButton(_cellWeaponList[i]);
+                    UpdateCellInNumberItems(_cellWeaponList[i]);
+                    cell.SetIsCellBusy(false);
+                    cell.Item = null;
+                    cell.NumberItems = 0;
+                    cell.AddNumberItems(0);
                     break;
                 }
             }
