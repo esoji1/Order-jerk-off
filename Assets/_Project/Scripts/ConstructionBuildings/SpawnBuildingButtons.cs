@@ -1,6 +1,7 @@
 using _Project.ConstructionBuildings.Buildings;
 using _Project.ConstructionBuildings.DefensiveBuildings;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -101,6 +102,8 @@ namespace _Project.ConstructionBuildings
 
         private void Spawn(TypesBuildings typesBuildings, int value)
         {
+            if (_buildingArea.TryGetComponent(out PointTower _) && typesBuildings != TypesBuildings.ArcherTower)
+                return;
             if (_player.Wallet.SubtractMoney(value) == false)
                 return;
 
