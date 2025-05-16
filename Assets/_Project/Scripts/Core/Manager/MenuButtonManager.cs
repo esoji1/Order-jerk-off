@@ -25,7 +25,7 @@ namespace _Project.Core
         }
 
         private void OpenGameplayScene() =>
-            SceneManager.LoadScene((int)TypesScene.GameplayScene);
+            SceneManager.LoadScene((int)TypesScene.LoadingStepByStepBoot);
 
         private void OpenSettingWindow() { }
 
