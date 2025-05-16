@@ -1,4 +1,5 @@
-﻿using _Project.Inventory.Items;
+﻿using _Project.Improvements;
+using _Project.Inventory.Items;
 using _Project.ScriptableObjects.Configs;
 using _Project.Weapon;
 using System;
@@ -65,11 +66,20 @@ namespace _Project.Inventory
             WeaponTypes weaponTypes = _useWeapons.Weapon.Config.WeaponTypes;
             _isWeaponEquipped = true;
             if (weaponTypes == WeaponTypes.WoodenSwordPlayer)
+            {
                 _inventoryActive.AddItemInCell(_data.WoodenSwordItem);
-            else if (weaponTypes == WeaponTypes.WoodenSwordPlayer)
+                _useWeapons.SetWeapon(_data.WoodenSwordItem.GetItemType(), new ImprovementWeaponData());
+            }
+            else if (weaponTypes == WeaponTypes.WoodenAxePlayer)
+            {
                 _inventoryActive.AddItemInCell(_data.WoodenAxeItem);
+                _useWeapons.SetWeapon(_data.WoodenAxeItem.GetItemType(), new ImprovementWeaponData());
+            }
             else if (weaponTypes == WeaponTypes.WoodenOnionPlayer)
+            {
                 _inventoryActive.AddItemInCell(_data.WoodenOnionItem);
+                _useWeapons.SetWeapon(_data.WoodenOnionItem.GetItemType(), new ImprovementWeaponData());
+            }
         }
 
         private void PutOn()
@@ -84,7 +94,7 @@ namespace _Project.Inventory
 
                 WeaponItem weaponItem = _clickedCellInventory.Item as WeaponItem;
 
-                _useWeapons.SetWeapon(_clickedCellInventory.Item.GetItemType(), weaponItem);
+                _useWeapons.SetWeapon(_clickedCellInventory.Item.GetItemType(), weaponItem.ImprovementWeaponData);
                 _inventoryActive.MoveItemToCell(_clickedCellInventory.Item, _clickedCellInventory);
                 _isWeaponEquipped = true;
                 return;

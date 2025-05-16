@@ -1,4 +1,5 @@
 using _Project.Core;
+using _Project.Improvements;
 using _Project.Inventory.Items;
 using _Project.Weapon;
 using _Project.Weapon.Interface;
@@ -37,7 +38,7 @@ namespace _Project.UseWeapons
             GetWeapon();
         }
 
-        public void SetWeapon(Enum weaponType, WeaponItem weaponItem)
+        public void SetWeapon(Enum weaponType, ImprovementWeaponData improvementWeaponData)
         {
             if (weaponType == null)
             {
@@ -49,15 +50,15 @@ namespace _Project.UseWeapons
 
             if (weaponType.Equals(WeaponTypes.WoodenSwordPlayer))
             {
-                SetWeaponParent(WeaponTypes.WoodenSwordPlayer, weaponItem);
+                SetWeaponParent(WeaponTypes.WoodenSwordPlayer, improvementWeaponData);
             }
             else if (weaponType.Equals(WeaponTypes.WoodenAxePlayer))
             {
-                SetWeaponParent(WeaponTypes.WoodenAxePlayer, weaponItem);
+                SetWeaponParent(WeaponTypes.WoodenAxePlayer, improvementWeaponData);
             }
             else if (weaponType.Equals(WeaponTypes.WoodenOnionPlayer))
             {
-                SetWeaponParent(WeaponTypes.WoodenOnionPlayer, weaponItem);
+                SetWeaponParent(WeaponTypes.WoodenOnionPlayer, improvementWeaponData);
             }
         }
 
@@ -67,7 +68,7 @@ namespace _Project.UseWeapons
                 _weapon.gameObject.SetActive(value);
         }
 
-        private void SetWeaponParent(WeaponTypes weaponType, WeaponItem weaponItem)
+        private void SetWeaponParent(WeaponTypes weaponType, ImprovementWeaponData improvementWeaponData)
         {
             if (_baseWeapon != null && _weapon != null)
             {
@@ -77,7 +78,7 @@ namespace _Project.UseWeapons
             }
 
             Weapon.Weapons.Weapon weapon = _weaponFactoryBootstrap.Factory.Get(weaponType, transform.position, transform);
-            weapon.SetImprovementWeaponData(weaponItem.ImprovementWeaponData);
+            weapon.SetImprovementWeaponData(improvementWeaponData);
             _setWeaponPoint.SetParent(weapon.transform, transform);
             _setWeaponPoint.Set(weapon.transform);
         }
