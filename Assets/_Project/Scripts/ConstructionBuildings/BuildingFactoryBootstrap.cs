@@ -25,6 +25,7 @@ namespace _Project.ConstructionBuildings
         [SerializeField] private ManagerPotion _managerPotion;
         [SerializeField] private ControllInventoryGrass _controllInventoryGrass;
         [SerializeField] private ControllInventoryForge _controllInventoryForge;
+        [SerializeField] private Loss.Loss _loss;
 
         private BuildingFactory _buildingFactory;
 
@@ -34,7 +35,7 @@ namespace _Project.ConstructionBuildings
         {
             _buildingFactory = new BuildingFactory(_houseConfig, _shopConfig, _alchemyConfig, _archerTowerConfig, _forgeConfig, 
                 _staticCanvas, _player, _useWeapons, _inventory, _inventoryActive, _dynamicCanvas, _textDamage, _layerMask, 
-                _projectile, _inventoryActivePotions, _managerPotion, _controllInventoryGrass, _controllInventoryForge);
+                _projectile, _inventoryActivePotions, _managerPotion, _controllInventoryGrass, _controllInventoryForge, _loss);
         }
     }
 }

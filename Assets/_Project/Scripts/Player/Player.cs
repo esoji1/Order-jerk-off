@@ -10,7 +10,7 @@ using _Project.Player.TempData;
 using _Project.ScriptableObjects.Configs;
 using _Project.SelectionGags;
 using System;
-using System.Runtime.CompilerServices;
+using System.Collections;
 using UnityEngine;
 
 namespace _Project.Player
@@ -61,7 +61,7 @@ namespace _Project.Player
         public Wallet.Wallet Wallet => _wallet;
         public HealthView HealthView => _healthView;
         public Health Health => _health;
-        public PlayerData PlayerData => _playerData;    
+        public PlayerData PlayerData => _playerData;
 
         private void Update()
         {
@@ -220,21 +220,27 @@ namespace _Project.Player
         }
 
         private void AppropriateWeapons(Weapon.Weapons.Weapon weapon)
-        {   
+        {
             _weapon = weapon;
         }
 
         private void Die()
         {
             Respawn();
-            _health.AddHealth(_playerCharacteristics.Health);
-            _healthView.UpdateParameters();
+            StartCoroutine(WaitSpawn());
         }
 
         private void Respawn()
         {
             transform.position = new Vector3(0, -6.5f, 0);
             _adaptingColliderResolution.ResetToDefault();
+        }
+
+        private IEnumerator WaitSpawn()
+        {
+            yield return new WaitForSeconds(1f);
+            _health.AddHealth(_playerCharacteristics.Health);
+            _healthView.UpdateParameters();
         }
     }
 }

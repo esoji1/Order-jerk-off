@@ -27,6 +27,8 @@ namespace _Project.ConstructionBuildings.Buildings
         private BuildingArea _buildingArea;
         private Tween _tween;
 
+        public event Action OnDestruction;
+
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
         public Type Type => _type;
         public GameObject Window => _window;
@@ -87,6 +89,7 @@ namespace _Project.ConstructionBuildings.Buildings
             _buildingArea.SetZoneOccupeid(false);
             _buildingArea.SetBaseBuilding(null);
             _tween.Kill();
+            OnDestruction?.Invoke();
             Destroy(gameObject);
         }
 

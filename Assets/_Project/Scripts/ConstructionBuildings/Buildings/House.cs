@@ -16,6 +16,7 @@ namespace _Project.ConstructionBuildings.Buildings
         private InventoryActive _inventoryActive;
         private InventoryActivePotions _inventoryActivePotions;
         private ManagerPotion _managerPotion;
+        private Loss.Loss _loss;
 
         private CharacteristicsView _characteristicsView;
         private ChangeItem _changeItem;
@@ -23,7 +24,8 @@ namespace _Project.ConstructionBuildings.Buildings
         private InformationAboutItemView _informationAboutItemView;
 
         public void Initialize(BuildsConfig config, Canvas staticCanvas, Player.Player player, UseWeapons.UseWeapons useWeapons,
-            Inventory.Inventory inventory, InventoryActive inventoryActive, InventoryActivePotions inventoryActivePotions, ManagerPotion managerPotion)
+            Inventory.Inventory inventory, InventoryActive inventoryActive, InventoryActivePotions inventoryActivePotions,
+            ManagerPotion managerPotion, Loss.Loss loss)
         {
             base.Initialize(config, staticCanvas, player);
 
@@ -53,6 +55,9 @@ namespace _Project.ConstructionBuildings.Buildings
 
             _saleItem = Window.GetComponentInChildren<SaleItem>();
             _saleItem.Initialize(Player, inventory);
+
+            _loss = loss;
+            _loss.Initialize(this);
         }
     }
 }

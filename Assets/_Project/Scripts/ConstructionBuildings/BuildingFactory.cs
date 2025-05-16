@@ -28,12 +28,13 @@ namespace _Project.ConstructionBuildings
         private ManagerPotion _managerPotion;
         private ControllInventoryGrass _controllInventoryGrass;
         private ControllInventoryForge _controllInventoryForge;
+        private Loss.Loss _loss;
 
         public BuildingFactory(BuildsConfig housConfig, BuildsConfig shopConfig, BuildsConfig alchemyConfig, BuildsConfig archerTowerConfig, BuildsConfig forgeConfig,
             Canvas staticCanvas, Player.Player player, UseWeapons.UseWeapons useWeapons,Inventory.Inventory inventory,
             InventoryActive inventoryActive, Canvas dynamicCanvas, TextMeshProUGUI textDamage, LayerMask layerMask, Projectile projectile, 
             InventoryActivePotions inventoryActivePotions, ManagerPotion managerPotion, ControllInventoryGrass controllInventoryGrass,
-            ControllInventoryForge controllInventoryForge)
+            ControllInventoryForge controllInventoryForge, Loss.Loss loss)
         {
             _houseConfig = housConfig;
             _shopConfig = shopConfig;
@@ -53,6 +54,7 @@ namespace _Project.ConstructionBuildings
             _managerPotion = managerPotion;
             _controllInventoryGrass = controllInventoryGrass;
             _controllInventoryForge = controllInventoryForge;
+            _loss = loss;
         }
 
         public BaseBuilding Get(TypesBuildings typesBuildings, Vector3 position)
@@ -91,7 +93,8 @@ namespace _Project.ConstructionBuildings
         {
             if (instance is House house)
             {
-                house.Initialize(buildsConfig, _staticCanvas, _player, _useWeapons, _inventory, _inventoryActive, _inventoryActivePotions, _managerPotion);
+                house.Initialize(buildsConfig, _staticCanvas, _player, _useWeapons, _inventory, _inventoryActive, _inventoryActivePotions,
+                    _managerPotion, _loss);
                 return house;
             }
             else if(instance is Shop shop)
