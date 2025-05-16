@@ -1080,7 +1080,7 @@ Transform:
   m_GameObject: {fileID: 52823348}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -6.19, z: 0}
+  m_LocalPosition: {x: 0, y: -6.5, z: 0}
   m_LocalScale: {x: 0.8000001, y: 0.8000001, z: 0.8000001}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -1511,7 +1511,7 @@ Transform:
   m_GameObject: {fileID: 91798147}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -6.19, z: -10}
+  m_LocalPosition: {x: 0, y: -6.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4594,7 +4594,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -6.19, z: -10}
+  m_LocalPosition: {x: 0, y: -6.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9223,9 +9223,6 @@ MonoBehaviour:
   _zoneCamera: {fileID: 1273792206}
   _camera: {fileID: 519420031}
   _confiner: {fileID: 91798152}
-  isY: 1
-  isX: 1
-  value: 0
 --- !u!4 &1271997094
 Transform:
   m_ObjectHideFlags: 0
@@ -12222,6 +12219,7 @@ MonoBehaviour:
   _healthViewPrefab: {fileID: 633073849831332690}
   _dynamic: {fileID: 1460140111}
   _useWeapons: {fileID: 1123977697}
+  _adaptingColliderResolution: {fileID: 1271997093}
 --- !u!1 &1746578884
 GameObject:
   m_ObjectHideFlags: 0

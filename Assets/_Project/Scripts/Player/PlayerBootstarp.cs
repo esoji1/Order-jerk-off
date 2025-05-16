@@ -1,3 +1,4 @@
+using _Project.CameraMain;
 using _Project.Core.HealthSystem;
 using _Project.ExperienceBar;
 using _Project.JoystickMovement;
@@ -16,10 +17,12 @@ namespace _Project.Player
         [SerializeField] private HealthView _healthViewPrefab;
         [SerializeField] private Canvas _dynamic;
         [SerializeField] private UseWeapons.UseWeapons _useWeapons;
+        [SerializeField] private AdaptingColliderResolution _adaptingColliderResolution;
 
         private void Awake()
         {
-            _player.Initialize(_config, _joysickForMovement, _levelPlayer, _healthInfoPrefab, _healthViewPrefab, _dynamic, _useWeapons);
+            _player.Initialize(_config, _joysickForMovement, _levelPlayer, _healthInfoPrefab, _healthViewPrefab, _dynamic,
+                _useWeapons, _adaptingColliderResolution);
         }
 
         private void Start()

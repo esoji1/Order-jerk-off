@@ -72,7 +72,7 @@ namespace _Project.Core.HealthSystem
                 _healthInfo.TextHp.text = $"{_currentHp}/{_maxHp}";
         }
 
-        private void UpdateParameters()
+        public void UpdateParameters()
         {
             _maxHp = _player.PlayerCharacteristics.Health;
             _healthInfo.InstantiatedHealthBar.maxValue = _maxHp;

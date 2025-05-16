@@ -1,6 +1,6 @@
 using Unity.Cinemachine;
 using UnityEngine;
-    
+
 namespace _Project.CameraMain
 {
     public class AdaptingColliderResolution : MonoBehaviour
@@ -9,24 +9,17 @@ namespace _Project.CameraMain
         [SerializeField] private Camera _camera;
         [SerializeField] private CinemachineConfiner2D _confiner;
 
-        private void Awake() => ResizeCollider();
-        public bool isY;
-        public bool isX;
+        private Vector2 _originalSize;
+        private Vector2 _originalOffset;
+        private bool _hasOriginalValues = false;
 
-        public float value;
-
-        private void Update()
+        private void Awake()
         {
-            if (isY == false)
-            {
-                AddTopHeight(value);
-                isY = true;
-            }
-            else if(isX == false)
-            {
-                AddBottomHeight(value);
-                isX = true;
-            }
+            _originalSize = _zoneCamera.size;
+            _originalOffset = _zoneCamera.offset;
+            _hasOriginalValues = true;
+
+            ResizeCollider();
         }
 
         private void ResizeCollider()
@@ -58,6 +51,19 @@ namespace _Project.CameraMain
             _zoneCamera.offset = new Vector2(_zoneCamera.offset.x, _zoneCamera.offset.y - delta * 0.5f);
 
             _confiner.InvalidateBoundingShapeCache();
+        }
+
+        public void ResetToDefault()
+        {
+            if (_zoneCamera == null || !_hasOriginalValues) return;
+
+            _zoneCamera.size = _originalSize;
+            _zoneCamera.offset = _originalOffset;
+
+            if (_confiner != null)
+                _confiner.InvalidateBoundingShapeCache();
+
+            ResizeCollider();
         }
     }
 }

@@ -1,3 +1,4 @@
+using _Project.CameraMain;
 using _Project.Core;
 using _Project.Core.HealthSystem;
 using _Project.Core.Interface;
@@ -9,6 +10,7 @@ using _Project.Player.TempData;
 using _Project.ScriptableObjects.Configs;
 using _Project.SelectionGags;
 using System;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace _Project.Player
@@ -25,6 +27,7 @@ namespace _Project.Player
         private HealthView _healthViewPrefab;
         private Canvas _dynamic;
         private UseWeapons.UseWeapons _useWeapons;
+        private AdaptingColliderResolution _adaptingColliderResolution;
 
         private PlayerMovement _playerMovement;
         private Flip _flip;
@@ -74,7 +77,7 @@ namespace _Project.Player
         }
 
         public void Initialize(PlayerConfig config, JoysickForMovement joysickForMovement, LevelPlayer levelPlayer, HealthInfo healthInfoPrefab,
-            HealthView healthViewPrefab, Canvas dynamic, UseWeapons.UseWeapons useWeapons)
+            HealthView healthViewPrefab, Canvas dynamic, UseWeapons.UseWeapons useWeapons, AdaptingColliderResolution adaptingColliderResolution)
         {
             _config = config;
             _joysickForMovement = joysickForMovement;
@@ -83,6 +86,7 @@ namespace _Project.Player
             _healthViewPrefab = healthViewPrefab;
             _dynamic = dynamic;
             _useWeapons = useWeapons;
+            _adaptingColliderResolution = adaptingColliderResolution;
             _isMove = true;
 
             InitializeInside();
@@ -216,16 +220,21 @@ namespace _Project.Player
         }
 
         private void AppropriateWeapons(Weapon.Weapons.Weapon weapon)
-        {
+        {   
             _weapon = weapon;
         }
 
         private void Die()
         {
-            Destroy(_healthInfo.InstantiatedHealthBar.gameObject);
-            Destroy(_healthInfo.gameObject);
-            Destroy(_healthView.gameObject);
-            Destroy(gameObject);
+            Respawn();
+            _health.AddHealth(_playerCharacteristics.Health);
+            _healthView.UpdateParameters();
+        }
+
+        private void Respawn()
+        {
+            transform.position = new Vector3(0, -6.5f, 0);
+            _adaptingColliderResolution.ResetToDefault();
         }
     }
 }
