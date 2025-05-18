@@ -29,3 +29,11 @@ MonoBehaviour:
       Quantity: 2
     - Item: {fileID: 7634357527481193883, guid: 9457e9dbdbb77d843b3a3fa8cd5abfbd, type: 3}
       Quantity: 4
+  - CraftItem: {fileID: 2090450105359729413, guid: 455234aba48fe5c4bb71dffcfe101a91, type: 3}
+    List:
+    - Item: {fileID: 6967535910018881431, guid: 4cc486655c7a7e043aa662c9ae244bb3, type: 3}
+      Quantity: 4
+    - Item: {fileID: 7634357527481193883, guid: 9457e9dbdbb77d843b3a3fa8cd5abfbd, type: 3}
+      Quantity: 1
+    - Item: {fileID: 7634357527481193883, guid: 9457e9dbdbb77d843b3a3fa8cd5abfbd, type: 3}
+      Quantity: 1
