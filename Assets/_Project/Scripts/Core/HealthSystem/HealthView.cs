@@ -25,13 +25,13 @@ namespace _Project.Core.HealthSystem
 
             _onDamage.OnDamage += Damage;
             if (player != null)
-                _player.OnUp += UpdateParameters;
+                _player.ChoosingUpgrade.OnUp += UpdateParameters;
         }
 
         private void OnDestroy()
         {
             if (_player != null)
-                _player.OnUp -= UpdateParameters;
+                _player.ChoosingUpgrade.OnUp -= UpdateParameters;
 
             _onDamage.OnDamage -= Damage;
         }

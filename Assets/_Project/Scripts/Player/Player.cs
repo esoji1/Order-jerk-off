@@ -4,6 +4,7 @@ using _Project.Core.HealthSystem;
 using _Project.Core.Interface;
 using _Project.Core.Points;
 using _Project.ExperienceBar;
+using _Project.ImprovingCharacteristicsPlayer;
 using _Project.JoystickMovement;
 using _Project.Player.Pumping;
 using _Project.Player.TempData;
@@ -28,6 +29,7 @@ namespace _Project.Player
         private Canvas _dynamic;
         private UseWeapons.UseWeapons _useWeapons;
         private AdaptingColliderResolution _adaptingColliderResolution;
+        private ChoosingUpgrade _choosingUpgrade;
 
         private PlayerMovement _playerMovement;
         private Flip _flip;
@@ -47,8 +49,8 @@ namespace _Project.Player
         private bool _isMove;
 
         public event Action<int> OnDamage;
-        public event Action OnUp;
         public event Action OnAddExperience;
+        public event Action OnWindowUpgrade;
 
         public float Speed => _config.Speed + _playerData.Speed;
         public JoysickForMovement JoysickForMovement => _joysickForMovement;
@@ -62,6 +64,7 @@ namespace _Project.Player
         public HealthView HealthView => _healthView;
         public Health Health => _health;
         public PlayerData PlayerData => _playerData;
+        public ChoosingUpgrade ChoosingUpgrade => _choosingUpgrade;
 
         private void Update()
         {
@@ -77,7 +80,8 @@ namespace _Project.Player
         }
 
         public void Initialize(PlayerConfig config, JoysickForMovement joysickForMovement, LevelPlayer levelPlayer, HealthInfo healthInfoPrefab,
-            HealthView healthViewPrefab, Canvas dynamic, UseWeapons.UseWeapons useWeapons, AdaptingColliderResolution adaptingColliderResolution)
+            HealthView healthViewPrefab, Canvas dynamic, UseWeapons.UseWeapons useWeapons, AdaptingColliderResolution adaptingColliderResolution,
+            ChoosingUpgrade choosingUpgrade)
         {
             _config = config;
             _joysickForMovement = joysickForMovement;
@@ -87,6 +91,7 @@ namespace _Project.Player
             _dynamic = dynamic;
             _useWeapons = useWeapons;
             _adaptingColliderResolution = adaptingColliderResolution;
+            _choosingUpgrade = choosingUpgrade;
             _isMove = true;
 
             InitializeInside();
@@ -158,12 +163,12 @@ namespace _Project.Player
 
         private void ImproveCharacteristics()
         {
-            _playerCharacteristics.Health += 20;
-            _health.SetHealth(_playerCharacteristics.Health);
-            _playerCharacteristics.AttackSpeed += 1;
-            _playerCharacteristics.ReturnInitialAttackPosition += 0.02f;
-            _playerCharacteristics.AddDamageAttack += 2;
-            OnUp?.Invoke();
+            //_playerCharacteristics.Health += 20;
+            //_health.SetHealth(_playerCharacteristics.Health);
+            //_playerCharacteristics.AttackSpeed += 1;
+            //_playerCharacteristics.ReturnInitialAttackPosition += 0.02f;
+            //_playerCharacteristics.AddDamageAttack += 2;
+            OnWindowUpgrade?.Invoke();
 
             _weapon.WeaponData.ExtraDamage = _playerCharacteristics.AddDamageAttack;
             _weapon.WeaponData.ReturnInitialAttackPosition = _playerCharacteristics.ReturnInitialAttackPosition;

@@ -15,7 +15,7 @@ namespace _Project.Player.Pumping
         {
             _player = player;
 
-            _player.OnUp += Show;
+            _player.ChoosingUpgrade.OnUp += Show;
         }
 
         public void Show()
@@ -27,7 +27,7 @@ namespace _Project.Player.Pumping
 
         private void OnDestroy()
         {
-            _player.OnUp -= Show;
+            _player.ChoosingUpgrade.OnUp -= Show;
         }
     }
 }

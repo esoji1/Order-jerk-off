@@ -19,7 +19,7 @@ namespace _Project.Wave
         private void Awake()
         {
             _enemyWaveSpawner.Initialize(_waves, _bootstrapEnemy, _timeBetweenWaves, _timerBetweenWavesView, _waveText);
-            _enemyWaveSpawner.StartEnemyWaveSpawner();
+            //_enemyWaveSpawner.StartEnemyWaveSpawner();
         }
     }
 }
