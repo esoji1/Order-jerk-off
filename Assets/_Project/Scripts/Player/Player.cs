@@ -72,7 +72,7 @@ namespace _Project.Player
         private void OnDestroy()
         {
             _levelPlayer.OnLevelUp -= ImproveCharacteristics;
-            _health.OnDie += Die;
+            _health.OnDie -= Die;
             _useWeapons.OnChangeWeapon -= AppropriateWeapons;
         }
 
@@ -241,6 +241,7 @@ namespace _Project.Player
             yield return new WaitForSeconds(1f);
             _health.AddHealth(_playerCharacteristics.Health);
             _healthView.UpdateParameters();
+            _healthView.ResubscribeEvents(this);
         }
     }
 }

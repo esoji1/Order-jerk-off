@@ -51,6 +51,20 @@ namespace _Project.Core.HealthSystem
                 _onDamage.OnDamage -= Damage;
         }
 
+        public void ResubscribeEvents(IOnDamage onDamage)
+        {
+            _onDamage = onDamage;
+            _onDamage.OnDamage += Damage;
+        }
+
+        public void UpdateParameters()
+        {
+            _maxHp = _player.PlayerCharacteristics.Health;
+            _healthInfo.InstantiatedHealthBar.maxValue = _maxHp;
+            _currentHp = _player.PlayerCharacteristics.Health;
+            UpdateHealthBar();
+        }
+
         private void Damage(int damage)
         {
             _currentHp -= damage;
@@ -63,21 +77,12 @@ namespace _Project.Core.HealthSystem
                 _onDamage.OnDamage -= Damage;
         }
 
-
         private void UpdateHealthBar()
         {
             _healthInfo.InstantiatedHealthBar.value = _currentHp;
 
             if (_healthInfo.TextHp != null)
                 _healthInfo.TextHp.text = $"{_currentHp}/{_maxHp}";
-        }
-
-        public void UpdateParameters()
-        {
-            _maxHp = _player.PlayerCharacteristics.Health;
-            _healthInfo.InstantiatedHealthBar.maxValue = _maxHp;
-            _currentHp = _player.PlayerCharacteristics.Health;
-            UpdateHealthBar();
         }
     }
 }
