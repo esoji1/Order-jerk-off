@@ -1,3 +1,4 @@
+using _Project.Artifacts;
 using _Project.Core;
 using _Project.Core.Points;
 using _Project.Inventory;
@@ -17,6 +18,7 @@ namespace _Project.ConstructionBuildings.Buildings
         private InventoryActivePotions _inventoryActivePotions;
         private ManagerPotion _managerPotion;
         private Loss.Loss _loss;
+        private ManagerAtrefact _managerAtrefact;
 
         private CharacteristicsView _characteristicsView;
         private ChangeItem _changeItem;
@@ -25,7 +27,7 @@ namespace _Project.ConstructionBuildings.Buildings
 
         public void Initialize(BuildsConfig config, Canvas staticCanvas, Player.Player player, UseWeapons.UseWeapons useWeapons,
             Inventory.Inventory inventory, InventoryActive inventoryActive, InventoryActivePotions inventoryActivePotions,
-            ManagerPotion managerPotion, Loss.Loss loss)
+            ManagerPotion managerPotion, Loss.Loss loss, ManagerAtrefact managerAtrefact)
         {
             base.Initialize(config, staticCanvas, player);
 
@@ -34,6 +36,8 @@ namespace _Project.ConstructionBuildings.Buildings
             _inventoryActivePotions = inventoryActivePotions;
             _useWeapons = useWeapons;
             _managerPotion = managerPotion;
+            _loss = loss;
+            _managerAtrefact = managerAtrefact;
 
             _characteristicsView = Window.GetComponentInChildren<CharacteristicsView>();
             _characteristicsView.Initialize(Player);
@@ -56,8 +60,8 @@ namespace _Project.ConstructionBuildings.Buildings
             _saleItem = Window.GetComponentInChildren<SaleItem>();
             _saleItem.Initialize(Player, inventory);
 
-            _loss = loss;
             _loss.Initialize(this);
+            _managerAtrefact.Initialize(_changeItem);
         }
     }
 }

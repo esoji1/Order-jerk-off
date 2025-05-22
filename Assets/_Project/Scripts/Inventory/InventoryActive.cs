@@ -19,6 +19,7 @@ namespace _Project.Inventory
         public bool IsAddCell;
         public bool IsAddItem;
 
+        public event Action<Cell> OnSubstacrtArtefact;
         public event Action<Cell> OnClickedItem;
 
         public List<Cell> CellList => _cellWeaponList;
@@ -95,6 +96,7 @@ namespace _Project.Inventory
         public bool SubtractItems(Cell cell, int numberSubtract)
         {
             cell.SubtractNumberItems(numberSubtract);
+            OnSubstacrtArtefact?.Invoke(cell);
 
             if (cell.NumberItems <= 0)
             {

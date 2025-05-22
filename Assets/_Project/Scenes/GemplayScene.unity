@@ -5149,6 +5149,52 @@ MonoBehaviour:
   _textDamage: {fileID: 676674665621685464, guid: 8894e842789df984db8de20b1bd78f1b, type: 3}
   _player: {fileID: 52823349}
   _arrow: {fileID: 3407159577521592602, guid: d24d756ab0de3dc499659de9635dd0e5, type: 3}
+--- !u!1 &485452399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 485452400}
+  - component: {fileID: 485452401}
+  m_Layer: 0
+  m_Name: ManagerAtrefact
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &485452400
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485452399}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1221726868}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &485452401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 485452399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6745fba559daa6e49aaeb102d341d295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _player: {fileID: 52823349}
+  _inventoryActive: {fileID: 804753454}
 --- !u!1 &495663012
 GameObject:
   m_ObjectHideFlags: 0
@@ -10084,6 +10130,7 @@ Transform:
   - {fileID: 37177649}
   - {fileID: 362583777}
   - {fileID: 2029936066}
+  - {fileID: 485452400}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1226185755
@@ -13627,6 +13674,7 @@ MonoBehaviour:
   _controllInventoryGrass: {fileID: 2089484977}
   _controllInventoryForge: {fileID: 37177650}
   _loss: {fileID: 362583778}
+  _managerAtrefact: {fileID: 485452401}
 --- !u!1001 &1739468649
 PrefabInstance:
   m_ObjectHideFlags: 0

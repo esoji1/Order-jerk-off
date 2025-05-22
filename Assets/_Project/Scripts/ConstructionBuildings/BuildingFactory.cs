@@ -1,3 +1,4 @@
+using _Project.Artifacts;
 using _Project.ConstructionBuildings.Buildings;
 using _Project.ConstructionBuildings.DefensiveBuildings;
 using _Project.Inventory;
@@ -29,12 +30,13 @@ namespace _Project.ConstructionBuildings
         private ControllInventoryGrass _controllInventoryGrass;
         private ControllInventoryForge _controllInventoryForge;
         private Loss.Loss _loss;
+        private ManagerAtrefact _managerAtrefact;
 
         public BuildingFactory(BuildsConfig housConfig, BuildsConfig shopConfig, BuildsConfig alchemyConfig, BuildsConfig archerTowerConfig, BuildsConfig forgeConfig,
             Canvas staticCanvas, Player.Player player, UseWeapons.UseWeapons useWeapons,Inventory.Inventory inventory,
             InventoryActive inventoryActive, Canvas dynamicCanvas, TextMeshProUGUI textDamage, LayerMask layerMask, Projectile projectile, 
             InventoryActivePotions inventoryActivePotions, ManagerPotion managerPotion, ControllInventoryGrass controllInventoryGrass,
-            ControllInventoryForge controllInventoryForge, Loss.Loss loss)
+            ControllInventoryForge controllInventoryForge, Loss.Loss loss, ManagerAtrefact managerAtrefact)
         {
             _houseConfig = housConfig;
             _shopConfig = shopConfig;
@@ -55,6 +57,7 @@ namespace _Project.ConstructionBuildings
             _controllInventoryGrass = controllInventoryGrass;
             _controllInventoryForge = controllInventoryForge;
             _loss = loss;
+            _managerAtrefact = managerAtrefact;
         }
 
         public BaseBuilding Get(TypesBuildings typesBuildings, Vector3 position)
@@ -94,7 +97,7 @@ namespace _Project.ConstructionBuildings
             if (instance is House house)
             {
                 house.Initialize(buildsConfig, _staticCanvas, _player, _useWeapons, _inventory, _inventoryActive, _inventoryActivePotions,
-                    _managerPotion, _loss);
+                    _managerPotion, _loss, _managerAtrefact);
                 return house;
             }
             else if(instance is Shop shop)

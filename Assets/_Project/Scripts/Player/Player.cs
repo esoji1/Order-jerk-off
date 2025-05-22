@@ -65,6 +65,7 @@ namespace _Project.Player
         public Health Health => _health;
         public PlayerData PlayerData => _playerData;
         public ChoosingUpgrade ChoosingUpgrade => _choosingUpgrade;
+        public Weapon.Weapons.Weapon CurrentWeapon => _weapon;
 
         private void Update()
         {

@@ -31,10 +31,10 @@ namespace _Project.Potions
                 yield break;
 
             _isClick = false;
-            Player.PlayerData.Speed = EffectValue;
+            Player.PlayerData.Speed += EffectValue;
 
             yield return new WaitForSeconds(SecondaryValue);
-            Player.PlayerData.Speed = 0;
+            Player.PlayerData.Speed = Player.PlayerData.DefaultSpeed;
             _isClick = true;
         }
     }

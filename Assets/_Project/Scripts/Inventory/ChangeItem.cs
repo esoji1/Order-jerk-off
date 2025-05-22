@@ -27,6 +27,7 @@ namespace _Project.Inventory
 
         public event Action<Enum> OnAddPotion;
         public event Action<Enum> OnSubstractPotion;
+        public event Action<Cell> OnAddArtefact;
 
         private void Update()
         {
@@ -106,6 +107,10 @@ namespace _Project.Inventory
                 _inventory.SubtractItems(_clickedCellInventory, 1);
                 return;
             }
+            else if (_clickedCellInventory.Item.Category == ItemCategory.Artefact)
+            {
+                OnAddArtefact?.Invoke(_clickedCellInventory);
+            }
 
             _inventoryActive.AddItemInCell(_clickedCellInventory.Item);
             _inventory.SubtractItems(_clickedCellInventory, 1);
@@ -113,7 +118,7 @@ namespace _Project.Inventory
 
         private void TakeOff()
         {
-            if(_clickedCellInventoryActivePotion != null && _clickedCellInventoryActivePotion.Item != null)
+            if (_clickedCellInventoryActivePotion != null && _clickedCellInventoryActivePotion.Item != null)
             {
                 OnSubstractPotion?.Invoke(_clickedCellInventoryActivePotion.Item.GetItemType());
                 _inventory.AddItemInCell(_clickedCellInventoryActivePotion.Item);
@@ -124,7 +129,7 @@ namespace _Project.Inventory
 
             if (_clickedCellInventoryActive == null || _clickedCellInventoryActive.Item == null)
                 return;
-            
+
             if (_clickedCellInventoryActive.Item.Category == ItemCategory.Weapon)
             {
                 _inventory.MoveItemToCell(_clickedCellInventoryActive.Item, _clickedCellInventoryActive);
@@ -135,6 +140,7 @@ namespace _Project.Inventory
 
             _inventory.AddItemInCell(_clickedCellInventoryActive.Item);
             _inventoryActive.SubtractItems(_clickedCellInventoryActive, 1);
+
         }
 
         private void OnDestroy()

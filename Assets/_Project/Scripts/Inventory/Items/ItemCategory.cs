@@ -5,6 +5,7 @@
         Weapon,
         Resource,
         Mining,
-        Potions
+        Potions,
+        Artefact
     }
 }
