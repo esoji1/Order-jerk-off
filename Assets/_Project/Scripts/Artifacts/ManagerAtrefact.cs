@@ -24,6 +24,8 @@ namespace _Project.Artifacts
                 { TypeArtefact.ClawsAttack, new ClawsAttack(_player) },
                 { TypeArtefact.GlovesHaste, new GlovesHaste(_player) },
                 { TypeArtefact.PeriaptVitality, new PeriaptVitality(_player) },
+                { TypeArtefact.RingRegeneration, new RingRegeneration(_player, this) },
+                { TypeArtefact.AncentJanggoEndurance, new AncentJanggoEndurance(_player) },
             };
         }
 
