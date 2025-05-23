@@ -1,3 +1,4 @@
+using _Project.Artifacts;
 using _Project.CameraMain;
 using _Project.Core.HealthSystem;
 using _Project.ExperienceBar;
@@ -20,11 +21,12 @@ namespace _Project.Player
         [SerializeField] private UseWeapons.UseWeapons _useWeapons;
         [SerializeField] private AdaptingColliderResolution _adaptingColliderResolution;
         [SerializeField] private ChoosingUpgrade _choosingUpgrade;
+        [SerializeField] private ManagerAtrefact _managerAtrefact;
 
         private void Awake()
         {
             _player.Initialize(_config, _joysickForMovement, _levelPlayer, _healthInfoPrefab, _healthViewPrefab, _dynamic,
-                _useWeapons, _adaptingColliderResolution, _choosingUpgrade);
+                _useWeapons, _adaptingColliderResolution, _choosingUpgrade, _managerAtrefact);
         }
 
         private void Start()

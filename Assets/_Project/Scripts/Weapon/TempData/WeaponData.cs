@@ -5,5 +5,6 @@ namespace _Project.Weapon.TempData
         public int ExtraDamage;
         public float ReturnInitialAttackPosition;
         public float DefaultReturnInitialAttackPosition;
+        public int DefaultExtraDamage;
     }
 }

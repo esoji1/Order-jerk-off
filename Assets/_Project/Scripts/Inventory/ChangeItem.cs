@@ -28,6 +28,7 @@ namespace _Project.Inventory
         public event Action<Enum> OnAddPotion;
         public event Action<Enum> OnSubstractPotion;
         public event Action<Cell> OnAddArtefact;
+        public event Action OnActivateAllArtefact;
 
         private void Update()
         {
@@ -97,6 +98,7 @@ namespace _Project.Inventory
 
                 _useWeapons.SetWeapon(_clickedCellInventory.Item.GetItemType(), weaponItem.ImprovementWeaponData);
                 _inventoryActive.MoveItemToCell(_clickedCellInventory.Item, _clickedCellInventory);
+                OnActivateAllArtefact?.Invoke();
                 _isWeaponEquipped = true;
                 return;
             }
@@ -140,7 +142,6 @@ namespace _Project.Inventory
 
             _inventory.AddItemInCell(_clickedCellInventoryActive.Item);
             _inventoryActive.SubtractItems(_clickedCellInventoryActive, 1);
-
         }
 
         private void OnDestroy()

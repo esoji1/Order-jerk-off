@@ -13786,6 +13786,7 @@ MonoBehaviour:
   _useWeapons: {fileID: 1123977697}
   _adaptingColliderResolution: {fileID: 1271997093}
   _choosingUpgrade: {fileID: 2029936067}
+  _managerAtrefact: {fileID: 485452401}
 --- !u!1 &1746578884
 GameObject:
   m_ObjectHideFlags: 0

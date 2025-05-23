@@ -53,6 +53,7 @@ namespace _Project.ImprovingCharacteristicsPlayer
         {
             _player.PlayerCharacteristics.Health += 20;
             _player.Health.SetHealth(_player.PlayerCharacteristics.Health);
+            ImproveCharacteristics();
             OnUp?.Invoke();
             Hide();
         }
@@ -61,6 +62,7 @@ namespace _Project.ImprovingCharacteristicsPlayer
         {
             _player.PlayerCharacteristics.AttackSpeed += 1;
             _player.PlayerCharacteristics.ReturnInitialAttackPosition += 0.02f;
+            ImproveCharacteristics();
             OnUp?.Invoke();
             Hide();
         }
@@ -68,8 +70,19 @@ namespace _Project.ImprovingCharacteristicsPlayer
         private void UpgradeAddDamage()
         {
             _player.PlayerCharacteristics.AddDamageAttack += 2;
+            ImproveCharacteristics();
             OnUp?.Invoke();
             Hide();
         }
+        private void ImproveCharacteristics()
+        {
+            _player.CurrentWeapon.WeaponData.ExtraDamage = _player.PlayerCharacteristics.AddDamageAttack;
+            _player.CurrentWeapon.WeaponData.ReturnInitialAttackPosition = _player.PlayerCharacteristics.ReturnInitialAttackPosition;
+            _player.CurrentWeapon.WeaponData.DefaultReturnInitialAttackPosition = _player.CurrentWeapon.WeaponData.ReturnInitialAttackPosition;
+            _player.CurrentWeapon.WeaponData.DefaultExtraDamage = _player.CurrentWeapon.WeaponData.ExtraDamage;
+
+            _player.ManagerAtrefact.ActivateAllArtefact();
+        }
+
     }
 }

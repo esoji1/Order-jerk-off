@@ -21,14 +21,32 @@ namespace _Project.Artifacts
             _artifacts = new Dictionary<TypeArtefact, IArtifact>
             {
                 { TypeArtefact.BootsSpeed, new BootsSpeed(_player) },
+                { TypeArtefact.ClawsAttack, new ClawsAttack(_player) },
+                { TypeArtefact.GlovesHaste, new GlovesHaste(_player) },
             };
         }
+
         public void Initialize(ChangeItem changeItem)
         {
             _changeItem = changeItem;
 
             _changeItem.OnAddArtefact += AddArtefact;
             _inventoryActive.OnSubstacrtArtefact += SubstractArtefact;
+            _changeItem.OnActivateAllArtefact += ActivateAllArtefact;
+        }
+
+        public void ActivateAllArtefact()
+        {
+            foreach(Cell cell in _inventoryActive.CellList)
+            {
+                if(cell.Item != null)
+                {
+                    if(cell.Item is ArtefactItem artefact)
+                    {
+                        AddArtefact(cell);
+                    }
+                }
+            }
         }
 
         private void AddArtefact(Cell cell)
@@ -37,6 +55,7 @@ namespace _Project.Artifacts
             {
                 if (_artifacts.TryGetValue(artefact.TypeArtefact, out IArtifact artifact))
                 {
+                    artifact.Deactivate();
                     artifact.Activate();
                 }
             }
@@ -63,6 +82,7 @@ namespace _Project.Artifacts
         {
             _changeItem.OnAddArtefact -= AddArtefact;
             _inventoryActive.OnSubstacrtArtefact -= SubstractArtefact;
+            _changeItem.OnActivateAllArtefact -= ActivateAllArtefact;
         }
     }
 }

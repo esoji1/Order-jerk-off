@@ -1,3 +1,4 @@
+using _Project.Artifacts;
 using _Project.CameraMain;
 using _Project.Core;
 using _Project.Core.HealthSystem;
@@ -30,6 +31,7 @@ namespace _Project.Player
         private UseWeapons.UseWeapons _useWeapons;
         private AdaptingColliderResolution _adaptingColliderResolution;
         private ChoosingUpgrade _choosingUpgrade;
+        private ManagerAtrefact _managerAtrefact;
 
         private PlayerMovement _playerMovement;
         private Flip _flip;
@@ -66,6 +68,7 @@ namespace _Project.Player
         public PlayerData PlayerData => _playerData;
         public ChoosingUpgrade ChoosingUpgrade => _choosingUpgrade;
         public Weapon.Weapons.Weapon CurrentWeapon => _weapon;
+        public ManagerAtrefact ManagerAtrefact => _managerAtrefact;
 
         private void Update()
         {
@@ -82,7 +85,7 @@ namespace _Project.Player
 
         public void Initialize(PlayerConfig config, JoysickForMovement joysickForMovement, LevelPlayer levelPlayer, HealthInfo healthInfoPrefab,
             HealthView healthViewPrefab, Canvas dynamic, UseWeapons.UseWeapons useWeapons, AdaptingColliderResolution adaptingColliderResolution,
-            ChoosingUpgrade choosingUpgrade)
+            ChoosingUpgrade choosingUpgrade, ManagerAtrefact managerAtrefact)
         {
             _config = config;
             _joysickForMovement = joysickForMovement;
@@ -93,6 +96,7 @@ namespace _Project.Player
             _useWeapons = useWeapons;
             _adaptingColliderResolution = adaptingColliderResolution;
             _choosingUpgrade = choosingUpgrade;
+            _managerAtrefact = managerAtrefact;
             _isMove = true;
 
             InitializeInside();
@@ -164,16 +168,14 @@ namespace _Project.Player
 
         private void ImproveCharacteristics()
         {
-            //_playerCharacteristics.Health += 20;
-            //_health.SetHealth(_playerCharacteristics.Health);
-            //_playerCharacteristics.AttackSpeed += 1;
-            //_playerCharacteristics.ReturnInitialAttackPosition += 0.02f;
-            //_playerCharacteristics.AddDamageAttack += 2;
             OnWindowUpgrade?.Invoke();
 
-            _weapon.WeaponData.ExtraDamage = _playerCharacteristics.AddDamageAttack;
-            _weapon.WeaponData.ReturnInitialAttackPosition = _playerCharacteristics.ReturnInitialAttackPosition;
-            _weapon.WeaponData.DefaultReturnInitialAttackPosition = _weapon.WeaponData.ReturnInitialAttackPosition;
+            //_weapon.WeaponData.ExtraDamage = _playerCharacteristics.AddDamageAttack;
+            //_weapon.WeaponData.ReturnInitialAttackPosition = _playerCharacteristics.ReturnInitialAttackPosition;
+            //_weapon.WeaponData.DefaultReturnInitialAttackPosition = _weapon.WeaponData.ReturnInitialAttackPosition;
+            //_weapon.WeaponData.DefaultExtraDamage = _weapon.WeaponData.ExtraDamage;
+
+            //_managerAtrefact.ActivateAllArtefact();
         }
 
         private void Move()
