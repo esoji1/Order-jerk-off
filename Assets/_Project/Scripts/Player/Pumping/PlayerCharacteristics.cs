@@ -9,5 +9,6 @@ namespace _Project.Player.Pumping
         public int AttackSpeed;
         public int AddDamageAttack;
         public float ReturnInitialAttackPosition;
+        public int DefaultHealth;
     }
 }

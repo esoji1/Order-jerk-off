@@ -51,6 +51,7 @@ namespace _Project.ImprovingCharacteristicsPlayer
 
         private void UpgradeHealth()
         {
+            _player.PlayerCharacteristics.DefaultHealth += 20;
             _player.PlayerCharacteristics.Health += 20;
             _player.Health.SetHealth(_player.PlayerCharacteristics.Health);
             ImproveCharacteristics();
@@ -74,6 +75,7 @@ namespace _Project.ImprovingCharacteristicsPlayer
             OnUp?.Invoke();
             Hide();
         }
+
         private void ImproveCharacteristics()
         {
             _player.CurrentWeapon.WeaponData.ExtraDamage = _player.PlayerCharacteristics.AddDamageAttack;
@@ -83,6 +85,5 @@ namespace _Project.ImprovingCharacteristicsPlayer
 
             _player.ManagerAtrefact.ActivateAllArtefact();
         }
-
     }
 }

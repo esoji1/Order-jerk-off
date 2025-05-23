@@ -14,6 +14,7 @@ using _Project.SelectionGags;
 using System;
 using System.Collections;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace _Project.Player
 {
@@ -164,6 +165,7 @@ namespace _Project.Player
             _health = new Health(_config.Health);
             _playerCharacteristics = new PlayerCharacteristics();
             _playerCharacteristics.Health = _health.HealthValue;
+            _playerCharacteristics.DefaultHealth = _health.HealthValue;
         }
 
         private void ImproveCharacteristics()

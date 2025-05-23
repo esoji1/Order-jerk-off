@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2971408570433002907
+--- !u!1 &940048971083250854
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,25 +8,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3043499002022410369}
-  - component: {fileID: 6106553040713155499}
-  - component: {fileID: 3947483908692601051}
-  - component: {fileID: 7241988837222524442}
-  - component: {fileID: 4179065342020408733}
+  - component: {fileID: 5753836786413451652}
+  - component: {fileID: 2677585129944514354}
+  - component: {fileID: 4363686541687853126}
+  - component: {fileID: 6104326846624253223}
+  - component: {fileID: 1062850532427421267}
   m_Layer: 5
-  m_Name: BootsSpeedItem
+  m_Name: PeriaptVitalityItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &3043499002022410369
+--- !u!224 &5753836786413451652
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2971408570433002907}
+  m_GameObject: {fileID: 940048971083250854}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -39,21 +39,21 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &6106553040713155499
+--- !u!222 &2677585129944514354
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2971408570433002907}
+  m_GameObject: {fileID: 940048971083250854}
   m_CullTransparentMesh: 1
---- !u!114 &3947483908692601051
+--- !u!114 &4363686541687853126
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2971408570433002907}
+  m_GameObject: {fileID: 940048971083250854}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 993df3abd49dde54590a44b6637fd860, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eee3a470724e6a44d92776859cfa1551, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -77,13 +77,13 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7241988837222524442
+--- !u!114 &6104326846624253223
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2971408570433002907}
+  m_GameObject: {fileID: 940048971083250854}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -117,27 +117,27 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 3947483908692601051}
+  m_TargetGraphic: {fileID: 4363686541687853126}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4179065342020408733
+--- !u!114 &1062850532427421267
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2971408570433002907}
+  m_GameObject: {fileID: 940048971083250854}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af66a8d238b054948aeadc6c8c4cbf13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 0
-  Name: "\u0411\u043E\u0442\u0438\u043D\u043A\u0438 \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u0438"
-  Sprite: {fileID: 21300000, guid: 993df3abd49dde54590a44b6637fd860, type: 3}
+  Name: "\u0421\u0435\u0440\u0434\u0446\u0435 \u0434\u044C\u044F\u0432\u043E\u043B\u0430"
+  Sprite: {fileID: 21300000, guid: eee3a470724e6a44d92776859cfa1551, type: 3}
   Category: 4
-  Price: 55
-  Description: "\u0423\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u044E\u0442
-    \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u044C"
-  TypeArtefact: 0
+  Price: 150
+  Description: "\u0423\u0432\u0435\u043B\u0438\u0447\u0438\u0432\u0430\u0435\u0442
+    \u0437\u0434\u043E\u0440\u043E\u0432\u044C\u044F"
+  TypeArtefact: 3

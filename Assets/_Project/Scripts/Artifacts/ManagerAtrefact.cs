@@ -23,6 +23,7 @@ namespace _Project.Artifacts
                 { TypeArtefact.BootsSpeed, new BootsSpeed(_player) },
                 { TypeArtefact.ClawsAttack, new ClawsAttack(_player) },
                 { TypeArtefact.GlovesHaste, new GlovesHaste(_player) },
+                { TypeArtefact.PeriaptVitality, new PeriaptVitality(_player) },
             };
         }
 
