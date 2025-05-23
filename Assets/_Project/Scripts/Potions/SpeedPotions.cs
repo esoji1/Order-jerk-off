@@ -16,7 +16,7 @@ namespace _Project.Potions
 
         protected override bool ApplyEffect()
         {
-            if (_isClick)
+            if (_isClick && Player.CurrentWeapon != null)
             {
                 CoroutineHelper.Instance.StartCoroutine(TimeUsePotion());
                 return true;
@@ -31,10 +31,10 @@ namespace _Project.Potions
                 yield break;
 
             _isClick = false;
-            Player.PlayerData.Speed += EffectValue;
+            Player.CurrentWeapon.WeaponData.ReturnInitialAttackPosition = EffectValue;
 
             yield return new WaitForSeconds(SecondaryValue);
-            Player.PlayerData.Speed = Player.PlayerData.DefaultSpeed;
+            Player.CurrentWeapon.WeaponData.ReturnInitialAttackPosition = Player.CurrentWeapon.WeaponData.DefaultReturnInitialAttackPosition;
             _isClick = true;
         }
     }

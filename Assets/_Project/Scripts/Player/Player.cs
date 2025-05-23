@@ -173,6 +173,7 @@ namespace _Project.Player
 
             _weapon.WeaponData.ExtraDamage = _playerCharacteristics.AddDamageAttack;
             _weapon.WeaponData.ReturnInitialAttackPosition = _playerCharacteristics.ReturnInitialAttackPosition;
+            _weapon.WeaponData.DefaultReturnInitialAttackPosition = _weapon.WeaponData.ReturnInitialAttackPosition;
         }
 
         private void Move()

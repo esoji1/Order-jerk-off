@@ -46,7 +46,7 @@ namespace _Project.Potions
                 Vector2 direction = (_nearestEnemy.transform.position - Player.transform.position).normalized;
                 GameObject explosion = Instantiate(_explosion.gameObject, Player.transform.position, Quaternion.identity, null);
                 Explosion explosion1 = explosion.GetComponent<Explosion>();
-                explosion1.Initialize(Player, direction, EffectValue, SecondaryValue, _bom);
+                explosion1.Initialize(Player, direction, (int)EffectValue, (int)SecondaryValue, _bom);
                 return true;
             }
 

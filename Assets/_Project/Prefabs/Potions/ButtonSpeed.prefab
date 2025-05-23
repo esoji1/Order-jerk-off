@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e3da0dd35e919f46823536e2f3c97a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EffectValue: 2
+  EffectValue: 0.3
   SecondaryValue: 10
 --- !u!1 &7226353387126579508
 GameObject:

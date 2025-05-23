@@ -7,8 +7,8 @@ namespace _Project.Potions
 {
     public abstract class BasePotion : MonoBehaviour
     {
-        [SerializeField] protected int EffectValue;
-        [SerializeField] protected int SecondaryValue; 
+        [SerializeField] protected float EffectValue;
+        [SerializeField] protected float SecondaryValue; 
 
         protected Player.Player Player;
         protected InventoryActivePotions InventoryPotions;
