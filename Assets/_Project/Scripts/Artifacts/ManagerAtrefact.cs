@@ -1,5 +1,8 @@
 ﻿using _Project.Inventory;
-using Assets._Project.ScriptArtifacts;
+using _Project.Inventory.Items;
+using _Project.ScriptArtifacts;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace _Project.Artifacts
@@ -11,13 +14,15 @@ namespace _Project.Artifacts
 
         private ChangeItem _changeItem;
 
-        private BootsSpeed _bootsSpeed;
+        private Dictionary<TypeArtefact, IArtifact> _artifacts;
 
         private void Start()
         {
-            _bootsSpeed = new BootsSpeed(_player, _inventoryActive);
+            _artifacts = new Dictionary<TypeArtefact, IArtifact>
+            {
+                { TypeArtefact.BootsSpeed, new BootsSpeed(_player) },
+            };
         }
-
         public void Initialize(ChangeItem changeItem)
         {
             _changeItem = changeItem;
@@ -28,25 +33,29 @@ namespace _Project.Artifacts
 
         private void AddArtefact(Cell cell)
         {
-            if(cell.Item.GetItemType().Equals(TypeArtefact.BootsSpeed))
+            if (cell.Item is ArtefactItem artefact)
             {
-                _bootsSpeed.Use();
-            }
-            else if (cell.Item.GetItemType().Equals(TypeArtefact.ClawsAttack))
-            {
-
+                if (_artifacts.TryGetValue(artefact.TypeArtefact, out IArtifact artifact))
+                {
+                    artifact.Activate();
+                }
             }
         }
 
         private void SubstractArtefact(Cell cell)
         {
-            if (cell.Item.GetItemType().Equals(TypeArtefact.BootsSpeed))
+            if (cell.Item is ArtefactItem artefact)
             {
-                _bootsSpeed.SetActiveArtefact(cell);
-            }
-            else if (cell.Item.GetItemType().Equals(TypeArtefact.ClawsAttack))
-            {
+                if (_artifacts.TryGetValue(artefact.TypeArtefact, out IArtifact artifact))
+                {
+                    bool hasOtherArtifacts = _inventoryActive.CellList
+                        .Any(c => c.Item != null && c.Item.GetItemType().Equals(cell.Item.GetItemType()) && c.NumberItems > 0);
 
+                    if (hasOtherArtifacts == false)
+                    {
+                        artifact.Deactivate();
+                    }
+                }
             }
         }
 

@@ -1,38 +1,28 @@
-﻿using _Project.Inventory;
-using _Project.Player;
+﻿using _Project.Artifacts;
 
-namespace Assets._Project.ScriptArtifacts
+namespace _Project.ScriptArtifacts
 {
-    public class BootsSpeed
+    public class BootsSpeed : IArtifact
     {
-        private Player _player;
-        private InventoryActive _inventoryActive;
+        private Player.Player _player;
 
-        public BootsSpeed(Player player, InventoryActive inventoryActive)
+        public BootsSpeed(Player.Player player)
         {
             _player = player;
-            _inventoryActive = inventoryActive;
         }
 
-        public void Use()
+        public void Activate()
         {
             _player.PlayerData.Speed = 2;
             _player.PlayerData.DefaultSpeed = 2;
         }
 
-        public void SetActiveArtefact(Cell cell)
+        public void Deactivate()
         {
-            foreach (Cell item in _inventoryActive.CellList)
-            {
-                if(item.Item != null)
-                {
-                    if (item.Item.GetItemType().Equals(cell.Item.GetItemType()) && item.NumberItems <= 0)
-                    {
-                        _player.PlayerData.Speed = 0;
-                        _player.PlayerData.DefaultSpeed = 0;
-                    }
-                }
-            }
+            _player.PlayerData.Speed = 0;
+            _player.PlayerData.DefaultSpeed = 0;
         }
+
+        public TypeArtefact GetArtifactType() => TypeArtefact.BootsSpeed;
     }
 }
