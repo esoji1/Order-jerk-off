@@ -1,6 +1,6 @@
 ﻿using _Project.Core.HealthSystem;
 using _Project.ScriptableObjects.Configs;
-using NUnit.Framework;
+using _Project.Weapon.Projectile;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +8,7 @@ namespace _Project.Enemy
 {
     public class EnemyFactoryBootstrap : MonoBehaviour
     {
-        [SerializeField] private EnemyConfig _plantPredator, _slime;
+        [SerializeField] private EnemyConfig _plantPredator, _slime, _magician;
         [SerializeField] private SelectionGags.Experience _experience;
         [SerializeField] private SelectionGags.Coin _coin;
         [SerializeField] private HealthInfo _healthInfoPrefab;
@@ -17,6 +17,7 @@ namespace _Project.Enemy
         [SerializeField] private LayerMask _layer;
         [SerializeField] private Transform _mainBuildingPoint;
         [SerializeField] private List<Transform> _points;
+        [SerializeField] private ProjectileEnemy _projectile;
 
         private EnemyFactory _enemyFactory;
 
@@ -25,8 +26,8 @@ namespace _Project.Enemy
 
         private void Awake()
         {
-            _enemyFactory  = new EnemyFactory(_plantPredator, _slime, _experience, _coin, _healthInfoPrefab, 
-                _healthViewPrefab, _dynamic, _layer, _mainBuildingPoint);
+            _enemyFactory  = new EnemyFactory(_plantPredator, _slime, _magician, _experience, _coin, _healthInfoPrefab, 
+                _healthViewPrefab, _dynamic, _layer, _mainBuildingPoint, _projectile);
         }
     }
 }

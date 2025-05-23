@@ -47,8 +47,11 @@ namespace _Project.Artifacts
 
                 if (_player.Health.HealthValue < _player.PlayerCharacteristics.Health)
                 {
-                    _player.Health.AddHealth(_regenerationValue);
-                    _player.HealthView.AddHealth(_regenerationValue);
+                    int healthNeeded = _player.PlayerCharacteristics.Health - _player.Health.HealthValue;
+                    int healAmount = Mathf.Min(_regenerationValue, healthNeeded);
+
+                    _player.Health.AddHealth(healAmount);
+                    _player.HealthView.AddHealth(healAmount);
                 }
             }
         }

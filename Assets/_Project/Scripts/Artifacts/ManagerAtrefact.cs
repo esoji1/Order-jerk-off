@@ -44,7 +44,7 @@ namespace _Project.Artifacts
             {
                 if(cell.Item != null)
                 {
-                    if(cell.Item is ArtefactItem artefact)
+                    if(cell.Item is ArtefactItem artefact && cell.NumberItems > 0)
                     {
                         AddArtefact(cell);
                     }
@@ -76,6 +76,7 @@ namespace _Project.Artifacts
                     if (hasOtherArtifacts == false)
                     {
                         artifact.Deactivate();
+                        ActivateAllArtefact();
                     }
                 }
             }

@@ -17,17 +17,17 @@ MonoBehaviour:
     CraftItem: {fileID: 0}
     List:
     - Item: {fileID: 4601046106296165302, guid: 9cf719d04e076ce4aaa811f9be8f3477, type: 3}
-      Quantity: 2
+      Quantity: 1
     - Item: {fileID: 5875518255924871237, guid: 50d1c9cb486bee345899874e7d59a728, type: 3}
-      Quantity: 3
+      Quantity: 1
     - Item: {fileID: 2182497842507453036, guid: 04fc51f7551996f46a9b776ec860d4e7, type: 3}
       Quantity: 1
   <ImproveThreeLevel>k__BackingField:
     CraftItem: {fileID: 0}
     List:
     - Item: {fileID: 2182497842507453036, guid: 04fc51f7551996f46a9b776ec860d4e7, type: 3}
-      Quantity: 5
+      Quantity: 1
     - Item: {fileID: 4601046106296165302, guid: 9cf719d04e076ce4aaa811f9be8f3477, type: 3}
-      Quantity: 4
+      Quantity: 1
     - Item: {fileID: 5875518255924871237, guid: 50d1c9cb486bee345899874e7d59a728, type: 3}
-      Quantity: 6
+      Quantity: 1

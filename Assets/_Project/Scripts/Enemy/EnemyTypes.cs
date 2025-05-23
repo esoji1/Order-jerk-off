@@ -3,6 +3,7 @@
     public enum EnemyTypes
     {
         PlantPredator = 0,
-        Slime
+        Slime,
+        Magician
     }
 }

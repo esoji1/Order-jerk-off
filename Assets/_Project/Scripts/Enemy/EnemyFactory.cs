@@ -1,6 +1,7 @@
 ﻿using _Project.Core.HealthSystem;
 using _Project.Enemy.Enemys;
 using _Project.ScriptableObjects.Configs;
+using _Project.Weapon.Projectile;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace _Project.Enemy
 {
     public class EnemyFactory
     {
-        private EnemyConfig _plantPredator, _slime;
+        private EnemyConfig _plantPredator, _slime, _magician;
         private SelectionGags.Experience _experience;
         private SelectionGags.Coin _coin;
         private HealthInfo _healthInfoPrefab;
@@ -17,12 +18,15 @@ namespace _Project.Enemy
         private Canvas _dynamic;
         private LayerMask _layer;
         private Transform _mainBuildingPoint;
+        private ProjectileEnemy _projectile;
 
-        public EnemyFactory(EnemyConfig plantPredator, EnemyConfig slime, SelectionGags.Experience experience, SelectionGags.Coin coin, 
-            HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, Transform mainBuildingPoint)
+        public EnemyFactory(EnemyConfig plantPredator, EnemyConfig slime,EnemyConfig magician, SelectionGags.Experience experience, SelectionGags.Coin coin, 
+            HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, Transform mainBuildingPoint,
+            ProjectileEnemy projectile)
         {
             _plantPredator = plantPredator;
             _slime = slime;
+            _magician = magician;
             _experience = experience;
             _coin = coin;
             _healthInfoPrefab = healthInfoPrefab;
@@ -30,6 +34,7 @@ namespace _Project.Enemy
             _dynamic = dynamic;
             _layer = layer;
             _mainBuildingPoint = mainBuildingPoint;
+            _projectile = projectile;
         }
 
         public Enemy.Enemys.Enemy Get(EnemyTypes enemyType, Vector3 position, List<Transform> points, bool _isMoveRandomPoints)
@@ -50,6 +55,9 @@ namespace _Project.Enemy
                 case EnemyTypes.Slime:
                     return _slime;
 
+                case EnemyTypes.Magician:
+                    return _magician;
+
                 default:
                     throw new ArgumentException(nameof(types));
             }
@@ -59,9 +67,16 @@ namespace _Project.Enemy
         {
             if (instance is PlantPredatorEnemy || instance is SlimeEnemy)
             {
-                instance.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points, _isMoveRandomPoints, _mainBuildingPoint);
+                instance.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points,
+                    _isMoveRandomPoints, _mainBuildingPoint);
 
                 return instance;
+            }
+            else if(instance is MagicianEnemy magician)
+            {
+                magician.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points,
+                    _isMoveRandomPoints, _mainBuildingPoint, _projectile);
+                return magician;
             }
             else
             {

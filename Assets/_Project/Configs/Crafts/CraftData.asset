@@ -16,23 +16,23 @@ MonoBehaviour:
   - CraftItem: {fileID: 3508112910833085988, guid: 125aaf28956452f4db07494b711a212f, type: 3}
     List:
     - Item: {fileID: 1814892152424458945, guid: a44a3d13753391e4e8b6e4b08853e8d2, type: 3}
-      Quantity: 2
+      Quantity: 1
     - Item: {fileID: 1814892152424458945, guid: a44a3d13753391e4e8b6e4b08853e8d2, type: 3}
-      Quantity: 2
+      Quantity: 1
     - Item: {fileID: 7634357527481193883, guid: 9457e9dbdbb77d843b3a3fa8cd5abfbd, type: 3}
-      Quantity: 4
+      Quantity: 1
   - CraftItem: {fileID: 3243667652393692559, guid: d0aa8378ec5799c4eb32eaa7be607655, type: 3}
     List:
     - Item: {fileID: 6967535910018881431, guid: 4cc486655c7a7e043aa662c9ae244bb3, type: 3}
-      Quantity: 2
+      Quantity: 1
     - Item: {fileID: 7634357527481193883, guid: 9457e9dbdbb77d843b3a3fa8cd5abfbd, type: 3}
-      Quantity: 2
+      Quantity: 1
     - Item: {fileID: 7634357527481193883, guid: 9457e9dbdbb77d843b3a3fa8cd5abfbd, type: 3}
-      Quantity: 4
+      Quantity: 1
   - CraftItem: {fileID: 2090450105359729413, guid: 455234aba48fe5c4bb71dffcfe101a91, type: 3}
     List:
     - Item: {fileID: 6967535910018881431, guid: 4cc486655c7a7e043aa662c9ae244bb3, type: 3}
-      Quantity: 4
+      Quantity: 1
     - Item: {fileID: 7634357527481193883, guid: 9457e9dbdbb77d843b3a3fa8cd5abfbd, type: 3}
       Quantity: 1
     - Item: {fileID: 7634357527481193883, guid: 9457e9dbdbb77d843b3a3fa8cd5abfbd, type: 3}

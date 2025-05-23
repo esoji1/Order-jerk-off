@@ -1,4 +1,4 @@
-﻿using _Project.Weapon.Interface;
+﻿using IMeleeAttack = _Project.Weapon.Interface.IMeleeAttack;
 
 namespace _Project.Weapon.Weapons
 {

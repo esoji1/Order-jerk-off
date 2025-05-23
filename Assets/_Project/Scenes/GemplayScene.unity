@@ -8943,6 +8943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _plantPredator: {fileID: 11400000, guid: 5b64719948f362448aee43d32e8ebe6a, type: 2}
   _slime: {fileID: 11400000, guid: 2f7e46cb98aef8c47b3fd7a8190f1ecf, type: 2}
+  _magician: {fileID: 11400000, guid: a5b3b7f2ad0a1d842a9304a90ce343e6, type: 2}
   _experience: {fileID: 6958486450957830800, guid: 2c9a72e7b1c7a024ebdc6feff4fe4e6d, type: 3}
   _coin: {fileID: 7435567748440869419, guid: 391b593ebdbd6604fb8a8666d64d8c2e, type: 3}
   _healthInfoPrefab: {fileID: 5008849479396532886, guid: f5abdea487e20a741b8f770de5dc31a7, type: 3}
@@ -8956,6 +8957,7 @@ MonoBehaviour:
   - {fileID: 805830162}
   - {fileID: 66513103}
   - {fileID: 1210350526}
+  _projectile: {fileID: 7724614685532098385, guid: 9cb752ce853709840bc68b51d24507e5, type: 3}
 --- !u!4 &988495890 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3959917959744434865, guid: cdb143806563367459d9495f6419e0d5, type: 3}
@@ -17674,9 +17676,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefabCell: {fileID: 7794714616000454447, guid: eb347706e5488cd45a1e1d3426699d8a, type: 3}
-  _item: {fileID: 3398061218366655883, guid: dd54e488ae1c2ce458c3e4bc0489f20d, type: 3}
+  _item:
+  - {fileID: 7229026147200523357, guid: 9a8aeefe33aff9047a6ee631fb5e390b, type: 3}
+  - {fileID: 4179065342020408733, guid: 5801039acd1ec07409d1a53741b63b7c, type: 3}
+  - {fileID: 2788265906024122746, guid: 1d0399717189ebe4ea36f14f97fd4a47, type: 3}
+  - {fileID: 8953986749414638352, guid: fa397afa43f84cf45828e0d039292414, type: 3}
+  - {fileID: 1062850532427421267, guid: 2a8f523157196be4a85d147bc4c0a78c, type: 3}
+  - {fileID: 1595214497868840883, guid: 36fd7264b419cc04a8db3420ef344daa, type: 3}
   IsAddCell: 0
-  IsAddItem: 0
+  IsAddItem: 1
 --- !u!4 &2119364610
 Transform:
   m_ObjectHideFlags: 0

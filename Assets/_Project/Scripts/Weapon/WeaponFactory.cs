@@ -1,4 +1,5 @@
 ﻿using _Project.Core;
+using _Project.Enemy.Attack.Interface;
 using _Project.ScriptableObjects.Configs;
 using _Project.Weapon.Interface;
 using System;

@@ -9,7 +9,7 @@ namespace _Project.Inventory
     public class Inventory : MonoBehaviour
     {
         [SerializeField] private Cell _prefabCell;
-        [SerializeField] private BaseItem _item;
+        [SerializeField] private BaseItem[] _item;
 
         private List<Cell> _cellList = new();
         private RectTransform _contentInventory;
@@ -39,7 +39,10 @@ namespace _Project.Inventory
             }
             else if (IsAddItem)
             {
-                AddItemInCell(_item);
+                for (int i = 0; i < _item.Length; i++)
+                {
+                    AddItemInCell(_item[i]);
+                }
                 IsAddItem = false;
             }
         }

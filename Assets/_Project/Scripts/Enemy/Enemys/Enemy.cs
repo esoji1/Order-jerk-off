@@ -1,13 +1,12 @@
-using _Project.ConstructionBuildings.Buildings;
 using _Project.Core;
 using _Project.Core.HealthSystem;
 using _Project.Core.Interface;
 using _Project.Core.Points;
+using _Project.Enemy.Attakcs;
 using _Project.Enemy.MovePoints;
 using _Project.ScriptableObjects.Configs;
 using _Project.SelectionGags;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -15,6 +14,7 @@ using UnityEngine.AI;
 namespace _Project.Enemy.Enemys
 {
     [RequireComponent(typeof(RadiusMovementTrigger), typeof(Rigidbody2D), typeof(BoxCollider2D))]
+    [RequireComponent(typeof(AttackEnemyFactory))]
     public abstract class Enemy : MonoBehaviour, IDamage, IOnDamage
     {
         private EnemyConfig _config;
@@ -44,12 +44,7 @@ namespace _Project.Enemy.Enemys
         private RandomMovePoints _movePointsRandom;
         private MoveToPoint _moveToPoint;
 
-        private Vector3 _previousPosition;
-        private Vector3 _smoothedDirection;
-        private Coroutine _coroutine;
         private bool _isDie;
-        private bool _isAttack;
-        private Collider2D _targetDamage;
 
         public event Action<int> OnDamage;
         public event Action<Enemy> OnEnemyDie;
@@ -59,16 +54,14 @@ namespace _Project.Enemy.Enemys
         public LayerMask LayerMask => _layer;
         public Health Health => _health;
         public EnemyView EnemyView => _enemyView;
-
-        private void Update()
-        {
-            if (_isDie)
-                return;
-
-            _healthView.FollowTargetHealth();
-
-            Move();
-        }
+        public bool IsDie => _isDie;
+        public HealthView HealthView => _healthView;
+        public LayerMask Layer => _layer;
+        public RadiusMovementTrigger RadiusMovementTrigger => _radiusMovementTrigger;
+        public NavMeshAgent Agent => _agent;
+        public bool IsMoveRandomPoints => _isMoveRandomPoints;
+        public RandomMovePoints RandomMovePoints => _movePointsRandom;
+        public MoveToPoint MoveToPoint => _moveToPoint;
 
         public virtual void Initialize(EnemyConfig config, SelectionGags.Experience prefabExperience, SelectionGags.Coin prefabCoin,
             HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, List<Transform> points, bool isMoveRandomPoints, Transform mainBuildingPoint)
@@ -138,108 +131,6 @@ namespace _Project.Enemy.Enemys
                 Destroy(_healthInfo.InstantiatedHealthBar.gameObject);
                 Destroy(_healthInfo.gameObject);
                 Destroy(_healthView.gameObject);
-            }
-        }
-
-        public void StartAttackIfNeeded()
-        {
-            if (_coroutine == null)
-            {
-                _isAttack = true;
-                _coroutine = StartCoroutine(Attack());
-            }
-        }
-
-        private void StopAttackIfNeeded()
-        {
-            if (_coroutine != null)
-            {
-                _isAttack = false;
-                _enemyView.StopAttack();
-                StopCoroutine(_coroutine);
-                _coroutine = null;
-            }
-        }
-
-        private IEnumerator Attack()
-        {
-            while (_isAttack && _isDie == false)
-            {
-                if (CheckAttackHitRadius())
-                {
-                    _enemyView.StartAttack();
-
-                    float attackAnimationTime = _enemyView.Animator.GetCurrentAnimatorStateInfo(0).length;
-                    yield return new WaitForSeconds(attackAnimationTime);
-
-                    if (CheckAttackHitRadius())
-                        DamageTarget();
-
-                    _enemyView.StopAttack();
-
-                    yield return new WaitForSeconds(1);
-                }
-                else
-                {
-                    StopAttackIfNeeded();
-                }
-            }
-        }
-
-        private bool CheckAttackHitRadius()
-        {
-            Collider2D[] collider2D = Physics2D.OverlapCircleAll(transform.position, _config.AttackRadius, _layer);
-
-            foreach (Collider2D collider in collider2D)
-            {
-                if (collider.TryGetComponent(out Player.Player _) || collider.TryGetComponent(out BaseBuilding _))
-                {
-                    _targetDamage = collider;
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private void DamageTarget()
-        {
-            if (_targetDamage == null)
-                return;
-
-            _targetDamage.GetComponent<IDamage>().Damage(_config.Damage);
-        }
-
-        private void Move()
-        {
-            Vector3 currentDirection = (transform.position - _previousPosition).normalized;
-
-            _previousPosition = transform.position;
-
-            _smoothedDirection = Vector3.Lerp(_smoothedDirection, currentDirection, Time.deltaTime * 10f);
-
-            _enemyView.UpdateRunX(_smoothedDirection.x);
-            _enemyView.UpdateRunY(_smoothedDirection.y);
-
-            if (CheckAttackHitRadius())
-            {
-                StartAttackIfNeeded();
-            }
-
-            if (_radiusMovementTrigger.MoveToTarget(_config.AttackRadius, _config.VisibilityRadius))
-            {
-                _agent.isStopped = true;
-                return;
-            }
-
-            if (_isMoveRandomPoints)
-            {
-                _movePointsRandom.MovePoints();
-            }
-
-            if(_isMoveRandomPoints == false)
-            {
-                _moveToPoint.MovePoints();
             }
         }
 
