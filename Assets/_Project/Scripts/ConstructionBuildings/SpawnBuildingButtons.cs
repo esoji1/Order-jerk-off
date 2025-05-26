@@ -101,9 +101,9 @@ namespace _Project.ConstructionBuildings
 
         private void Spawn(TypesBuildings typesBuildings, int value)
         {
-            if (_buildingArea.TryGetComponent(out PointTower _) && typesBuildings != TypesBuildings.ArcherTower)
+            if (IsBuildAttackTowerField(typesBuildings))
                 return;
-            else if (_buildingArea.TryGetComponent(out PointTower _) == false && typesBuildings == TypesBuildings.ArcherTower)
+            else if (IsBuildDevelopingTowerField(typesBuildings))
                 return;
             if (_player.Wallet.SubtractMoney(value) == false)
                 return;
@@ -140,6 +140,22 @@ namespace _Project.ConstructionBuildings
                 baseBuilding.SpriteRenderer.flipX = false;
             else if (_buildingArea.LeftOrRightSide == -1)
                 baseBuilding.SpriteRenderer.flipX = true;
+        }
+
+        private bool IsBuildAttackTowerField(TypesBuildings typesBuildings)
+        {
+            if (_buildingArea.TryGetComponent(out PointTower _) && typesBuildings != TypesBuildings.ArcherTower)
+                return true;
+
+            return false;
+        }
+
+        private bool IsBuildDevelopingTowerField(TypesBuildings typesBuildings)
+        {
+            if (_buildingArea.TryGetComponent(out PointTower _) == false && typesBuildings == TypesBuildings.ArcherTower)
+                return true;
+
+            return false;
         }
     }
 }
