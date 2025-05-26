@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wizard_Front_Walk_No_Weapon8_0: 7987100673330967864
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

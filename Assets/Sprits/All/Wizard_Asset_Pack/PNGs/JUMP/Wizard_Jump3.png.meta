@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wizard_Jump3_0: 3220921094470119616
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

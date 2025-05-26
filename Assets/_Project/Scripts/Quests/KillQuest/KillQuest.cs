@@ -1,5 +1,6 @@
 ﻿using _Project.Enemy;
 using System;
+using System.Linq;
 using Random = UnityEngine.Random;
 
 namespace _Project.Quests.KillQuest
@@ -18,13 +19,20 @@ namespace _Project.Quests.KillQuest
             int chosenDifficulty = (randomQuestDifficulty > MaxNumberQuest || randomQuestDifficulty < MinNumberQuest) 
                 ? Random.Range(MinNumberQuest, MaxNumberQuest) : randomQuestDifficulty;
 
-            _currentQuest = new KillQuestData[randomQuestDifficulty];
+            EnemyTypes[] allEnemyTypes = (EnemyTypes[])Enum.GetValues(typeof(EnemyTypes));
+
+            int maxPossibleQuests = Math.Min(chosenDifficulty, allEnemyTypes.Length);
+            _currentQuest = new KillQuestData[maxPossibleQuests];
+
+            EnemyTypes[] shuffledEnemyTypes = allEnemyTypes.OrderBy(x => Random.value).ToArray();
 
             for (int i = 0; i < _currentQuest.Length; i++)
             {
-                _currentQuest[i] = new KillQuestData();
-                _currentQuest[i].RequiredKills = Random.Range(1, 21);
-                _currentQuest[i].TargetEnemyType = (EnemyTypes)Random.Range(0, Enum.GetValues(typeof(EnemyTypes)).Length);
+                _currentQuest[i] = new KillQuestData
+                {
+                    RequiredKills = Random.Range(1, 21),
+                    TargetEnemyType = shuffledEnemyTypes[i]
+                };
             }
         }
     }

@@ -348,7 +348,15 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wizard_Side_Walk_No_Weapon_0: -5093076713339014271
+      Wizard_Side_Walk_No_Weapon_1: 5454838215668707338
+      Wizard_Side_Walk_No_Weapon_2: 8002641149104343248
+      Wizard_Side_Walk_No_Weapon_3: 632729718848241632
+      Wizard_Side_Walk_No_Weapon_4: 4812954159086333304
+      Wizard_Side_Walk_No_Weapon_5: -2642654812929754633
+      Wizard_Side_Walk_No_Weapon_6: -5523731399563887465
+      Wizard_Side_Walk_No_Weapon_7: -5877433981737770367
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

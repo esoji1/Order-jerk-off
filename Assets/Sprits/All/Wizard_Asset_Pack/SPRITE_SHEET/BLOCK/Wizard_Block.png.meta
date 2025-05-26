@@ -423,7 +423,18 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wizard_Block_0: -6336977248888653755
+      Wizard_Block_1: -8412569028406030375
+      Wizard_Block_10: -2108726841959466392
+      Wizard_Block_2: -5618426546900519505
+      Wizard_Block_3: 7995775272041723895
+      Wizard_Block_4: 8029736274259358589
+      Wizard_Block_5: 7780354446886617315
+      Wizard_Block_6: -4949610275564435320
+      Wizard_Block_7: 2981186901545199262
+      Wizard_Block_8: 3691778218865920763
+      Wizard_Block_9: -4562011046155438921
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

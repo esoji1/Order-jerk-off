@@ -1,4 +1,7 @@
 ﻿using _Project.Quests.KillQuest;
+using _Project.ScriptableObjects;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 namespace _Project.NPC
@@ -6,11 +9,14 @@ namespace _Project.NPC
     public class NPCWizard : MonoBehaviour
     {
         [SerializeField] private QuestView _questView;
+        [SerializeField] private GameObject _questContent;
+        [SerializeField] private IconEnemyData _iconEnemyData;
 
         private KillQuest _killQuest;
         private KillQuest _currentKillQuest;
+        private List<GameObject> _iconEnemyList = new List<GameObject>();
 
-        public KillQuest CurrentKillQuest => _currentKillQuest; 
+        public KillQuest CurrentKillQuest => _currentKillQuest;
 
         private void Awake()
         {
@@ -29,6 +35,7 @@ namespace _Project.NPC
             }
 
             _questView.SetDescription(str);
+            UpdateIconEnemyView();
         }
 
         public void TakeQuest()
@@ -38,6 +45,13 @@ namespace _Project.NPC
 
         public void ChangeQuest()
         {
+            for (int i = 0; i < _iconEnemyList.Count; i++)
+            {
+                Destroy(_iconEnemyList[i]);
+            }
+
+            _iconEnemyList.Clear();
+
             _killQuest = new KillQuest("Тест", "Описание квеста", Random.Range(1, 4));
 
             string str = "";
@@ -48,6 +62,24 @@ namespace _Project.NPC
             }
 
             _questView.SetDescription(str);
+            UpdateIconEnemyView();
+        }
+
+        private void UpdateIconEnemyView()
+        {
+            for (int i = 0; i < _iconEnemyData.ListIconEnemy.Count; i++)
+            {
+                for (int j = 0; j < _killQuest.KillQuestData.Length; j++)
+                {
+                    KillQuestData quest = _killQuest.KillQuestData[j];
+                    if (quest.TargetEnemyType.Equals(_iconEnemyData.ListIconEnemy[i].EnemyTypes))
+                    {
+                        GameObject gameObject = Instantiate(_iconEnemyData.ListIconEnemy[i].Icon, _questContent.transform);
+                        gameObject.GetComponentInChildren<TextMeshProUGUI>().text = quest.RequiredKills.ToString();
+                        _iconEnemyList.Add(gameObject);
+                    }
+                }
+            }
         }
     }
 }

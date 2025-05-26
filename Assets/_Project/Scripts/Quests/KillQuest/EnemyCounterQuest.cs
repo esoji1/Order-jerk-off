@@ -1,4 +1,5 @@
 ﻿using _Project.Enemy;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,13 +9,15 @@ namespace _Project.Quests.KillQuest
     {
         private static EnemyCounterQuest _instance;
 
-        private Dictionary<EnemyTypes, int> enemyKillCount = new Dictionary<EnemyTypes, int>();
+        public Dictionary<EnemyTypes, int> EnemyKillCount = new Dictionary<EnemyTypes, int>();
+
+        public event Action OnAddKill;
 
         public static EnemyCounterQuest Instance
         {
             get
             {
-                if (_instance == null)
+                if (_instance == null && Application.isPlaying)
                 {
                     _instance = new GameObject("EnemyCounterQuest").AddComponent<EnemyCounterQuest>();
                     DontDestroyOnLoad(_instance.gameObject);
@@ -25,18 +28,18 @@ namespace _Project.Quests.KillQuest
 
         public void AddKill(EnemyTypes type)
         {
-            if (enemyKillCount.ContainsKey(type))
+            if (EnemyKillCount.ContainsKey(type))
             {
-                enemyKillCount[type]++;
+                EnemyKillCount[type]++;
             }
             else
             {
-                enemyKillCount.Add(type, 1);
+                EnemyKillCount.Add(type, 1);
             }
 
-            Debug.Log($"Убито {type}: {enemyKillCount[type]}");
+            OnAddKill?.Invoke();
         }
 
-        public void ClearDictionary() => enemyKillCount.Clear();
+        public void ClearDictionary() => EnemyKillCount.Clear();
     }
 }

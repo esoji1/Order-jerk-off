@@ -1,4 +1,6 @@
 ﻿using _Project.NPC;
+using _Project.ScriptableObjects;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +11,7 @@ namespace _Project.Quests.KillQuest
         [SerializeField] private NPCWizard _NPCWizard;
         [SerializeField] private Button _changeQuest;
         [SerializeField] private Button _takeQuest;
+        [SerializeField] private CompletingQuest _completingQuest;
 
         private void OnEnable()
         {
@@ -29,6 +32,10 @@ namespace _Project.Quests.KillQuest
 
         private void TakeQuest()
         {
+            if (_completingQuest.IsCompleted)
+                return;
+
+            EnemyCounterQuest.Instance.ClearDictionary();
             _NPCWizard.TakeQuest();
         }
     }

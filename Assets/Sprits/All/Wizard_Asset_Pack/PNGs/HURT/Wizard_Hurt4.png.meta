@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wizard_Hurt4_0: 3566414402157773718
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -173,7 +173,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wizard_Death3_0: -8887835813081520599
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

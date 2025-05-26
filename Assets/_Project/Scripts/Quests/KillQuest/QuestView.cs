@@ -1,4 +1,6 @@
-﻿using DG.Tweening;
+﻿using _Project.NPC;
+using _Project.ScriptableObjects;
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -40,7 +42,7 @@ namespace _Project.Quests.KillQuest
 
         public void SetDescription(string str)
         {
-            _description.text = str;
+            _description.text = str; 
         }
     }
 }

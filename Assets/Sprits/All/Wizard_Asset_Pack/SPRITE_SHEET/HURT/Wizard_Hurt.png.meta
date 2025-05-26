@@ -248,7 +248,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Wizard_Hurt_0: -4370345954088884294
+      Wizard_Hurt_1: 3443203245855315443
+      Wizard_Hurt_2: -6375693015202968792
+      Wizard_Hurt_3: 1657283293692949398
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
