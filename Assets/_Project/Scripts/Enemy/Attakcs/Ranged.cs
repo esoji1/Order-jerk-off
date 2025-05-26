@@ -81,7 +81,7 @@ namespace _Project.Enemy.Attakcs
 
         private IEnumerator Shoot()
         {
-            while (true)
+            while (true && _enemy.IsDie == false)
             {
                 yield return new WaitForSeconds(1f);
 

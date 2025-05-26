@@ -37,11 +37,11 @@ namespace _Project.Enemy
             _projectile = projectile;
         }
 
-        public Enemy.Enemys.Enemy Get(EnemyTypes enemyType, Vector3 position, List<Transform> points, bool _isMoveRandomPoints)
+        public Enemys.Enemy Get(EnemyTypes enemyType, Vector3 position, List<Transform> points, bool _isMoveRandomPoints)
         {
             EnemyConfig config = GetConfigBy(enemyType);
-            Enemy.Enemys.Enemy instance = UnityEngine.Object.Instantiate(config.Prefab, position, Quaternion.identity, null);
-            Enemy.Enemys.Enemy baseEnemy = InitializeObject(instance, config, points, _isMoveRandomPoints);
+            Enemys.Enemy instance = UnityEngine.Object.Instantiate(config.Prefab, position, Quaternion.identity, null);
+            Enemys.Enemy baseEnemy = InitializeObject(instance, config, points, _isMoveRandomPoints);
             return baseEnemy;
         }
 
@@ -63,19 +63,27 @@ namespace _Project.Enemy
             }
         }
 
-        private Enemy.Enemys.Enemy InitializeObject(Enemy.Enemys.Enemy instance, EnemyConfig config, List<Transform> points, bool _isMoveRandomPoints)
+        private Enemys.Enemy InitializeObject(Enemys.Enemy instance, EnemyConfig config, List<Transform> points, bool _isMoveRandomPoints)
         {
-            if (instance is PlantPredatorEnemy || instance is SlimeEnemy)
+            if (instance is PlantPredatorEnemy plantPredatorEnemy)
             {
-                instance.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points,
-                    _isMoveRandomPoints, _mainBuildingPoint);
+                plantPredatorEnemy.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points,
+                    _isMoveRandomPoints, _mainBuildingPoint, EnemyTypes.PlantPredator);
 
-                return instance;
+                return plantPredatorEnemy;
             }
-            else if(instance is MagicianEnemy magician)
+            else if(instance is SlimeEnemy slimeEnemy)
+            {
+                slimeEnemy.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points,
+                    _isMoveRandomPoints, _mainBuildingPoint, EnemyTypes.Slime);
+
+                return slimeEnemy;
+            }
+            else if (instance is MagicianEnemy magician)
             {
                 magician.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points,
-                    _isMoveRandomPoints, _mainBuildingPoint, _projectile);
+                    _isMoveRandomPoints, _mainBuildingPoint, EnemyTypes.Magician, _projectile);
+
                 return magician;
             }
             else

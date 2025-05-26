@@ -4,6 +4,7 @@ using _Project.Core.Interface;
 using _Project.Core.Points;
 using _Project.Enemy.Attakcs;
 using _Project.Enemy.MovePoints;
+using _Project.Quests.KillQuest;
 using _Project.ScriptableObjects.Configs;
 using _Project.SelectionGags;
 using System;
@@ -45,6 +46,7 @@ namespace _Project.Enemy.Enemys
         private MoveToPoint _moveToPoint;
 
         private bool _isDie;
+        private EnemyTypes _enemyTypes;
 
         public event Action<int> OnDamage;
         public event Action<Enemy> OnEnemyDie;
@@ -63,8 +65,9 @@ namespace _Project.Enemy.Enemys
         public RandomMovePoints RandomMovePoints => _movePointsRandom;
         public MoveToPoint MoveToPoint => _moveToPoint;
 
-        public virtual void Initialize(EnemyConfig config, SelectionGags.Experience prefabExperience, SelectionGags.Coin prefabCoin,
-            HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, List<Transform> points, bool isMoveRandomPoints, Transform mainBuildingPoint)
+        public virtual void Initialize(EnemyConfig config, Experience prefabExperience, Coin prefabCoin, HealthInfo healthInfoPrefab, 
+            HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, List<Transform> points, bool isMoveRandomPoints, 
+            Transform mainBuildingPoint, EnemyTypes enemyTypes)
         {
             ExtractComponents();
 
@@ -78,6 +81,7 @@ namespace _Project.Enemy.Enemys
             _points = points;
             _isMoveRandomPoints = isMoveRandomPoints;
             _mainBuildingPoint = mainBuildingPoint;
+            _enemyTypes = enemyTypes;
 
             _agent.updateRotation = false;
             _agent.updateUpAxis = false;
@@ -117,6 +121,7 @@ namespace _Project.Enemy.Enemys
             _boxCollider2D.enabled = false;
             _agent.isStopped = true;
             OnEnemyDie?.Invoke(this);
+            EnemyCounterQuest.Instance.AddKill(_enemyTypes);
 
             _health.OnDie -= Die;
 

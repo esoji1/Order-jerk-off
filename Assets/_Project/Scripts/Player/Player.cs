@@ -14,7 +14,6 @@ using _Project.SelectionGags;
 using System;
 using System.Collections;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace _Project.Player
 {
@@ -171,13 +170,6 @@ namespace _Project.Player
         private void ImproveCharacteristics()
         {
             OnWindowUpgrade?.Invoke();
-
-            //_weapon.WeaponData.ExtraDamage = _playerCharacteristics.AddDamageAttack;
-            //_weapon.WeaponData.ReturnInitialAttackPosition = _playerCharacteristics.ReturnInitialAttackPosition;
-            //_weapon.WeaponData.DefaultReturnInitialAttackPosition = _weapon.WeaponData.ReturnInitialAttackPosition;
-            //_weapon.WeaponData.DefaultExtraDamage = _weapon.WeaponData.ExtraDamage;
-
-            //_managerAtrefact.ActivateAllArtefact();
         }
 
         private void Move()

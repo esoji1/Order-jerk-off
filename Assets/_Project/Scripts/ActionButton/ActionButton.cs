@@ -1,5 +1,7 @@
 using _Project.ConstructionBuildings;
 using _Project.Enemy;
+using _Project.NPC;
+using _Project.Quests.KillQuest;
 using _Project.ResourceExtraction.FishingRodMining;
 using _Project.ResourceExtraction.OreMining;
 using _Project.ResourceExtraction.ScissorsMining;
@@ -13,6 +15,7 @@ namespace _Project.ActionButton
     {
         [SerializeField] private Button _actionButton;
         [SerializeField] private Player.Player _player;
+        [SerializeField] private QuestView _questView;
 
         private Collider2D[] _collider2D;
 
@@ -71,6 +74,11 @@ namespace _Project.ActionButton
                 else if (collider.TryGetComponent(out Grass grass))
                 {
                     OnMiningGrass?.Invoke(grass);
+                    return;
+                }
+                else if(collider.TryGetComponent(out NPCWizard _))
+                {
+                    _questView.Show();
                     return;
                 }
             }

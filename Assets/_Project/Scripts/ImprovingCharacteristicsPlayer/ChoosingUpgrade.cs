@@ -37,13 +37,16 @@ namespace _Project.ImprovingCharacteristicsPlayer
 
         private void Show()
         {
+            Time.timeScale = 0f;
             _windowUpgrade.SetActive(true);
             _tween = _windowUpgrade.transform
-                .DOScale(1, 0.5f);
+                .DOScale(1, 0.5f)
+                .SetUpdate(true);
         }
 
         private void Hide()
         {
+            Time.timeScale = 1f;
             _tween.Kill();
             _windowUpgrade.SetActive(false);
             _windowUpgrade.transform.localScale = new Vector3(0, 0, 0);

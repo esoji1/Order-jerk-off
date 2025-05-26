@@ -103,6 +103,8 @@ namespace _Project.ConstructionBuildings
         {
             if (_buildingArea.TryGetComponent(out PointTower _) && typesBuildings != TypesBuildings.ArcherTower)
                 return;
+            else if (_buildingArea.TryGetComponent(out PointTower _) == false && typesBuildings == TypesBuildings.ArcherTower)
+                return;
             if (_player.Wallet.SubtractMoney(value) == false)
                 return;
 
