@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace _Project.Quests.KillQuest
 {
-    public class QuestController : MonoBehaviour
+    public class QuestHandler : MonoBehaviour
     {
         [SerializeField] private NPCWizard _NPCWizard;
         [SerializeField] private Button _changeQuest;

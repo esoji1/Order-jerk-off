@@ -1,21 +1,15 @@
 ﻿using _Project.Quests.KillQuest;
-using _Project.ScriptableObjects;
 using System;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 namespace _Project.NPC
 {
     public class NPCWizard : MonoBehaviour
     {
-        [SerializeField] private QuestView _questView;
-        [SerializeField] private GameObject _questContent;
-        [SerializeField] private IconEnemyData _iconEnemyData;
+        [SerializeField] private KillQuestView _killQuestView;
 
         private KillQuest _killQuest;
         private KillQuest _currentKillQuest;
-        private List<GameObject> _iconEnemyList = new List<GameObject>();
 
         public event Action OnTakeQuest;
 
@@ -28,17 +22,8 @@ namespace _Project.NPC
 
         private void InitializeQuest()
         {
-            _killQuest = new KillQuest("Тест", "Описание квеста", 1);
-
-            string str = "";
-
-            foreach (KillQuestData quest in _killQuest.KillQuestData)
-            {
-                str += $"{quest.TargetEnemyType}: {quest.RequiredKills}  врагов\n";
-            }
-
-            _questView.SetDescription(str);
-            UpdateIconEnemyView();
+            CreateKillQuest("Тест", "Описание квеста", 1);
+            _killQuestView.UpdateIconEnemyView(_killQuest);
         }
 
         public void TakeQuest()
@@ -50,41 +35,21 @@ namespace _Project.NPC
 
         public void ChangeQuest()
         {
-            for (int i = 0; i < _iconEnemyList.Count; i++)
-            {
-                Destroy(_iconEnemyList[i]);
-            }
+            _killQuestView.ClearIconEnemyList();
 
-            _iconEnemyList.Clear();
+            CreateKillQuest("Тест", "Описание квеста", UnityEngine.Random.Range(1, 4));
+            _killQuestView.UpdateIconEnemyView(_killQuest);
+        }
 
-            _killQuest = new KillQuest("Тест", "Описание квеста", UnityEngine.Random.Range(1, 4));
-
+        private void CreateKillQuest(string title, string description, int questDifficultly)
+        {
+            _killQuest = new KillQuest(title, description, questDifficultly);
             string str = "";
 
             foreach (KillQuestData quest in _killQuest.KillQuestData)
-            {
                 str += $"{quest.TargetEnemyType}: {quest.RequiredKills}  врагов\n";
-            }
 
-            _questView.SetDescription(str);
-            UpdateIconEnemyView();
-        }
-
-        private void UpdateIconEnemyView()
-        {
-            for (int i = 0; i < _iconEnemyData.ListIconEnemy.Count; i++)
-            {
-                for (int j = 0; j < _killQuest.KillQuestData.Length; j++)
-                {
-                    KillQuestData quest = _killQuest.KillQuestData[j];
-                    if (quest.TargetEnemyType.Equals(_iconEnemyData.ListIconEnemy[i].EnemyTypes))
-                    {
-                        GameObject gameObject = Instantiate(_iconEnemyData.ListIconEnemy[i].Icon, _questContent.transform);
-                        gameObject.GetComponentInChildren<TextMeshProUGUI>().text = quest.RequiredKills.ToString();
-                        _iconEnemyList.Add(gameObject);
-                    }
-                }
-            }
+            _killQuestView.SetDescription(str);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace _Project.ActionButton
     {
         [SerializeField] private Button _actionButton;
         [SerializeField] private Player.Player _player;
-        [SerializeField] private QuestView _questView;
+        [SerializeField] private KillQuestView _questView;
 
         private Collider2D[] _collider2D;
 

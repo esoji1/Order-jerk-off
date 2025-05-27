@@ -1430,7 +1430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _actionButton: {fileID: 2369327}
   _player: {fileID: 52823349}
-  _questView: {fileID: 808917456}
+  _questView: {fileID: 456407280}
 --- !u!50 &52823357
 Rigidbody2D:
   serializedVersion: 5
@@ -2359,18 +2359,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _NPCWizard: {fileID: 1479258608}
-  _activeQuestsWindow: {fileID: 1774206629}
-  _activeQuestsButton: {fileID: 662429560}
   _clickButton: {fileID: 1883226296}
-  _exit: {fileID: 1757146691}
   _quest: {fileID: 1094556862}
-  _contentCloneQuest: {fileID: 1048445299}
+  _contentActiveQuest: {fileID: 1048445299}
   _textCompletedPrefab: {fileID: 4317080034356175025, guid: b26f2767dbb67ca4cbe8eaf3111737d9, type: 3}
-  _itemSelectionWindow: {fileID: 180481695}
-  _prefabCell: {fileID: 6205396011679513124, guid: 25d5f63ac8cde954498a812840265430, type: 3}
-  _itemData: {fileID: 11400000, guid: e5f80686d52d2a148a2733f514879b16, type: 2}
-  _contentItemSelectionWindow: {fileID: 2135113467}
-  _inventory: {fileID: 2119364609}
 --- !u!1 &148649922
 GameObject:
   m_ObjectHideFlags: 0
@@ -5259,7 +5251,7 @@ GameObject:
   - component: {fileID: 456407279}
   - component: {fileID: 456407280}
   m_Layer: 0
-  m_Name: QuestController
+  m_Name: KillQuestView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5289,15 +5281,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 456407278}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74bc2c8f7a1aaa74cafbcd357e9080fe, type: 3}
+  m_Script: {fileID: 11500000, guid: aa59703a16095af40b7435cd58cdc91e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _NPCWizard: {fileID: 1479258608}
-  _changeQuest: {fileID: 1125500828}
-  _takeQuest: {fileID: 1088400539}
-  _completingQuest: {fileID: 134918317}
-  _player: {fileID: 52823349}
-  _priceUpdateQuest: 1
+  _windowQuest: {fileID: 479159253}
+  _description: {fileID: 340590938}
+  _questContent: {fileID: 1789534974}
+  _iconEnemyData: {fileID: 11400000, guid: 0792243a3240df94bb54a7cb045a521c, type: 2}
+  _exit: {fileID: 1674358779}
 --- !u!1 &459062782
 GameObject:
   m_ObjectHideFlags: 0
@@ -8604,7 +8595,7 @@ GameObject:
   - component: {fileID: 808917455}
   - component: {fileID: 808917456}
   m_Layer: 0
-  m_Name: QuestView
+  m_Name: QuestHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8634,12 +8625,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 808917454}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b3c4b7e30e2057418dd59d0e5b8b7de, type: 3}
+  m_Script: {fileID: 11500000, guid: 74bc2c8f7a1aaa74cafbcd357e9080fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _windowQuest: {fileID: 479159253}
-  _description: {fileID: 340590938}
-  _exit: {fileID: 1674358779}
+  _NPCWizard: {fileID: 1479258608}
+  _changeQuest: {fileID: 1125500828}
+  _takeQuest: {fileID: 1088400539}
+  _completingQuest: {fileID: 134918317}
+  _player: {fileID: 52823349}
+  _priceUpdateQuest: 20
 --- !u!1001 &835903388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10221,7 +10215,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 362, y: -561.22156}
+  m_AnchoredPosition: {x: 362, y: -629}
   m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1088400539
@@ -10678,7 +10672,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -348, y: -561.22156}
+  m_AnchoredPosition: {x: -348, y: -629}
   m_SizeDelta: {x: 500, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1125500828
@@ -11165,6 +11159,53 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 816cd3e06f703004d8ae476319acacee, type: 3}
+--- !u!1 &1180702489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1180702490}
+  - component: {fileID: 1180702491}
+  m_Layer: 0
+  m_Name: ActiveQuestView
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1180702490
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180702489}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2059629078}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1180702491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1180702489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c90d112b0d8876a41b48e7438845071a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _activeQuestsWindow: {fileID: 1774206629}
+  _activeQuestsButton: {fileID: 662429560}
+  _exit: {fileID: 1757146691}
 --- !u!4 &1195971920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3959917959744434865, guid: cdb143806563367459d9495f6419e0d5, type: 3}
@@ -11428,10 +11469,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1589514959}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.11400001, y: 0.7987212}
-  m_AnchorMax: {x: 0.11400001, y: 0.7987212}
-  m_AnchoredPosition: {x: 197.87997, y: 160.06708}
-  m_SizeDelta: {x: 4554.6543, y: 1658.2959}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.00010850695, y: 695}
+  m_SizeDelta: {x: 9165.937, y: 2327.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1240966840
 MonoBehaviour:
@@ -11453,7 +11494,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041A\u0432\u0435\u0441\u0442\n"
+  m_text: "\u0410\u043A\u0442\u0438\u0432\u043D\u044B\u0435 \u043A\u0432\u0435\u0441\u0442\u044B"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -14066,9 +14107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 484714c65278521438a1da66e2768af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _questView: {fileID: 808917456}
-  _questContent: {fileID: 1789534974}
-  _iconEnemyData: {fileID: 11400000, guid: 0792243a3240df94bb54a7cb045a521c, type: 2}
+  _killQuestView: {fileID: 456407280}
 --- !u!1 &1486662922
 GameObject:
   m_ObjectHideFlags: 0
@@ -16537,7 +16576,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00016784668}
+  m_AnchoredPosition: {x: 0, y: -66.92134}
   m_SizeDelta: {x: 0, y: -359.85013}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1789534976
@@ -20018,7 +20057,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.11400001, y: 0.7987212}
   m_AnchorMax: {x: 0.11400001, y: 0.7987212}
-  m_AnchoredPosition: {x: 197.87997, y: 160.06708}
+  m_AnchoredPosition: {x: 110, y: 96}
   m_SizeDelta: {x: 4554.6543, y: 1658.2959}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2050747319
@@ -20041,7 +20080,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u041A\u0432\u0435\u0441\u0442\n"
+  m_text: "\u041A\u0432\u0435\u0441\u0442\u044B\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -20271,7 +20310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2059629078}
   m_Layer: 0
-  m_Name: Quest
+  m_Name: KillQuest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20293,6 +20332,8 @@ Transform:
   - {fileID: 808917455}
   - {fileID: 456407279}
   - {fileID: 134918316}
+  - {fileID: 1180702490}
+  - {fileID: 2086567902}
   m_Father: {fileID: 1221726868}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2073853875
@@ -20538,6 +20579,59 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdb143806563367459d9495f6419e0d5, type: 3}
+--- !u!1 &2086567901
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2086567902}
+  - component: {fileID: 2086567903}
+  m_Layer: 0
+  m_Name: ItemSelector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2086567902
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086567901}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2059629078}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2086567903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086567901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a980baeba4da964489dc297c453726d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _NPCWizard: {fileID: 1479258608}
+  _clickButton: {fileID: 1883226296}
+  _itemSelectionWindow: {fileID: 180481695}
+  _prefabCellItemSelection: {fileID: 6205396011679513124, guid: 25d5f63ac8cde954498a812840265430, type: 3}
+  _itemData: {fileID: 11400000, guid: e5f80686d52d2a148a2733f514879b16, type: 2}
+  _contentItemSelectionWindow: {fileID: 2135113467}
+  _inventory: {fileID: 2119364609}
+  _activeQuestView: {fileID: 1180702491}
+  _completingQuest: {fileID: 134918317}
 --- !u!1 &2089484975
 GameObject:
   m_ObjectHideFlags: 0
