@@ -45,6 +45,7 @@ namespace _Project.NPC
         {
             _currentKillQuest = _killQuest;
             OnTakeQuest?.Invoke();
+            ChangeQuest();
         }
 
         public void ChangeQuest()

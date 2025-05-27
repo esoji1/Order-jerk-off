@@ -1,5 +1,9 @@
-﻿using _Project.NPC;
+﻿using _Project.Inventory;
+using _Project.Inventory.Items;
+using _Project.NPC;
+using _Project.ScriptableObjects.Configs;
 using DG.Tweening;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,10 +18,17 @@ namespace _Project.Quests.KillQuest
         [SerializeField] private Button _exit;
         [SerializeField] private GameObject _quest;
         [SerializeField] private GameObject _contentCloneQuest;
+        [SerializeField] private GameObject _textCompletedPrefab;
+        [SerializeField] private GameObject _itemSelectionWindow;
+        [SerializeField] private Cell _prefabCell;
+        [SerializeField] private ItemData _itemData;
+        [SerializeField] private GameObject _contentItemSelectionWindow;
+        [SerializeField] private Inventory.Inventory _inventory;
 
         private bool _isCompleted;
         private Tween _tween;
         private GameObject _questClone;
+        private GameObject _text;
 
         public bool IsCompleted => _isCompleted;
 
@@ -32,7 +43,7 @@ namespace _Project.Quests.KillQuest
 
         private void OnDisable()
         {
-            EnemyCounterQuest.Instance.OnAddKill -= QuestCompleted; 
+            EnemyCounterQuest.Instance.OnAddKill -= QuestCompleted;
             _activeQuestsButton.onClick.RemoveListener(Show);
             _exit.onClick.RemoveListener(Hide);
             _clickButton.onClick.RemoveListener(PickUpQuest);
@@ -76,6 +87,8 @@ namespace _Project.Quests.KillQuest
             if (allConditionsMet)
             {
                 _isCompleted = true;
+                if (_text == null)
+                    _text = Instantiate(_textCompletedPrefab, _contentCloneQuest.transform);
             }
             Debug.Log(_isCompleted);
         }
@@ -90,9 +103,59 @@ namespace _Project.Quests.KillQuest
 
         private void PickUpQuest()
         {
-            if (_NPCWizard.CurrentKillQuest == null)
+            if (_NPCWizard.CurrentKillQuest == null || _isCompleted == false)
                 return;
 
+            Destroy(_questClone);
+            Destroy(_text);
+
+            Hide();
+
+            _itemSelectionWindow.SetActive(true);
+            SpawnItemsSelection();
+        }
+
+        private void SpawnItemsSelection()
+        {
+            List<Cell> list = new List<Cell>();
+
+            for (int i = 0; i < 3; i++)
+            {
+                Cell cell = Instantiate(_prefabCell, _contentItemSelectionWindow.transform);
+                BaseItem rendomBaseItem = _itemData.Items[Random.Range(0, _itemData.Items.Count)];
+                BaseItem baseItem = Instantiate(rendomBaseItem, cell.transform);
+                RectTransform rectTransform = baseItem.GetComponent<RectTransform>();
+                rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 250);
+                rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 250);
+                cell.Item = baseItem;
+                cell.NumberItems = Random.Range(1, 21);
+                cell.AddNumberItems(0);
+                SetupItemButton(cell, list, rendomBaseItem);
+                list.Add(cell);
+            }
+        }
+
+        private void SetupItemButton(Cell cell, List<Cell> list, BaseItem baseItem)
+        {
+            if (cell.Item.TryGetComponent(out Button button))
+            {
+                button.onClick.RemoveAllListeners();
+                button.onClick.AddListener(() => OnItemClicked(cell, list, baseItem));
+            }
+        }
+
+        private void OnItemClicked(Cell cell, List<Cell> list, BaseItem baseItem)
+        {
+            for (int i = 0; i < cell.NumberItems; i++)
+                _inventory.AddItemInCell(baseItem);
+
+            foreach (Cell cell1 in list)
+                Destroy(cell1.gameObject);
+
+            list.Clear();
+
+            _isCompleted = false;
+            _itemSelectionWindow.SetActive(false);
         }
     }
 }

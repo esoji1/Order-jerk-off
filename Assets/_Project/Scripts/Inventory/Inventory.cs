@@ -51,7 +51,7 @@ namespace _Project.Inventory
         {
             for (int i = 0; i < _cellList.Count; i++)
             {
-                if (!(item as WeaponItem))
+                if ((item as WeaponItem) == false)
                 {
                     if (_cellList[i].IsCellBusy == false)
                     {

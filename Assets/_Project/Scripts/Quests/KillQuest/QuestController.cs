@@ -10,6 +10,8 @@ namespace _Project.Quests.KillQuest
         [SerializeField] private Button _changeQuest;
         [SerializeField] private Button _takeQuest;
         [SerializeField] private CompletingQuest _completingQuest;
+        [SerializeField] private Player.Player _player;
+        [SerializeField] private int _priceUpdateQuest;
 
         private void OnEnable()
         {
@@ -25,6 +27,9 @@ namespace _Project.Quests.KillQuest
 
         private void ChangeQuest()
         {
+            if (_player.Wallet.SubtractMoney(_priceUpdateQuest) == false)
+                return;
+
             _NPCWizard.ChangeQuest();
         }
 
