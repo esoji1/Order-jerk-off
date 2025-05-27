@@ -1,6 +1,4 @@
 ﻿using _Project.NPC;
-using _Project.ScriptableObjects;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 

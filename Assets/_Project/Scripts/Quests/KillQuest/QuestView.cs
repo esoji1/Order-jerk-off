@@ -1,6 +1,4 @@
-﻿using _Project.NPC;
-using _Project.ScriptableObjects;
-using DG.Tweening;
+﻿using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

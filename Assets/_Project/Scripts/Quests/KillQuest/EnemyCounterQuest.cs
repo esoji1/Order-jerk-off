@@ -1,11 +1,10 @@
 ﻿using _Project.Enemy;
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace _Project.Quests.KillQuest
 {
-    public class EnemyCounterQuest : MonoBehaviour   
+    public class EnemyCounterQuest
     {
         private static EnemyCounterQuest _instance;
 
@@ -17,10 +16,9 @@ namespace _Project.Quests.KillQuest
         {
             get
             {
-                if (_instance == null && Application.isPlaying)
+                if (_instance == null)
                 {
-                    _instance = new GameObject("EnemyCounterQuest").AddComponent<EnemyCounterQuest>();
-                    DontDestroyOnLoad(_instance.gameObject);
+                    _instance = new EnemyCounterQuest();
                 }
                 return _instance;
             }

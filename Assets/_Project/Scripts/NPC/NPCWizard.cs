@@ -1,5 +1,6 @@
 ﻿using _Project.Quests.KillQuest;
 using _Project.ScriptableObjects;
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,6 +16,8 @@ namespace _Project.NPC
         private KillQuest _killQuest;
         private KillQuest _currentKillQuest;
         private List<GameObject> _iconEnemyList = new List<GameObject>();
+
+        public event Action OnTakeQuest;
 
         public KillQuest CurrentKillQuest => _currentKillQuest;
 
@@ -41,6 +44,7 @@ namespace _Project.NPC
         public void TakeQuest()
         {
             _currentKillQuest = _killQuest;
+            OnTakeQuest?.Invoke();
         }
 
         public void ChangeQuest()
@@ -52,7 +56,7 @@ namespace _Project.NPC
 
             _iconEnemyList.Clear();
 
-            _killQuest = new KillQuest("Тест", "Описание квеста", Random.Range(1, 4));
+            _killQuest = new KillQuest("Тест", "Описание квеста", UnityEngine.Random.Range(1, 4));
 
             string str = "";
 
