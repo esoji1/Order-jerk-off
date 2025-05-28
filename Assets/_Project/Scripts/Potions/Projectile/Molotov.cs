@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 
-namespace _Project.Potions
+namespace _Project.Potions.Projectile
 {
     public class Molotov : MonoBehaviour
     {
@@ -9,6 +10,8 @@ namespace _Project.Potions
         private int _damage;
         private int _radiusAttack;
         private IncendiaryZone _incendiaryZonePrefab;
+        private TextMeshProUGUI _textDamage;
+        private Canvas _dynamic;
 
         private void Update()
         {
@@ -19,18 +22,22 @@ namespace _Project.Potions
         {
             if (collision.TryGetComponent(out Enemy.Enemys.Enemy _))
             {
-                Instantiate(_incendiaryZonePrefab, transform.position, Quaternion.identity, null).Initialize(_damage, _radiusAttack, _player);
+                Instantiate(_incendiaryZonePrefab, transform.position, Quaternion.identity, null).Initialize(_damage, _radiusAttack, _player,
+                    _textDamage, _dynamic);
                 Destroy(gameObject);
             }
         }
 
-        public void Initialize(Player.Player player, Vector2 direction, int damage, int radiusAttack, IncendiaryZone incendiaryZonePrefab)
+        public void Initialize(Player.Player player, Vector2 direction, int damage, int radiusAttack, IncendiaryZone incendiaryZonePrefab,
+            TextMeshProUGUI textDamage, Canvas dynamic)
         {
             _direction = direction;
             _player = player;
             _damage = damage;
             _radiusAttack = radiusAttack;
             _incendiaryZonePrefab = incendiaryZonePrefab;
+            _textDamage = textDamage;
+            _dynamic = dynamic;
         }
 
         private void TranslateBullet() =>

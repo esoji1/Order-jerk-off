@@ -1,5 +1,7 @@
 ﻿using _Project.Inventory;
+using _Project.Potions.Projectile;
 using _Project.ScriptableObjects;
+using TMPro;
 using UnityEngine;
 
 namespace _Project.Potions
@@ -15,6 +17,8 @@ namespace _Project.Potions
         [SerializeField] private ManagerPotion _managerPotion; 
         [SerializeField] private Molotov _molotov;
         [SerializeField] private IncendiaryZone _incendiaryZonePrefab;
+        [SerializeField] private TextMeshProUGUI _textDamage;
+        [SerializeField] private Canvas _dynamic;
 
         private PotionFactory _factory;
 
@@ -23,7 +27,7 @@ namespace _Project.Potions
         private void Awake()
         {
             _factory = new PotionFactory(_explosionConfig, _healingConfig, _speedConfig, _molotovCocktailConfig, _player, inventoryActivePotions, _content,
-                _bom, _explosion, _managerPotion, _molotov, _incendiaryZonePrefab);
+                _bom, _explosion, _managerPotion, _molotov, _incendiaryZonePrefab, _textDamage, _dynamic);
         }
     }
 }

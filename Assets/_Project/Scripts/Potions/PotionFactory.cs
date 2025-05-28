@@ -2,6 +2,8 @@
 using UnityEngine;
 using _Project.ScriptableObjects;
 using _Project.Inventory;
+using _Project.Potions.Projectile;
+using TMPro;
 
 namespace _Project.Potions
 {
@@ -15,10 +17,13 @@ namespace _Project.Potions
         private Explosion _explosion;
         private ManagerPotion _managerPotion;
         private Molotov _molotov;
-        private IncendiaryZone _incendiaryZonePrefab;
+        private IncendiaryZone _incendiaryZonePrefab; 
+        private TextMeshProUGUI _textDamage;
+        private Canvas _dynamic;
 
         public PotionFactory(PotionConfig explosionConfig, PotionConfig healingConfig, PotionConfig speedConfig, PotionConfig molotovCocktail, Player.Player player, InventoryActivePotions inventoryActivePotions, Transform content,
-            ParticleSystem bom, Explosion explosion, ManagerPotion managerPotion, Molotov molotov, IncendiaryZone incendiaryZonePrefab)
+            ParticleSystem bom, Explosion explosion, ManagerPotion managerPotion, Molotov molotov, IncendiaryZone incendiaryZonePrefab, TextMeshProUGUI textDamage,
+            Canvas dynamic)
         {
             _explosionConfig = explosionConfig;
             _healingConfig = healingConfig;
@@ -32,6 +37,8 @@ namespace _Project.Potions
             _managerPotion = managerPotion;
             _molotov = molotov;
             _incendiaryZonePrefab = incendiaryZonePrefab;
+            _textDamage = textDamage;
+            _dynamic = dynamic;
         }
 
         public BasePotion Get(TypesPotion potionType)
@@ -73,7 +80,7 @@ namespace _Project.Potions
             }
             else if(instance is ExplosivePotion explosivePotion)
             {
-                explosivePotion.Initialize(_player, _inventoryActivePotions, _bom, _explosion, _managerPotion);
+                explosivePotion.Initialize(_player, _inventoryActivePotions, _bom, _explosion, _managerPotion, _textDamage, _dynamic);
                 return explosivePotion;
             }
             else if(instance is SpeedPotions speddPotion)
@@ -83,7 +90,7 @@ namespace _Project.Potions
             }
             else if(instance is MolotovCocktailPotion molotovPotion) 
             {
-                molotovPotion.Initialize(_player, _inventoryActivePotions, _molotov, _managerPotion, _incendiaryZonePrefab);
+                molotovPotion.Initialize(_player, _inventoryActivePotions, _molotov, _managerPotion, _incendiaryZonePrefab, _textDamage, _dynamic);
                 return molotovPotion;
             }
             else

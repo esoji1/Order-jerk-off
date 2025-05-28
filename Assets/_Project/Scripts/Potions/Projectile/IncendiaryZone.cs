@@ -1,7 +1,8 @@
 ﻿using System.Collections;
+using TMPro;
 using UnityEngine;
 
-namespace _Project.Potions
+namespace _Project.Potions.Projectile
 {
     public class IncendiaryZone : MonoBehaviour
     {
@@ -11,10 +12,12 @@ namespace _Project.Potions
 
         private ParticleSystem _particleSystem;
 
+        private DroppedDamage.DroppedDamage _droppedDamage;
+
         private Coroutine _coroutine;
         private float _delay;
 
-        public void Initialize(int damage, int radiusAttack, Player.Player player)
+        public void Initialize(int damage, int radiusAttack, Player.Player player, TextMeshProUGUI textDamage, Canvas dynamic)
         {
             _particleSystem = GetComponentInChildren<ParticleSystem>();
 
@@ -26,6 +29,8 @@ namespace _Project.Potions
             ParticleSystem.ShapeModule shapeModule = _particleSystem.shape;
             shapeModule.radius = radiusAttack;
             _particleSystem.Play();
+
+            _droppedDamage = new DroppedDamage.DroppedDamage(textDamage, dynamic);
 
             _coroutine = StartCoroutine(Attack());
             Destroy(gameObject, 5f);
@@ -44,6 +49,7 @@ namespace _Project.Potions
                     if (collider.TryGetComponent(out Enemy.Enemys.Enemy enemy))
                     {
                         enemy.Damage((int)_damage);
+                        _droppedDamage.SpawnNumber((int)_damage, enemy.transform);
                     }
                 }
             }

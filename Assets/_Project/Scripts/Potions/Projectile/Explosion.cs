@@ -1,7 +1,8 @@
 ﻿using _Project.Core.Interface;
+using TMPro;
 using UnityEngine;
 
-namespace _Project.Potions
+namespace _Project.Potions.Projectile
 {
     public class Explosion : MonoBehaviour
     {
@@ -10,6 +11,8 @@ namespace _Project.Potions
         private int _damage;
         private int _radiusAttack;
         private ParticleSystem _bom;
+
+        private DroppedDamage.DroppedDamage _droppedDamage;
 
         private void Update()
         {
@@ -26,6 +29,7 @@ namespace _Project.Potions
                 if (collider.TryGetComponent(out IDamage damage))
                 {
                     damage.Damage(_damage);
+                    _droppedDamage.SpawnNumber(_damage, collider.transform);
                     Destroy(gameObject);
 
                     if (isFirstSpawm == false)
@@ -41,13 +45,14 @@ namespace _Project.Potions
             Destroy(gameObject, 5f);
         }
 
-        public void Initialize(Player.Player player, Vector2 direction, int damage, int radiusAttack, ParticleSystem bom)
+        public void Initialize(Player.Player player, Vector2 direction, int damage, int radiusAttack, ParticleSystem bom, TextMeshProUGUI textDamage, Canvas dynamic)
         {
             _direction = direction;
             _player = player;
             _damage = damage;
             _radiusAttack = radiusAttack;
             _bom = bom;
+            _droppedDamage = new DroppedDamage.DroppedDamage(textDamage, dynamic);
         }
 
         private void TranslateBullet() =>

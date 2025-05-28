@@ -1,5 +1,7 @@
 ﻿using _Project.Inventory;
+using _Project.Potions.Projectile;
 using _Project.Weapon;
+using TMPro;
 using UnityEngine;
 
 namespace _Project.Potions
@@ -10,13 +12,17 @@ namespace _Project.Potions
         private Explosion _explosion;
         private DetectionRadius _enemyDetectionRadius;
         private Collider2D _nearestEnemy;
+        private TextMeshProUGUI _textDamage;
+        private Canvas _dynamic;
 
         public void Initialize(Player.Player player, InventoryActivePotions inventoryPotions,
-            ParticleSystem bom, Explosion explosion, ManagerPotion managerPotion)
+            ParticleSystem bom, Explosion explosion, ManagerPotion managerPotion, TextMeshProUGUI textDamage, Canvas dynamic)
         {
             base.Initialize(player, inventoryPotions, managerPotion);
             _bom = bom;
             _explosion = explosion;
+            _textDamage = textDamage;
+            _dynamic = dynamic;
             PotionType = TypesPotion.Explosion;
         }
 
@@ -46,7 +52,7 @@ namespace _Project.Potions
                 Vector2 direction = (_nearestEnemy.transform.position - Player.transform.position).normalized;
                 GameObject explosion = Instantiate(_explosion.gameObject, Player.transform.position, Quaternion.identity, null);
                 Explosion explosion1 = explosion.GetComponent<Explosion>();
-                explosion1.Initialize(Player, direction, (int)EffectValue, (int)SecondaryValue, _bom);
+                explosion1.Initialize(Player, direction, (int)EffectValue, (int)SecondaryValue, _bom, _textDamage, _dynamic);
                 return true;
             }
 
