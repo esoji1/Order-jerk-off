@@ -4,6 +4,10 @@ namespace _Project.Potions
     {
         Hilka = 0,
         SpeedUp,
-        Explosion
+        Explosion,
+        MolotovCocktail,
+        Invisibility,
+        Sleeping,
+        DeadlyPoison
     }
 }

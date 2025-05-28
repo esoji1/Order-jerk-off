@@ -108,9 +108,24 @@ namespace _Project.Potions
                             _potion[TypesPotion.SpeedUp] = 1;
                         }
                         break;
+
+                    case TypesPotion.MolotovCocktail:
+                        if (_potionObjects.ContainsKey(TypesPotion.MolotovCocktail))
+                        {
+                            Debug.Log("Снова");
+                            _potion[TypesPotion.MolotovCocktail]++;
+                        }
+                        else
+                        {
+                            BasePotion potion = _bootstrapFactoryPotion.Factory.Get(TypesPotion.MolotovCocktail);
+                            _potionObjects[TypesPotion.MolotovCocktail] = potion;
+                            _potion[TypesPotion.MolotovCocktail] = 1;
+                        }
+                        break;
                 }
             }
         }
+
         private void IdentifyPotionSubstract(Enum type)
         {
             if (type is TypesPotion specificType)
@@ -144,6 +159,16 @@ namespace _Project.Potions
                         {
                             Destroy(_potionObjects[TypesPotion.SpeedUp].gameObject);
                             _potionObjects.Remove(TypesPotion.SpeedUp);
+                        }
+                        break;
+
+                    case TypesPotion.MolotovCocktail:
+                        _potion[TypesPotion.MolotovCocktail]--;
+
+                        if (_potion[TypesPotion.MolotovCocktail] <= 0)
+                        {
+                            Destroy(_potionObjects[TypesPotion.MolotovCocktail].gameObject);
+                            _potionObjects.Remove(TypesPotion.MolotovCocktail);
                         }
                         break;
                 }

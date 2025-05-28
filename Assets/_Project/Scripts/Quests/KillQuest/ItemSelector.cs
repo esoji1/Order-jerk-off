@@ -5,6 +5,7 @@ using _Project.ScriptableObjects.Configs;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using _Project.SelectionGags;
 
 namespace _Project.Quests.KillQuest
 {
@@ -19,16 +20,11 @@ namespace _Project.Quests.KillQuest
         [SerializeField] private Inventory.Inventory _inventory;
         [SerializeField] private ActiveQuestView _activeQuestView;
         [SerializeField] private CompletingQuest _completingQuest;
+        [SerializeField] private Player.Player _player;
 
-        private void OnEnable()
-        {
-            _clickButton.onClick.AddListener(PickUpQuest);
-        }
+        private void OnEnable() => _clickButton.onClick.AddListener(PickUpQuest);
 
-        private void OnDisable()
-        {
-            _clickButton.onClick.RemoveListener(PickUpQuest);
-        }
+        private void OnDisable() => _clickButton.onClick.RemoveListener(PickUpQuest);
 
         private void PickUpQuest()
         {
@@ -55,7 +51,7 @@ namespace _Project.Quests.KillQuest
         private void SpawnGameObject(List<Cell> list)
         {
             Cell cell = Instantiate(_prefabCellItemSelection, _contentItemSelectionWindow.transform);
-            BaseItem rendomBaseItem = _itemData.Items[Random.Range(0, _itemData.Items.Count)];
+            BaseItem rendomBaseItem = _itemData.Items[Random.Range(_itemData.Items.Count - 3, _itemData.Items.Count)];
             BaseItem baseItem = Instantiate(rendomBaseItem, cell.transform);
             ChangeImageSize(baseItem);
             InitializeDataCell(cell, baseItem, rendomBaseItem);
@@ -88,9 +84,27 @@ namespace _Project.Quests.KillQuest
 
         private void OnItemClicked(Cell cell, List<Cell> list, BaseItem baseItem)
         {
+            if (cell.Item.Category.Equals(ItemCategory.SelectionGags))
+            {
+                SelectionGagsItem selectionGagsItem = cell.Item as SelectionGagsItem;
+                
+                if(selectionGagsItem.TypesSelectionGags.Equals(TypesSelectionGags.Experience))
+                    _player.AddExperience(cell.NumberItems);
+                else if (selectionGagsItem.TypesSelectionGags.Equals(TypesSelectionGags.Coin))
+                    _player.AddMoney(cell.NumberItems);
+
+                ClearAction(list);
+                return;
+            }
+
             for (int i = 0; i < cell.NumberItems; i++)
                 _inventory.AddItemInCell(baseItem);
 
+            ClearAction(list);
+        }
+
+        private void ClearAction(List<Cell> list)
+        {
             foreach (Cell cell1 in list)
                 Destroy(cell1.gameObject);
 

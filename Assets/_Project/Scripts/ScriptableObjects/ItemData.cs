@@ -26,5 +26,6 @@ namespace _Project.ScriptableObjects.Configs
         [field: SerializeField] public List<BaseItem> GrassItems { get; private set; }
         [field: SerializeField] public List<PotionItem> PotionsItems { get; private set; }
         [field: SerializeField] public List<ArtefactItem> ArtefactItems { get; private set; }
+        [field: SerializeField] public List<SelectionGagsItem> SelectionGagsItems { get; private set; }
     }
 }

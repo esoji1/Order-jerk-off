@@ -6,6 +6,7 @@
         Resource,
         Mining,
         Potions,
-        Artefact
+        Artefact,
+        SelectionGags
     }
 }

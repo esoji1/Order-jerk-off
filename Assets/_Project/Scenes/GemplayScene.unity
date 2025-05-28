@@ -1898,12 +1898,15 @@ MonoBehaviour:
   _explosionConfig: {fileID: 11400000, guid: 14a10a1ba0fcccf4e84384be53796ebf, type: 2}
   _healingConfig: {fileID: 11400000, guid: b7ee95c996f132c4eb229d80972d1e82, type: 2}
   _speedConfig: {fileID: 11400000, guid: 0778f1e5a7ef3f94ea321971f19a9a81, type: 2}
+  _molotovCocktailConfig: {fileID: 11400000, guid: f06baf4392aedbd4da9d1220512a48f2, type: 2}
   _player: {fileID: 52823349}
   inventoryActivePotions: {fileID: 1760301063}
   _content: {fileID: 798829399}
   _bom: {fileID: 2755439877533770091, guid: 07865adf511fcec40b5c61b702385341, type: 3}
   _explosion: {fileID: 1585342217091444098, guid: 024bb9eed046f614981e4a2969e9b794, type: 3}
   _managerPotion: {fileID: 1804440694}
+  _molotov: {fileID: 2622715321487653627, guid: b7e6e91a559ec81448de231283efda32, type: 3}
+  _incendiaryZonePrefab: {fileID: 4702402658186568215, guid: a6e8d19932edb5e42986f73053dc0f6c, type: 3}
 --- !u!1001 &103270916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20632,6 +20635,7 @@ MonoBehaviour:
   _inventory: {fileID: 2119364609}
   _activeQuestView: {fileID: 1180702491}
   _completingQuest: {fileID: 134918317}
+  _player: {fileID: 52823349}
 --- !u!1 &2089484975
 GameObject:
   m_ObjectHideFlags: 0
@@ -20762,6 +20766,7 @@ MonoBehaviour:
   - {fileID: 8953986749414638352, guid: fa397afa43f84cf45828e0d039292414, type: 3}
   - {fileID: 1062850532427421267, guid: 2a8f523157196be4a85d147bc4c0a78c, type: 3}
   - {fileID: 1595214497868840883, guid: 36fd7264b419cc04a8db3420ef344daa, type: 3}
+  - {fileID: 4054385250846307117, guid: f529e6366a870ea4a93e309a2f8f7851, type: 3}
   IsAddCell: 0
   IsAddItem: 1
 --- !u!4 &2119364610
