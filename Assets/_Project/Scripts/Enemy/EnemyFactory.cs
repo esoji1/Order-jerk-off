@@ -19,10 +19,11 @@ namespace _Project.Enemy
         private LayerMask _layer;
         private Transform _mainBuildingPoint;
         private ProjectileEnemy _projectile;
+        private Player.Player _player;
 
         public EnemyFactory(EnemyConfig plantPredator, EnemyConfig slime,EnemyConfig magician, SelectionGags.Experience experience, SelectionGags.Coin coin, 
             HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, Transform mainBuildingPoint,
-            ProjectileEnemy projectile)
+            ProjectileEnemy projectile, Player.Player player)
         {
             _plantPredator = plantPredator;
             _slime = slime;
@@ -35,6 +36,7 @@ namespace _Project.Enemy
             _layer = layer;
             _mainBuildingPoint = mainBuildingPoint;
             _projectile = projectile;
+            _player = player;
         }
 
         public Enemys.Enemy Get(EnemyTypes enemyType, Vector3 position, List<Transform> points, bool _isMoveRandomPoints)
@@ -68,21 +70,21 @@ namespace _Project.Enemy
             if (instance is PlantPredatorEnemy plantPredatorEnemy)
             {
                 plantPredatorEnemy.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points,
-                    _isMoveRandomPoints, _mainBuildingPoint, EnemyTypes.PlantPredator);
+                    _isMoveRandomPoints, _mainBuildingPoint, EnemyTypes.PlantPredator, _player);
 
                 return plantPredatorEnemy;
             }
             else if(instance is SlimeEnemy slimeEnemy)
             {
                 slimeEnemy.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points,
-                    _isMoveRandomPoints, _mainBuildingPoint, EnemyTypes.Slime);
+                    _isMoveRandomPoints, _mainBuildingPoint, EnemyTypes.Slime, _player);
 
                 return slimeEnemy;
             }
             else if (instance is MagicianEnemy magician)
             {
                 magician.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points,
-                    _isMoveRandomPoints, _mainBuildingPoint, EnemyTypes.Magician, _projectile);
+                    _isMoveRandomPoints, _mainBuildingPoint, EnemyTypes.Magician, _player, _projectile);
 
                 return magician;
             }

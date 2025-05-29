@@ -9,7 +9,7 @@ namespace _Project.Potions
 {
     public class PotionFactory
     {
-        private PotionConfig _explosionConfig, _healingConfig, _speedConfig, _molotovCocktail;
+        private PotionConfig _explosionConfig, _healingConfig, _speedConfig, _molotovCocktail, _invisibilityConfig;
         private Player.Player _player;
         private InventoryActivePotions _inventoryActivePotions;
         private Transform _content;
@@ -21,7 +21,8 @@ namespace _Project.Potions
         private TextMeshProUGUI _textDamage;
         private Canvas _dynamic;
 
-        public PotionFactory(PotionConfig explosionConfig, PotionConfig healingConfig, PotionConfig speedConfig, PotionConfig molotovCocktail, Player.Player player, InventoryActivePotions inventoryActivePotions, Transform content,
+        public PotionFactory(PotionConfig explosionConfig, PotionConfig healingConfig, PotionConfig speedConfig, PotionConfig molotovCocktail,
+            PotionConfig invisibilityConfig, Player.Player player, InventoryActivePotions inventoryActivePotions, Transform content,
             ParticleSystem bom, Explosion explosion, ManagerPotion managerPotion, Molotov molotov, IncendiaryZone incendiaryZonePrefab, TextMeshProUGUI textDamage,
             Canvas dynamic)
         {
@@ -29,6 +30,7 @@ namespace _Project.Potions
             _healingConfig = healingConfig;
             _speedConfig = speedConfig;
             _molotovCocktail = molotovCocktail;
+            _invisibilityConfig = invisibilityConfig;
             _player = player;
             _inventoryActivePotions = inventoryActivePotions;
             _content = content;
@@ -66,6 +68,9 @@ namespace _Project.Potions
                 case TypesPotion.MolotovCocktail:
                     return _molotovCocktail;
 
+                case TypesPotion.Invisibility:
+                    return _invisibilityConfig;
+
                 default:
                     throw new ArgumentException(nameof(potionType));
             }
@@ -73,10 +78,10 @@ namespace _Project.Potions
 
         private BasePotion InitializeObject(BasePotion instance)
         {
-            if (instance is HealingPotions healingPotions)
+            if (instance is HealingPotions healingPotion)
             {
-                healingPotions.Initialize(_player, _inventoryActivePotions, _managerPotion);
-                return healingPotions;
+                healingPotion.Initialize(_player, _inventoryActivePotions, _managerPotion);
+                return healingPotion;
             }
             else if(instance is ExplosivePotion explosivePotion)
             {
@@ -92,6 +97,11 @@ namespace _Project.Potions
             {
                 molotovPotion.Initialize(_player, _inventoryActivePotions, _molotov, _managerPotion, _incendiaryZonePrefab, _textDamage, _dynamic);
                 return molotovPotion;
+            }
+            else if(instance is InvisibilityPotion invisibilityPotion)
+            {
+                invisibilityPotion.Initialize(_player, _inventoryActivePotions, _managerPotion);
+                return invisibilityPotion;
             }
             else
             {

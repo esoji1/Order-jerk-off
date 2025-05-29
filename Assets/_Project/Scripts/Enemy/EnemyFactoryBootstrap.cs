@@ -18,6 +18,7 @@ namespace _Project.Enemy
         [SerializeField] private Transform _mainBuildingPoint;
         [SerializeField] private List<Transform> _points;
         [SerializeField] private ProjectileEnemy _projectile;
+        [SerializeField] private Player.Player _player;
 
         private EnemyFactory _enemyFactory;
 
@@ -27,7 +28,7 @@ namespace _Project.Enemy
         private void Awake()
         {
             _enemyFactory  = new EnemyFactory(_plantPredator, _slime, _magician, _experience, _coin, _healthInfoPrefab, 
-                _healthViewPrefab, _dynamic, _layer, _mainBuildingPoint, _projectile);
+                _healthViewPrefab, _dynamic, _layer, _mainBuildingPoint, _projectile, _player);
         }
     }
 }

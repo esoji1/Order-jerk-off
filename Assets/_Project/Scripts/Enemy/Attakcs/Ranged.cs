@@ -40,7 +40,7 @@ namespace _Project.Enemy.Attakcs
                 return;
             }
 
-            if (WithinAttackRadius(_enemy.Config.VisibilityRadius))
+            if (WithinAttackRadius(_enemy.Config.VisibilityRadius) && _enemy.Player.IsInvisible == false)
             {
                 StartAttack();
             }
@@ -48,7 +48,6 @@ namespace _Project.Enemy.Attakcs
             {
                 StopAttack();
             }
-           
         }
 
         private bool WithinAttackRadius(float radiusAttack)
@@ -85,7 +84,7 @@ namespace _Project.Enemy.Attakcs
             {
                 yield return new WaitForSeconds(1f);
 
-                if (_nearestEnemy != null)
+                if (_nearestEnemy != null && _enemy.Player.IsInvisible == false)
                 {
                     Vector2 direction = (_nearestEnemy.transform.position - _enemy.transform.position).normalized;
                     GameObject bulletGameObject = _spawnProjectile.ProjectileSpawnPoint(_enemy.ProjectileEnemy.gameObject, direction, _enemy.transform);
@@ -97,10 +96,13 @@ namespace _Project.Enemy.Attakcs
 
         private void Move()
         {
-            if (_enemy.RadiusMovementTrigger.MoveToTarget(_enemy.Config.AttackRadius, _enemy.Config.VisibilityRadius))
+            if (_enemy.Player.IsInvisible == false)
             {
-                _enemy.Agent.isStopped = true;
-                return;
+                if (_enemy.RadiusMovementTrigger.MoveToTarget(_enemy.Config.AttackRadius, _enemy.Config.VisibilityRadius))
+                {
+                    _enemy.Agent.isStopped = true;
+                    return;
+                }
             }
 
             if (_enemy.IsMoveRandomPoints)

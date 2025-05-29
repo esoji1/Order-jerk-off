@@ -1899,6 +1899,7 @@ MonoBehaviour:
   _healingConfig: {fileID: 11400000, guid: b7ee95c996f132c4eb229d80972d1e82, type: 2}
   _speedConfig: {fileID: 11400000, guid: 0778f1e5a7ef3f94ea321971f19a9a81, type: 2}
   _molotovCocktailConfig: {fileID: 11400000, guid: f06baf4392aedbd4da9d1220512a48f2, type: 2}
+  _invisibilityConfig: {fileID: 11400000, guid: e1c8c2b795aa2a5418575fdeb25569de, type: 2}
   _player: {fileID: 52823349}
   inventoryActivePotions: {fileID: 1760301063}
   _content: {fileID: 798829399}
@@ -9718,6 +9719,7 @@ MonoBehaviour:
   - {fileID: 66513103}
   - {fileID: 1210350526}
   _projectile: {fileID: 7724614685532098385, guid: 9cb752ce853709840bc68b51d24507e5, type: 3}
+  _player: {fileID: 52823349}
 --- !u!4 &988495890 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3959917959744434865, guid: cdb143806563367459d9495f6419e0d5, type: 3}

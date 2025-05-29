@@ -49,6 +49,7 @@ namespace _Project.Player
         private HealthInfo _healthInfo;
 
         private bool _isMove;
+        private bool _isInvisible;
 
         public event Action<int> OnDamage;
         public event Action OnAddExperience;
@@ -69,6 +70,8 @@ namespace _Project.Player
         public ChoosingUpgrade ChoosingUpgrade => _choosingUpgrade;
         public Weapon.Weapons.Weapon CurrentWeapon => _weapon;
         public ManagerAtrefact ManagerAtrefact => _managerAtrefact;
+        public bool IsInvisible => _isInvisible;
+        public PlayerView PlayerView => _playerView;
 
         private void Update()
         {
@@ -126,6 +129,11 @@ namespace _Project.Player
         public void SetMove(bool value)
         {
             _isMove = value;
+        }
+
+        public void SetInvisible(bool value)
+        {
+            _isInvisible = value;
         }
 
         private void InitializeInside()

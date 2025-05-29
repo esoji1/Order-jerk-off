@@ -13,8 +13,8 @@ namespace _Project.Potions
 
         private ChangeItem _changeItem;
 
-        private Dictionary<TypesPotion, BasePotion> _potionObjects = new Dictionary<TypesPotion, BasePotion>();
-        private Dictionary<TypesPotion, int> _potion = new Dictionary<TypesPotion, int>();
+        private Dictionary<Enum, BasePotion> _potionObjects = new Dictionary<Enum, BasePotion>();
+        private Dictionary<Enum, int> _potion = new Dictionary<Enum, int>();
 
         public void Initialize(ChangeItem changeItem)
         {
@@ -63,114 +63,33 @@ namespace _Project.Potions
 
         private void IdentifyPotionAdd(Enum type)
         {
-            if (type is TypesPotion specificType)
+            if (_potionObjects.ContainsKey(type))
             {
-                switch (specificType)
+                Debug.Log("Снова");
+                _potion[type]++;
+            }
+            else
+            {
+                BasePotion potion = _bootstrapFactoryPotion.Factory.Get((TypesPotion)type);
+                if (potion != null)
                 {
-                    case TypesPotion.Hilka:
-                        if (_potionObjects.ContainsKey(TypesPotion.Hilka))
-                        {
-                            Debug.Log("Снова");
-                            _potion[TypesPotion.Hilka]++;
-                        }
-                        else
-                        {
-                            BasePotion potion = _bootstrapFactoryPotion.Factory.Get(TypesPotion.Hilka);
-                            _potionObjects[TypesPotion.Hilka] = potion;
-                            _potion[TypesPotion.Hilka] = 1;
-                        }
-                        break;
-
-                    case TypesPotion.Explosion:
-                        if (_potionObjects.ContainsKey(TypesPotion.Explosion))
-                        {
-                            Debug.Log("Снова");
-                            _potion[TypesPotion.Explosion]++;
-                        }
-                        else
-                        {
-                            BasePotion potion = _bootstrapFactoryPotion.Factory.Get(TypesPotion.Explosion);
-                            _potionObjects[TypesPotion.Explosion] = potion;
-                            _potion[TypesPotion.Explosion] = 1;
-                        }
-                        break;
-
-                    case TypesPotion.SpeedUp:
-                        if (_potionObjects.ContainsKey(TypesPotion.SpeedUp))
-                        {
-                            Debug.Log("Снова");
-                            _potion[TypesPotion.SpeedUp]++;
-                        }
-                        else
-                        {
-                            BasePotion potion = _bootstrapFactoryPotion.Factory.Get(TypesPotion.SpeedUp);
-                            _potionObjects[TypesPotion.SpeedUp] = potion;
-                            _potion[TypesPotion.SpeedUp] = 1;
-                        }
-                        break;
-
-                    case TypesPotion.MolotovCocktail:
-                        if (_potionObjects.ContainsKey(TypesPotion.MolotovCocktail))
-                        {
-                            Debug.Log("Снова");
-                            _potion[TypesPotion.MolotovCocktail]++;
-                        }
-                        else
-                        {
-                            BasePotion potion = _bootstrapFactoryPotion.Factory.Get(TypesPotion.MolotovCocktail);
-                            _potionObjects[TypesPotion.MolotovCocktail] = potion;
-                            _potion[TypesPotion.MolotovCocktail] = 1;
-                        }
-                        break;
+                    _potionObjects[type] = potion;
+                    _potion[type] = 1;
                 }
             }
         }
 
         private void IdentifyPotionSubstract(Enum type)
         {
-            if (type is TypesPotion specificType)
+            if (_potion.ContainsKey(type))
             {
-                switch (specificType)
+                _potion[type]--;
+
+                if (_potion[type] <= 0)
                 {
-                    case TypesPotion.Hilka:
-                        _potion[TypesPotion.Hilka]--;
-
-                        if (_potion[TypesPotion.Hilka] <= 0)
-                        {
-                            Destroy(_potionObjects[TypesPotion.Hilka].gameObject);
-                            _potionObjects.Remove(TypesPotion.Hilka);
-                        }
-                        break;
-
-                    case TypesPotion.Explosion:
-                        _potion[TypesPotion.Explosion]--;
-
-                        if (_potion[TypesPotion.Explosion] <= 0)
-                        {
-                            Destroy(_potionObjects[TypesPotion.Explosion].gameObject);
-                            _potionObjects.Remove(TypesPotion.Explosion);
-                        }
-                        break;
-
-                    case TypesPotion.SpeedUp:
-                        _potion[TypesPotion.SpeedUp]--;
-
-                        if (_potion[TypesPotion.SpeedUp] <= 0)
-                        {
-                            Destroy(_potionObjects[TypesPotion.SpeedUp].gameObject);
-                            _potionObjects.Remove(TypesPotion.SpeedUp);
-                        }
-                        break;
-
-                    case TypesPotion.MolotovCocktail:
-                        _potion[TypesPotion.MolotovCocktail]--;
-
-                        if (_potion[TypesPotion.MolotovCocktail] <= 0)
-                        {
-                            Destroy(_potionObjects[TypesPotion.MolotovCocktail].gameObject);
-                            _potionObjects.Remove(TypesPotion.MolotovCocktail);
-                        }
-                        break;
+                    Destroy(_potionObjects[type].gameObject);
+                    _potionObjects.Remove(type);
+                    _potion.Remove(type);
                 }
             }
         }

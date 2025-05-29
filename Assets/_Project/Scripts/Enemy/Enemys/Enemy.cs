@@ -28,6 +28,7 @@ namespace _Project.Enemy.Enemys
         private List<Transform> _points;
         private bool _isMoveRandomPoints;
         private Transform _mainBuildingPoint;
+        private Player.Player _player;
 
         private PointExperience _pointExperience;
         private PointHealth _pointHealth;
@@ -64,10 +65,11 @@ namespace _Project.Enemy.Enemys
         public bool IsMoveRandomPoints => _isMoveRandomPoints;
         public RandomMovePoints RandomMovePoints => _movePointsRandom;
         public MoveToPoint MoveToPoint => _moveToPoint;
+        public Player.Player Player => _player; 
 
         public virtual void Initialize(EnemyConfig config, Experience prefabExperience, Coin prefabCoin, HealthInfo healthInfoPrefab, 
             HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, List<Transform> points, bool isMoveRandomPoints, 
-            Transform mainBuildingPoint, EnemyTypes enemyTypes)
+            Transform mainBuildingPoint, EnemyTypes enemyTypes, Player.Player player)
         {
             ExtractComponents();
 
@@ -82,6 +84,7 @@ namespace _Project.Enemy.Enemys
             _isMoveRandomPoints = isMoveRandomPoints;
             _mainBuildingPoint = mainBuildingPoint;
             _enemyTypes = enemyTypes;
+            _player = player;
 
             _agent.updateRotation = false;
             _agent.updateUpAxis = false;

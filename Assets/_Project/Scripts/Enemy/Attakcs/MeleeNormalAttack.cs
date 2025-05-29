@@ -62,7 +62,7 @@ namespace _Project.Enemy.Attakcs
                     float attackAnimationTime = _enemy.EnemyView.Animator.GetCurrentAnimatorStateInfo(0).length;
                     yield return new WaitForSeconds(attackAnimationTime);
 
-                    if (CheckAttackHitRadius())
+                    if (CheckAttackHitRadius() && _enemy.Player.IsInvisible == false)
                         DamageTarget();
 
                     _enemy.EnemyView.StopAttack();
@@ -111,15 +111,18 @@ namespace _Project.Enemy.Attakcs
             _enemy.EnemyView.UpdateRunX(_smoothedDirection.x);
             _enemy.EnemyView.UpdateRunY(_smoothedDirection.y);
 
-            if (CheckAttackHitRadius())
+            if (_enemy.Player.IsInvisible == false)
             {
-                StartAttackIfNeeded();
-            }
+                if (CheckAttackHitRadius())
+                {
+                    StartAttackIfNeeded();
+                }
 
-            if (_enemy.RadiusMovementTrigger.MoveToTarget(_enemy.Config.AttackRadius, _enemy.Config.VisibilityRadius))
-            {
-                _enemy.Agent.isStopped = true;
-                return;
+                if (_enemy.RadiusMovementTrigger.MoveToTarget(_enemy.Config.AttackRadius, _enemy.Config.VisibilityRadius))
+                {
+                    _enemy.Agent.isStopped = true;
+                    return;
+                }
             }
 
             if (_enemy.IsMoveRandomPoints)
