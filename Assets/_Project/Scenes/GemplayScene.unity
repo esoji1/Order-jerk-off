@@ -1901,6 +1901,7 @@ MonoBehaviour:
   _molotovCocktailConfig: {fileID: 11400000, guid: f06baf4392aedbd4da9d1220512a48f2, type: 2}
   _invisibilityConfig: {fileID: 11400000, guid: e1c8c2b795aa2a5418575fdeb25569de, type: 2}
   _sleepingConfig: {fileID: 11400000, guid: bb23e92e328817f4d9ca59e14dca3f6a, type: 2}
+  dealPoisonConfig: {fileID: 11400000, guid: 7c582b3a84561f540a8613c0b1dc2acc, type: 2}
   _player: {fileID: 52823349}
   inventoryActivePotions: {fileID: 1760301063}
   _content: {fileID: 798829399}
@@ -20771,6 +20772,13 @@ MonoBehaviour:
   - {fileID: 8953986749414638352, guid: fa397afa43f84cf45828e0d039292414, type: 3}
   - {fileID: 1062850532427421267, guid: 2a8f523157196be4a85d147bc4c0a78c, type: 3}
   - {fileID: 1595214497868840883, guid: 36fd7264b419cc04a8db3420ef344daa, type: 3}
+  - {fileID: 8489973103164288470, guid: 912490e0c8bc0584496f6e996f888f24, type: 3}
+  - {fileID: 3243667652393692559, guid: d0aa8378ec5799c4eb32eaa7be607655, type: 3}
+  - {fileID: 6715221572466480508, guid: 47c39dbaefee07f408f589519bd245c0, type: 3}
+  - {fileID: 4054385250846307117, guid: f529e6366a870ea4a93e309a2f8f7851, type: 3}
+  - {fileID: 3508112910833085988, guid: 125aaf28956452f4db07494b711a212f, type: 3}
+  - {fileID: 807406741161857788, guid: c328fd2985edd5a42b678cf100b26506, type: 3}
+  - {fileID: 2090450105359729413, guid: 455234aba48fe5c4bb71dffcfe101a91, type: 3}
   IsAddCell: 0
   IsAddItem: 1
 --- !u!4 &2119364610

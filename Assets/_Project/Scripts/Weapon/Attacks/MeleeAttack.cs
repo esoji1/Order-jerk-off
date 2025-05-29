@@ -1,6 +1,8 @@
 using _Project.Core.Interface;
+using _Project.Weapon.Effect;
 using _Project.Weapon.Interface;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace _Project.Weapon.Attacks
@@ -115,6 +117,16 @@ namespace _Project.Weapon.Attacks
                 int randomDamage = Random.Range(_weapon.Config.MinDamage, _weapon.Config.MaxDamage) + _weapon.WeaponData.ExtraDamage;
                 if (_nearestEnemy.TryGetComponent(out Player.Player _) == false)
                     _droppedDamage.SpawnNumber(randomDamage + _weapon.ImprovementWeaponData.Damage, _nearestEnemy.transform);
+
+                if (_weapon.WeaponData.IsDealPoisonDamage)
+                {
+                    if (_nearestEnemy.TryGetComponent(out PoisonEffect poisonEffect))
+                    {
+                        poisonEffect.RefreshDuration();
+                    }
+                    _nearestEnemy.AddComponent<PoisonEffect>();
+                }
+
                 damage.Damage(randomDamage);
             }
         }

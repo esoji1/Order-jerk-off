@@ -1,16 +1,17 @@
 ﻿using _Project.Core;
+using _Project.Potions;
 using System.Collections;
 using UnityEngine;
 
-namespace _Project.Potions
+namespace Assets._Project.Scripts.Potions
 {
-    public class SpeedPotions : BasePotion
+    public class DealPoisonDamage : BasePotion
     {
         private bool _isClick;
 
         private void Awake()
         {
-            PotionType = TypesPotion.SpeedUp;
+            PotionType = TypesPotion.DeadlyPoison;
             _isClick = true;
         }
 
@@ -31,10 +32,11 @@ namespace _Project.Potions
                 yield break;
 
             _isClick = false;
-            Player.CurrentWeapon.WeaponData.ReturnInitialAttackPosition += EffectValue;
+            Player.CurrentWeapon.WeaponData.IsDealPoisonDamage = true;
 
             yield return new WaitForSeconds(SecondaryValue);
-            Player.CurrentWeapon.WeaponData.ReturnInitialAttackPosition = Player.CurrentWeapon.WeaponData.DefaultReturnInitialAttackPosition;
+
+            Player.CurrentWeapon.WeaponData.IsDealPoisonDamage = false;
             _isClick = true;
         }
     }

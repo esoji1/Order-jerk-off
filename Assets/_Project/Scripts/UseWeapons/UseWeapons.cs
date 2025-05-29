@@ -1,6 +1,5 @@
 using _Project.Core;
 using _Project.Improvements;
-using _Project.Inventory.Items;
 using _Project.Weapon;
 using _Project.Weapon.Interface;
 using System;

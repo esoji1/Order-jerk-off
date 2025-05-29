@@ -8,7 +8,8 @@ namespace _Project.Potions
 {
     public class BootstrapFactoryPotion : MonoBehaviour
     {
-        [SerializeField] private PotionConfig _explosionConfig, _healingConfig, _speedConfig, _molotovCocktailConfig, _invisibilityConfig, _sleepingConfig;
+        [SerializeField] private PotionConfig _explosionConfig, _healingConfig, _speedConfig, _molotovCocktailConfig, _invisibilityConfig, _sleepingConfig,
+            dealPoisonConfig;
         [SerializeField] private Player.Player _player;
         [SerializeField] private InventoryActivePotions inventoryActivePotions;
         [SerializeField] private Transform _content;
@@ -27,7 +28,7 @@ namespace _Project.Potions
         private void Awake()
         {
             _factory = new PotionFactory(_explosionConfig, _healingConfig, _speedConfig, _molotovCocktailConfig, _invisibilityConfig, _sleepingConfig,
-                _player, inventoryActivePotions, _content, _bom, _explosion, _managerPotion, _molotov, _incendiaryZonePrefab, _textDamage, _dynamic);
+                dealPoisonConfig, _player, inventoryActivePotions, _content, _bom, _explosion, _managerPotion, _molotov, _incendiaryZonePrefab, _textDamage, _dynamic);
         }
     }
 }

@@ -41,6 +41,7 @@ MonoBehaviour:
   - {fileID: 4179065342020408733, guid: 5801039acd1ec07409d1a53741b63b7c, type: 3}
   - {fileID: 7364092037374558218, guid: 9fcb01f432d022443bc19d00bb359e48, type: 3}
   - {fileID: 5104314375314476544, guid: 88c8b1161d75de34abbed5447ae6efce, type: 3}
+  - {fileID: 8489973103164288470, guid: 912490e0c8bc0584496f6e996f888f24, type: 3}
   <WeaponItems>k__BackingField:
   - {fileID: 4491079388801751820, guid: 619ab93890da3734da3123dad3bed16e, type: 3}
   - {fileID: -8735090903098058742, guid: 3df611a187bf9cf469b63666f6b625e0, type: 3}
@@ -68,6 +69,7 @@ MonoBehaviour:
   - {fileID: 4054385250846307117, guid: f529e6366a870ea4a93e309a2f8f7851, type: 3}
   - {fileID: 6715221572466480508, guid: 47c39dbaefee07f408f589519bd245c0, type: 3}
   - {fileID: 807406741161857788, guid: c328fd2985edd5a42b678cf100b26506, type: 3}
+  - {fileID: 8489973103164288470, guid: 912490e0c8bc0584496f6e996f888f24, type: 3}
   <ArtefactItems>k__BackingField:
   - {fileID: 4179065342020408733, guid: 5801039acd1ec07409d1a53741b63b7c, type: 3}
   - {fileID: 2788265906024122746, guid: 1d0399717189ebe4ea36f14f97fd4a47, type: 3}

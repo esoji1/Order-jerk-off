@@ -4,12 +4,13 @@ using _Project.ScriptableObjects;
 using _Project.Inventory;
 using _Project.Potions.Projectile;
 using TMPro;
+using Assets._Project.Scripts.Potions;
 
 namespace _Project.Potions
 {
     public class PotionFactory
     {
-        private PotionConfig _explosionConfig, _healingConfig, _speedConfig, _molotovCocktail, _invisibilityConfig, _sleepingConfig;
+        private PotionConfig _explosionConfig, _healingConfig, _speedConfig, _molotovCocktail, _invisibilityConfig, _sleepingConfig, _dealPoisonConfig;
         private Player.Player _player;
         private InventoryActivePotions _inventoryActivePotions;
         private Transform _content;
@@ -22,7 +23,7 @@ namespace _Project.Potions
         private Canvas _dynamic;
 
         public PotionFactory(PotionConfig explosionConfig, PotionConfig healingConfig, PotionConfig speedConfig, PotionConfig molotovCocktail,
-            PotionConfig invisibilityConfig, PotionConfig sleepingConfig, Player.Player player, InventoryActivePotions inventoryActivePotions, Transform content,
+            PotionConfig invisibilityConfig, PotionConfig sleepingConfig, PotionConfig dealConfig, Player.Player player, InventoryActivePotions inventoryActivePotions, Transform content,
             ParticleSystem bom, Explosion explosion, ManagerPotion managerPotion, Molotov molotov, IncendiaryZone incendiaryZonePrefab, TextMeshProUGUI textDamage,
             Canvas dynamic)
         {
@@ -32,6 +33,7 @@ namespace _Project.Potions
             _molotovCocktail = molotovCocktail;
             _invisibilityConfig = invisibilityConfig;
             _sleepingConfig = sleepingConfig;
+            _dealPoisonConfig = dealConfig;
             _player = player;
             _inventoryActivePotions = inventoryActivePotions;
             _content = content;
@@ -75,6 +77,9 @@ namespace _Project.Potions
                 case TypesPotion.Sleeping:
                     return _sleepingConfig;
 
+                case TypesPotion.DeadlyPoison:
+                    return _dealPoisonConfig;
+
                 default:
                     throw new ArgumentException(nameof(potionType));
             }
@@ -111,6 +116,11 @@ namespace _Project.Potions
             {
                 sleepingPotion.Initialize(_player, _inventoryActivePotions, _managerPotion);
                 return sleepingPotion;
+            }
+            else if(instance is DealPoisonDamage dealPoisonDamagePotion)
+            {
+                dealPoisonDamagePotion.Initialize(_player, _inventoryActivePotions, _managerPotion);
+                return dealPoisonDamagePotion;
             }
             else
             {
