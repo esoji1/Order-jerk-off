@@ -67,6 +67,7 @@ MonoBehaviour:
   - {fileID: 2090450105359729413, guid: 455234aba48fe5c4bb71dffcfe101a91, type: 3}
   - {fileID: 4054385250846307117, guid: f529e6366a870ea4a93e309a2f8f7851, type: 3}
   - {fileID: 6715221572466480508, guid: 47c39dbaefee07f408f589519bd245c0, type: 3}
+  - {fileID: 807406741161857788, guid: c328fd2985edd5a42b678cf100b26506, type: 3}
   <ArtefactItems>k__BackingField:
   - {fileID: 4179065342020408733, guid: 5801039acd1ec07409d1a53741b63b7c, type: 3}
   - {fileID: 2788265906024122746, guid: 1d0399717189ebe4ea36f14f97fd4a47, type: 3}

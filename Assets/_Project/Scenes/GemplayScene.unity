@@ -1900,6 +1900,7 @@ MonoBehaviour:
   _speedConfig: {fileID: 11400000, guid: 0778f1e5a7ef3f94ea321971f19a9a81, type: 2}
   _molotovCocktailConfig: {fileID: 11400000, guid: f06baf4392aedbd4da9d1220512a48f2, type: 2}
   _invisibilityConfig: {fileID: 11400000, guid: e1c8c2b795aa2a5418575fdeb25569de, type: 2}
+  _sleepingConfig: {fileID: 11400000, guid: bb23e92e328817f4d9ca59e14dca3f6a, type: 2}
   _player: {fileID: 52823349}
   inventoryActivePotions: {fileID: 1760301063}
   _content: {fileID: 798829399}

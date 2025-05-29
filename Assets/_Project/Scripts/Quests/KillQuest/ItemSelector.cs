@@ -51,7 +51,7 @@ namespace _Project.Quests.KillQuest
         private void SpawnGameObject(List<Cell> list)
         {
             Cell cell = Instantiate(_prefabCellItemSelection, _contentItemSelectionWindow.transform);
-            BaseItem rendomBaseItem = _itemData.Items[Random.Range(_itemData.Items.Count - 3, _itemData.Items.Count)];
+            BaseItem rendomBaseItem = _itemData.Items[Random.Range(0, _itemData.Items.Count)];
             BaseItem baseItem = Instantiate(rendomBaseItem, cell.transform);
             ChangeImageSize(baseItem);
             InitializeDataCell(cell, baseItem, rendomBaseItem);

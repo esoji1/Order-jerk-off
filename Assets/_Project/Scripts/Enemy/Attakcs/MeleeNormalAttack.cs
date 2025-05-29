@@ -11,7 +11,7 @@ namespace _Project.Enemy.Attakcs
         private Enemys.Enemy _enemy;
 
         private Coroutine _coroutine;
-        private bool _isAttack; 
+        private bool _isAttack;
         private Collider2D _targetDamage;
         private Vector3 _previousPosition;
         private Vector3 _smoothedDirection;
@@ -24,9 +24,18 @@ namespace _Project.Enemy.Attakcs
         public void Update()
         {
             if (_enemy.IsDie)
+            {
                 return;
+            }
 
             _enemy.HealthView.FollowTargetHealth();
+
+            if (_enemy.IsSleeps)
+            {
+                StopAttackIfNeeded();
+                return;
+            }
+
 
             Move();
         }

@@ -47,6 +47,7 @@ namespace _Project.Enemy.Enemys
         private MoveToPoint _moveToPoint;
 
         private bool _isDie;
+        private bool _isSleeps;
         private EnemyTypes _enemyTypes;
 
         public event Action<int> OnDamage;
@@ -66,6 +67,7 @@ namespace _Project.Enemy.Enemys
         public RandomMovePoints RandomMovePoints => _movePointsRandom;
         public MoveToPoint MoveToPoint => _moveToPoint;
         public Player.Player Player => _player; 
+        public bool IsSleeps => _isSleeps;
 
         public virtual void Initialize(EnemyConfig config, Experience prefabExperience, Coin prefabCoin, HealthInfo healthInfoPrefab, 
             HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, List<Transform> points, bool isMoveRandomPoints, 
@@ -140,6 +142,11 @@ namespace _Project.Enemy.Enemys
                 Destroy(_healthInfo.gameObject);
                 Destroy(_healthView.gameObject);
             }
+        }
+
+        public void SetSleeps(bool value)
+        {
+            _isSleeps = value;
         }
 
         private void ExtractComponents()

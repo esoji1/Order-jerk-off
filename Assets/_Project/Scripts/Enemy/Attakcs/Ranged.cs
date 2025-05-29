@@ -18,7 +18,7 @@ namespace _Project.Enemy.Attakcs
 
         public Ranged(Enemys.Enemy enemy)
         {
-            _enemy = enemy as Enemys.MagicianEnemy; 
+            _enemy = enemy as Enemys.MagicianEnemy;
             _enemyDetectionRadius = new DetectionRadius(_enemy.transform, _enemy.Layer);
             _spawnProjectile = new SpawnProjectile();
         }
@@ -26,9 +26,17 @@ namespace _Project.Enemy.Attakcs
         public void Update()
         {
             if (_enemy.IsDie)
+            {
                 return;
+            }
 
             _enemy.HealthView.FollowTargetHealth();
+
+            if(_enemy.IsSleeps)
+            {
+                StopAttack();
+                return;
+            }
 
             Move();
 
