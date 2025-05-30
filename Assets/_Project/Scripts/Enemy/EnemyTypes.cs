@@ -4,6 +4,7 @@
     {
         PlantPredator = 0,
         Slime,
-        Magician
+        Magician,
+        HeavyBlow
     }
 }

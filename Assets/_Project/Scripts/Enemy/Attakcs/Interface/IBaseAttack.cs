@@ -3,5 +3,6 @@
     public interface IBaseAttack
     {
         void Update();
+        void OnDestroy();
     }
 }

@@ -9707,6 +9707,7 @@ MonoBehaviour:
   _plantPredator: {fileID: 11400000, guid: 5b64719948f362448aee43d32e8ebe6a, type: 2}
   _slime: {fileID: 11400000, guid: 2f7e46cb98aef8c47b3fd7a8190f1ecf, type: 2}
   _magician: {fileID: 11400000, guid: a5b3b7f2ad0a1d842a9304a90ce343e6, type: 2}
+  _heavyBlowEnemy: {fileID: 11400000, guid: 3839192142670b3429dba789610e3866, type: 2}
   _experience: {fileID: 6958486450957830800, guid: 2c9a72e7b1c7a024ebdc6feff4fe4e6d, type: 3}
   _coin: {fileID: 7435567748440869419, guid: 391b593ebdbd6604fb8a8666d64d8c2e, type: 3}
   _healthInfoPrefab: {fileID: 5008849479396532886, guid: f5abdea487e20a741b8f770de5dc31a7, type: 3}
@@ -9722,6 +9723,7 @@ MonoBehaviour:
   - {fileID: 1210350526}
   _projectile: {fileID: 7724614685532098385, guid: 9cb752ce853709840bc68b51d24507e5, type: 3}
   _player: {fileID: 52823349}
+  _circlePrimitiveHeavyAttack: {fileID: 2614642544017514435, guid: 19221ffe77917eb4aa01c7209de59a95, type: 3}
 --- !u!4 &988495890 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3959917959744434865, guid: cdb143806563367459d9495f6419e0d5, type: 3}

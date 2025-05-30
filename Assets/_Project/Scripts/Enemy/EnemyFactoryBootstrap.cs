@@ -8,7 +8,7 @@ namespace _Project.Enemy
 {
     public class EnemyFactoryBootstrap : MonoBehaviour
     {
-        [SerializeField] private EnemyConfig _plantPredator, _slime, _magician;
+        [SerializeField] private EnemyConfig _plantPredator, _slime, _magician, _heavyBlowEnemy;
         [SerializeField] private SelectionGags.Experience _experience;
         [SerializeField] private SelectionGags.Coin _coin;
         [SerializeField] private HealthInfo _healthInfoPrefab;
@@ -19,6 +19,7 @@ namespace _Project.Enemy
         [SerializeField] private List<Transform> _points;
         [SerializeField] private ProjectileEnemy _projectile;
         [SerializeField] private Player.Player _player;
+        [SerializeField] private GameObject _circlePrimitiveHeavyAttack;
 
         private EnemyFactory _enemyFactory;
 
@@ -27,8 +28,8 @@ namespace _Project.Enemy
 
         private void Awake()
         {
-            _enemyFactory  = new EnemyFactory(_plantPredator, _slime, _magician, _experience, _coin, _healthInfoPrefab, 
-                _healthViewPrefab, _dynamic, _layer, _mainBuildingPoint, _projectile, _player);
+            _enemyFactory  = new EnemyFactory(_plantPredator, _slime, _magician, _heavyBlowEnemy, _experience, _coin, _healthInfoPrefab, 
+                _healthViewPrefab, _dynamic, _layer, _mainBuildingPoint, _projectile, _player, _circlePrimitiveHeavyAttack);
         }
     }
 }

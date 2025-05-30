@@ -123,5 +123,9 @@ namespace _Project.Enemy.Attakcs
                 _enemy.MoveToPoint.MovePoints();
             }
         }
+
+        public void OnDestroy()
+        {
+        }
     }
 }

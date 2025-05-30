@@ -31,9 +31,18 @@ namespace _Project.Enemy.Attakcs
                     _attack = new Ranged(_enemy);
                     break;
 
+                case IHeavyAttack heavyAttack:
+                    _attack = new HeavyAttack(_enemy);
+                    break;
+
                 default:
                     throw new ArgumentException($"There is no such type of attack {nameof(_enemy)}");
             }
+        }
+
+        private void OnDestroy()
+        {
+            _attack.OnDestroy();
         }
     }
 }

@@ -1,24 +1,31 @@
 ﻿using _Project.ConstructionBuildings.Buildings;
+using _Project.Core;
 using _Project.Core.Interface;
 using _Project.Enemy.Attakcs.Interface;
+using _Project.Enemy.Enemys;
+using DG.Tweening;
 using System.Collections;
 using UnityEngine;
 
 namespace _Project.Enemy.Attakcs
 {
-    public class MeleeNormalAttack : IBaseAttack
+    public class HeavyAttack : IBaseAttack
     {
-        private Enemys.Enemy _enemy;
+        private HeavyBlowEnemy _enemy;
+
+        private CreatingPrimitive _creatingPrimitive;
 
         private Coroutine _coroutine;
         private bool _isAttack;
         private Collider2D _targetDamage;
-        private Vector3 _previousPosition;
-        private Vector3 _smoothedDirection;
+        private bool _isMove;
+        private Tween _tween;
 
-        public MeleeNormalAttack(Enemys.Enemy enemy)
+        public HeavyAttack(Enemys.Enemy enemy)
         {
-            _enemy = enemy;
+            _enemy = enemy as HeavyBlowEnemy;
+            _creatingPrimitive = new CreatingPrimitive(_enemy.CirclePrimitiveHeavyAttack);
+            _isMove = true;
         }
 
         public void Update()
@@ -36,7 +43,6 @@ namespace _Project.Enemy.Attakcs
                 return;
             }
 
-
             Move();
         }
 
@@ -45,6 +51,7 @@ namespace _Project.Enemy.Attakcs
             if (_coroutine == null)
             {
                 _isAttack = true;
+                _isMove = false;
                 _coroutine = _enemy.StartCoroutine(Attack());
             }
         }
@@ -55,6 +62,7 @@ namespace _Project.Enemy.Attakcs
             {
                 _isAttack = false;
                 _enemy.EnemyView.StopAttack();
+                _isMove = true;
                 _enemy.StopCoroutine(_coroutine);
                 _coroutine = null;
             }
@@ -67,20 +75,26 @@ namespace _Project.Enemy.Attakcs
                 if (CheckAttackHitRadius())
                 {
                     _enemy.EnemyView.StartAttack();
+                    _creatingPrimitive.CreatePrimitive(_targetDamage.transform, 1);
+                    _tween = _creatingPrimitive.SpriteRenderer.DOFade(1, 5f);
 
-                    float attackAnimationTime = _enemy.EnemyView.Animator.GetCurrentAnimatorStateInfo(0).length;
-                    yield return new WaitForSeconds(attackAnimationTime);
+                    yield return new WaitForSeconds(5f);
 
-                    if (CheckAttackHitRadius() && _enemy.Player.IsInvisible == false)
+                    if (CheckHit() && _enemy.Player.IsInvisible == false)
                         DamageTarget();
 
                     _enemy.EnemyView.StopAttack();
 
                     yield return new WaitForSeconds(1);
+
+                    if (_creatingPrimitive.CreatedPrimitive != null)
+                        GameObject.Destroy(_creatingPrimitive.CreatedPrimitive);
+
+                    StopAttackIfNeeded();
                 }
                 else
                 {
-                    StopAttackIfNeeded();
+                    yield return null;
                 }
             }
         }
@@ -101,6 +115,22 @@ namespace _Project.Enemy.Attakcs
             return false;
         }
 
+        private bool CheckHit()
+        {
+            Collider2D[] collider2D = Physics2D.OverlapCircleAll(_creatingPrimitive.CreatedPrimitive.transform.position,
+               _enemy.Config.AttackRadius, _enemy.Layer);
+
+            foreach (Collider2D collider in collider2D)
+            {
+                if (collider.TryGetComponent(out Player.Player _) || collider.TryGetComponent(out BaseBuilding _))
+                {
+                    _targetDamage = collider;
+                    return true;
+                }
+            }
+
+            return false;
+        }
         private void DamageTarget()
         {
             if (_targetDamage == null)
@@ -111,34 +141,32 @@ namespace _Project.Enemy.Attakcs
 
         private void Move()
         {
-            Vector3 currentDirection = (_enemy.transform.position - _previousPosition).normalized;
-
-            _previousPosition = _enemy.transform.position;
-
-            _smoothedDirection = Vector3.Lerp(_smoothedDirection, currentDirection, Time.deltaTime * 10f);
-
-            _enemy.EnemyView.UpdateRunX(_smoothedDirection.x);
-            _enemy.EnemyView.UpdateRunY(_smoothedDirection.y);
-
             if (_enemy.Player.IsInvisible == false)
             {
                 if (CheckAttackHitRadius())
                 {
                     StartAttackIfNeeded();
                 }
-
-                if (_enemy.RadiusMovementTrigger.MoveToTarget(_enemy.Config.AttackRadius, _enemy.Config.VisibilityRadius))
+                if (_isMove)
                 {
-                    _enemy.Agent.isStopped = true;
-                    return;
+                    if (_enemy.RadiusMovementTrigger.MoveToTarget(_enemy.Config.AttackRadius, _enemy.Config.VisibilityRadius))
+                    {
+                        _enemy.Agent.isStopped = true;
+                        return;
+                    }
                 }
             }
-
-            if (_enemy.IsMoveRandomPoints)
+            if (_isMove)
             {
-                _enemy.RandomMovePoints.MovePoints();
+                if (_enemy.IsMoveRandomPoints)
+                {
+                    _enemy.RandomMovePoints.MovePoints();
+                }
             }
-
+            if (_isMove == false)
+            {
+                _enemy.Agent.isStopped = true;
+            }
             if (_enemy.IsMoveRandomPoints == false)
             {
                 _enemy.MoveToPoint.MovePoints();
@@ -147,6 +175,9 @@ namespace _Project.Enemy.Attakcs
 
         public void OnDestroy()
         {
+            _tween.Kill();
+            if (_creatingPrimitive.CreatedPrimitive != null)
+                GameObject.Destroy(_creatingPrimitive.CreatedPrimitive);
         }
     }
 }

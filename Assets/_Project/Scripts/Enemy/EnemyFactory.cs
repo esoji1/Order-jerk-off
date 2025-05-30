@@ -10,7 +10,7 @@ namespace _Project.Enemy
 {
     public class EnemyFactory
     {
-        private EnemyConfig _plantPredator, _slime, _magician;
+        private EnemyConfig _plantPredator, _slime, _magician, _heavyBlowEnemy;
         private SelectionGags.Experience _experience;
         private SelectionGags.Coin _coin;
         private HealthInfo _healthInfoPrefab;
@@ -20,14 +20,16 @@ namespace _Project.Enemy
         private Transform _mainBuildingPoint;
         private ProjectileEnemy _projectile;
         private Player.Player _player;
+        private GameObject _circlePrimitiveHeavyAttack;
 
-        public EnemyFactory(EnemyConfig plantPredator, EnemyConfig slime,EnemyConfig magician, SelectionGags.Experience experience, SelectionGags.Coin coin, 
+        public EnemyFactory(EnemyConfig plantPredator, EnemyConfig slime, EnemyConfig magician, EnemyConfig heavyBlowEnemy, SelectionGags.Experience experience, SelectionGags.Coin coin, 
             HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, Transform mainBuildingPoint,
-            ProjectileEnemy projectile, Player.Player player)
+            ProjectileEnemy projectile, Player.Player player, GameObject circlePrimitiveHeavyAttack)
         {
             _plantPredator = plantPredator;
             _slime = slime;
             _magician = magician;
+            _heavyBlowEnemy = heavyBlowEnemy;
             _experience = experience;
             _coin = coin;
             _healthInfoPrefab = healthInfoPrefab;
@@ -37,6 +39,7 @@ namespace _Project.Enemy
             _mainBuildingPoint = mainBuildingPoint;
             _projectile = projectile;
             _player = player;
+            _circlePrimitiveHeavyAttack = circlePrimitiveHeavyAttack;
         }
 
         public Enemys.Enemy Get(EnemyTypes enemyType, Vector3 position, List<Transform> points, bool _isMoveRandomPoints)
@@ -60,6 +63,9 @@ namespace _Project.Enemy
                 case EnemyTypes.Magician:
                     return _magician;
 
+                case EnemyTypes.HeavyBlow:
+                    return _heavyBlowEnemy;
+
                 default:
                     throw new ArgumentException(nameof(types));
             }
@@ -81,12 +87,19 @@ namespace _Project.Enemy
 
                 return slimeEnemy;
             }
-            else if (instance is MagicianEnemy magician)
+            else if (instance is MagicianEnemy magicianEnemy)
             {
-                magician.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points,
+                magicianEnemy.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points,
                     _isMoveRandomPoints, _mainBuildingPoint, EnemyTypes.Magician, _player, _projectile);
 
-                return magician;
+                return magicianEnemy;
+            }
+            else if (instance is HeavyBlowEnemy heavyBlowEnemy)
+            {
+                heavyBlowEnemy.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points,
+                    _isMoveRandomPoints, _mainBuildingPoint, EnemyTypes.HeavyBlow, _player, _circlePrimitiveHeavyAttack);
+
+                return heavyBlowEnemy;
             }
             else
             {
