@@ -4,7 +4,6 @@ using _Project.Core.Interface;
 using _Project.Enemy.Attakcs.Interface;
 using _Project.Enemy.Enemys;
 using DG.Tweening;
-using System;
 using System.Collections;
 using UnityEngine;
 
