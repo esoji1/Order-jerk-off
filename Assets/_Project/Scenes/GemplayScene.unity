@@ -12120,7 +12120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1307873802
 Transform:
   m_ObjectHideFlags: 0
@@ -13825,7 +13825,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1464838397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15436,7 +15436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemys: {fileID: 11400000, guid: 531e9e7e66b1c244ebbcf69f3394c70d, type: 2}
   _maxEnemy: 2
-  _betweenSpawn: 10
+  _betweenSpawn: 60
   _amountExperienceDropped: 10
   _enemy: []
   _enemyFactoryBootstrap: {fileID: 983878998}

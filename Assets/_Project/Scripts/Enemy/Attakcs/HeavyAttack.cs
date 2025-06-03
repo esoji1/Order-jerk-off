@@ -4,6 +4,7 @@ using _Project.Core.Interface;
 using _Project.Enemy.Attakcs.Interface;
 using _Project.Enemy.Enemys;
 using DG.Tweening;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ namespace _Project.Enemy.Attakcs
 {
     public class HeavyAttack : IBaseAttack
     {
+        private const int MaximumNumberHits = 5;
+
         private HeavyBlowEnemy _enemy;
 
         private CreatingPrimitive _creatingPrimitive;
@@ -20,6 +23,9 @@ namespace _Project.Enemy.Attakcs
         private Collider2D _targetDamage;
         private bool _isMove;
         private Tween _tween;
+        private Tween _tweenMoveAttack;
+        private int _currentNumberHits;
+        private Vector3 _originalPosition;
 
         public HeavyAttack(Enemys.Enemy enemy)
         {
@@ -39,24 +45,24 @@ namespace _Project.Enemy.Attakcs
 
             if (_enemy.IsSleeps)
             {
-                StopAttackIfNeeded();
+                StopHeavyBlowAttack();
                 return;
             }
 
             Move();
         }
 
-        public void StartAttackIfNeeded()
+        public void StartNormalStrikeAttack()
         {
             if (_coroutine == null)
             {
                 _isAttack = true;
                 _isMove = false;
-                _coroutine = _enemy.StartCoroutine(Attack());
+                _coroutine = _enemy.StartCoroutine(NormalStrikeAttack());
             }
         }
 
-        private void StopAttackIfNeeded()
+        private void StopNormalStrikeAttack()
         {
             if (_coroutine != null)
             {
@@ -68,7 +74,29 @@ namespace _Project.Enemy.Attakcs
             }
         }
 
-        private IEnumerator Attack()
+        public void StartHeavyBlowAttack()
+        {
+            if (_coroutine == null)
+            {
+                _isAttack = true;
+                _isMove = false;
+                _coroutine = _enemy.StartCoroutine(HeavyBlowAttack());
+            }
+        }
+
+        private void StopHeavyBlowAttack()
+        {
+            if (_coroutine != null)
+            {
+                _isAttack = false;
+                _enemy.EnemyView.StopAttack();
+                _isMove = true;
+                _enemy.StopCoroutine(_coroutine);
+                _coroutine = null;
+            }
+        }
+
+        private IEnumerator HeavyBlowAttack()
         {
             while (_isAttack && _enemy.IsDie == false)
             {
@@ -81,7 +109,9 @@ namespace _Project.Enemy.Attakcs
                     yield return new WaitForSeconds(5f);
 
                     if (CheckHit() && _enemy.Player.IsInvisible == false)
-                        DamageTarget();
+                        DamageTarget(_enemy.Config.Damage);
+
+                    _currentNumberHits = 0;
 
                     _enemy.EnemyView.StopAttack();
 
@@ -90,11 +120,37 @@ namespace _Project.Enemy.Attakcs
                     if (_creatingPrimitive.CreatedPrimitive != null)
                         GameObject.Destroy(_creatingPrimitive.CreatedPrimitive);
 
-                    StopAttackIfNeeded();
+                    StopHeavyBlowAttack();
                 }
                 else
                 {
                     yield return null;
+                }
+            }
+        }
+
+        private IEnumerator NormalStrikeAttack()
+        {
+            while (_isAttack && _enemy.IsDie == false)
+            {
+                if (CheckAttackHitRadius() && _currentNumberHits < MaximumNumberHits)
+                { 
+                    _originalPosition = _enemy.transform.position;
+                    _tweenMoveAttack = _enemy.transform.DOMove(_targetDamage.transform.position, 0.5f);
+                    yield return _tweenMoveAttack.WaitForCompletion();
+
+                    if (CheckAttackHitRadius() && _enemy.Player.IsInvisible == false)
+                        DamageTarget(20);
+
+                    _currentNumberHits++;
+                    yield return new WaitForSeconds(1.5f);
+
+                    _tweenMoveAttack = _enemy.transform.DOMove(_originalPosition, 0.5f);
+                    yield return _tweenMoveAttack.WaitForCompletion();
+                }
+                else
+                {
+                    StopNormalStrikeAttack();
                 }
             }
         }
@@ -131,12 +187,13 @@ namespace _Project.Enemy.Attakcs
 
             return false;
         }
-        private void DamageTarget()
+
+        private void DamageTarget(int damage)
         {
             if (_targetDamage == null)
                 return;
 
-            _targetDamage.GetComponent<IDamage>().Damage(_enemy.Config.Damage);
+            _targetDamage.GetComponent<IDamage>().Damage(damage);
         }
 
         private void Move()
@@ -145,7 +202,10 @@ namespace _Project.Enemy.Attakcs
             {
                 if (CheckAttackHitRadius())
                 {
-                    StartAttackIfNeeded();
+                    if (_currentNumberHits < MaximumNumberHits)
+                        StartNormalStrikeAttack();
+                    else if (_currentNumberHits >= MaximumNumberHits)
+                        StartHeavyBlowAttack();
                 }
                 if (_isMove)
                 {
@@ -176,6 +236,8 @@ namespace _Project.Enemy.Attakcs
         public void OnDestroy()
         {
             _tween.Kill();
+            _tweenMoveAttack.Kill();
+
             if (_creatingPrimitive.CreatedPrimitive != null)
                 GameObject.Destroy(_creatingPrimitive.CreatedPrimitive);
         }
