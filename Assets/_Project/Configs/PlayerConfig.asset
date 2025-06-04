@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eefdc27bde33a254cb363bef34c13e3d, type: 3}
   m_Name: PlayerConfig
   m_EditorClassIdentifier: 
-  Speed: 2
+  Speed: 4
   RadiusInteractionWithWorld: 0.2
   Health: 100
   LayerEnemy:

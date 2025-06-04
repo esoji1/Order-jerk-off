@@ -7,7 +7,7 @@ namespace _Project.Enemy
     {
         private const string Horizontal = "Horizontal";
         private const string Vertical = "Vertical";
-        private const string Attack = "HeavyBlowAttack";
+        private const string Attack = "Attack";
         private const string Die = "Dies";
 
         private Animator _animator;
