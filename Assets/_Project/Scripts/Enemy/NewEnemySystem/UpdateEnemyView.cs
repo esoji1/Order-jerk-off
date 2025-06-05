@@ -1,30 +1,33 @@
 using _Project.Enemy;
 using UnityEngine;
 
-public class UpdateEnemyView : MonoBehaviour
+namespace _Project.Enemy
 {
-    private EnemyView _enemyView;
-
-    private Vector3 _previousPosition;
-    private Vector3 _smoothedDirection;
-
-    private void Awake()
+    public class UpdateEnemyView : MonoBehaviour
     {
-        _enemyView = GetComponentInChildren<EnemyView>();
-        _enemyView.Initialize();
-    }
+        private EnemyView _enemyView;
 
-    private void Update() => UpdateRotationView();
+        private Vector3 _previousPosition;
+        private Vector3 _smoothedDirection;
 
-    private void UpdateRotationView()
-    {
-        Vector3 currentDirection = (transform.position - _previousPosition).normalized;
+        private void Awake()
+        {
+            _enemyView = GetComponentInChildren<EnemyView>();
+            _enemyView.Initialize();
+        }
 
-        _previousPosition = transform.position;
+        private void Update() => UpdateRotationView();
 
-        _smoothedDirection = Vector3.Lerp(_smoothedDirection, currentDirection, Time.deltaTime * 10f);
+        private void UpdateRotationView()
+        {
+            Vector3 currentDirection = (transform.position - _previousPosition).normalized;
 
-        _enemyView.UpdateRunX(_smoothedDirection.x);
-        _enemyView.UpdateRunY(_smoothedDirection.y);
+            _previousPosition = transform.position;
+
+            _smoothedDirection = Vector3.Lerp(_smoothedDirection, currentDirection, Time.deltaTime * 10f);
+
+            _enemyView.UpdateRunX(_smoothedDirection.x);
+            _enemyView.UpdateRunY(_smoothedDirection.y);
+        }
     }
 }

@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: Enemys
   m_EditorClassIdentifier: 
   GetEnemys:
-  - {fileID: 6645060693120122346, guid: aa31a30fc87af0c4ebb6f4e7cef58b67, type: 3}
-  - {fileID: 9024555812715414904, guid: 8c301c09cd093aa4d9776e26cf283ca1, type: 3}
-  - {fileID: 3848063321786951787, guid: 2ab9b2b49de7b5c4b84a2c0b8fb6f9eb, type: 3}
-  - {fileID: 7477232353417120343, guid: bdeeb9ebee3ad0b4fa644cd332d93401, type: 3}
+  - {fileID: 7321834984733682313, guid: e26ee44e6f3e3ce40a28b3283731765a, type: 3}
+  - {fileID: 6335179252950800134, guid: 6ceb6de62e9063c468cc6fb91e05492d, type: 3}

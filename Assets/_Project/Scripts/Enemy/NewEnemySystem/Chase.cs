@@ -1,66 +1,77 @@
+using _Project.Enemy;
 using _Project.Player;
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(AgentMovement))]
-public class Chase : MonoBehaviour
+namespace _Project.Enemy
 {
-    [SerializeField] private FieldOfView _fov;
-    [SerializeField] private MovementBreaker _movementBreaker;
-
-    private AgentMovement _agent;
-    private Coroutine _corutine;
-
-    private void Awake()
+    [RequireComponent(typeof(AgentMovement))]
+    public class Chase : MonoBehaviour
     {
-        _agent = GetComponent<AgentMovement>();
+        private AgentMovement _agent;
+        private FieldOfView _fov;
+        private MovementBreaker _movementBreaker;
 
-        _fov.OnPlayerSpotted += StartChasing;
-        _fov.OnPlayerLost += StopChasing;
-        _movementBreaker.BreakRequested += TryBreakChase;
-    }
+        private Coroutine _corutine;
 
-    private void OnDestroy()
-    {
-        _fov.OnPlayerSpotted -= StartChasing;
-        _fov.OnPlayerLost -= StopChasing;
-        _movementBreaker.BreakRequested += TryBreakChase;
-    }
-
-    private void StartChasing(Player target)
-    {
-        _movementBreaker.Emit(MovementBreakReasonType.Chase);
-
-        if (_corutine == null)
-            _corutine = StartCoroutine(ChaseRoutine(target));
-    }
-
-    private void StopChasing(Player target)
-    {
-        _movementBreaker.Emit(MovementBreakReasonType.Patrol);
-
-        if (_corutine != null)
+        private void Awake()
         {
-            StopCoroutine(_corutine);
-            _corutine = null;
+            ExtractComponents();
+
+            _fov.OnPlayerSpotted += StartChasing;
+            _fov.OnPlayerLost += StopChasing;
+            _movementBreaker.BreakRequested += TryBreakChase;
         }
-    }
 
-    private IEnumerator ChaseRoutine(Player target)
-    {
-        while (target != null)
+        private void OnDestroy()
         {
-            _agent.Move(target.transform.position);
-            yield return null;
+            _fov.OnPlayerSpotted -= StartChasing;
+            _fov.OnPlayerLost -= StopChasing;
+            _movementBreaker.BreakRequested += TryBreakChase;
         }
-    }
 
-    private void TryBreakChase(MovementBreakReasonType reason)
-    {
-        if (reason is not MovementBreakReasonType.Chase)
+        private void ExtractComponents()
         {
-            StopCoroutine(_corutine);
-            _corutine = null;
+            _agent = GetComponent<AgentMovement>();
+            _fov = GetComponentInChildren<FieldOfView>();
+            _movementBreaker = GetComponent<MovementBreaker>();
+        }
+
+        private void StartChasing(Player.Player target)
+        {
+            _movementBreaker.Emit(MovementBreakReasonType.Chase);
+
+            if (_corutine == null)
+                _corutine = StartCoroutine(ChaseRoutine(target));
+        }
+
+        private void StopChasing(Player.Player target)
+        {
+            _movementBreaker.Emit(MovementBreakReasonType.Patrol);
+
+            if (_corutine != null)
+            {
+                StopCoroutine(_corutine);
+                _corutine = null;
+            }
+        }
+
+        private IEnumerator ChaseRoutine(Player.Player target)
+        {
+            while (target != null)
+            {
+                _agent.Move(target.transform.position);
+                yield return null;
+            }
+        }
+
+        private void TryBreakChase(MovementBreakReasonType reason)
+        {
+            if (reason is not MovementBreakReasonType.Chase)
+            {
+                StopCoroutine(_corutine);
+                _corutine = null;
+            }
         }
     }
 }

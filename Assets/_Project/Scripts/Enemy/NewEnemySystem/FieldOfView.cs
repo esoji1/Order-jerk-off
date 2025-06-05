@@ -1,21 +1,23 @@
-using _Project.Player;
 using System;
 using UnityEngine;
 
-public class FieldOfView : MonoBehaviour
+namespace _Project.Enemy
 {
-    public event Action<Player> OnPlayerSpotted;
-    public event Action<Player> OnPlayerLost;
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    public class FieldOfView : MonoBehaviour
     {
-        if (collision.TryGetComponent(out Player player))
-            OnPlayerSpotted?.Invoke(player);
-    }
+        public event Action<Player.Player> OnPlayerSpotted;
+        public event Action<Player.Player> OnPlayerLost;
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent(out Player player))
-            OnPlayerLost?.Invoke(player);
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent(out Player.Player player))
+                OnPlayerSpotted?.Invoke(player);
+        }
+
+        private void OnTriggerExit2D(Collider2D collision)
+        {
+            if (collision.TryGetComponent(out Player.Player player))
+                OnPlayerLost?.Invoke(player);
+        }
     }
 }

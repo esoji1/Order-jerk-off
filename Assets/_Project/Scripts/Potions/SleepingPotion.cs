@@ -36,7 +36,7 @@ namespace _Project.Potions
 
             foreach (Collider2D collider in collider2D)
             {
-                if (collider.TryGetComponent(out Enemy.Enemys.Enemy enemy))
+                if (collider.TryGetComponent(out Enemy.Enemy enemy))
                 {
                     enemy.SetSleeps(true);
                 }
@@ -48,7 +48,7 @@ namespace _Project.Potions
             {
                 if (collider != null)
                 {
-                    if (collider.TryGetComponent(out Enemy.Enemys.Enemy enemy))
+                    if (collider.TryGetComponent(out Enemy.Enemy enemy))
                     {
                         enemy.SetSleeps(false);
                     }

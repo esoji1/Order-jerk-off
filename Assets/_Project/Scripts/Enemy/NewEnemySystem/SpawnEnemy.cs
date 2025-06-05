@@ -10,7 +10,7 @@ namespace _Project.Enemy
         [SerializeField] private int _maxEnemy;
         [SerializeField] private float _betweenSpawn;
         [SerializeField] private int _amountExperienceDropped;
-        [SerializeField] private List<Enemy.Enemys.Enemy> _enemy;
+        [SerializeField] private List<Enemy> _enemy;
         [SerializeField] private EnemyFactoryBootstrap _enemyFactoryBootstrap;
         [SerializeField] private Experience _experiencePrefab;
         [SerializeField] private List<Transform> _points;
@@ -78,7 +78,7 @@ namespace _Project.Enemy
         private void SpawnEnemyLogic()
         {
             EnemyTypes enemyType = (EnemyTypes)Random.Range(0, _enemys.GetEnemys.Count);
-            Enemy.Enemys.Enemy newEnemy = _enemyFactoryBootstrap.EnemyFactory.Get(EnemyTypes.HeavyBlow, transform.position, _points, true);
+            Enemy newEnemy = _enemyFactoryBootstrap.EnemyFactory.Get(EnemyTypes.Slime, transform.position);
 
             if (newEnemy != null)
                 _enemy.Add(newEnemy);
@@ -86,7 +86,7 @@ namespace _Project.Enemy
 
         private void ClearEnemies()
         {
-            foreach (Enemy.Enemys.Enemy enemy in _enemy)
+            foreach (Enemy enemy in _enemy)
             {
                 if (enemy != null && enemy.gameObject != null)
                 {

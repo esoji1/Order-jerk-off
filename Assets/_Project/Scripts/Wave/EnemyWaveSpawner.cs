@@ -17,7 +17,7 @@ namespace _Project.Wave
 
         private WaveView _waveView;
 
-        private List<Enemy.Enemys.Enemy> _activeEnemies = new();
+        private List<Enemy.Enemy> _activeEnemies = new();
         private int _currentWaveIndex = 0;
         private bool _isSpawning = false;
 
@@ -87,8 +87,8 @@ namespace _Project.Wave
             {
                 for (int i = 0; i < group.Count; i++)
                 {
-                    Enemy.Enemys.Enemy newEnemy = _bootstrapEnemy.EnemyFactory.Get(group.EnemyTypes,
-                        _bootstrapEnemy.Points[UnityEngine.Random.Range(0, _bootstrapEnemy.Points.Count)].position, _bootstrapEnemy.Points, false);
+                    Enemy.Enemy newEnemy = _bootstrapEnemy.EnemyFactory.Get(group.EnemyTypes, 
+                        _bootstrapEnemy.Points[UnityEngine.Random.Range(0, _bootstrapEnemy.Points.Length)].position);
 
                     _activeEnemies.Add(newEnemy);
                     newEnemy.OnEnemyDie += HandleEnemyDeath;
@@ -98,7 +98,7 @@ namespace _Project.Wave
             }
         }
 
-        private void HandleEnemyDeath(Enemy.Enemys.Enemy enemy)
+        private void HandleEnemyDeath(Enemy.Enemy enemy)
         {
             if (_activeEnemies.Contains(enemy))
                 _activeEnemies.Remove(enemy);

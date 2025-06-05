@@ -3,59 +3,64 @@ using _Project.Player;
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent (typeof(AgentMovement))]
-public class MeleeAttack : MonoBehaviour
+namespace _Project.Enemy
 {
-    [SerializeField] private FieldOfViewAttack _fov;
-    [SerializeField] private int _damage; 
-
-    private AgentMovement _agentMovement;
-    private EnemyView _enemyView;
-
-    private Coroutine _coroutine;
-
-    private void Awake()
+    [RequireComponent(typeof(AgentMovement))]
+    public class MeleeAttack : MonoBehaviour
     {
-        _agentMovement = GetComponent<AgentMovement>();
-        _enemyView = GetComponentInChildren<EnemyView>();
-        _enemyView.Initialize();
+        [SerializeField] private int _damage;
 
-        _fov.OnPlayerAttack += StartAttack;
-        _fov.OnPlayerStopAttack += StopAttack;
-    }
+        private EnemyView _enemyView;
+        private FieldOfViewAttack _fovViewAttack;
 
-    private void OnDestroy()
-    {
-        _fov.OnPlayerAttack -= StartAttack;
-        _fov.OnPlayerStopAttack -= StopAttack;
-    }
+        private Coroutine _coroutine;
 
-    private void StartAttack(Player target)
-    {
-        if (_coroutine == null)
+        private void Awake()
         {
-            _coroutine = StartCoroutine(Attack(target));
+            ExtractComponents();
+            _enemyView.Initialize();
+
+            _fovViewAttack.OnPlayerAttack += StartAttack;
+            _fovViewAttack.OnPlayerStopAttack += StopAttack;
         }
-    }
 
-    private void StopAttack(Player target)
-    {
-        if (_coroutine != null)
+        private void OnDestroy()
         {
-            _enemyView.StopAttack();
-            StopCoroutine(_coroutine);
-            _coroutine = null;
+            _fovViewAttack.OnPlayerAttack -= StartAttack;
+            _fovViewAttack.OnPlayerStopAttack -= StopAttack;
         }
-    }
 
-    private IEnumerator Attack(Player target)
-    {
-        while (true)
+        private void ExtractComponents()
         {
-            _enemyView.StartAttack();   
-            float attackAnimationTime = _enemyView.Animator.GetCurrentAnimatorStateInfo(0).length;
-            yield return new WaitForSeconds(attackAnimationTime);
-            target.Damage(20);
+            _enemyView = GetComponentInChildren<EnemyView>();
+            _fovViewAttack = GetComponentInChildren<FieldOfViewAttack>();
+        }
+
+        private void StartAttack(Player.Player target)
+        {
+            if (_coroutine == null)
+                _coroutine = StartCoroutine(Attack(target));
+        }
+
+        private void StopAttack(Player.Player target)
+        {
+            if (_coroutine != null)
+            {
+                _enemyView.StopAttack();
+                StopCoroutine(_coroutine);
+                _coroutine = null;
+            }
+        }
+
+        private IEnumerator Attack(Player.Player target)
+        {
+            while (true)
+            {
+                _enemyView.StartAttack();
+                float attackAnimationTime = _enemyView.Animator.GetCurrentAnimatorStateInfo(0).length;
+                yield return new WaitForSeconds(attackAnimationTime);
+                target.Damage(20);
+            }
         }
     }
 }

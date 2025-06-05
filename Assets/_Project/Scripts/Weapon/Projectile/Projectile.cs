@@ -22,7 +22,7 @@ namespace _Project.Weapon.Projectile
         {
             if (collision.TryGetComponent(out IDamage damage))
             {
-                if (damage is Enemy.Enemys.Enemy enemy)
+                if (damage is Enemy.Enemy enemy)
                 {
                     int randomDamage = Random.Range(_minDamage, _maxDamage) + _extraDamage;
                     _droppedDamage.SpawnNumber(randomDamage, _nearestEnemy.transform);

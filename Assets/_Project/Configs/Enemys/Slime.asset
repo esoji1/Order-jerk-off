@@ -9,14 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04fceb48198d77b4e817dd0ab2d6dcb8, type: 3}
+  m_Script: {fileID: 11500000, guid: 6e492fdd6206099478f7a10f7ff8e889, type: 3}
   m_Name: Slime
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 9024555812715414904, guid: 8c301c09cd093aa4d9776e26cf283ca1, type: 3}
+  Prefab: {fileID: 6335179252950800134, guid: 6ceb6de62e9063c468cc6fb91e05492d, type: 3}
   Health: 50
-  Speed: 1
-  AttackRadius: 0.35
-  VisibilityRadius: 1
+  Speed: 0
+  AttackRadius: 0
+  VisibilityRadius: 0
   AmountExperienceDropped: 10
-  AmountGoldDropped: 10
-  Damage: 5
+  AmountGoldDropped: 5
+  Damage: 0
+  MovementBreakReason: 0100000000000000

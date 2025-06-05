@@ -46,7 +46,7 @@ namespace _Project.Potions.Projectile
 
                 foreach (Collider2D collider in collider2D)
                 {
-                    if (collider.TryGetComponent(out Enemy.Enemys.Enemy enemy))
+                    if (collider.TryGetComponent(out Enemy.Enemy enemy))
                     {
                         enemy.Damage((int)_damage);
                         _droppedDamage.SpawnNumber((int)_damage, enemy.transform);

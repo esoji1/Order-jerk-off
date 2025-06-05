@@ -9,12 +9,12 @@ namespace _Project.Weapon.Effect
         private float _tickInterval = 1f;
         private float _duration = 5f;
 
-        private Enemy.Enemys.Enemy _enemy;
+        private Enemy.Enemy _enemy;
         private Coroutine _damageCoroutine;
 
         private void Awake()
         {
-            _enemy = GetComponent<Enemy.Enemys.Enemy>();
+            _enemy = GetComponent<Enemy.Enemy>();
             _damageCoroutine = StartCoroutine(DealDamageOverTime());
         }
 

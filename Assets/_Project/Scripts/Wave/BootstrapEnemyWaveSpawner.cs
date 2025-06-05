@@ -8,7 +8,7 @@ namespace _Project.Wave
     public class BootstrapEnemyWaveSpawner : MonoBehaviour
     {
         [SerializeField] private List<ScriptableObjects.Configs.Wave> _waves;
-        [SerializeField] private EnemyFactoryBootstrap _bootstrapEnemy;
+        [SerializeField] private _Project.Enemy.EnemyFactoryBootstrap _bootstrapEnemy;
         [SerializeField] private float _timeBetweenWaves = 20f;
         [SerializeField] private TimerBetweenWavesView _timerBetweenWavesView;
         [SerializeField] private EnemyWaveSpawner _enemyWaveSpawner;

@@ -20,7 +20,7 @@ namespace _Project.Potions.Projectile
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out Enemy.Enemys.Enemy _))
+            if (collision.TryGetComponent(out Enemy.Enemy _))
             {
                 Instantiate(_incendiaryZonePrefab, transform.position, Quaternion.identity, null).Initialize(_damage, _radiusAttack, _player,
                     _textDamage, _dynamic);

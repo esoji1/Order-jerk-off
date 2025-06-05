@@ -1,6 +1,9 @@
-﻿public enum MovementBreakReasonType
+﻿namespace _Project.Enemy
 {
-    Patrol = 0,
-    Chase,
-    Manual
+    public enum MovementBreakReasonType
+    {
+        Patrol = 0,
+        Chase,
+        Manual
+    }
 }

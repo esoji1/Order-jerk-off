@@ -1,46 +1,48 @@
-using _Project.Enemy;
 using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AgentMovement : MonoBehaviour
+namespace _Project.Enemy
 {
-    [SerializeField] private float _moveSpeed;
-    [SerializeField] private float _stoppingDistance;
-
-    private NavMeshAgent _agent;
-    
-    public event Action OnReachedDestination;
-
-    public NavMeshAgent Agent => _agent;
-
-    private void Awake()
+    public class AgentMovement : MonoBehaviour
     {
-        _agent = GetComponent<NavMeshAgent>();
+        [SerializeField] private float _moveSpeed;
+        [SerializeField] private float _stoppingDistance;
 
-        _agent.speed = _moveSpeed;
-        _agent.stoppingDistance = _stoppingDistance;
-        _agent.updateRotation = false;
-        _agent.updateUpAxis = false;
-        _agent.acceleration = 30f;
-    }
+        private NavMeshAgent _agent;
 
-    public void Move(Vector3 toDestination)
-    {
-        _agent.SetDestination(toDestination);
-        StartCoroutine(ReachDestination());
-    }
+        public event Action OnReachedDestination;
 
-    private IEnumerator ReachDestination()
-    {
-        yield return new WaitUntil(() =>
+        public NavMeshAgent Agent => _agent;
+
+        private void Awake()
         {
-            float distance = Vector2.Distance(_agent.destination, transform.position);
+            _agent = GetComponent<NavMeshAgent>();
 
-            return distance <= _agent.stoppingDistance;
-        });
+            _agent.speed = _moveSpeed;
+            _agent.stoppingDistance = _stoppingDistance;
+            _agent.updateRotation = false;
+            _agent.updateUpAxis = false;
+            _agent.acceleration = 30f;
+        }
 
-        OnReachedDestination?.Invoke();
+        public void Move(Vector3 toDestination)
+        {
+            _agent.SetDestination(toDestination);
+            StartCoroutine(ReachDestination());
+        }
+
+        private IEnumerator ReachDestination()
+        {
+            yield return new WaitUntil(() =>
+            {
+                float distance = Vector2.Distance(_agent.destination, transform.position);
+
+                return distance <= _agent.stoppingDistance;
+            });
+
+            OnReachedDestination?.Invoke();
+        }
     }
 }
