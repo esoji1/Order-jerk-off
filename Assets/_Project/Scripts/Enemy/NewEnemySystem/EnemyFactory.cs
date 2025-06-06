@@ -8,7 +8,7 @@ namespace _Project.Enemy
 {
     public class EnemyFactory
     {
-        private EnemyConfig _planetPredator, _slime, _distant, _heavy;
+        private EnemyConfig _planetPredator, _slime, _distant, _heavy, _wizard;
         private HealthInfo _healthInfoPrefab;
         private HealthView _healthViewPrefab;
         private Canvas _uiDynamic;
@@ -17,14 +17,15 @@ namespace _Project.Enemy
         private Transform[] _points;
         private Player.Player _player;
 
-        public EnemyFactory(EnemyConfig planet, EnemyConfig slime, EnemyConfig distant, EnemyConfig heavy, HealthInfo healthInfoPrefab, 
-            HealthView healthViewPrefab, Canvas uiDynamic, Experience experiencePrefab, Coin coinPrefab, Transform[] points, 
-            Player.Player player)
+        public EnemyFactory(EnemyConfig planet, EnemyConfig slime, EnemyConfig distant, EnemyConfig heavy, EnemyConfig wizard,
+            HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas uiDynamic, Experience experiencePrefab,
+            Coin coinPrefab, Transform[] points, Player.Player player)
         {
             _planetPredator = planet;
             _slime = slime;
             _distant = distant;
             _heavy = heavy;
+            _wizard = wizard;
             _healthInfoPrefab = healthInfoPrefab;
             _healthViewPrefab = healthViewPrefab;
             _uiDynamic = uiDynamic;
@@ -57,6 +58,9 @@ namespace _Project.Enemy
 
                 case EnemyType.Heavy:
                     return _heavy;
+
+                case EnemyType.Wizard:
+                    return _wizard;
 
                 default:
                     throw new ArgumentException(nameof(types));

@@ -5,6 +5,7 @@
         MeleeAttack = 0,
         RangedAttack,
         HeavyAttack,
+        RangedAreaAttack,
         Manual,
     }
 }

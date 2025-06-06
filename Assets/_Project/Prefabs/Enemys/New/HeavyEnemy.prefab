@@ -334,6 +334,7 @@ MonoBehaviour:
   _fovViewAttack: {fileID: 5924590825430834164}
   _primitivePrefab: {fileID: 2614642544017514435, guid: 19221ffe77917eb4aa01c7209de59a95, type: 3}
   _attackCastTime: 5
+  _radiusAttack: 0.5
 --- !u!1 &3754753308533125970
 GameObject:
   m_ObjectHideFlags: 0

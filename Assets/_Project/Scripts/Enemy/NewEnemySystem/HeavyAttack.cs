@@ -15,6 +15,7 @@ namespace _Project.Enemy
         [SerializeField] private FieldOfViewAttack _fovViewAttack;
         [SerializeField] private GameObject _primitivePrefab;
         [SerializeField] private float _attackCastTime;
+        [SerializeField] private float _radiusAttack;
 
         private Player.Player _player;
 
@@ -72,6 +73,8 @@ namespace _Project.Enemy
 
         private void StartAttack()
         {
+            _attackBreaker.Emit(BreakerEnemyType.HeavyAttack);
+
             if (_coroutine == null && _isAttack == false)
                 _coroutine = StartCoroutine(Attack());
         }
@@ -79,6 +82,7 @@ namespace _Project.Enemy
         private void StopAttack()
         {
             _reasonCompleteStopMovement.Emit(MovementBreakReasonType.Chase);
+            _attackBreaker.Emit(BreakerEnemyType.RangedAreaAttack);
             StopCorourine();
         }
 
@@ -105,12 +109,10 @@ namespace _Project.Enemy
                 _creatingPrimitive.CreatePrimitive(_player.transform, 1);
                 _tween = _creatingPrimitive.SpriteRenderer.DOFade(1, _attackCastTime);
 
-                yield return new WaitForSeconds(_attackCastTime);
+                yield return _tween.WaitForCompletion();
 
                 if (CheckAttackHitRadius())
                     _player.Damage(_damage);
-
-                //_currentNumberHits = 0;
 
                 _enemyView.StopAttack();
 
@@ -123,7 +125,7 @@ namespace _Project.Enemy
 
         private bool CheckAttackHitRadius()
         {
-            Collider2D[] collider2D = Physics2D.OverlapCircleAll(_creatingPrimitive.CreatedPrimitive.transform.position, 0.3f,
+            Collider2D[] collider2D = Physics2D.OverlapCircleAll(_creatingPrimitive.CreatedPrimitive.transform.position, _radiusAttack,
                 Layers.LayerPlayer);
 
             foreach (Collider2D collider in collider2D)
@@ -148,10 +150,10 @@ namespace _Project.Enemy
 
         private void TryBreakMeleeAttack(BreakerEnemyType type)
         {
-            //if (type is not BreakerEnemyType.HeavyAttack)
-            //{
-            //    StopCorourine();
-            //}
+            if (type is not BreakerEnemyType.HeavyAttack)
+            {
+                StopCorourine();
+            }
         }
     }
 }
