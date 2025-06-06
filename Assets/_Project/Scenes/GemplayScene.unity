@@ -9860,6 +9860,7 @@ MonoBehaviour:
   _planet: {fileID: 11400000, guid: 0fea355dfc940954988345b745016a00, type: 2}
   _slime: {fileID: 11400000, guid: 2f7e46cb98aef8c47b3fd7a8190f1ecf, type: 2}
   distant: {fileID: 11400000, guid: b2bfb9fdb07f701458ea8d581ce15d02, type: 2}
+  heavy: {fileID: 11400000, guid: 64cc549d8aec26144bd8ec2f28f07734, type: 2}
   _healthInfoPrefab: {fileID: 5008849479396532886, guid: f5abdea487e20a741b8f770de5dc31a7, type: 3}
   _healthViewPrefab: {fileID: 633073849527231201, guid: 3297335f90dc9d24dbe4664cc3e5f053, type: 3}
   _uiDynamic: {fileID: 8108546}
@@ -11255,6 +11256,56 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2094600879}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1215009582
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1215009583}
+  - component: {fileID: 1215009584}
+  m_Layer: 0
+  m_Name: Layers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1215009583
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215009582}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1221726868}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1215009584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215009582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 570831d259fb8ec438f37c1e8c1279f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _layerPlayer:
+    serializedVersion: 2
+    m_Bits: 256
+  _layerEnemy:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &1221726867
 GameObject:
   m_ObjectHideFlags: 0
@@ -11308,6 +11359,7 @@ Transform:
   - {fileID: 485452400}
   - {fileID: 1946215978}
   - {fileID: 2059629078}
+  - {fileID: 1215009583}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1226185755
@@ -15432,8 +15484,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemys: {fileID: 11400000, guid: 531e9e7e66b1c244ebbcf69f3394c70d, type: 2}
-  _maxEnemy: 2
-  _betweenSpawn: 20
+  _maxEnemy: 5
+  _betweenSpawn: 30
   _amountExperienceDropped: 10
   _enemy: []
   _enemyFactoryBootstrap: {fileID: 1025630777}

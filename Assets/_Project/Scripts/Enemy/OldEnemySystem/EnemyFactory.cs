@@ -43,7 +43,7 @@
 //            _circlePrimitiveHeavyAttack = circlePrimitiveHeavyAttack;
 //        }
 
-//        public Enemys.Enemy Get(EnemyTypes enemyType, Vector3 position, List<Transform> points, bool _isMoveRandomPoints)
+//        public Enemys.Enemy Get(EnemyType enemyType, Vector3 position, List<Transform> points, bool _isMoveRandomPoints)
 //        {
 //            ScriptableObjects.Configs.EnemyConfig config = GetConfigBy(enemyType);
 //            Enemys.Enemy instance = UnityEngine.Object.Instantiate(config.Prefab, position, Quaternion.identity, null);
@@ -51,20 +51,20 @@
 //            return baseEnemy;
 //        }
 
-//        private ScriptableObjects.Configs.EnemyConfig GetConfigBy(EnemyTypes types)
+//        private ScriptableObjects.Configs.EnemyConfig GetConfigBy(EnemyType types)
 //        {
 //            switch (types)
 //            {
-//                case EnemyTypes.PlantPredator:
+//                case EnemyType.PlantPredator:
 //                    return _plantPredator;
 
-//                case EnemyTypes.Slime:
+//                case EnemyType.Slime:
 //                    return _slime;
 
-//                case EnemyTypes.Magician:
+//                case EnemyType.Magician:
 //                    return _magician;
 
-//                case EnemyTypes.HeavyBlow:
+//                case EnemyType.HeavyBlow:
 //                    return _heavyBlowEnemy;
 
 //                default:
@@ -77,28 +77,28 @@
 //            if (instance is PlantPredatorEnemy plantPredatorEnemy)
 //            {
 //                plantPredatorEnemy.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points,
-//                    _isMoveRandomPoints, _mainBuildingPoint, EnemyTypes.PlantPredator, _player);
+//                    _isMoveRandomPoints, _mainBuildingPoint, EnemyType.PlantPredator, _player);
 
 //                return plantPredatorEnemy;
 //            }
 //            else if(instance is SlimeEnemy slimeEnemy)
 //            {
 //                slimeEnemy.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points,
-//                    _isMoveRandomPoints, _mainBuildingPoint, EnemyTypes.Slime, _player);
+//                    _isMoveRandomPoints, _mainBuildingPoint, EnemyType.Slime, _player);
 
 //                return slimeEnemy;
 //            }
 //            else if (instance is MagicianEnemy magicianEnemy)
 //            {
 //                magicianEnemy.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points,
-//                    _isMoveRandomPoints, _mainBuildingPoint, EnemyTypes.Magician, _player, _projectile);
+//                    _isMoveRandomPoints, _mainBuildingPoint, EnemyType.Magician, _player, _projectile);
 
 //                return magicianEnemy;
 //            }
 //            else if (instance is HeavyBlowEnemy heavyBlowEnemy)
 //            {
 //                heavyBlowEnemy.Initialize(config, _experience, _coin, _healthInfoPrefab, _healthViewPrefab, _dynamic, _layer, points,
-//                    _isMoveRandomPoints, _mainBuildingPoint, EnemyTypes.HeavyBlow, _player, _circlePrimitiveHeavyAttack);
+//                    _isMoveRandomPoints, _mainBuildingPoint, EnemyType.HeavyBlow, _player, _circlePrimitiveHeavyAttack);
 
 //                return heavyBlowEnemy;
 //            }

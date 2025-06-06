@@ -8,7 +8,7 @@ namespace _Project.Enemy
 {
     public class EnemyFactory
     {
-        private EnemyConfig _planetPredator, _slime, _distant;
+        private EnemyConfig _planetPredator, _slime, _distant, _heavy;
         private HealthInfo _healthInfoPrefab;
         private HealthView _healthViewPrefab;
         private Canvas _uiDynamic;
@@ -17,12 +17,14 @@ namespace _Project.Enemy
         private Transform[] _points;
         private Player.Player _player;
 
-        public EnemyFactory(EnemyConfig planet, EnemyConfig slime, EnemyConfig distant, HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas uiDynamic, Experience experiencePrefab,
-            Coin coinPrefab, Transform[] points, Player.Player player)
+        public EnemyFactory(EnemyConfig planet, EnemyConfig slime, EnemyConfig distant, EnemyConfig heavy, HealthInfo healthInfoPrefab, 
+            HealthView healthViewPrefab, Canvas uiDynamic, Experience experiencePrefab, Coin coinPrefab, Transform[] points, 
+            Player.Player player)
         {
             _planetPredator = planet;
             _slime = slime;
             _distant = distant;
+            _heavy = heavy;
             _healthInfoPrefab = healthInfoPrefab;
             _healthViewPrefab = healthViewPrefab;
             _uiDynamic = uiDynamic;
@@ -32,7 +34,7 @@ namespace _Project.Enemy
             _player = player;
         }
 
-        public Enemy Get(EnemyTypes enemyType, Vector3 position)
+        public Enemy Get(EnemyType enemyType, Vector3 position)
         {
             EnemyConfig config = GetConfigBy(enemyType);
             Enemy instance = UnityEngine.Object.Instantiate(config.Prefab, position, Quaternion.identity, null);
@@ -40,18 +42,21 @@ namespace _Project.Enemy
             return baseEnemy;
         }
 
-        private EnemyConfig GetConfigBy(EnemyTypes types)
+        private EnemyConfig GetConfigBy(EnemyType types)
         {
             switch (types)
             {
-                case EnemyTypes.PlantPredator:
+                case EnemyType.PlantPredator:
                     return _planetPredator;
 
-                case EnemyTypes.Slime:
+                case EnemyType.Slime:
                     return _slime;
 
-                case EnemyTypes.Distant:
+                case EnemyType.Distant:
                     return _distant;
+
+                case EnemyType.Heavy:
+                    return _heavy;
 
                 default:
                     throw new ArgumentException(nameof(types));
@@ -63,7 +68,7 @@ namespace _Project.Enemy
             InitializePathSearch(instance, config);
             InitializeFoundObjectsNeedsPlayer(instance);
 
-            instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, EnemyTypes.PlantPredator, _experiencePrefab, _coinPrefab);
+            instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, EnemyType.PlantPredator, _experiencePrefab, _coinPrefab);
             return instance;
         }
 

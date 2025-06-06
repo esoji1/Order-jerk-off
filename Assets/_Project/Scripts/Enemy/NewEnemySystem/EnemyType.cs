@@ -1,10 +1,10 @@
 ﻿namespace _Project.Enemy
 {
-    public enum EnemyTypes
+    public enum EnemyType
     {
         PlantPredator = 0,
         Slime,
         Distant,
-        HeavyBlow
+        Heavy
     }
 }

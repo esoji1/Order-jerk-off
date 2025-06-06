@@ -592,6 +592,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 15
+  _fovViewAttack: {fileID: 5817428995414203722}
 --- !u!114 &7771384778956005473
 MonoBehaviour:
   m_ObjectHideFlags: 0

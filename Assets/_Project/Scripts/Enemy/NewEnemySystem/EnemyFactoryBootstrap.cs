@@ -6,7 +6,7 @@ namespace _Project.Enemy
 {
     public class EnemyFactoryBootstrap : MonoBehaviour
     {
-        [SerializeField] private EnemyConfig _planet, _slime, distant;
+        [SerializeField] private EnemyConfig _planet, _slime, distant, heavy;
         [SerializeField] private HealthInfo _healthInfoPrefab;
         [SerializeField] private HealthView _healthViewPrefab;
         [SerializeField] private Canvas _uiDynamic;
@@ -22,7 +22,7 @@ namespace _Project.Enemy
 
         private void Awake()
         {
-            _enemyFactory = new EnemyFactory(_planet, _slime, distant, _healthInfoPrefab, _healthViewPrefab, _uiDynamic, _experiencePrefab, _coinPrefab,
+            _enemyFactory = new EnemyFactory(_planet, _slime, distant, heavy, _healthInfoPrefab, _healthViewPrefab, _uiDynamic, _experiencePrefab, _coinPrefab,
                 _points, _player);
         }
     }

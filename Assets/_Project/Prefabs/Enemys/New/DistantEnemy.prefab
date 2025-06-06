@@ -327,7 +327,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 2
+  m_Radius: 2.5
 --- !u!114 &5772971979711472188
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -496,7 +496,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1.8
+  m_Radius: 2.5
 --- !u!114 &8532822818840569627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,6 +528,7 @@ GameObject:
   - component: {fileID: 3121918045117768980}
   - component: {fileID: 1921469899169421871}
   - component: {fileID: 2633152652216126054}
+  - component: {fileID: 1325604194598457883}
   m_Layer: 7
   m_Name: DistantEnemy
   m_TagString: Untagged
@@ -584,7 +585,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -635,7 +636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 1
-  _stoppingDistance: 3
+  _stoppingDistance: 1.5
 --- !u!114 &623964578054018703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -713,6 +714,7 @@ MonoBehaviour:
   projectileEnemyPrefab: {fileID: 7724614685532098385, guid: 9cb752ce853709840bc68b51d24507e5, type: 3}
   _damage: 15
   _attackInterval: 1
+  _fovViewAttack: {fileID: 8532822818840569627}
 --- !u!114 &2633152652216126054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -723,5 +725,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e0ba2e201de2f10408a72a3d246f5ad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1325604194598457883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8925363055234060541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653d27bdb1a8b8e47a841f500d5c4905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

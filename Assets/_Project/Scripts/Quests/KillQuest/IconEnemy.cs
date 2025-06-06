@@ -8,6 +8,6 @@ namespace _Project.Quests.KillQuest
     public class IconEnemy
     {
         public GameObject Icon;
-        public EnemyTypes EnemyTypes;
+        public EnemyType EnemyTypes;
     }
 }

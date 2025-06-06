@@ -1,16 +1,19 @@
+using Assets._Project.Scripts.Enemy;
 using System.Collections;
 using UnityEngine;
 
 namespace _Project.Enemy
 {
-    [RequireComponent(typeof(AgentMovement), typeof(MovementBreaker))]
+    [RequireComponent(typeof(AgentMovement), typeof(MovementBreaker), typeof(ReasonCompleteStopMovement))]
     public class Chase : MonoBehaviour
     {
         private AgentMovement _agent;
         private FieldOfView _fov;
         private MovementBreaker _movementBreaker;
+        private ReasonCompleteStopMovement _reasonCompleteStopMovement;
 
         private Coroutine _corutine;
+        private bool _isMove;
 
         private void Awake()
         {
@@ -19,13 +22,15 @@ namespace _Project.Enemy
             _fov.OnPlayerSpotted += StartChasing;
             _fov.OnPlayerLost += StopChasing;
             _movementBreaker.BreakRequested += TryBreakChase;
+            _reasonCompleteStopMovement.BreakRequested += StopMovementCompletely;
         }
 
         private void OnDestroy()
         {
             _fov.OnPlayerSpotted -= StartChasing;
             _fov.OnPlayerLost -= StopChasing;
-            _movementBreaker.BreakRequested += TryBreakChase;
+            _movementBreaker.BreakRequested -= TryBreakChase;
+            _reasonCompleteStopMovement.BreakRequested -= StopMovementCompletely;
         }
 
         private void ExtractComponents()
@@ -33,13 +38,14 @@ namespace _Project.Enemy
             _agent = GetComponent<AgentMovement>();
             _fov = GetComponentInChildren<FieldOfView>();
             _movementBreaker = GetComponent<MovementBreaker>();
+            _reasonCompleteStopMovement = GetComponent<ReasonCompleteStopMovement>();
         }
 
         private void StartChasing(Player.Player target)
         {
             _movementBreaker.Emit(MovementBreakReasonType.Chase);
 
-            if (_corutine == null)
+            if (_corutine == null && _isMove == false)
                 _corutine = StartCoroutine(ChaseRoutine(target));
         }
 
@@ -47,6 +53,11 @@ namespace _Project.Enemy
         {
             _movementBreaker.Emit(MovementBreakReasonType.Patrol);
 
+            StopCoroutine();
+        }
+
+        private void StopCoroutine()
+        {
             if (_corutine != null)
             {
                 StopCoroutine(_corutine);
@@ -67,8 +78,21 @@ namespace _Project.Enemy
         {
             if (reason is not MovementBreakReasonType.Chase)
             {
-                StopCoroutine(_corutine);
-                _corutine = null;
+                StopCoroutine();
+            }
+        }
+
+        private void StopMovementCompletely(MovementBreakReasonType type)
+        {
+            if (type is MovementBreakReasonType.Manual)
+            {
+                _isMove = true;
+                StopCoroutine();
+            }
+            else if(type is MovementBreakReasonType.Chase)
+            {
+                _reasonCompleteStopMovement.Emit(MovementBreakReasonType.Patrol);
+                _isMove = false;
             }
         }
     }

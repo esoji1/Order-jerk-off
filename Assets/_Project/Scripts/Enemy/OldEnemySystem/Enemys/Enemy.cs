@@ -48,7 +48,7 @@
 
 //        private bool _isDie;
 //        private bool _isSleeps;
-//        private EnemyTypes _enemyTypes;
+//        private EnemyType _enemyTypes;
 
 //        public event Action<int> OnDamage;
 //        public event Action<Enemy> OnEnemyDie;
@@ -71,7 +71,7 @@
 
 //        public virtual void Initialize(ScriptableObjects.Configs.EnemyConfig config, Experience prefabExperience, Coin prefabCoin, HealthInfo healthInfoPrefab, 
 //            HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, List<Transform> points, bool isMoveRandomPoints, 
-//            Transform mainBuildingPoint, EnemyTypes enemyTypes, Player.Player player)
+//            Transform mainBuildingPoint, EnemyType enemyTypes, Player.Player player)
 //        {
 //            ExtractComponents();
 

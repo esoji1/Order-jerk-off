@@ -1,9 +1,9 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 namespace _Project.Enemy
 {
-    public class ReasonCompleteStopAttack : MonoBehaviour
+    public class AttackBreaker : MonoBehaviour
     {
         public event Action<BreakerEnemyType> BreakRequested;
 

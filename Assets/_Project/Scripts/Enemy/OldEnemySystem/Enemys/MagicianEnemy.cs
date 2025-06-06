@@ -15,7 +15,7 @@
 
 //        public void Initialize(ScriptableObjects.Configs.EnemyConfig config, SelectionGags.Experience prefabExperience, SelectionGags.Coin prefabCoin,
 //            HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas dynamic, LayerMask layer, List<Transform> points, 
-//            bool isMoveRandomPoints, Transform mainBuildingPoint, EnemyTypes enemyTypes, Player.Player player, ProjectileEnemy projectileEnemy)
+//            bool isMoveRandomPoints, Transform mainBuildingPoint, EnemyType enemyTypes, Player.Player player, ProjectileEnemy projectileEnemy)
 //        {
 //            base.Initialize(config, prefabExperience, prefabCoin, healthInfoPrefab, healthViewPrefab, dynamic, layer, points,
 //                isMoveRandomPoints, mainBuildingPoint, enemyTypes, player);

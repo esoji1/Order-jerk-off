@@ -19,12 +19,12 @@ namespace _Project.Quests.KillQuest
             int chosenDifficulty = (randomQuestDifficulty > MaxNumberQuest || randomQuestDifficulty < MinNumberQuest) 
                 ? Random.Range(MinNumberQuest, MaxNumberQuest) : randomQuestDifficulty;
 
-            EnemyTypes[] allEnemyTypes = (EnemyTypes[])Enum.GetValues(typeof(EnemyTypes));
+            EnemyType[] allEnemyTypes = (EnemyType[])Enum.GetValues(typeof(EnemyType));
 
             int maxPossibleQuests = Math.Min(chosenDifficulty, allEnemyTypes.Length);
             _currentQuest = new KillQuestData[maxPossibleQuests];
 
-            EnemyTypes[] shuffledEnemyTypes = allEnemyTypes.OrderBy(x => Random.value).ToArray();
+            EnemyType[] shuffledEnemyTypes = allEnemyTypes.OrderBy(x => Random.value).ToArray();
 
             for (int i = 0; i < _currentQuest.Length; i++)
             {

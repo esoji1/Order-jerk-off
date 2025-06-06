@@ -4,16 +4,17 @@ using UnityEngine;
 
 namespace _Project.Enemy
 {
-    [RequireComponent(typeof(ReasonCompleteStopAttack))]
+    [RequireComponent(typeof(ReasonCompleteStopAttack), typeof(AttackBreaker))]
     public class MeleeAttack : MonoBehaviour, IInitializePlayer
     {
         [SerializeField] private int _damage;
+        [SerializeField] private FieldOfViewAttack _fovViewAttack;
 
         private Player.Player _player;
 
         private EnemyView _enemyView;
-        private FieldOfViewAttack _fovViewAttack;
         private ReasonCompleteStopAttack _reasonCompleteStopAttack;
+        private AttackBreaker _attackBreaker;
 
         private Coroutine _coroutine;
         private bool _isAttack;
@@ -26,6 +27,7 @@ namespace _Project.Enemy
             _fovViewAttack.OnPlayerAttack += StartAttack;
             _fovViewAttack.OnPlayerStopAttack += StopAttack;
             _reasonCompleteStopAttack.BreakRequested += StopAttackCompletely;
+            _attackBreaker.BreakRequested += TryBreakMeleeAttack;
         }
 
         private void OnDestroy()
@@ -33,6 +35,7 @@ namespace _Project.Enemy
             _fovViewAttack.OnPlayerAttack -= StartAttack;
             _fovViewAttack.OnPlayerStopAttack -= StopAttack;
             _reasonCompleteStopAttack.BreakRequested -= StopAttackCompletely;
+            _attackBreaker.BreakRequested -= TryBreakMeleeAttack;
         }
 
         public void Initialize(Player.Player player) => _player = player;
@@ -40,17 +43,26 @@ namespace _Project.Enemy
         private void ExtractComponents()
         {
             _enemyView = GetComponentInChildren<EnemyView>();
-            _fovViewAttack = GetComponentInChildren<FieldOfViewAttack>();
             _reasonCompleteStopAttack = GetComponent<ReasonCompleteStopAttack>();
+            _attackBreaker = GetComponent<AttackBreaker>();
         }
 
         private void StartAttack()
         {
+            _attackBreaker.Emit(BreakerEnemyType.MeleeAttack);
+
             if (_coroutine == null && _isAttack == false)
                 _coroutine = StartCoroutine(Attack());
         }
 
         private void StopAttack()
+        {
+            _attackBreaker.Emit(BreakerEnemyType.RangedAttack);
+
+            StopCorourine();
+        }
+
+        private void StopCorourine()
         {
             if (_coroutine != null)
             {
@@ -71,17 +83,20 @@ namespace _Project.Enemy
             }
         }
 
-        private void StopAttackCompletely(ReasonCompleteStopAttackType type)
+        private void StopAttackCompletely(BreakerEnemyType type)
         {
-            if (type is not ReasonCompleteStopAttackType.MeleeAttack)
+            if (type is not BreakerEnemyType.MeleeAttack)
             {
                 _isAttack = true;
-                StopAttack();
+                StopCorourine();
             }
-            else if(type is ReasonCompleteStopAttackType.MeleeAttack)
+        }
+
+        private void TryBreakMeleeAttack(BreakerEnemyType type)
+        {
+            if (type is not BreakerEnemyType.MeleeAttack)
             {
-                _isAttack = false;
-                StartAttack();
+                StopCorourine();
             }
         }
     }

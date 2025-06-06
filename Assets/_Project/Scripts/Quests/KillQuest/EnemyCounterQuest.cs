@@ -8,7 +8,7 @@ namespace _Project.Quests.KillQuest
     {
         private static EnemyCounterQuest _instance;
 
-        public Dictionary<EnemyTypes, int> EnemyKillCount = new Dictionary<EnemyTypes, int>();
+        public Dictionary<EnemyType, int> EnemyKillCount = new Dictionary<EnemyType, int>();
 
         public event Action OnAddKill;
 
@@ -24,7 +24,7 @@ namespace _Project.Quests.KillQuest
             }
         }
 
-        public void AddKill(EnemyTypes type)
+        public void AddKill(EnemyType type)
         {
             if (EnemyKillCount.ContainsKey(type))
             {

@@ -7,6 +7,6 @@ namespace _Project.Quests.KillQuest
     public class KillQuestData
     {
         public int RequiredKills;
-        public EnemyTypes TargetEnemyType;
+        public EnemyType TargetEnemyType;
     }
 }

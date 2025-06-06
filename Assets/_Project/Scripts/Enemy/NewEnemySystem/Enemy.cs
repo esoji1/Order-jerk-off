@@ -16,7 +16,7 @@ namespace _Project.Enemy
         private HealthView _healthViewPrefab;
         private Canvas _uiDynamic;
         private EnemyConfig _enemyConfig;
-        private EnemyTypes _enemyTypes;
+        private EnemyType _enemyTypes;
 
         private Health _health;
         private SpawnExperience _spawnExperience;
@@ -29,6 +29,7 @@ namespace _Project.Enemy
         private PointExperience _pointExperience;
         private PointCoin _pointCoin;
         private ReasonCompleteStopAttack _reasonCompleteStopAttack;
+        private ReasonCompleteStopMovement _reasonCompleteStopMovement;
 
         private HealthInfo _healthInfo;
         private HealthView _healthView;
@@ -53,7 +54,7 @@ namespace _Project.Enemy
         }
 
         public void Initialize(HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas uiDynamic, EnemyConfig enemyConfig,
-            EnemyTypes enemyTypes, Experience _experiencePrefab, Coin coinPrefab)
+            EnemyType enemyTypes, Experience _experiencePrefab, Coin coinPrefab)
         {
             ExtractComponents();
 
@@ -90,9 +91,9 @@ namespace _Project.Enemy
             _spawnExperience.Spawn(_pointExperience.transform);
             _spawnCoin.Spawn(_pointCoin.transform);
             _isDie = true;
-            _agentMovement.Agent.isStopped = true;
+            _reasonCompleteStopMovement.Emit(MovementBreakReasonType.Manual);
             _boxCollider2D.enabled = false;
-            _reasonCompleteStopAttack.Emit(ReasonCompleteStopAttackType.Manual);
+            _reasonCompleteStopAttack.Emit(BreakerEnemyType.Manual);
             _enemyView.StartDie();
             OnEnemyDie?.Invoke(this);
             EnemyCounterQuest.Instance.AddKill(_enemyTypes);
@@ -120,6 +121,7 @@ namespace _Project.Enemy
             _pointExperience = GetComponentInChildren<PointExperience>();
             _pointCoin = GetComponentInChildren<PointCoin>();
             _reasonCompleteStopAttack = GetComponent<ReasonCompleteStopAttack>();
+            _reasonCompleteStopMovement = GetComponent<ReasonCompleteStopMovement>();
         }
     }
 }

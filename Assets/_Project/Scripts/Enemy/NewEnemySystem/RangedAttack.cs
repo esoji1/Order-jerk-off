@@ -5,20 +5,21 @@ using UnityEngine;
 
 namespace _Project.Enemy
 {
-    [RequireComponent(typeof(ReasonCompleteStopAttack))]
+    [RequireComponent(typeof(ReasonCompleteStopAttack), typeof(AttackBreaker))]
     public class RangedAttack : MonoBehaviour, IInitializePlayer
     {
         [SerializeField] private ProjectileEnemy projectileEnemyPrefab;
         [SerializeField] private int _damage;
         [SerializeField] private float _attackInterval;
+        [SerializeField] private FieldOfViewAttack _fovViewAttack;
 
         private Player.Player _player;
 
         private SpawnProjectile _spawnProjectile;
 
         private EnemyView _enemyView;
-        private FieldOfViewAttack _fovViewAttack;
         private ReasonCompleteStopAttack _reasonCompleteStopAttack;
+        private AttackBreaker _attackBreaker;
 
         private Coroutine _coroutine;
         private bool _isAttack;
@@ -33,6 +34,7 @@ namespace _Project.Enemy
             _fovViewAttack.OnPlayerAttack += StartAttack;
             _fovViewAttack.OnPlayerStopAttack += StopAttack;
             _reasonCompleteStopAttack.BreakRequested += StopAttackCompletely;
+            _attackBreaker.BreakRequested += TryBreakRangedAttack;
         }
 
         private void OnDestroy()
@@ -40,6 +42,7 @@ namespace _Project.Enemy
             _fovViewAttack.OnPlayerAttack -= StartAttack;
             _fovViewAttack.OnPlayerStopAttack -= StopAttack;
             _reasonCompleteStopAttack.BreakRequested -= StopAttackCompletely;
+            _attackBreaker.BreakRequested -= TryBreakRangedAttack;
         }
 
         public void Initialize(Player.Player player) => _player = player;
@@ -47,8 +50,8 @@ namespace _Project.Enemy
         private void ExtractComponents()
         {
             _enemyView = GetComponentInChildren<EnemyView>();
-            _fovViewAttack = GetComponentInChildren<FieldOfViewAttack>();
             _reasonCompleteStopAttack = GetComponent<ReasonCompleteStopAttack>();
+            _attackBreaker = GetComponent<AttackBreaker>();
         }
 
         private void StartAttack()
@@ -80,16 +83,23 @@ namespace _Project.Enemy
             }
         }
 
-        private void StopAttackCompletely(ReasonCompleteStopAttackType type)
+        private void StopAttackCompletely(BreakerEnemyType type)
         {
-            if (type is not ReasonCompleteStopAttackType.RangedAttack)
+            if (type is not BreakerEnemyType.RangedAttack)
             {
                 _isAttack = true;
                 StopAttack();
             }
-            else if (type is ReasonCompleteStopAttackType.RangedAttack)
+        }
+
+        private void TryBreakRangedAttack(BreakerEnemyType type)
+        {
+            if (type is not BreakerEnemyType.RangedAttack)
             {
-                _isAttack = false;
+                StopAttack();
+            }
+            else if(type is BreakerEnemyType.RangedAttack)
+            {
                 StartAttack();
             }
         }
