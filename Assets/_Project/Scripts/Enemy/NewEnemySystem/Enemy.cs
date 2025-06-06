@@ -9,6 +9,7 @@ using UnityEngine;
 
 namespace _Project.Enemy
 {
+    [RequireComponent(typeof(UpdateEnemyView))]
     public class Enemy : MonoBehaviour, IDamage, IOnDamage
     {
         private HealthInfo _healthInfoPrefab;
@@ -27,6 +28,7 @@ namespace _Project.Enemy
         private BoxCollider2D _boxCollider2D;
         private PointExperience _pointExperience;
         private PointCoin _pointCoin;
+        private ReasonCompleteStopAttack _reasonCompleteStopAttack;
 
         private HealthInfo _healthInfo;
         private HealthView _healthView;
@@ -53,14 +55,9 @@ namespace _Project.Enemy
         public void Initialize(HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas uiDynamic, EnemyConfig enemyConfig,
             EnemyTypes enemyTypes, Experience _experiencePrefab, Coin coinPrefab)
         {
-            _pointHealth = GetComponentInChildren<PointHealth>();
-            _enemyView = GetComponentInChildren<EnemyView>();
-            _agentMovement = GetComponent<AgentMovement>();
-            _boxCollider2D = GetComponent<BoxCollider2D>();
-            _pointExperience = GetComponentInChildren<PointExperience>();
-            _pointCoin = GetComponentInChildren<PointCoin>();
+            ExtractComponents();
 
-            _healthInfoPrefab = healthInfoPrefab;
+             _healthInfoPrefab = healthInfoPrefab;
             _healthViewPrefab = healthViewPrefab;
             _uiDynamic = uiDynamic;
             _enemyConfig = enemyConfig;
@@ -93,8 +90,9 @@ namespace _Project.Enemy
             _spawnExperience.Spawn(_pointExperience.transform);
             _spawnCoin.Spawn(_pointCoin.transform);
             _isDie = true;
-            //_agentMovement.Agent.isStopped = true;
+            _agentMovement.Agent.isStopped = true;
             _boxCollider2D.enabled = false;
+            _reasonCompleteStopAttack.Emit(ReasonCompleteStopAttackType.Manual);
             _enemyView.StartDie();
             OnEnemyDie?.Invoke(this);
             EnemyCounterQuest.Instance.AddKill(_enemyTypes);
@@ -111,6 +109,17 @@ namespace _Project.Enemy
                 Destroy(_healthInfo.gameObject);
                 Destroy(_healthView.gameObject);
             }
+        }
+
+        private void ExtractComponents()
+        {
+            _pointHealth = GetComponentInChildren<PointHealth>();
+            _enemyView = GetComponentInChildren<EnemyView>();
+            _agentMovement = GetComponent<AgentMovement>();
+            _boxCollider2D = GetComponent<BoxCollider2D>();
+            _pointExperience = GetComponentInChildren<PointExperience>();
+            _pointCoin = GetComponentInChildren<PointCoin>();
+            _reasonCompleteStopAttack = GetComponent<ReasonCompleteStopAttack>();
         }
     }
 }

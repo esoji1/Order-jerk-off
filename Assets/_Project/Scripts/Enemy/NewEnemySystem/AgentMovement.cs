@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 namespace _Project.Enemy
 {
+    [RequireComponent(typeof(NavMeshAgent))]
     public class AgentMovement : MonoBehaviour
     {
         [SerializeField] private float _moveSpeed;

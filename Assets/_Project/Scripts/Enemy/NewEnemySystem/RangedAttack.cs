@@ -1,3 +1,4 @@
+using _Project.Weapon.Projectile;
 using Assets._Project.Scripts.Enemy;
 using System.Collections;
 using UnityEngine;
@@ -5,11 +6,15 @@ using UnityEngine;
 namespace _Project.Enemy
 {
     [RequireComponent(typeof(ReasonCompleteStopAttack))]
-    public class MeleeAttack : MonoBehaviour, IInitializePlayer
+    public class RangedAttack : MonoBehaviour, IInitializePlayer
     {
+        [SerializeField] private ProjectileEnemy projectileEnemyPrefab;
         [SerializeField] private int _damage;
+        [SerializeField] private float _attackInterval;
 
         private Player.Player _player;
+
+        private SpawnProjectile _spawnProjectile;
 
         private EnemyView _enemyView;
         private FieldOfViewAttack _fovViewAttack;
@@ -22,6 +27,8 @@ namespace _Project.Enemy
         {
             ExtractComponents();
             _enemyView.Initialize();
+
+            _spawnProjectile = new SpawnProjectile();
 
             _fovViewAttack.OnPlayerAttack += StartAttack;
             _fovViewAttack.OnPlayerStopAttack += StopAttack;
@@ -64,21 +71,23 @@ namespace _Project.Enemy
         {
             while (true)
             {
-                _enemyView.StartAttack();
-                float attackAnimationTime = _enemyView.Animator.GetCurrentAnimatorStateInfo(0).length;
-                yield return new WaitForSeconds(attackAnimationTime);
-                _player.Damage(_damage);
+                yield return new WaitForSeconds(_attackInterval);
+
+                Vector2 direction = (_player.transform.position - transform.position).normalized;
+                GameObject bulletGameObject = _spawnProjectile.ProjectileSpawnPoint(projectileEnemyPrefab.gameObject, direction, transform);
+                ProjectileEnemy bullet = bulletGameObject.GetComponent<ProjectileEnemy>();
+                bullet.Initialize(direction, bullet, _damage);
             }
         }
 
         private void StopAttackCompletely(ReasonCompleteStopAttackType type)
         {
-            if (type is not ReasonCompleteStopAttackType.MeleeAttack)
+            if (type is not ReasonCompleteStopAttackType.RangedAttack)
             {
                 _isAttack = true;
                 StopAttack();
             }
-            else if(type is ReasonCompleteStopAttackType.MeleeAttack)
+            else if (type is ReasonCompleteStopAttackType.RangedAttack)
             {
                 _isAttack = false;
                 StartAttack();

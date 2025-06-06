@@ -2,9 +2,10 @@ using UnityEngine;
 
 namespace _Project.Enemy
 {
-    public enum AttackBreakReasonType
+    public enum ReasonCompleteStopAttackType
     {
         MeleeAttack = 0,
+        RangedAttack,
         Manual,
     }
 }

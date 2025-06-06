@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace _Project.Enemy
 {
-    [RequireComponent(typeof(AgentMovement))]
+    [RequireComponent(typeof(AgentMovement), typeof(MovementBreaker))]
     public class Patrol : MonoBehaviour
     {
         [SerializeField] private Transform[] _waypoints;

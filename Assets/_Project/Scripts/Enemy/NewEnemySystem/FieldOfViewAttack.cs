@@ -5,19 +5,19 @@ namespace _Project.Enemy
 {
     public class FieldOfViewAttack : MonoBehaviour
     {
-        public event Action<Player.Player> OnPlayerAttack;
-        public event Action<Player.Player> OnPlayerStopAttack;
+        public event Action OnPlayerAttack;
+        public event Action OnPlayerStopAttack;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out Player.Player player))
-                OnPlayerAttack?.Invoke(player);
+            if (collision.TryGetComponent(out Player.Player _))
+                OnPlayerAttack?.Invoke();
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out Player.Player player))
-                OnPlayerStopAttack?.Invoke(player);
+            if (collision.TryGetComponent(out Player.Player _))
+                OnPlayerStopAttack?.Invoke();
         }
     }
 }

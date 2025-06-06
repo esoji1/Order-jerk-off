@@ -1,11 +1,9 @@
-using _Project.Enemy;
-using _Project.Player;
 using System.Collections;
 using UnityEngine;
 
 namespace _Project.Enemy
 {
-    [RequireComponent(typeof(AgentMovement))]
+    [RequireComponent(typeof(AgentMovement), typeof(MovementBreaker))]
     public class Chase : MonoBehaviour
     {
         private AgentMovement _agent;

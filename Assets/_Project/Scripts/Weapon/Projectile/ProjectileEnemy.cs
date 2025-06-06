@@ -1,6 +1,5 @@
 ﻿using _Project.Core.Interface;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace _Project.Weapon.Projectile
 {
@@ -8,9 +7,7 @@ namespace _Project.Weapon.Projectile
     {
         private ProjectileEnemy _projectile;
         private Vector2 _direction;
-        private int _minDamage;
-        private int _maxDamage;
-        private int _extraDamage;
+        private int _damage;
 
         private void Update()
         {
@@ -23,21 +20,18 @@ namespace _Project.Weapon.Projectile
             {
                 if (damage is Player.Player enemy)
                 {
-                    int randomDamage = Random.Range(_minDamage, _maxDamage) + _extraDamage;
-                    enemy.Damage(randomDamage);
+                    enemy.Damage(_damage);
                     Destroy(_projectile.gameObject);
                 }
                 Destroy(_projectile.gameObject, 4f);
             }
         }
 
-        public void Initialize(Vector2 direction, ProjectileEnemy projectile, int minDamage, int maxDamage, int extraDamage)
+        public void Initialize(Vector2 direction, ProjectileEnemy projectile, int damage)
         {
             _direction = direction.normalized;
             _projectile = projectile;
-            _minDamage = minDamage;
-            _maxDamage = maxDamage;
-            _extraDamage = extraDamage;
+            _damage = damage;
         }
 
         private void GiveBulletAcceleration()

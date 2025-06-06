@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e492fdd6206099478f7a10f7ff8e889, type: 3}
-  m_Name: PlantPredator
+  m_Name: PlantPredatorEnemyConfig
   m_EditorClassIdentifier: 
   Prefab: {fileID: 7321834984733682313, guid: e26ee44e6f3e3ce40a28b3283731765a, type: 3}
   Health: 100

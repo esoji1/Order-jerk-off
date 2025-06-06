@@ -9859,6 +9859,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _planet: {fileID: 11400000, guid: 0fea355dfc940954988345b745016a00, type: 2}
   _slime: {fileID: 11400000, guid: 2f7e46cb98aef8c47b3fd7a8190f1ecf, type: 2}
+  distant: {fileID: 11400000, guid: b2bfb9fdb07f701458ea8d581ce15d02, type: 2}
   _healthInfoPrefab: {fileID: 5008849479396532886, guid: f5abdea487e20a741b8f770de5dc31a7, type: 3}
   _healthViewPrefab: {fileID: 633073849527231201, guid: 3297335f90dc9d24dbe4664cc3e5f053, type: 3}
   _uiDynamic: {fileID: 8108546}
@@ -9872,6 +9873,7 @@ MonoBehaviour:
   - {fileID: 952102783}
   - {fileID: 335919335}
   - {fileID: 1861316770}
+  _player: {fileID: 52823349}
 --- !u!1 &1026548796
 GameObject:
   m_ObjectHideFlags: 0
@@ -12115,7 +12117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1307873802
 Transform:
   m_ObjectHideFlags: 0
@@ -13820,7 +13822,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1464838397
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15431,7 +15433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemys: {fileID: 11400000, guid: 531e9e7e66b1c244ebbcf69f3394c70d, type: 2}
   _maxEnemy: 2
-  _betweenSpawn: 10
+  _betweenSpawn: 20
   _amountExperienceDropped: 10
   _enemy: []
   _enemyFactoryBootstrap: {fileID: 1025630777}
