@@ -50,10 +50,12 @@ namespace _Project.Player
 
         private bool _isMove;
         private bool _isInvisible;
+        private bool _isDie;
 
         public event Action<int> OnDamage;
         public event Action OnAddExperience;
         public event Action OnWindowUpgrade;
+        public event Action<bool> OnInvisible;
 
         public float Speed => _config.Speed + _playerData.Speed;
         public JoysickForMovement JoysickForMovement => _joysickForMovement;
@@ -72,6 +74,7 @@ namespace _Project.Player
         public ManagerAtrefact ManagerAtrefact => _managerAtrefact;
         public bool IsInvisible => _isInvisible;
         public PlayerView PlayerView => _playerView;
+        public bool IsDie => _isDie;
 
         private void Update()
         {
@@ -134,6 +137,7 @@ namespace _Project.Player
         public void SetInvisible(bool value)
         {
             _isInvisible = value;
+            OnInvisible?.Invoke(_isInvisible);
         }
 
         private void InitializeInside()
@@ -237,6 +241,7 @@ namespace _Project.Player
 
         private void Die()
         {
+            _isDie = true;
             Respawn();
             StartCoroutine(WaitSpawn());
         }
@@ -250,9 +255,10 @@ namespace _Project.Player
         private IEnumerator WaitSpawn()
         {
             yield return new WaitForSeconds(1f);
-            _health.AddHealth(_playerCharacteristics.Health);
+            _health.SetHealth(_playerCharacteristics.Health);
             _healthView.UpdateParameters();
             _healthView.ResubscribeEvents(this);
+            _isDie = false;
         }
     }
 }

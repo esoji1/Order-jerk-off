@@ -35,17 +35,17 @@ namespace _Project.Enemy
             _player = player;
         }
 
-        public Enemy Get(EnemyType enemyType, Vector3 position)
+        public Enemy Get(Enum type, Vector3 position)
         {
-            EnemyConfig config = GetConfigBy(enemyType);
+            EnemyConfig config = GetConfigBy(type);
             Enemy instance = UnityEngine.Object.Instantiate(config.Prefab, position, Quaternion.identity, null);
-            Enemy baseEnemy = InitializeObject(instance, config);
+            Enemy baseEnemy = InitializeObject(instance, config, type);
             return baseEnemy;
         }
 
-        private EnemyConfig GetConfigBy(EnemyType types)
+        private EnemyConfig GetConfigBy(Enum type)
         {
-            switch (types)
+            switch (type)
             {
                 case EnemyType.PlantPredator:
                     return _planetPredator;
@@ -59,21 +59,50 @@ namespace _Project.Enemy
                 case EnemyType.Heavy:
                     return _heavy;
 
-                case EnemyType.Wizard:
+                case BossEnemyType.Wizard:
                     return _wizard;
 
                 default:
-                    throw new ArgumentException(nameof(types));
+                    throw new ArgumentException(nameof(type));
             }
         }
 
-        private Enemy InitializeObject(Enemy instance, EnemyConfig config)
+        private Enemy InitializeObject(Enemy instance, EnemyConfig config, Enum type)
         {
             InitializePathSearch(instance, config);
             InitializeFoundObjectsNeedsPlayer(instance);
 
-            instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, EnemyType.PlantPredator, _experiencePrefab, _coinPrefab);
-            return instance;
+            switch (type)
+            {
+                case EnemyType.PlantPredator:
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, EnemyType.PlantPredator, _experiencePrefab, 
+                        _coinPrefab, _player);
+                    return instance;
+
+                case EnemyType.Slime:
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, EnemyType.Slime, _experiencePrefab, 
+                        _coinPrefab, _player);
+                    return instance;
+
+                case EnemyType.Distant:
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, EnemyType.Distant, _experiencePrefab, 
+                        _coinPrefab, _player);
+                    return instance;
+
+                case EnemyType.Heavy:
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, EnemyType.Heavy, _experiencePrefab, 
+                        _coinPrefab, _player);
+                    return instance;
+
+                case BossEnemyType.Wizard:
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, BossEnemyType.Wizard, _experiencePrefab, 
+                        _coinPrefab, _player);
+                    return instance;
+
+                default:
+                    throw new ArgumentException(nameof(type));
+            }
+           
         }
 
         private void InitializePathSearch(Enemy instance, EnemyConfig config)

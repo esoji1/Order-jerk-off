@@ -30,14 +30,16 @@ namespace _Project.Enemy
             _fovViewAttack.OnPlayerAttack += StartAttack;
             _fovViewAttack.OnPlayerStopAttack += StopAttack;
             _reasonCompleteStopAttack.BreakRequested += StopAttackCompletely;
+            _reasonCompleteStopAttack.StartingRequested += StartAttackCompletely;
             _attackBreaker.BreakRequested += TryBreakMeleeAttack;
         }
 
         private void OnDestroy()
-        { 
+        {
             _fovViewAttack.OnPlayerAttack -= StartAttack;
             _fovViewAttack.OnPlayerStopAttack -= StopAttack;
             _reasonCompleteStopAttack.BreakRequested -= StopAttackCompletely;
+            _reasonCompleteStopAttack.StartingRequested -= StartAttackCompletely;
             _attackBreaker.BreakRequested -= TryBreakMeleeAttack;
         }
 
@@ -52,13 +54,18 @@ namespace _Project.Enemy
 
         private void StartAttack()
         {
-            if (_coroutine == null && _isAttack == false)
-                _coroutine = StartCoroutine(Attack());
+            StartCoroutine();
         }
 
         private void StopAttack()
         {
             StopCorourine();
+        }
+
+        private void StartCoroutine()
+        {
+            if (_coroutine == null && _isAttack == false)
+                _coroutine = StartCoroutine(Attack());
         }
 
         private void StopCorourine()
@@ -76,27 +83,43 @@ namespace _Project.Enemy
             {
                 yield return new WaitForSeconds(_attackCastTime);
 
-                IncendiaryZoneEnemy incendiaryZoneEnemy = Instantiate(_incendiaryZoneEnemyPrefab, _player.transform.position, Quaternion.identity, null);
-                incendiaryZoneEnemy.Initialize(_damage, _radiusAttack);
+                if (_player.IsDie == false)
+                {
+                    IncendiaryZoneEnemy incendiaryZoneEnemy = Instantiate(_incendiaryZoneEnemyPrefab, _player.transform.position, Quaternion.identity, null);
+                    incendiaryZoneEnemy.Initialize(_damage, _radiusAttack);
+                }
             }
         }
 
         private void StopAttackCompletely(BreakerEnemyType type)
         {
-            if (type is not BreakerEnemyType.HeavyAttack)
+            if (type is not BreakerEnemyType.RangedAreaAttack)
             {
                 _isAttack = true;
                 StopCorourine();
             }
         }
 
+        private void StartAttackCompletely(BreakerEnemyType type)
+        {
+            if (type is not BreakerEnemyType.RangedAreaAttack)
+            {
+                StopCorourine();
+
+                _isAttack = false;
+
+                if (_fovViewAttack.CheckPlayerInRadius())
+                    StartCoroutine();
+            }
+        }
+
         private void TryBreakMeleeAttack(BreakerEnemyType type)
         {
-            if (type is not BreakerEnemyType.HeavyAttack)
+            if (type is not BreakerEnemyType.RangedAreaAttack && type is not BreakerEnemyType.RangedAttack)
             {
                 StopAttack();
             }
-            else if (type is BreakerEnemyType.HeavyAttack)
+            else if (type is BreakerEnemyType.RangedAreaAttack)
             {
                 StartAttack();
             }

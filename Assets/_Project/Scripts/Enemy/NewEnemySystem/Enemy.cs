@@ -16,7 +16,8 @@ namespace _Project.Enemy
         private HealthView _healthViewPrefab;
         private Canvas _uiDynamic;
         private EnemyConfig _enemyConfig;
-        private EnemyType _enemyTypes;
+        private Enum _enemyTypes;
+        private Player.Player _player;
 
         private Health _health;
         private SpawnExperience _spawnExperience;
@@ -34,7 +35,7 @@ namespace _Project.Enemy
         private HealthInfo _healthInfo;
         private HealthView _healthView;
         private bool _isDie;
-
+        private bool _isSleeping;
         public PointHealth PointHealth => _pointHealth;
 
         public event Action<int> OnDamage;
@@ -51,18 +52,20 @@ namespace _Project.Enemy
         private void OnDestroy()
         {
             _health.OnDie -= Die;
+            _player.OnInvisible -= StopChase;
         }
 
         public void Initialize(HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas uiDynamic, EnemyConfig enemyConfig,
-            EnemyType enemyTypes, Experience _experiencePrefab, Coin coinPrefab)
+            Enum enemyTypes, Experience _experiencePrefab, Coin coinPrefab, Player.Player player)
         {
             ExtractComponents();
 
-             _healthInfoPrefab = healthInfoPrefab;
+            _healthInfoPrefab = healthInfoPrefab;
             _healthViewPrefab = healthViewPrefab;
             _uiDynamic = uiDynamic;
             _enemyConfig = enemyConfig;
             _enemyTypes = enemyTypes;
+            _player = player;
 
             _health = new Health(_enemyConfig.Health);
             _spawnExperience = new SpawnExperience(_experiencePrefab, _enemyConfig.AmountExperienceDropped);
@@ -74,6 +77,7 @@ namespace _Project.Enemy
             _healthView.Initialize(this, _enemyConfig.Health, _healthInfo, null);
 
             _health.OnDie += Die;
+            _player.OnInvisible += StopChase;
         }
 
         public void Damage(int damage)
@@ -84,6 +88,18 @@ namespace _Project.Enemy
 
         public void SetSleeps(bool value)
         {
+            _isSleeping = value;
+
+            if (_isSleeping)
+            {
+                _reasonCompleteStopMovement.Emit(MovementBreakReasonType.Manual);
+                _reasonCompleteStopAttack.Emit(BreakerEnemyType.Manual);
+            }
+            else if (_isSleeping == false)
+            {
+                _reasonCompleteStopMovement.Emit(MovementBreakReasonType.Chase);
+                _reasonCompleteStopAttack.EmitStarting(BreakerEnemyType.Manual);
+            }
         }
 
         public void Die()
@@ -122,6 +138,21 @@ namespace _Project.Enemy
             _pointCoin = GetComponentInChildren<PointCoin>();
             _reasonCompleteStopAttack = GetComponent<ReasonCompleteStopAttack>();
             _reasonCompleteStopMovement = GetComponent<ReasonCompleteStopMovement>();
+        }
+
+        private void StopChase(bool value)
+        {
+            if(value)
+            {
+                _reasonCompleteStopMovement.Emit(MovementBreakReasonType.OnlyChase);
+                _reasonCompleteStopMovement.Emit(MovementBreakReasonType.Patrol);
+                _reasonCompleteStopAttack.Emit(BreakerEnemyType.Manual);
+            }
+            else if(value == false)
+            {
+                _reasonCompleteStopMovement.Emit(MovementBreakReasonType.Chase);
+                _reasonCompleteStopAttack.EmitStarting(BreakerEnemyType.Manual);
+            }
         }
     }
 }

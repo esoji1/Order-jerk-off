@@ -34,6 +34,7 @@ namespace _Project.Enemy
             _fovViewAttack.OnPlayerAttack += StartAttack;
             _fovViewAttack.OnPlayerStopAttack += StopAttack;
             _reasonCompleteStopAttack.BreakRequested += StopAttackCompletely;
+            _reasonCompleteStopAttack.StartingRequested += StartAttackCompletely;
             _attackBreaker.BreakRequested += TryBreakRangedAttack;
         }
 
@@ -42,6 +43,7 @@ namespace _Project.Enemy
             _fovViewAttack.OnPlayerAttack -= StartAttack;
             _fovViewAttack.OnPlayerStopAttack -= StopAttack;
             _reasonCompleteStopAttack.BreakRequested -= StopAttackCompletely;
+            _reasonCompleteStopAttack.StartingRequested -= StartAttackCompletely;
             _attackBreaker.BreakRequested -= TryBreakRangedAttack;
         }
 
@@ -56,11 +58,21 @@ namespace _Project.Enemy
 
         private void StartAttack()
         {
+            StartCoroutine();
+        }
+
+        private void StopAttack()
+        {
+            StopCoroutine();
+        }
+
+        private void StartCoroutine()
+        {
             if (_coroutine == null && _isAttack == false)
                 _coroutine = StartCoroutine(Attack());
         }
 
-        private void StopAttack()
+        private void StopCoroutine()
         {
             if (_coroutine != null)
             {
@@ -89,6 +101,19 @@ namespace _Project.Enemy
             {
                 _isAttack = true;
                 StopAttack();
+            }
+        }
+
+        private void StartAttackCompletely(BreakerEnemyType type)
+        {
+            if (type is not BreakerEnemyType.RangedAttack)
+            {
+                StopCoroutine();
+
+                _isAttack = false;
+
+                if (_fovViewAttack.CheckPlayerInRadius())
+                    StartCoroutine();
             }
         }
 

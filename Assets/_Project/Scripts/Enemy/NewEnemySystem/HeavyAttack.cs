@@ -40,6 +40,7 @@ namespace _Project.Enemy
 
             _fovViewAttack.OnPlayerAttack += StartAttack;
             _reasonCompleteStopAttack.BreakRequested += StopAttackCompletely;
+            _reasonCompleteStopAttack.StartingRequested += StartAttackCompletely;
             _attackBreaker.BreakRequested += TryBreakMeleeAttack;
         }
 
@@ -53,11 +54,13 @@ namespace _Project.Enemy
 
         private void OnDestroy()
         {
+            _tween.Kill();
             if (_creatingPrimitive.CreatedPrimitive != null)
                 GameObject.Destroy(_creatingPrimitive.CreatedPrimitive);
 
             _fovViewAttack.OnPlayerAttack -= StartAttack;
             _reasonCompleteStopAttack.BreakRequested -= StopAttackCompletely;
+            _reasonCompleteStopAttack.StartingRequested -= StartAttackCompletely;
             _attackBreaker.BreakRequested -= TryBreakMeleeAttack;
         }
 
@@ -74,20 +77,29 @@ namespace _Project.Enemy
         private void StartAttack()
         {
             _attackBreaker.Emit(BreakerEnemyType.HeavyAttack);
-
-            if (_coroutine == null && _isAttack == false)
-                _coroutine = StartCoroutine(Attack());
+            StartCoroutine();
         }
 
         private void StopAttack()
         {
             _reasonCompleteStopMovement.Emit(MovementBreakReasonType.Chase);
+            _reasonCompleteStopMovement.Emit(MovementBreakReasonType.Patrol);
             _attackBreaker.Emit(BreakerEnemyType.RangedAreaAttack);
+            _attackBreaker.Emit(BreakerEnemyType.RangedAttack);
             StopCorourine();
+        }
+
+        private void StartCoroutine()
+        {
+            if (_coroutine == null && _isAttack == false)
+                _coroutine = StartCoroutine(Attack());
         }
 
         private void StopCorourine()
         {
+            if (_creatingPrimitive.CreatedPrimitive != null)
+                GameObject.Destroy(_creatingPrimitive.CreatedPrimitive);
+
             if (_coroutine != null)
             {
                 _isDoesAttack = true;
@@ -145,6 +157,19 @@ namespace _Project.Enemy
             {
                 _isAttack = true;
                 StopCorourine();
+            }
+        }
+
+        private void StartAttackCompletely(BreakerEnemyType type)
+        {
+            if (type is not BreakerEnemyType.HeavyAttack)
+            {
+                StopCorourine();
+
+                _isAttack = false;
+
+                if (_fovViewAttack.CheckPlayerInRadius())
+                    StartCoroutine();
             }
         }
 

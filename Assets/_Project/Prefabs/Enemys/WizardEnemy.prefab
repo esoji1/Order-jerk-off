@@ -323,7 +323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &849648207306175633
 Transform:
   m_ObjectHideFlags: 0
@@ -374,7 +374,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 2
+  m_Radius: 1.25
 --- !u!114 &5235673072613806547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,7 +387,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361434b122290f841ac1293becf8a5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackRadius: 1.6
+  _attackRadius: 1
 --- !u!1 &5579252613217025158
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,10 +524,11 @@ GameObject:
   - component: {fileID: 9027247044628198489}
   - component: {fileID: 1354742998165430437}
   - component: {fileID: 8885685544889341987}
-  - component: {fileID: 4816807655151641084}
   - component: {fileID: 322099797846388361}
   - component: {fileID: 5567596674887510246}
+  - component: {fileID: 4816807655151641084}
   - component: {fileID: 7847302911309601226}
+  - component: {fileID: 3712253741148186852}
   - component: {fileID: 8011736680395264991}
   m_Layer: 7
   m_Name: WizardEnemy
@@ -649,18 +650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc660fcedfcbc084194b5e8f73f355e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4816807655151641084
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8166485723314295663}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29d114514a4c36944a3a373453b45ca7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &322099797846388361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,6 +674,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0ba2e201de2f10408a72a3d246f5ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4816807655151641084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8166485723314295663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29d114514a4c36944a3a373453b45ca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7847302911309601226
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -697,6 +698,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 653d27bdb1a8b8e47a841f500d5c4905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3712253741148186852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8166485723314295663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d4e345f70cb64c49a83c2f8d298c565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 70
+  _fovViewAttack: {fileID: 5235673072613806547}
+  _primitivePrefab: {fileID: 2614642544017514435, guid: 19221ffe77917eb4aa01c7209de59a95, type: 3}
+  _attackCastTime: 2
+  _radiusAttack: 0.5
 --- !u!114 &8011736680395264991
 MonoBehaviour:
   m_ObjectHideFlags: 0

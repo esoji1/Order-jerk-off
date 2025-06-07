@@ -4,6 +4,7 @@
     {
         Patrol = 0,
         Chase,
+        OnlyChase,
         Manual
     }
 }

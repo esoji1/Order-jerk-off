@@ -1,4 +1,3 @@
-using Assets._Project.Scripts.Enemy;
 using System.Collections;
 using UnityEngine;
 
@@ -43,17 +42,22 @@ namespace _Project.Enemy
 
         private void StartChasing(Player.Player target)
         {
-            _movementBreaker.Emit(MovementBreakReasonType.Chase);
+            if (_isMove == false)
+            {
+                _movementBreaker.Emit(MovementBreakReasonType.Chase);
 
-            if (_corutine == null && _isMove == false)
-                _corutine = StartCoroutine(ChaseRoutine(target));
+                if (_corutine == null)
+                    _corutine = StartCoroutine(ChaseRoutine(target));
+            }
         }
 
         private void StopChasing(Player.Player target)
         {
-            _movementBreaker.Emit(MovementBreakReasonType.Patrol);
-
-            StopCoroutine();
+            if (_isMove == false)
+            {
+                _movementBreaker.Emit(MovementBreakReasonType.Patrol);
+                StopCoroutine();
+            }
         }
 
         private void StopCoroutine()
@@ -89,9 +93,15 @@ namespace _Project.Enemy
                 _isMove = true;
                 StopCoroutine();
             }
-            else if(type is MovementBreakReasonType.Chase)
+            else if (type is MovementBreakReasonType.OnlyChase)
             {
-                _reasonCompleteStopMovement.Emit(MovementBreakReasonType.Patrol);
+                _isMove = true;
+                StopCoroutine();
+                _movementBreaker.Emit(MovementBreakReasonType.Manual);
+                _movementBreaker.Emit(MovementBreakReasonType.Patrol);
+            }
+            else if (type is MovementBreakReasonType.Chase)
+            {
                 _isMove = false;
             }
         }

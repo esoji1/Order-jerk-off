@@ -19,3 +19,5 @@ MonoBehaviour:
     EnemyTypes: 0
   - Icon: {fileID: 4080500691017106242, guid: 9b402f3e91a4e1546a0495a096a4990c, type: 3}
     EnemyTypes: 1
+  - Icon: {fileID: 6940910711253994429, guid: 75ba045dd5bdbb74e9a8cb9633d72a56, type: 3}
+    EnemyTypes: 3
