@@ -25,6 +25,7 @@ namespace _Project.Enemy.Behaviors
 
         private Coroutine _coroutine;
         private bool _isAttack;
+        private ProjectileEnemy _projectileEnemy;
 
         private void Awake()
         {
@@ -42,6 +43,9 @@ namespace _Project.Enemy.Behaviors
 
         private void OnDestroy()
         {
+            if (_projectileEnemy != null)
+                Destroy(_projectileEnemy.gameObject);
+
             _fovViewAttack.OnPlayerAttack -= StartAttack;
             _fovViewAttack.OnPlayerStopAttack -= StopAttack;
             _reasonCompleteStopAttack.BreakRequested -= StopAttackCompletely;
@@ -92,8 +96,8 @@ namespace _Project.Enemy.Behaviors
 
                 Vector2 direction = (_player.transform.position - transform.position).normalized;
                 GameObject bulletGameObject = _spawnProjectile.ProjectileSpawnPoint(projectileEnemyPrefab.gameObject, direction, transform);
-                ProjectileEnemy bullet = bulletGameObject.GetComponent<ProjectileEnemy>();
-                bullet.Initialize(direction, bullet, _damage);
+                _projectileEnemy = bulletGameObject.GetComponent<ProjectileEnemy>();
+                _projectileEnemy.Initialize(direction, _projectileEnemy, _damage);
             }
         }
 
@@ -125,7 +129,7 @@ namespace _Project.Enemy.Behaviors
             {
                 StopAttack();
             }
-            else if(type is BreakerEnemyType.RangedAttack)
+            else if (type is BreakerEnemyType.RangedAttack)
             {
                 StartAttack();
             }

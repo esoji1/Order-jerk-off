@@ -65,5 +65,25 @@ namespace _Project.CameraMain
 
             ResizeCollider();
         }
+
+        public void StretchVerticallyBetweenPoints(Vector2 worldBottom, Vector2 worldTop)
+        {
+            Transform parent = _zoneCamera.transform.parent;
+
+            Vector2 localBottom = parent.InverseTransformPoint(worldBottom);
+            Vector2 localTop = parent.InverseTransformPoint(worldTop);
+
+            float height = localTop.y - localBottom.y;
+
+            Vector2 size = _zoneCamera.size;
+            size.y = height;
+            _zoneCamera.size = size;
+
+            Vector2 offset = _zoneCamera.offset;
+            offset.y = (localTop.y + localBottom.y) / 2f;
+            _zoneCamera.offset = offset;
+
+            _confiner.InvalidateBoundingShapeCache();
+        }
     }
 }

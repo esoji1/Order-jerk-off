@@ -18,13 +18,12 @@ namespace _Project.Enemy
         private Canvas _uiDynamic;
         private Experience _experiencePrefab;
         private Coin _coinPrefab;
-        private Transform[] _points;
         private Player.Player _player;
         private GivesData _givesData;
 
         public EnemyFactory(EnemyConfig planet, EnemyConfig slime, EnemyConfig distant, EnemyConfig heavy, EnemyConfig wizard,
             HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas uiDynamic, Experience experiencePrefab,
-            Coin coinPrefab, Transform[] points, Player.Player player, GivesData givesData)
+            Coin coinPrefab, Player.Player player, GivesData givesData)
         {
             _planetPredator = planet;
             _slime = slime;
@@ -36,16 +35,15 @@ namespace _Project.Enemy
             _uiDynamic = uiDynamic;
             _experiencePrefab = experiencePrefab;
             _coinPrefab = coinPrefab;
-            _points = points;
             _player = player;
             _givesData = givesData;
         }
 
-        public Behaviors.Enemy Get(Enum type, Vector3 position)
+        public Behaviors.Enemy Get(Enum type, Vector3 position, Transform[] points)
         {
             EnemyConfig config = GetConfigBy(type);
             Behaviors.Enemy instance = UnityEngine.Object.Instantiate(config.Prefab, position, Quaternion.identity, null);
-            Behaviors.Enemy baseEnemy = InitializeObject(instance, config, type);
+            Behaviors.Enemy baseEnemy = InitializeObject(instance, config, type, points);
             return baseEnemy;
         }
 
@@ -73,9 +71,9 @@ namespace _Project.Enemy
             }
         }
 
-        private Behaviors.Enemy InitializeObject(Behaviors.Enemy instance, EnemyConfig config, Enum type)
+        private Behaviors.Enemy InitializeObject(Behaviors.Enemy instance, EnemyConfig config, Enum type, Transform[] points)
         {
-            InitializePathSearch(instance, config);
+            InitializePathSearch(instance, config, points);
             InitializeFoundObjectsNeedsPlayer(instance);
 
             switch (type)
@@ -111,13 +109,13 @@ namespace _Project.Enemy
            
         }
 
-        private void InitializePathSearch(Behaviors.Enemy instance, EnemyConfig config)
+        private void InitializePathSearch(Behaviors.Enemy instance, EnemyConfig config, Transform[] points)
         {
             foreach (MovementBreakReasonType type in config.MovementBreakReason)
             {
                 if (type.Equals(MovementBreakReasonType.Patrol))
                 {
-                    instance.GetComponent<Patrol>().Initialize(_points);
+                    instance.GetComponent<Patrol>().Initialize(points);
                 }
             }
         }

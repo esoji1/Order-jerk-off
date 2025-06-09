@@ -6,6 +6,9 @@ namespace _Project.Enemy
     public class BattleZone : MonoBehaviour
     {
         [SerializeField] private Camera _camera;
+        [SerializeField] private Transform[] _points;
+
+        private EnemyFactoryBootstrap _enemyFactory;
 
         private BoxCollider2D _battleZone;
 
@@ -20,8 +23,8 @@ namespace _Project.Enemy
             _enemys = GetComponentsInChildren<SpawnEnemy>();
 
             foreach (SpawnEnemy item in _enemys)
-                item.Initialize(this);
-
+                item.Initialize(this, _enemyFactory, _points);
+  
             ResizeCollider();
         }
 
@@ -35,6 +38,14 @@ namespace _Project.Enemy
         {
             if (collision.TryGetComponent(out Player.Player _))
                 _isEnterZone = false;
+        }
+
+        public void Initialize(EnemyFactoryBootstrap enemyFactory)
+        {
+            _enemyFactory = enemyFactory;
+
+            foreach (SpawnEnemy item in _enemys)
+                item.Initialize(this, _enemyFactory, _points);
         }
 
         private void ResizeCollider()

@@ -30,8 +30,11 @@ namespace _Project.Enemy
 
         public void Move(Vector3 toDestination)
         {
-            _agent.SetDestination(toDestination);
-            StartCoroutine(ReachDestination());
+            if (_agent != null)
+            {
+                _agent.SetDestination(toDestination);
+                StartCoroutine(ReachDestination());
+            }
         }
 
         private IEnumerator ReachDestination()

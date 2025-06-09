@@ -88,7 +88,7 @@ namespace _Project.Wave
                 for (int i = 0; i < group.Count; i++)
                 {
                     Enemy.Behaviors.Enemy newEnemy = _bootstrapEnemy.EnemyFactory.Get(group.EnemyTypes, 
-                        _bootstrapEnemy.Points[UnityEngine.Random.Range(0, _bootstrapEnemy.Points.Length)].position);
+                        _bootstrapEnemy.PointsWave[UnityEngine.Random.Range(0, _bootstrapEnemy.PointsWave.Length)].position, null);
 
                     _activeEnemies.Add(newEnemy);
                     newEnemy.OnEnemyDie += HandleEnemyDeath;

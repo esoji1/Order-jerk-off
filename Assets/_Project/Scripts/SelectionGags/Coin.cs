@@ -9,3 +9,4 @@
         protected override void Add(IGagsPicker gagsPicker) => gagsPicker.AddMoney(_numberCoin);
     }
 }
+    

@@ -14,7 +14,8 @@ namespace _Project.Enemy
         [SerializeField] private List<Enemy.Behaviors.Enemy> _enemy;
         [SerializeField] private EnemyFactoryBootstrap _enemyFactoryBootstrap;
         [SerializeField] private Experience _experiencePrefab;
-        [SerializeField] private List<Transform> _points;
+
+        private Transform[] _points;
 
         private SpawnExperience _spawnExperience;
 
@@ -35,9 +36,12 @@ namespace _Project.Enemy
             Spawn();
         }
 
-        public void Initialize(BattleZone battleZone)
+        public void Initialize(BattleZone battleZone, EnemyFactoryBootstrap enemyFactoryBootstrap, Transform[] points)
         {
             _battleZone = battleZone;
+            if (enemyFactoryBootstrap != null)
+                _enemyFactoryBootstrap = enemyFactoryBootstrap;
+            _points = points;
         }
 
         public void DisableSpawner()
@@ -79,7 +83,7 @@ namespace _Project.Enemy
         private void SpawnEnemyLogic()
         {
             EnemyType enemyType = (EnemyType)Random.Range(0, _enemys.GetEnemys.Count);
-            Enemy.Behaviors.Enemy newEnemy = _enemyFactoryBootstrap.EnemyFactory.Get(EnemyType.Heavy, transform.position);
+            Enemy.Behaviors.Enemy newEnemy = _enemyFactoryBootstrap.EnemyFactory.Get(enemyType, transform.position, _points);
 
             if (newEnemy != null)
                 _enemy.Add(newEnemy);
@@ -97,6 +101,11 @@ namespace _Project.Enemy
             }
 
             _enemy.Clear();
+        }
+
+        private void OnDestroy()
+        {
+            ClearEnemies();
         }
     }
 }
