@@ -1,5 +1,5 @@
 ﻿using _Project.Core;
-using _Project.Enemy.Attack.Interface;
+using _Project.Core.Projectile;
 using _Project.ScriptableObjects.Configs;
 using _Project.Weapon.Interface;
 using System;
@@ -13,9 +13,9 @@ namespace _Project.Weapon
         private Canvas _canvas;
         private TextMeshProUGUI _textDamage;
         private Player.Player _player;
-        private Projectile.Projectile _projectile;
+        private Projectile _projectile;
 
-        public WeaponFactory(Canvas canvas, TextMeshProUGUI textDamage, Player.Player player, Projectile.Projectile projectile)
+        public WeaponFactory(Canvas canvas, TextMeshProUGUI textDamage, Player.Player player, Projectile projectile)
         {
             _canvas = canvas;
             _textDamage = textDamage;

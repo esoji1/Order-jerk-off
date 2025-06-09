@@ -1,5 +1,5 @@
-﻿using _Project.Inventory;
-using _Project.Potions.Projectile;
+﻿using _Project.Core.Projectile;
+using _Project.Inventory;
 using _Project.ScriptableObjects;
 using TMPro;
 using UnityEngine;

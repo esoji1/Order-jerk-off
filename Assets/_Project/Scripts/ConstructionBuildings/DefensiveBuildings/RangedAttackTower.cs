@@ -5,8 +5,8 @@ using _Project.Core.Points;
 using UnityEngine.UI;
 using _Project.Player;
 using _Project.Weapon;
-using _Project.Weapon.Projectile;
 using _Project.ScriptableObjects.Configs;
+using _Project.Core.Projectile;
 
 namespace _Project.ConstructionBuildings.DefensiveBuildings
 {

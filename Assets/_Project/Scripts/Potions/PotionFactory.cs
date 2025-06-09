@@ -2,9 +2,9 @@
 using UnityEngine;
 using _Project.ScriptableObjects;
 using _Project.Inventory;
-using _Project.Potions.Projectile;
 using TMPro;
 using Assets._Project.Scripts.Potions;
+using _Project.Core.Projectile;
 
 namespace _Project.Potions
 {

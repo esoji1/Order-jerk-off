@@ -1,4 +1,5 @@
 using _Project.Core;
+using _Project.Core.Projectile;
 using TMPro;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ namespace _Project.Weapon
         [SerializeField] private Canvas _canvas;
         [SerializeField] private TextMeshProUGUI _textDamage;
         [SerializeField] private Player.Player _player;
-        [SerializeField] private Projectile.Projectile _arrow;
+        [SerializeField] private Projectile _arrow;
 
         private WeaponFactory _factory;
         private Weapons.Weapon weapon;

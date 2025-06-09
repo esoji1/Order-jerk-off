@@ -32,6 +32,8 @@ namespace _Project.Player
         private AdaptingColliderResolution _adaptingColliderResolution;
         private ChoosingUpgrade _choosingUpgrade;
         private ManagerAtrefact _managerAtrefact;
+        private Inventory.Inventory _inventory;
+        private ItemData _itemData;
 
         private PlayerMovement _playerMovement;
         private Flip _flip;
@@ -91,7 +93,7 @@ namespace _Project.Player
 
         public void Initialize(PlayerConfig config, JoysickForMovement joysickForMovement, LevelPlayer levelPlayer, HealthInfo healthInfoPrefab,
             HealthView healthViewPrefab, Canvas dynamic, UseWeapons.UseWeapons useWeapons, AdaptingColliderResolution adaptingColliderResolution,
-            ChoosingUpgrade choosingUpgrade, ManagerAtrefact managerAtrefact)
+            ChoosingUpgrade choosingUpgrade, ManagerAtrefact managerAtrefact, Inventory.Inventory inventory, ItemData itemData)
         {
             _config = config;
             _joysickForMovement = joysickForMovement;
@@ -103,6 +105,8 @@ namespace _Project.Player
             _adaptingColliderResolution = adaptingColliderResolution;
             _choosingUpgrade = choosingUpgrade;
             _managerAtrefact = managerAtrefact;
+            _inventory = inventory;
+            _itemData = itemData;
             _isMove = true;
 
             InitializeInside();
@@ -138,6 +142,17 @@ namespace _Project.Player
         {
             _isInvisible = value;
             OnInvisible?.Invoke(_isInvisible);
+        }
+
+        public void AddArtifact(TypeArtefact type)
+        {
+            foreach(Inventory.Items.ArtefactItem item in _itemData.ArtefactItems)
+            {
+                if (item.TypeArtefact.Equals(type))
+                {
+                    _inventory.AddItemInCell(item);
+                }
+            }
         }
 
         private void InitializeInside()

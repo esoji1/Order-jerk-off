@@ -1,10 +1,10 @@
 ﻿using _Project.Artifacts;
+using _Project.Core.Projectile;
 using _Project.Inventory;
 using _Project.Inventory.AlchemyInventory;
 using _Project.Inventory.ForgeInventory;
 using _Project.Potions;
 using _Project.ScriptableObjects.Configs;
-using _Project.Weapon.Projectile;
 using TMPro;
 using UnityEngine;
 

@@ -1,4 +1,5 @@
 ﻿using _Project.Enemy;
+using _Project.Enemy.Types;
 using System;
 using System.Linq;
 using Random = UnityEngine.Random;

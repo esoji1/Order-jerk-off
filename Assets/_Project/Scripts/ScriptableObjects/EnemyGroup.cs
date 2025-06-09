@@ -1,4 +1,5 @@
 using _Project.Enemy;
+using _Project.Enemy.Types;
 using UnityEngine;
 
 namespace _Project.ScriptableObjects.Configs
