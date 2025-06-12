@@ -26,9 +26,9 @@ namespace _Project.Inventory
                 Enum weaponItem = cell.Item.GetItemType();
                 ChangeTextForWeapon(weaponItem, cell);
             }
-            else if (cell.Item.Category == ItemCategory.Mining)
+            else 
             {
-                ChangeTextForMining(cell);
+                ChangeTextAllItem(cell);
             }
         }
 
@@ -55,7 +55,7 @@ namespace _Project.Inventory
                 $"Уровень оружия: {weaponItem.Level}";
         }
 
-        private void ChangeTextForMining(Cell cell)
+        private void ChangeTextAllItem(Cell cell)
         {
             _textInfoItem.text = $"{cell.Item.Name}\n" +
                 $"Цена: {cell.Item.Price}\n" +

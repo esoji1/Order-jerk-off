@@ -39,7 +39,7 @@ namespace _Project.Enemy
             _givesData = givesData;
         }
 
-        public Behaviors.Enemy Get(Enum type, Vector3 position, Transform[] points)
+        public Behaviors.Enemy Get(EnemyType type, Vector3 position, Transform[] points)
         {
             EnemyConfig config = GetConfigBy(type);
             Behaviors.Enemy instance = UnityEngine.Object.Instantiate(config.Prefab, position, Quaternion.identity, null);
@@ -47,7 +47,7 @@ namespace _Project.Enemy
             return baseEnemy;
         }
 
-        private EnemyConfig GetConfigBy(Enum type)
+        private EnemyConfig GetConfigBy(EnemyType type)
         {
             switch (type)
             {
@@ -63,7 +63,7 @@ namespace _Project.Enemy
                 case EnemyType.Heavy:
                     return _heavy;
 
-                case BossEnemyType.Wizard:
+                case EnemyType.Wizard:
                     return _wizard;
 
                 default:
@@ -71,7 +71,7 @@ namespace _Project.Enemy
             }
         }
 
-        private Behaviors.Enemy InitializeObject(Behaviors.Enemy instance, EnemyConfig config, Enum type, Transform[] points)
+        private Behaviors.Enemy InitializeObject(Behaviors.Enemy instance, EnemyConfig config, EnemyType type, Transform[] points)
         {
             InitializePathSearch(instance, config, points);
             InitializeFoundObjectsNeedsPlayer(instance);
@@ -79,27 +79,27 @@ namespace _Project.Enemy
             switch (type)
             {
                 case EnemyType.PlantPredator:
-                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, EnemyType.PlantPredator, _experiencePrefab, 
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab, 
                         _coinPrefab, _player, _givesData);
                     return instance;
 
                 case EnemyType.Slime:
-                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, EnemyType.Slime, _experiencePrefab, 
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab, 
                         _coinPrefab, _player, _givesData);
                     return instance;
 
                 case EnemyType.Distant:
-                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, EnemyType.Distant, _experiencePrefab, 
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab, 
                         _coinPrefab, _player, _givesData);
                     return instance;
 
                 case EnemyType.Heavy:
-                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, EnemyType.Heavy, _experiencePrefab, 
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab, 
                         _coinPrefab, _player, _givesData);
                     return instance;
 
-                case BossEnemyType.Wizard:
-                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, BossEnemyType.Wizard, _experiencePrefab, 
+                case EnemyType.Wizard:
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab, 
                         _coinPrefab, _player, _givesData);
                     return instance;
 

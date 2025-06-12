@@ -1,5 +1,6 @@
 using _Project.Improvements;
 using _Project.Inventory.Items;
+using _Project.MapGeneration.Food;
 using _Project.ScriptableObjects.Configs;
 using System;
 using System.Collections.Generic;
@@ -16,15 +17,17 @@ namespace _Project.Inventory
 
         private Player.Player _player;
         private Inventory _inventory;
+        private FoodView _foodView;
 
         private Cell _currentCell;
 
         public event Action<Cell> OnClickItem;
 
-        public void Initialize(Player.Player player, Inventory inventory)
+        public void Initialize(Player.Player player, Inventory inventory, FoodView foodView)
         {
             _player = player;
             _inventory = inventory;
+            _foodView = foodView;
 
             foreach (Cell cell in _cellList)
             {
@@ -70,6 +73,11 @@ namespace _Project.Inventory
                         if (miningItem.TypesMining == item.TypesMining)
                             _inventory.AddItemInCell(item);
                 }
+            }
+            else if(_currentCell.Item.Category == ItemCategory.Transition)
+            {
+                if (_player.Wallet.SubtractMoney(_currentCell.Item.Price))
+                    _foodView.AddFood(1);
             }
         }
 

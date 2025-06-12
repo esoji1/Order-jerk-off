@@ -93,6 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 0}
+  _points: []
 --- !u!1 &1156159068203246170
 GameObject:
   m_ObjectHideFlags: 0
@@ -540,8 +541,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbf186ee3de1fae41b4acdc49bd33694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemys: {fileID: 11400000, guid: 531e9e7e66b1c244ebbcf69f3394c70d, type: 2}
-  _maxEnemy: 2
+  _enemys: {fileID: 11400000, guid: badac1d417f5a2c4ba8455a4f4ba3928, type: 2}
+  _maxEnemy: 1
   _betweenSpawn: 20
   _amountExperienceDropped: 10
   _enemy: []

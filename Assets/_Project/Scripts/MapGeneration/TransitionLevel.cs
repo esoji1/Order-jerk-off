@@ -1,4 +1,5 @@
 using _Project.CameraMain;
+using _Project.MapGeneration.Food;
 using System;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace _Project.MapGeneration
         [SerializeField] private Transform _backPointA;
         [SerializeField] private Transform _backtPointB;
         [SerializeField] private Player.Player _player;
+        [SerializeField] private FoodView _foodView;
 
         private float _addPositionPlayer = 2f;
 
@@ -25,6 +27,9 @@ namespace _Project.MapGeneration
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            if (_foodView.AmauntFood <= 0)
+                return;
+
             float deltaY = collision.bounds.center.y - GetComponent<Collider2D>().bounds.center.y;
 
             if (deltaY > 0)
@@ -55,10 +60,11 @@ namespace _Project.MapGeneration
             }
         }
 
-        public void Initialize(AdaptingColliderResolution adaptingColliderResolution, Player.Player player)
+        public void Initialize(AdaptingColliderResolution adaptingColliderResolution, Player.Player player, FoodView foodView)
         {
             _adaptingColliderResolution = adaptingColliderResolution;
             _player = player;
+            _foodView = foodView;
         }
 
         public void SetStartPoints(Transform pointA, Transform pointB)

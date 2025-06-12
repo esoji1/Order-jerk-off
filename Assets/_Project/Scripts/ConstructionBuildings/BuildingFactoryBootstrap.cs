@@ -3,6 +3,7 @@ using _Project.Core.Projectile;
 using _Project.Inventory;
 using _Project.Inventory.AlchemyInventory;
 using _Project.Inventory.ForgeInventory;
+using _Project.MapGeneration.Food;
 using _Project.Potions;
 using _Project.ScriptableObjects.Configs;
 using TMPro;
@@ -28,6 +29,7 @@ namespace _Project.ConstructionBuildings
         [SerializeField] private ControllInventoryForge _controllInventoryForge;
         [SerializeField] private Loss.Loss _loss;
         [SerializeField] private ManagerAtrefact _managerAtrefact;
+        [SerializeField] private FoodView _foodView;
 
         private BuildingFactory _buildingFactory;
 
@@ -38,7 +40,7 @@ namespace _Project.ConstructionBuildings
             _buildingFactory = new BuildingFactory(_houseConfig, _shopConfig, _alchemyConfig, _archerTowerConfig, _forgeConfig, 
                 _staticCanvas, _player, _useWeapons, _inventory, _inventoryActive, _dynamicCanvas, _textDamage, _layerMask, 
                 _projectile, _inventoryActivePotions, _managerPotion, _controllInventoryGrass, _controllInventoryForge, _loss,
-                _managerAtrefact);
+                _managerAtrefact, _foodView);
         }
     }
 }

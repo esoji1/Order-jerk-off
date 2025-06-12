@@ -1,4 +1,5 @@
 ﻿using _Project.Enemy;
+using _Project.Enemy.Types;
 using System;
 
 namespace _Project.Quests.KillQuest
@@ -7,6 +8,6 @@ namespace _Project.Quests.KillQuest
     public class KillQuestData
     {
         public int RequiredKills;
-        public Enum TargetEnemyType;
+        public EnemyType TargetEnemyType;
     }
 }

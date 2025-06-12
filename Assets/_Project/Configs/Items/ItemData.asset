@@ -42,6 +42,7 @@ MonoBehaviour:
   - {fileID: 7364092037374558218, guid: 9fcb01f432d022443bc19d00bb359e48, type: 3}
   - {fileID: 5104314375314476544, guid: 88c8b1161d75de34abbed5447ae6efce, type: 3}
   - {fileID: 8489973103164288470, guid: 912490e0c8bc0584496f6e996f888f24, type: 3}
+  - {fileID: 880481197133214993, guid: a042dd2fc83194e47aeac8f446d61ebf, type: 3}
   <WeaponItems>k__BackingField:
   - {fileID: 4491079388801751820, guid: 619ab93890da3734da3123dad3bed16e, type: 3}
   - {fileID: -8735090903098058742, guid: 3df611a187bf9cf469b63666f6b625e0, type: 3}

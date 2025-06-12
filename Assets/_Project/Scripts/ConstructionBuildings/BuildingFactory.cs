@@ -5,6 +5,7 @@ using _Project.Core.Projectile;
 using _Project.Inventory;
 using _Project.Inventory.AlchemyInventory;
 using _Project.Inventory.ForgeInventory;
+using _Project.MapGeneration.Food;
 using _Project.Potions;
 using _Project.ScriptableObjects.Configs;
 using System;
@@ -31,12 +32,13 @@ namespace _Project.ConstructionBuildings
         private ControllInventoryForge _controllInventoryForge;
         private Loss.Loss _loss;
         private ManagerAtrefact _managerAtrefact;
+        private FoodView _foodView;
 
         public BuildingFactory(BuildsConfig housConfig, BuildsConfig shopConfig, BuildsConfig alchemyConfig, BuildsConfig archerTowerConfig, BuildsConfig forgeConfig,
             Canvas staticCanvas, Player.Player player, UseWeapons.UseWeapons useWeapons,Inventory.Inventory inventory,
             InventoryActive inventoryActive, Canvas dynamicCanvas, TextMeshProUGUI textDamage, LayerMask layerMask, Projectile projectile, 
             InventoryActivePotions inventoryActivePotions, ManagerPotion managerPotion, ControllInventoryGrass controllInventoryGrass,
-            ControllInventoryForge controllInventoryForge, Loss.Loss loss, ManagerAtrefact managerAtrefact)
+            ControllInventoryForge controllInventoryForge, Loss.Loss loss, ManagerAtrefact managerAtrefact, FoodView foodView)
         {
             _houseConfig = housConfig;
             _shopConfig = shopConfig;
@@ -58,6 +60,7 @@ namespace _Project.ConstructionBuildings
             _controllInventoryForge = controllInventoryForge;
             _loss = loss;
             _managerAtrefact = managerAtrefact;
+            _foodView = foodView;
         }
 
         public BaseBuilding Get(TypesBuildings typesBuildings, Vector3 position)
@@ -102,7 +105,7 @@ namespace _Project.ConstructionBuildings
             }
             else if(instance is Shop shop)
             {
-                shop.Initialize(buildsConfig, _staticCanvas, _player, _inventory);
+                shop.Initialize(buildsConfig, _staticCanvas, _player, _inventory, _foodView);
                 return shop;
             }
             else if (instance is Alchemy alchemy)

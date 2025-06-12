@@ -7,6 +7,7 @@
         Mining,
         Potions,
         Artefact,
-        SelectionGags
+        SelectionGags,
+        Transition
     }
 }

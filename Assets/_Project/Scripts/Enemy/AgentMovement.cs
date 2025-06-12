@@ -30,23 +30,27 @@ namespace _Project.Enemy
 
         public void Move(Vector3 toDestination)
         {
-            if (_agent != null)
-            {
-                _agent.SetDestination(toDestination);
-                StartCoroutine(ReachDestination());
-            }
+            if (_agent == null)
+                return;
+
+            _agent.SetDestination(toDestination);
+            StartCoroutine(ReachDestination());
         }
 
         private IEnumerator ReachDestination()
         {
             yield return new WaitUntil(() =>
             {
+                if (_agent == null)
+                    return true;
+
                 float distance = Vector2.Distance(_agent.destination, transform.position);
 
                 return distance <= _agent.stoppingDistance;
             });
 
-            OnReachedDestination?.Invoke();
+            if (_agent != null)
+                OnReachedDestination?.Invoke();
         }
     }
 }

@@ -12,6 +12,7 @@ namespace _Project.MapGeneration
 
         public PointMapForward PointMapForward => _pointMapForward;
         public PointMapBack PointMapBack => _pointMapBack;
+        public MapType Type => _type;
 
         private void Awake()
         {

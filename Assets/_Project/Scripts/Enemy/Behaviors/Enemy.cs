@@ -16,11 +16,12 @@ namespace _Project.Enemy.Behaviors
     [RequireComponent(typeof(UpdateEnemyView))]
     public class Enemy : MonoBehaviour, IDamage, IOnDamage
     {
+        [SerializeField] private EnemyType _enemyTypes;
+
         private HealthInfo _healthInfoPrefab;
         private HealthView _healthViewPrefab;
         private Canvas _uiDynamic;
         private EnemyConfig _enemyConfig;
-        private Enum _enemyTypes;
         private Player.Player _player;
         private GivesData _givesData;
 
@@ -31,7 +32,6 @@ namespace _Project.Enemy.Behaviors
 
         private PointHealth _pointHealth;
         private EnemyView _enemyView;
-        private AgentMovement _agentMovement;
         private BoxCollider2D _boxCollider2D;
         private PointExperience _pointExperience;
         private PointCoin _pointCoin;
@@ -43,7 +43,9 @@ namespace _Project.Enemy.Behaviors
         private HealthView _healthView;
         private bool _isDie;
         private bool _isSleeping;
+
         public PointHealth PointHealth => _pointHealth;
+        public EnemyType EnemyType => _enemyTypes;
 
         public event Action<int> OnDamage;
         public event Action<Enemy> OnEnemyDie;
@@ -63,7 +65,7 @@ namespace _Project.Enemy.Behaviors
         }
 
         public void Initialize(HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas uiDynamic, EnemyConfig enemyConfig,
-            Enum enemyTypes, Experience _experiencePrefab, Coin coinPrefab, Player.Player player, GivesData givesData)
+            Experience _experiencePrefab, Coin coinPrefab, Player.Player player, GivesData givesData)
         {
             ExtractComponents();
 
@@ -71,7 +73,6 @@ namespace _Project.Enemy.Behaviors
             _healthViewPrefab = healthViewPrefab;
             _uiDynamic = uiDynamic;
             _enemyConfig = enemyConfig;
-            _enemyTypes = enemyTypes;
             _player = player;
             _givesData = givesData;
 
@@ -142,7 +143,6 @@ namespace _Project.Enemy.Behaviors
         {
             _pointHealth = GetComponentInChildren<PointHealth>();
             _enemyView = GetComponentInChildren<EnemyView>();
-            _agentMovement = GetComponent<AgentMovement>();
             _boxCollider2D = GetComponent<BoxCollider2D>();
             _pointExperience = GetComponentInChildren<PointExperience>();
             _pointCoin = GetComponentInChildren<PointCoin>();

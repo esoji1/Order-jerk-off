@@ -1,7 +1,10 @@
+using _Project.Enemy.Behaviors;
 using _Project.Enemy.Types;
 using _Project.SelectionGags;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace _Project.Enemy
 {
@@ -82,8 +85,8 @@ namespace _Project.Enemy
 
         private void SpawnEnemyLogic()
         {
-            EnemyType enemyType = (EnemyType)Random.Range(0, _enemys.GetEnemys.Count);
-            Enemy.Behaviors.Enemy newEnemy = _enemyFactoryBootstrap.EnemyFactory.Get(enemyType, transform.position, _points);
+            Enemy.Behaviors.Enemy enemy = _enemys.GetEnemys[Random.Range(0, _enemys.GetEnemys.Count)];
+            Enemy.Behaviors.Enemy newEnemy = _enemyFactoryBootstrap.EnemyFactory.Get(enemy.EnemyType, transform.position, _points);
 
             if (newEnemy != null)
                 _enemy.Add(newEnemy);

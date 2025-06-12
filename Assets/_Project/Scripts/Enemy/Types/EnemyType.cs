@@ -5,6 +5,7 @@
         PlantPredator = 0,
         Slime,
         Distant,
-        Heavy
+        Heavy,
+        Wizard
     }
 }
