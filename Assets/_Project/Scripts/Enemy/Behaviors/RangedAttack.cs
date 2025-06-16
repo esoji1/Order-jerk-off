@@ -34,8 +34,8 @@ namespace _Project.Enemy.Behaviors
 
             _spawnProjectile = new SpawnProjectile();
 
-            _fovViewAttack.OnPlayerAttack += StartAttack;
-            _fovViewAttack.OnPlayerStopAttack += StopAttack;
+            _fovViewAttack.OnAttack += StartAttack;
+            _fovViewAttack.OnStopAttack += StopAttack;
             _reasonCompleteStopAttack.BreakRequested += StopAttackCompletely;
             _reasonCompleteStopAttack.StartingRequested += StartAttackCompletely;
             _attackBreaker.BreakRequested += TryBreakRangedAttack;
@@ -46,8 +46,8 @@ namespace _Project.Enemy.Behaviors
             if (_projectileEnemy != null)
                 Destroy(_projectileEnemy.gameObject);
 
-            _fovViewAttack.OnPlayerAttack -= StartAttack;
-            _fovViewAttack.OnPlayerStopAttack -= StopAttack;
+            _fovViewAttack.OnAttack -= StartAttack;
+            _fovViewAttack.OnStopAttack -= StopAttack;
             _reasonCompleteStopAttack.BreakRequested -= StopAttackCompletely;
             _reasonCompleteStopAttack.StartingRequested -= StartAttackCompletely;
             _attackBreaker.BreakRequested -= TryBreakRangedAttack;

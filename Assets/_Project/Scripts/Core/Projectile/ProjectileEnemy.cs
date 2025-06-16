@@ -1,4 +1,5 @@
-﻿using _Project.Core.Interface;
+﻿using _Project.ConstructionBuildings.Buildings;
+using _Project.Core.Interface;
 using UnityEngine;
 
 namespace _Project.Core.Projectile
@@ -18,9 +19,9 @@ namespace _Project.Core.Projectile
         {
             if (collision.TryGetComponent(out IDamage damage))
             {
-                if (damage is Player.Player enemy)
+                if (damage is Player.Player player || damage is BaseBuilding baseBuilding)
                 {
-                    enemy.Damage(_damage);
+                    damage.Damage(_damage);
                     Destroy(_projectile.gameObject);
                 }
                 Destroy(_projectile.gameObject, 4f);

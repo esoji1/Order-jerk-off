@@ -9,19 +9,19 @@ namespace _Project.Enemy
     {
         [SerializeField] private float _attackRadius;
 
-        public event Action OnPlayerAttack;
-        public event Action OnPlayerStopAttack;
+        public event Action OnAttack;
+        public event Action OnStopAttack;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out Player.Player _))
-                OnPlayerAttack?.Invoke();
+            if (collision.TryGetComponent(out Player.Player _) || collision.TryGetComponent(out BaseBuilding _))
+                OnAttack?.Invoke();
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
-            if (collision.TryGetComponent(out Player.Player _))
-                OnPlayerStopAttack?.Invoke();
+            if (collision.TryGetComponent(out Player.Player _) || collision.TryGetComponent(out BaseBuilding _))
+                OnStopAttack?.Invoke();
         }
 
         public bool CheckPlayerInRadius()
@@ -30,7 +30,21 @@ namespace _Project.Enemy
 
             foreach (Collider2D collider in collider2D)
             {
-                if (collider.TryGetComponent(out Player.Player _) || collider.TryGetComponent(out BaseBuilding _))
+                if (collider.TryGetComponent(out Player.Player _))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool CheckBaseBuildingInRadius()
+        {
+            Collider2D[] collider2D = Physics2D.OverlapCircleAll(transform.position, _attackRadius, Layers.LayerPlayer);
+
+            foreach (Collider2D collider in collider2D)
+            {
+                if (collider.TryGetComponent(out BaseBuilding _))
                 {
                     return true;
                 }

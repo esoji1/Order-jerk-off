@@ -30,8 +30,8 @@ namespace _Project.Enemy.Behaviors
             ExtractComponents();
             _enemyView.Initialize();
 
-            _fovViewAttack.OnPlayerAttack += StartAttack;
-            _fovViewAttack.OnPlayerStopAttack += StopAttack;
+            _fovViewAttack.OnAttack += StartAttack;
+            _fovViewAttack.OnStopAttack += StopAttack;
             _reasonCompleteStopAttack.BreakRequested += StopAttackCompletely;
             _reasonCompleteStopAttack.StartingRequested += StartAttackCompletely;
             _attackBreaker.BreakRequested += TryBreakMeleeAttack;
@@ -39,8 +39,8 @@ namespace _Project.Enemy.Behaviors
 
         private void OnDestroy()
         {
-            _fovViewAttack.OnPlayerAttack -= StartAttack;
-            _fovViewAttack.OnPlayerStopAttack -= StopAttack;
+            _fovViewAttack.OnAttack -= StartAttack;
+            _fovViewAttack.OnStopAttack -= StopAttack;
             _reasonCompleteStopAttack.BreakRequested -= StopAttackCompletely;
             _reasonCompleteStopAttack.StartingRequested -= StartAttackCompletely;
             _attackBreaker.BreakRequested -= TryBreakMeleeAttack;

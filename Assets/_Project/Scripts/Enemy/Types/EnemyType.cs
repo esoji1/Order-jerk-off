@@ -6,6 +6,11 @@
         Slime,
         Distant,
         Heavy,
-        Wizard
+        Wizard,
+        PlantPredatorMoveToTarget,
+        SlimeMoveToTarget,
+        DistantMoveToTarget,
+        HeavyMoveToTarget,
+        WizardMoveToTarget
     }
 }

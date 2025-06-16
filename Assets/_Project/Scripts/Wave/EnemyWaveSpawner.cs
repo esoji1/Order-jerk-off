@@ -1,6 +1,5 @@
 using _Project.Enemy;
 using _Project.ScriptableObjects.Configs;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,6 +13,7 @@ namespace _Project.Wave
         private EnemyFactoryBootstrap _bootstrapEnemy;
         private float _timeBetweenWaves;
         private TimerBetweenWavesView _timerBetweenWavesView;
+        private Transform[] _pointsWave;
 
         private WaveView _waveView;
 
@@ -24,17 +24,16 @@ namespace _Project.Wave
         public TimerBetweenWavesView TimerBetweenWavesView => _timerBetweenWavesView;
         public float TimeBetweenWaves => _timeBetweenWaves;
 
-        public event Action OnWin;
-
         public void Initialize(List<ScriptableObjects.Configs.Wave> waves, EnemyFactoryBootstrap bootstrapEnemy,
-            float timeBetweenWaves, TimerBetweenWavesView timerBetweenWavesView, TextMeshProUGUI waveText)
+            float timeBetweenWaves, TimerBetweenWavesView timerBetweenWavesView, TextMeshProUGUI waveText, Transform[] pointsWave)
         {
             _waves = waves;
             _bootstrapEnemy = bootstrapEnemy;
             _timeBetweenWaves = timeBetweenWaves;
             _timerBetweenWavesView = timerBetweenWavesView;
+            _pointsWave = pointsWave;
 
-            _waveView = new WaveView(waveText, _waves.Count);
+            _waveView = new WaveView(waveText);
         }
 
         public void StartEnemyWaveSpawner() =>
@@ -42,24 +41,27 @@ namespace _Project.Wave
 
         private IEnumerator SpawnWaves()
         {
-            _waveView.Show(_currentWaveIndex);
 
-            while (_currentWaveIndex < _waves.Count)
+
+            //while (_currentWaveIndex < _waves.Count)
+            while (true)
             {
                 if (_isSpawning == false)
                 {
+                    int randomWave = Random.Range(0, _waves.Count);
                     _isSpawning = true;
 
-                    if (_currentWaveIndex == 0)
-                    {
-                        _timerBetweenWavesView.StartTimeBeetwenWaves(_timeBetweenWaves);
+                    //if (_currentWaveIndex == 0)
+                    //{
+                    _waveView.Show(_currentWaveIndex + 1);
+                    _timerBetweenWavesView.StartTimeBeetwenWaves(_timeBetweenWaves);
 
-                        yield return new WaitForSeconds(_timeBetweenWaves);
-                        yield return StartCoroutine(SpawnWave(_waves[_currentWaveIndex]));
-                    }
+                    yield return new WaitForSeconds(_timeBetweenWaves);
+                    yield return StartCoroutine(SpawnWave(_waves[randomWave]));
+                    //}
 
-                    if (_currentWaveIndex > 0)
-                        yield return StartCoroutine(SpawnWave(_waves[_currentWaveIndex]));
+                    //if (_currentWaveIndex > 0)
+                    //    yield return StartCoroutine(SpawnWave(_waves[randomWave]));
 
                     _isSpawning = false;
 
@@ -67,17 +69,15 @@ namespace _Project.Wave
 
                     _currentWaveIndex++;
 
-                    if (_currentWaveIndex < _waves.Count)
-                    {
-                        _waveView.Show(_currentWaveIndex);
+                    //if (_currentWaveIndex < _waves.Count)
+                    //{
+                    //    _waveView.Show(_currentWaveIndex + 1);
 
-                        _timerBetweenWavesView.StartTimeBeetwenWaves(_timeBetweenWaves);
-                        yield return new WaitForSeconds(_timeBetweenWaves);
-                    }
+                    //    _timerBetweenWavesView.StartTimeBeetwenWaves(_timeBetweenWaves);
+                    //    yield return new WaitForSeconds(_timeBetweenWaves);
+                    //}
                 }
             }
-
-            OnWin?.Invoke();
         }
 
 
@@ -87,8 +87,8 @@ namespace _Project.Wave
             {
                 for (int i = 0; i < group.Count; i++)
                 {
-                    Enemy.Behaviors.Enemy newEnemy = _bootstrapEnemy.EnemyFactory.Get(group.EnemyTypes, 
-                        _bootstrapEnemy.PointsWave[UnityEngine.Random.Range(0, _bootstrapEnemy.PointsWave.Length)].position, null);
+                    Enemy.Behaviors.Enemy newEnemy = _bootstrapEnemy.EnemyFactory.Get(group.EnemyTypes,
+                        _pointsWave[UnityEngine.Random.Range(0, _pointsWave.Length)].position, null);
 
                     _activeEnemies.Add(newEnemy);
                     newEnemy.OnEnemyDie += HandleEnemyDeath;

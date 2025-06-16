@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3335f1c8476a97340bcd357f50fddc42, type: 3}
-  m_Name: EnemyGroup 1
+  m_Name: EnemyGroupSlime
   m_EditorClassIdentifier: 
-  <EnemyTypes>k__BackingField: 0
+  <EnemyTypes>k__BackingField: 6
   <Count>k__BackingField: 3
   <SpawnInterval>k__BackingField: 1

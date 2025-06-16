@@ -120,7 +120,7 @@
 
 //            if (_enemy.IsMoveRandomPoints == false)
 //            {
-//                _enemy.MoveToPoint.MovePoints();
+//                _enemy.MoveToTarget.MovePoints();
 //            }
 //        }
 

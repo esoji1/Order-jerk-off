@@ -6,13 +6,13 @@ using _Project.ScriptableObjects;
 using _Project.Enemy.Types;
 using _Project.Enemy.Behaviors;
 using _Project.Core.Interface;
-using _Project.ScriptableObjects.Configs;
 
 namespace _Project.Enemy
 {
     public class EnemyFactory
     {
         private EnemyConfig _planetPredator, _slime, _distant, _heavy, _wizard;
+        private EnemyConfig _planetMoveToTarget, _slimeMoveToTarget, _distantMoveToTarget, _heavyMoveToTarget, _wizardMoveToTarget;
         private HealthInfo _healthInfoPrefab;
         private HealthView _healthViewPrefab;
         private Canvas _uiDynamic;
@@ -20,16 +20,23 @@ namespace _Project.Enemy
         private Coin _coinPrefab;
         private Player.Player _player;
         private GivesData _givesData;
+        private Transform _targetForMoveToTarget;    
 
         public EnemyFactory(EnemyConfig planet, EnemyConfig slime, EnemyConfig distant, EnemyConfig heavy, EnemyConfig wizard,
-            HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas uiDynamic, Experience experiencePrefab,
-            Coin coinPrefab, Player.Player player, GivesData givesData)
+            EnemyConfig planetMoveToTarget, EnemyConfig slimeMoveToTarget, EnemyConfig distantMoveToTarget, EnemyConfig heavyMoveToTarget, 
+            EnemyConfig wizardMoveToPoint, HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas uiDynamic, 
+            Experience experiencePrefab, Coin coinPrefab, Player.Player player, GivesData givesData, Transform targetForMoveToTarget)
         {
             _planetPredator = planet;
             _slime = slime;
             _distant = distant;
             _heavy = heavy;
             _wizard = wizard;
+            _planetMoveToTarget = planetMoveToTarget;
+            _slimeMoveToTarget = slimeMoveToTarget;
+            _distantMoveToTarget = distantMoveToTarget;
+            _heavyMoveToTarget = heavyMoveToTarget;
+            _wizardMoveToTarget = wizardMoveToPoint;
             _healthInfoPrefab = healthInfoPrefab;
             _healthViewPrefab = healthViewPrefab;
             _uiDynamic = uiDynamic;
@@ -37,6 +44,7 @@ namespace _Project.Enemy
             _coinPrefab = coinPrefab;
             _player = player;
             _givesData = givesData;
+            _targetForMoveToTarget = targetForMoveToTarget;
         }
 
         public Behaviors.Enemy Get(EnemyType type, Vector3 position, Transform[] points)
@@ -66,6 +74,21 @@ namespace _Project.Enemy
                 case EnemyType.Wizard:
                     return _wizard;
 
+                case EnemyType.PlantPredatorMoveToTarget:
+                    return _planetMoveToTarget;
+
+                case EnemyType.SlimeMoveToTarget:
+                    return _slimeMoveToTarget;
+
+                case EnemyType.DistantMoveToTarget:
+                    return _distantMoveToTarget;
+
+                case EnemyType.HeavyMoveToTarget:
+                    return _heavyMoveToTarget;
+
+                case EnemyType.WizardMoveToTarget:
+                    return _wizardMoveToTarget;
+
                 default:
                     throw new ArgumentException(nameof(type));
             }
@@ -75,6 +98,7 @@ namespace _Project.Enemy
         {
             InitializePathSearch(instance, config, points);
             InitializeFoundObjectsNeedsPlayer(instance);
+            InitializeFoundObjectsNeedsMoveToTarget(instance);
 
             switch (type)
             {
@@ -103,6 +127,31 @@ namespace _Project.Enemy
                         _coinPrefab, _player, _givesData);
                     return instance;
 
+                case EnemyType.PlantPredatorMoveToTarget:
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab,
+                        _coinPrefab, _player, _givesData);
+                    return instance;
+
+                case EnemyType.SlimeMoveToTarget:
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab,
+                        _coinPrefab, _player, _givesData);
+                    return instance;
+
+                case EnemyType.DistantMoveToTarget:
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab,
+                        _coinPrefab, _player, _givesData);
+                    return instance;
+
+                case EnemyType.HeavyMoveToTarget:
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab,
+                        _coinPrefab, _player, _givesData);
+                    return instance;
+
+                case EnemyType.WizardMoveToTarget:
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab,
+                        _coinPrefab, _player, _givesData);
+                    return instance;
+
                 default:
                     throw new ArgumentException(nameof(type));
             }
@@ -127,6 +176,16 @@ namespace _Project.Enemy
             foreach (IInitializePlayer initializePlayer in initializePlayers)
             {
                 initializePlayer.Initialize(_player);
+            }
+        }
+
+        private void InitializeFoundObjectsNeedsMoveToTarget(Behaviors.Enemy instance)
+        {
+            IInitializeTarget[] initializeTargets = instance.GetComponents<IInitializeTarget>();
+
+            foreach (IInitializeTarget initializeTarget in initializeTargets)
+            {
+                initializeTarget.Initialize(_targetForMoveToTarget);
             }
         }
     }

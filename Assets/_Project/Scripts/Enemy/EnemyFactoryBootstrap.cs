@@ -7,7 +7,9 @@ namespace _Project.Enemy
 {
     public class EnemyFactoryBootstrap : MonoBehaviour
     {
-        [SerializeField] private EnemyConfig _planet, _slime, _distant, _heavy, _wizard;
+        [SerializeField, Header("Chase and Patrol")] private EnemyConfig _planet, _slime, _distant, _heavy, _wizard;
+        [SerializeField, Header("Chase and MoveToTarget")] private EnemyConfig _planetMoveToTarget, _slimeMoveToTarget, 
+            _distantMoveToTarget, _heavyMoveToTarget, _wizardMoveToTarget;
         [SerializeField] private HealthInfo _healthInfoPrefab;
         [SerializeField] private HealthView _healthViewPrefab;
         [SerializeField] private Canvas _uiDynamic;
@@ -15,17 +17,17 @@ namespace _Project.Enemy
         [SerializeField] private Coin _coinPrefab;
         [SerializeField] private Player.Player _player;
         [SerializeField] private GivesData _givesData;
-        [SerializeField] private Transform[] _pointsWave;
+        [SerializeField] private Transform _targetForMoveToTarget;
 
         private EnemyFactory _enemyFactory;
 
         public EnemyFactory EnemyFactory => _enemyFactory;
-        public Transform[] PointsWave => _pointsWave;
 
         private void Awake()
         {
-            _enemyFactory = new EnemyFactory(_planet, _slime, _distant, _heavy, _wizard, _healthInfoPrefab, _healthViewPrefab, _uiDynamic, _experiencePrefab, _coinPrefab,
-                _player, _givesData);
+            _enemyFactory = new EnemyFactory(_planet, _slime, _distant, _heavy, _wizard, _planetMoveToTarget, _slimeMoveToTarget, _distantMoveToTarget,
+                _heavyMoveToTarget, _wizardMoveToTarget, _healthInfoPrefab, _healthViewPrefab, _uiDynamic, _experiencePrefab,
+                _coinPrefab, _player, _givesData, _targetForMoveToTarget);
         }
     }
 }

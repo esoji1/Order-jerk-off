@@ -5,14 +5,9 @@ namespace _Project.Wave
     public class WaveView
     {
         private TextMeshProUGUI _waveText;
-        private int _totalWaves;
 
-        public WaveView(TextMeshProUGUI waveText, int totalWaves)
-        {
-            _waveText = waveText;
-            _totalWaves = totalWaves;
-        }
+        public WaveView(TextMeshProUGUI waveText) => _waveText = waveText;
 
-        public void Show(int currentWave) => _waveText.text = $"{currentWave + 1}/{_totalWaves}";
+        public void Show(int currentWave) => _waveText.text = currentWave.ToString();
     }
 }

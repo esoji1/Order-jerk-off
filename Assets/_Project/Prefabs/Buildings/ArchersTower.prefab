@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 2192492933370129336}
   - component: {fileID: 5647854778916712605}
   - component: {fileID: 2063223218113371594}
+  - component: {fileID: -8541556370542283232}
   m_Layer: 8
   m_Name: ArchersTower
   m_TagString: Untagged
@@ -305,6 +306,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 308e0ad68dd49bd4bbee6464297d1b08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!50 &-8541556370542283232
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1164424386520983087}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3053773040370716037
 GameObject:
   m_ObjectHideFlags: 0

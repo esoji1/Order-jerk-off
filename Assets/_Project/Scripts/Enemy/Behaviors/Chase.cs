@@ -20,16 +20,16 @@ namespace _Project.Enemy.Behaviors
         {
             ExtractComponents();
 
-            _fov.OnPlayerSpotted += StartChasing;
-            _fov.OnPlayerLost += StopChasing;
+            _fov.OnSpotted += StartChasing;
+            _fov.OnLost += StopChasing;
             _movementBreaker.BreakRequested += TryBreakChase;
             _reasonCompleteStopMovement.BreakRequested += StopMovementCompletely;
         }
 
         private void OnDestroy()
         {
-            _fov.OnPlayerSpotted -= StartChasing;
-            _fov.OnPlayerLost -= StopChasing;
+            _fov.OnSpotted -= StartChasing;
+            _fov.OnLost -= StopChasing;
             _movementBreaker.BreakRequested -= TryBreakChase;
             _reasonCompleteStopMovement.BreakRequested -= StopMovementCompletely;
         }
@@ -42,7 +42,7 @@ namespace _Project.Enemy.Behaviors
             _reasonCompleteStopMovement = GetComponent<ReasonCompleteStopMovement>();
         }
 
-        private void StartChasing(Player.Player target)
+        private void StartChasing(Transform target)
         {
             if (_isMove == false)
             {
@@ -53,11 +53,12 @@ namespace _Project.Enemy.Behaviors
             }
         }
 
-        private void StopChasing(Player.Player target)
+        private void StopChasing(Transform target)
         {
             if (_isMove == false)
             {
                 _movementBreaker.Emit(MovementBreakReasonType.Patrol);
+                _movementBreaker.Emit(MovementBreakReasonType.MoveToTarget);
                 StopCoroutine();
             }
         }
@@ -71,11 +72,11 @@ namespace _Project.Enemy.Behaviors
             }
         }
 
-        private IEnumerator ChaseRoutine(Player.Player target)
+        private IEnumerator ChaseRoutine(Transform target)
         {
             while (target != null)
             {
-                _agent.Move(target.transform.position);
+                _agent.Move(target.position);
                 yield return null;
             }
         }

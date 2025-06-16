@@ -1,4 +1,3 @@
-using _Project.Enemy;
 using _Project.Enemy.Types;
 using UnityEngine;
 

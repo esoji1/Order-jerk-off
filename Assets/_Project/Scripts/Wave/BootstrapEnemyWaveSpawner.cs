@@ -13,13 +13,14 @@ namespace _Project.Wave
         [SerializeField] private TimerBetweenWavesView _timerBetweenWavesView;
         [SerializeField] private EnemyWaveSpawner _enemyWaveSpawner;
         [SerializeField] private TextMeshProUGUI _waveText;
+        [SerializeField] private Transform[] _pointsWave;
 
         public EnemyWaveSpawner EnemyWaveSpawner => _enemyWaveSpawner;
 
         private void Awake()
         {
-            _enemyWaveSpawner.Initialize(_waves, _bootstrapEnemy, _timeBetweenWaves, _timerBetweenWavesView, _waveText);
-            //_enemyWaveSpawner.StartEnemyWaveSpawner();
+            _enemyWaveSpawner.Initialize(_waves, _bootstrapEnemy, _timeBetweenWaves, _timerBetweenWavesView, _waveText, _pointsWave);
+            _enemyWaveSpawner.StartEnemyWaveSpawner();
         }
     }
 }

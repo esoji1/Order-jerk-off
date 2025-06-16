@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e492fdd6206099478f7a10f7ff8e889, type: 3}
+  m_Name: PlantPredatorEnemyConfig
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 7321834984733682313, guid: 60347dc1582ef2f4598468ba0c20915a, type: 3}
+  Health: 100
+  AmountExperienceDropped: 14
+  AmountGoldDropped: 20
+  MovementBreakReason: 0100000003000000

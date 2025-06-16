@@ -44,7 +44,7 @@
 //        private HealthInfo _healthInfo;
 //        private HealthView _healthView;
 //        private RandomMovePoints _movePointsRandom;
-//        private MoveToPoint _moveToPoint;
+//        private MoveToTarget _moveToPoint;
 
 //        private bool _isDie;
 //        private bool _isSleeps;
@@ -65,7 +65,7 @@
 //        public NavMeshAgent Agent => _agent;
 //        public bool IsMoveRandomPoints => _isMoveRandomPoints;
 //        public RandomMovePoints RandomMovePoints => _movePointsRandom;
-//        public MoveToPoint MoveToPoint => _moveToPoint;
+//        public MoveToTarget MoveToTarget => _moveToPoint;
 //        public Player.Player Player => _player; 
 //        public bool IsSleeps => _isSleeps;
 
@@ -159,7 +159,7 @@
 //            _enemyView = GetComponentInChildren<EnemyView>();
 //            _boxCollider2D = GetComponent<BoxCollider2D>();
 //            _movePointsRandom = GetComponent<RandomMovePoints>();
-//            _moveToPoint = GetComponent<MoveToPoint>();
+//            _moveToPoint = GetComponent<MoveToTarget>();
 //        }
 //    }
 //}

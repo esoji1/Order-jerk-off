@@ -11,7 +11,7 @@ using UnityEngine;
 namespace _Project.Enemy.Behaviors
 {
     [RequireComponent(typeof(ReasonCompleteStopAttack), typeof(AttackBreaker))]
-    public class HeavyAttack : MonoBehaviour, IInitializePlayer
+    public class HeavyAttack : MonoBehaviour, IInitializePlayer, IInitializeTarget
     {
         [SerializeField] private int _damage;
         [SerializeField] private FieldOfViewAttack _fovViewAttack;
@@ -20,6 +20,7 @@ namespace _Project.Enemy.Behaviors
         [SerializeField] private float _radiusAttack;
 
         private Player.Player _player;
+        private Transform _target;
 
         private CreatingPrimitive _creatingPrimitive;
 
@@ -39,7 +40,7 @@ namespace _Project.Enemy.Behaviors
 
             _creatingPrimitive = new CreatingPrimitive(_primitivePrefab);
 
-            _fovViewAttack.OnPlayerAttack += StartAttack;
+            _fovViewAttack.OnAttack += StartAttack;
             _reasonCompleteStopAttack.BreakRequested += StopAttackCompletely;
             _reasonCompleteStopAttack.StartingRequested += StartAttackCompletely;
             _attackBreaker.BreakRequested += TryBreakMeleeAttack;
@@ -51,13 +52,15 @@ namespace _Project.Enemy.Behaviors
             if (_creatingPrimitive.CreatedPrimitive != null)
                 GameObject.Destroy(_creatingPrimitive.CreatedPrimitive);
 
-            _fovViewAttack.OnPlayerAttack -= StartAttack;
+            _fovViewAttack.OnAttack -= StartAttack;
             _reasonCompleteStopAttack.BreakRequested -= StopAttackCompletely;
             _reasonCompleteStopAttack.StartingRequested -= StartAttackCompletely;
             _attackBreaker.BreakRequested -= TryBreakMeleeAttack;
         }
 
         public void Initialize(Player.Player player) => _player = player;
+
+        public void Initialize(Transform target) => _target = target;
 
         private void ExtractComponents()
         {
@@ -115,7 +118,17 @@ namespace _Project.Enemy.Behaviors
                 yield return _tween.WaitForCompletion();
 
                 if (CheckAttackHitRadius())
-                    _player.Damage(_damage);
+                {
+                    if (_fovViewAttack.CheckPlayerInRadius())
+                    {
+                        _player.Damage(_damage);
+                    }
+                    else if (_fovViewAttack.CheckBaseBuildingInRadius())
+                    {
+                        if (_target.TryGetComponent(out BaseBuilding baseBuilding))
+                            baseBuilding.Damage(_damage);
+                    }
+                }
 
                 _enemyView.StopAttack();
 

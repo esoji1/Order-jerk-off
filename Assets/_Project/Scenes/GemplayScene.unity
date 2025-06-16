@@ -3637,11 +3637,18 @@ MonoBehaviour:
   _waves:
   - {fileID: 11400000, guid: 814fc53c322347b4a9d651156f54f799, type: 2}
   - {fileID: 11400000, guid: ad026c4cf0264904f8005b7b557b8687, type: 2}
-  _bootstrapEnemy: {fileID: 0}
-  _timeBetweenWaves: 30
+  - {fileID: 11400000, guid: f8a3b80da23e86843b256acd6a529a56, type: 2}
+  - {fileID: 11400000, guid: 93d3ad04793fa7a44ac9cc9287df00b5, type: 2}
+  - {fileID: 11400000, guid: a97a4c9358d25e74ba0e888c79971323, type: 2}
+  _bootstrapEnemy: {fileID: 1025630777}
+  _timeBetweenWaves: 20
   _timerBetweenWavesView: {fileID: 1894362307}
   _enemyWaveSpawner: {fileID: 1798810096}
   _waveText: {fileID: 83871454}
+  _pointsWave:
+  - {fileID: 805830162}
+  - {fileID: 66513103}
+  - {fileID: 1210350526}
 --- !u!4 &309677703 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8797714365107611827, guid: db71b32ee56a53d4aa4a49932c38f4b1, type: 3}
@@ -4099,6 +4106,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2094600879}
   - {fileID: 43215670}
   - {fileID: 1271985923}
   - {fileID: 2038472827}
@@ -9373,6 +9381,11 @@ MonoBehaviour:
   _distant: {fileID: 11400000, guid: b2bfb9fdb07f701458ea8d581ce15d02, type: 2}
   _heavy: {fileID: 11400000, guid: 64cc549d8aec26144bd8ec2f28f07734, type: 2}
   _wizard: {fileID: 11400000, guid: 5f3a68ca70932c44397197e3bccd2dbc, type: 2}
+  _planetMoveToTarget: {fileID: 11400000, guid: 703def7de9d11b44f98b8e76bb96a93f, type: 2}
+  _slimeMoveToTarget: {fileID: 11400000, guid: adea73164d02eb9448dd6da18f084402, type: 2}
+  _distantMoveToTarget: {fileID: 11400000, guid: ee71add07f47d3548aca5e1403e5451b, type: 2}
+  _heavyMoveToTarget: {fileID: 11400000, guid: 61a1442895c682148b867c0f1626264f, type: 2}
+  _wizardMoveToTarget: {fileID: 11400000, guid: 3755b378efa4b99448a1ce0fecefaac3, type: 2}
   _healthInfoPrefab: {fileID: 5008849479396532886, guid: f5abdea487e20a741b8f770de5dc31a7, type: 3}
   _healthViewPrefab: {fileID: 633073849527231201, guid: 3297335f90dc9d24dbe4664cc3e5f053, type: 3}
   _uiDynamic: {fileID: 8108546}
@@ -9380,7 +9393,7 @@ MonoBehaviour:
   _coinPrefab: {fileID: 7435567748440869419, guid: 391b593ebdbd6604fb8a8666d64d8c2e, type: 3}
   _player: {fileID: 52823349}
   _givesData: {fileID: 11400000, guid: dff9cd4c46898e84b93e7149a1e85002, type: 2}
-  _pointsWave: []
+  _targetForMoveToTarget: {fileID: 928991790}
 --- !u!1 &1026548796
 GameObject:
   m_ObjectHideFlags: 0
@@ -18908,7 +18921,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094600878}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18916,7 +18929,7 @@ Transform:
   - {fileID: 805830162}
   - {fileID: 66513103}
   - {fileID: 1210350526}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 351946633}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2113032819 stripped
 Transform:
@@ -20604,6 +20617,5 @@ SceneRoots:
   - {fileID: 7008101720428214231}
   - {fileID: 183091102719321199}
   - {fileID: 693513215}
-  - {fileID: 2094600879}
   - {fileID: 1479258606}
   - {fileID: 351946633}

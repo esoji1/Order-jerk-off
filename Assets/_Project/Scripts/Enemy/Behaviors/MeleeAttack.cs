@@ -1,20 +1,20 @@
+using _Project.ConstructionBuildings.Buildings;
 using _Project.Core.Interface;
-using _Project.Enemy;
 using _Project.Enemy.Breakers;
 using _Project.Enemy.Types;
-using _Project.Player;
 using System.Collections;
 using UnityEngine;
 
-namespace __Project.Enemy.Behaviors
+namespace _Project.Enemy.Behaviors
 {
     [RequireComponent(typeof(ReasonCompleteStopAttack), typeof(AttackBreaker))]
-    public class MeleeAttack : MonoBehaviour, IInitializePlayer
+    public class MeleeAttack : MonoBehaviour, IInitializePlayer, IInitializeTarget
     {
         [SerializeField] private int _damage;
         [SerializeField] private FieldOfViewAttack _fovViewAttack;
 
-        private Player _player;
+        private Player.Player _player;
+        private Transform _target;
 
         private EnemyView _enemyView;
         private ReasonCompleteStopAttack _reasonCompleteStopAttack;
@@ -28,8 +28,8 @@ namespace __Project.Enemy.Behaviors
             ExtractComponents();
             _enemyView.Initialize();
 
-            _fovViewAttack.OnPlayerAttack += StartAttack;
-            _fovViewAttack.OnPlayerStopAttack += StopAttack;
+            _fovViewAttack.OnAttack += StartAttack;
+            _fovViewAttack.OnStopAttack += StopAttack;
             _reasonCompleteStopAttack.BreakRequested += StopAttackCompletely;
             _reasonCompleteStopAttack.StartingRequested += StartAttackCompletely;
             _attackBreaker.BreakRequested += TryBreakMeleeAttack;
@@ -37,14 +37,16 @@ namespace __Project.Enemy.Behaviors
 
         private void OnDestroy()
         {
-            _fovViewAttack.OnPlayerAttack -= StartAttack;
-            _fovViewAttack.OnPlayerStopAttack -= StopAttack;
+            _fovViewAttack.OnAttack -= StartAttack;
+            _fovViewAttack.OnStopAttack -= StopAttack;
             _reasonCompleteStopAttack.BreakRequested -= StopAttackCompletely;
             _reasonCompleteStopAttack.StartingRequested -= StartAttackCompletely;
             _attackBreaker.BreakRequested -= TryBreakMeleeAttack;
         }
 
-        public void Initialize(Player player) => _player = player;
+        public void Initialize(Player.Player player) => _player = player;
+
+        public void Initialize(Transform target) => _target = target;
 
         private void ExtractComponents()
         {
@@ -88,7 +90,16 @@ namespace __Project.Enemy.Behaviors
                 _enemyView.StartAttack();
                 float attackAnimationTime = _enemyView.Animator.GetCurrentAnimatorStateInfo(0).length;
                 yield return new WaitForSeconds(attackAnimationTime);
-                _player.Damage(_damage);
+
+                if (_fovViewAttack.CheckPlayerInRadius())
+                {
+                    _player.Damage(_damage);
+                }
+                else if (_fovViewAttack.CheckBaseBuildingInRadius())
+                {
+                    if (_target.TryGetComponent(out BaseBuilding baseBuilding))
+                        baseBuilding.Damage(_damage);
+                }
             }
         }
 

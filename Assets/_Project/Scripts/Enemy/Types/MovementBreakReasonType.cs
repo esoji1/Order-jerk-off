@@ -5,6 +5,7 @@
         Patrol = 0,
         Chase,
         OnlyChase,
+        MoveToTarget,
         Manual
     }
 }
