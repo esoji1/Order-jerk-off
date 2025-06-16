@@ -9,6 +9,8 @@ namespace _Project.Enemy
     {
         [SerializeField] private float _attackRadius;
 
+        private BaseBuilding _building;
+
         public event Action OnAttack;
         public event Action OnStopAttack;
 
@@ -44,12 +46,28 @@ namespace _Project.Enemy
 
             foreach (Collider2D collider in collider2D)
             {
-                if (collider.TryGetComponent(out BaseBuilding _))
+                if (collider.TryGetComponent(out BaseBuilding building))
                 {
+                    _building = building;
                     return true;
                 }
             }
+            _building = null;
             return false;
+        }
+
+        public BaseBuilding ReturnCurrenBuildTarget()
+        {
+            Collider2D[] collider2D = Physics2D.OverlapCircleAll(transform.position, _attackRadius, Layers.LayerPlayer);
+
+            foreach (Collider2D collider in collider2D)
+            {
+                if (collider.TryGetComponent(out BaseBuilding _))
+                {
+                    return _building;
+                }
+            }
+            return null;
         }
     }
 }

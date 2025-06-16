@@ -102,6 +102,7 @@ namespace _Project.Enemy.Behaviors
                 StopCoroutine();
                 _movementBreaker.Emit(MovementBreakReasonType.Manual);
                 _movementBreaker.Emit(MovementBreakReasonType.Patrol);
+                _movementBreaker.Emit(MovementBreakReasonType.MoveToTarget);
             }
             else if (type is MovementBreakReasonType.Chase)
             {

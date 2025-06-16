@@ -1,4 +1,3 @@
-using _Project.ConstructionBuildings.Buildings;
 using _Project.Core.Interface;
 using _Project.Enemy.Breakers;
 using _Project.Enemy.Types;
@@ -97,8 +96,7 @@ namespace _Project.Enemy.Behaviors
                 }
                 else if (_fovViewAttack.CheckBaseBuildingInRadius())
                 {
-                    if (_target.TryGetComponent(out BaseBuilding baseBuilding))
-                        baseBuilding.Damage(_damage);
+                    _fovViewAttack.ReturnCurrenBuildTarget().Damage(_damage);
                 }
             }
         }
