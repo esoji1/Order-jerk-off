@@ -55,12 +55,12 @@ namespace _Project.Enemy.Behaviors
             _attackBreaker = GetComponent<AttackBreaker>();
         }
 
-        private void StartAttack()
+        private void StartAttack(Transform target)
         {
             StartCoroutine();
         }
 
-        private void StopAttack()
+        private void StopAttack(Transform target)
         {
             StopCorourine();
         }
@@ -120,11 +120,11 @@ namespace _Project.Enemy.Behaviors
         {
             if (type is not BreakerEnemyType.RangedAreaAttack && type is not BreakerEnemyType.RangedAttack)
             {
-                StopAttack();
+                StopAttack(null);
             }
             else if (type is BreakerEnemyType.RangedAreaAttack)
             {
-                StartAttack();
+                StartAttack(null);
             }
         }
     }

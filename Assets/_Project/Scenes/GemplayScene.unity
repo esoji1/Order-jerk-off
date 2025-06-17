@@ -3641,7 +3641,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 93d3ad04793fa7a44ac9cc9287df00b5, type: 2}
   - {fileID: 11400000, guid: a97a4c9358d25e74ba0e888c79971323, type: 2}
   _bootstrapEnemy: {fileID: 1025630777}
-  _timeBetweenWaves: 20
+  _timeBetweenWaves: 100
   _timerBetweenWavesView: {fileID: 1894362307}
   _enemyWaveSpawner: {fileID: 1798810096}
   _waveText: {fileID: 83871454}
@@ -16038,7 +16038,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 99, y: 1227}
+  m_AnchoredPosition: {x: 819.86, y: 1687}
   m_SizeDelta: {x: 280.28, y: 152.6061}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1877847150

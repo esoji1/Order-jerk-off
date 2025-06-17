@@ -54,13 +54,13 @@ namespace _Project.Enemy.Behaviors
             _attackBreaker = GetComponent<AttackBreaker>();
         }
 
-        private void StartAttack()
+        private void StartAttack(Transform target)
         {
             _attackBreaker.Emit(BreakerEnemyType.MeleeAttack);
             StartCoroutine();
         }
 
-        private void StopAttack()
+        private void StopAttack(Transform target)
         {
             _attackBreaker.Emit(BreakerEnemyType.RangedAttack);
             StopCorourine();

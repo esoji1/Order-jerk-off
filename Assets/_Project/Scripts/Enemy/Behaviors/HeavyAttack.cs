@@ -70,25 +70,26 @@ namespace _Project.Enemy.Behaviors
             _reasonCompleteStopMovement = GetComponent<ReasonCompleteStopMovement>();
         }
 
-        private void StartAttack()
+        private void StartAttack(Transform target)
         {
             _attackBreaker.Emit(BreakerEnemyType.HeavyAttack);
-            StartCoroutine();
+            StartCoroutine(target);
         }
 
         private void StopAttack()
         {
             _reasonCompleteStopMovement.Emit(MovementBreakReasonType.Chase);
             _reasonCompleteStopMovement.Emit(MovementBreakReasonType.Patrol);
+            _reasonCompleteStopMovement.Emit(MovementBreakReasonType.MoveToTarget);
             _attackBreaker.Emit(BreakerEnemyType.RangedAreaAttack);
             _attackBreaker.Emit(BreakerEnemyType.RangedAttack);
             StopCorourine();
         }
 
-        private void StartCoroutine()
+        private void StartCoroutine(Transform target)
         {
             if (_coroutine == null && _isAttack == false)
-                _coroutine = StartCoroutine(Attack());
+                _coroutine = StartCoroutine(Attack(target));
         }
 
         private void StopCorourine()
@@ -105,14 +106,14 @@ namespace _Project.Enemy.Behaviors
             }
         }
 
-        private IEnumerator Attack()
+        private IEnumerator Attack(Transform target)
         {
-            while (_fovViewAttack.CheckPlayerInRadius())
+            while (_fovViewAttack.CheckPlayerInRadius() || _fovViewAttack.CheckBaseBuildingInRadius())
             {
                 _reasonCompleteStopMovement.Emit(MovementBreakReasonType.Manual);
 
                 _enemyView.StartAttack();
-                _creatingPrimitive.CreatePrimitive(_player.transform, 1);
+                _creatingPrimitive.CreatePrimitive(target, 1);
                 _tween = _creatingPrimitive.SpriteRenderer.DOFade(1, _attackCastTime);
 
                 yield return _tween.WaitForCompletion();
@@ -172,7 +173,7 @@ namespace _Project.Enemy.Behaviors
                 _isAttack = false;
 
                 if (_fovViewAttack.CheckPlayerInRadius())
-                    StartCoroutine();
+                    StartCoroutine(_player.transform);
             }
         }
 

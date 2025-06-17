@@ -11,19 +11,19 @@ namespace _Project.Enemy
 
         private BaseBuilding _building;
 
-        public event Action OnAttack;
-        public event Action OnStopAttack;
+        public event Action<Transform> OnAttack;
+        public event Action<Transform> OnStopAttack;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.TryGetComponent(out Player.Player _) || collision.TryGetComponent(out BaseBuilding _))
-                OnAttack?.Invoke();
+                OnAttack?.Invoke(collision.transform);
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
             if (collision.TryGetComponent(out Player.Player _) || collision.TryGetComponent(out BaseBuilding _))
-                OnStopAttack?.Invoke();
+                OnStopAttack?.Invoke(collision.transform);
         }
 
         public bool CheckPlayerInRadius()
