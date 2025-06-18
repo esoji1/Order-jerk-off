@@ -17,6 +17,7 @@ namespace _Project.Enemy.Behaviors
     public class Enemy : MonoBehaviour, IDamage, IOnDamage
     {
         [SerializeField] private EnemyType _enemyTypes;
+        [SerializeField] private float _artifactDropChance = 10f;
 
         private HealthInfo _healthInfoPrefab;
         private HealthView _healthViewPrefab;
@@ -79,7 +80,7 @@ namespace _Project.Enemy.Behaviors
             _health = new Health(_enemyConfig.Health);
             _spawnExperience = new SpawnExperience(_experiencePrefab, _enemyConfig.AmountExperienceDropped);
             _spawnCoin = new SpawnCoin(coinPrefab, _enemyConfig.AmountGoldDropped);
-            _spawnArtefact = new SpawnArtefact(givesData);
+            _spawnArtefact = new SpawnArtefact(givesData, _artifactDropChance);
 
             _healthInfo = Instantiate(_healthInfoPrefab, transform.position, Quaternion.identity);
             _healthInfo.Initialize(_uiDynamic);

@@ -55,6 +55,9 @@ namespace _Project.Enemy.Behaviors
 
         private void TryBreakMovement(MovementBreakReasonType reason)
         {
+            if (reason is MovementBreakReasonType.MoveToTarget)
+                return;
+
             if (reason is not MovementBreakReasonType.Patrol)
                 _agentMovement.OnReachedDestination -= MoveToRandomNextWaypoint;
             else if (reason is MovementBreakReasonType.Patrol)
