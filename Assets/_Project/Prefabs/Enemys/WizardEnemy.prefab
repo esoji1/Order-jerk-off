@@ -118,7 +118,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 7
+  m_Radius: 10
 --- !u!114 &601308623175839340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361434b122290f841ac1293becf8a5a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackRadius: 5.6
+  _attackRadius: 8
 --- !u!1 &2108474845470875468
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 7599779143316671649}
   - component: {fileID: 3926684770316788987}
   - component: {fileID: 2899707850418315343}
-  - component: {fileID: 9058036482050024321}
+  - component: {fileID: 3669178885069000783}
   m_Layer: 0
   m_Name: WizardEnemyView
   m_TagString: Untagged
@@ -468,7 +468,7 @@ SpriteRenderer:
   m_SortingLayerID: 1461697187
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1556463978589607206, guid: 23b0358b4326fe743af3517de437a071, type: 3}
+  m_Sprite: {fileID: -4549297002301125287, guid: afa749e988137cf4cb2befb38cc0067d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -501,7 +501,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &9058036482050024321
+--- !u!114 &3669178885069000783
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -510,7 +510,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5579252613217025158}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3300fbfe1977c9c41bc1c9cf20711587, type: 3}
+  m_Script: {fileID: 11500000, guid: a14b4f854bb32b84aaf2448310e7c04a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7528806599951108264
@@ -732,7 +732,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d114514a4c36944a3a373453b45ca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemyTypes: 4
+  _enemyTypes: 5
+  _artifactDropChance: 10
 --- !u!114 &7847302911309601226
 MonoBehaviour:
   m_ObjectHideFlags: 0

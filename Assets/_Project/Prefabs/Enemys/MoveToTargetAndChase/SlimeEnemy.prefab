@@ -168,7 +168,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1640333962412978020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3300fbfe1977c9c41bc1c9cf20711587, type: 3}
+  m_Script: {fileID: 11500000, guid: c1dca7bb986612344a1934915f1283ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2146569868925357943
@@ -626,6 +626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyTypes: 1
+  _artifactDropChance: 10
 --- !u!114 &5027381827392281331
 MonoBehaviour:
   m_ObjectHideFlags: 0

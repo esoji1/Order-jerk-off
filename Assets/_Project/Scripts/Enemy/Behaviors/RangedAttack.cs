@@ -19,7 +19,7 @@ namespace _Project.Enemy.Behaviors
 
         private SpawnProjectile _spawnProjectile;
 
-        private EnemyView _enemyView;
+        private EnemyView.BaseEnemyView _enemyView;
         private ReasonCompleteStopAttack _reasonCompleteStopAttack;
         private AttackBreaker _attackBreaker;
 
@@ -57,7 +57,7 @@ namespace _Project.Enemy.Behaviors
 
         private void ExtractComponents()
         {
-            _enemyView = GetComponentInChildren<EnemyView>();
+            _enemyView = GetComponentInChildren<EnemyView.BaseEnemyView>();
             _reasonCompleteStopAttack = GetComponent<ReasonCompleteStopAttack>();
             _attackBreaker = GetComponent<AttackBreaker>();
         }
@@ -82,7 +82,7 @@ namespace _Project.Enemy.Behaviors
         {
             if (_coroutine != null)
             {
-                _enemyView.StopAttack();
+                _enemyView.StopRangeAttack();
                 StopCoroutine(_coroutine);
                 _coroutine = null;
             }
@@ -93,6 +93,7 @@ namespace _Project.Enemy.Behaviors
             while (true)
             {
                 yield return new WaitForSeconds(_attackInterval);
+                _enemyView.StartRangeAttack();
 
                 Vector2 direction = (_player.transform.position - transform.position).normalized;
                 GameObject bulletGameObject = _spawnProjectile.ProjectileSpawnPoint(projectileEnemyPrefab.gameObject, direction, transform);

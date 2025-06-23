@@ -24,7 +24,7 @@ namespace _Project.Enemy.Behaviors
 
         private CreatingPrimitive _creatingPrimitive;
 
-        private EnemyView _enemyView;
+        private EnemyView.BaseEnemyView _enemyView;
         private ReasonCompleteStopAttack _reasonCompleteStopAttack;
         private AttackBreaker _attackBreaker;
         private ReasonCompleteStopMovement _reasonCompleteStopMovement;
@@ -64,7 +64,7 @@ namespace _Project.Enemy.Behaviors
 
         private void ExtractComponents()
         {
-            _enemyView = GetComponentInChildren<EnemyView>();
+            _enemyView = GetComponentInChildren<EnemyView.BaseEnemyView>();
             _reasonCompleteStopAttack = GetComponent<ReasonCompleteStopAttack>();
             _attackBreaker = GetComponent<AttackBreaker>();
             _reasonCompleteStopMovement = GetComponent<ReasonCompleteStopMovement>();
@@ -100,7 +100,7 @@ namespace _Project.Enemy.Behaviors
             if (_coroutine != null)
             {
                 _tween.Kill();
-                _enemyView.StopAttack();
+                _enemyView.StopHeavyAttack();
                 StopCoroutine(_coroutine);
                 _coroutine = null;
             }
@@ -112,7 +112,7 @@ namespace _Project.Enemy.Behaviors
             {
                 _reasonCompleteStopMovement.Emit(MovementBreakReasonType.Manual);
 
-                _enemyView.StartAttack();
+                _enemyView.StartHeavyAttack();
                 _creatingPrimitive.CreatePrimitive(target, 1);
                 _tween = _creatingPrimitive.SpriteRenderer.DOFade(1, _attackCastTime);
 
@@ -130,7 +130,7 @@ namespace _Project.Enemy.Behaviors
                     }
                 }
 
-                _enemyView.StopAttack();
+                _enemyView.StopHeavyAttack();
 
                 if (_creatingPrimitive.CreatedPrimitive != null)
                     GameObject.Destroy(_creatingPrimitive.CreatedPrimitive);

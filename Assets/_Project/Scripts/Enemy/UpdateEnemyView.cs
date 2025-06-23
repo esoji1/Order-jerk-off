@@ -1,18 +1,19 @@
 using _Project.Enemy;
+using _Project.Enemy.EnemyView;
 using UnityEngine;
 
 namespace _Project.Enemy
 {
     public class UpdateEnemyView : MonoBehaviour
     {
-        private EnemyView _enemyView;
+        private BaseEnemyView _enemyView;
 
         private Vector3 _previousPosition;
         private Vector3 _smoothedDirection;
 
         private void Awake()
         {
-            _enemyView = GetComponentInChildren<EnemyView>();
+            _enemyView = GetComponentInChildren<BaseEnemyView>();
             _enemyView.Initialize();
         }
 

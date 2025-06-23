@@ -41,8 +41,6 @@ namespace _Project.Core.Projectile
                     }
                 }
             }
-
-            Destroy(gameObject, 5f);
         }
 
         public void Initialize(Player.Player player, Vector2 direction, int damage, int radiusAttack, ParticleSystem bom, TextMeshProUGUI textDamage, Canvas dynamic)
@@ -53,6 +51,8 @@ namespace _Project.Core.Projectile
             _radiusAttack = radiusAttack;
             _bom = bom;
             _droppedDamage = new DroppedDamage.DroppedDamage(textDamage, dynamic);
+
+            Destroy(gameObject, 5f);
         }
 
         private void TranslateBullet() =>

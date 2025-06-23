@@ -18,7 +18,7 @@ namespace _Project.Enemy.Behaviors
 
         private Player.Player _player;
 
-        private EnemyView _enemyView;
+        private EnemyView.BaseEnemyView _enemyView;
         private ReasonCompleteStopAttack _reasonCompleteStopAttack;
         private AttackBreaker _attackBreaker;
 
@@ -50,7 +50,7 @@ namespace _Project.Enemy.Behaviors
 
         private void ExtractComponents()
         {
-            _enemyView = GetComponentInChildren<EnemyView>();
+            _enemyView = GetComponentInChildren<EnemyView.BaseEnemyView>();
             _reasonCompleteStopAttack = GetComponent<ReasonCompleteStopAttack>();
             _attackBreaker = GetComponent<AttackBreaker>();
         }
@@ -75,6 +75,7 @@ namespace _Project.Enemy.Behaviors
         {
             if (_coroutine != null)
             {
+                _enemyView.StopRangedAreaAttack();
                 StopCoroutine(_coroutine);
                 _coroutine = null;
             }
@@ -88,6 +89,7 @@ namespace _Project.Enemy.Behaviors
 
                 if (_player.IsDie == false)
                 {
+                    _enemyView.StartRangedAreaAttack();
                     IncendiaryZoneEnemy incendiaryZoneEnemy = Instantiate(_incendiaryZoneEnemyPrefab, _player.transform.position, Quaternion.identity, null);
                     incendiaryZoneEnemy.Initialize(_damage, _radiusAttack);
                 }

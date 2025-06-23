@@ -6,11 +6,12 @@
         Slime,
         Distant,
         Heavy,
-        Wizard,
+        Orc,
+        WizardBoss,
+        SummonerBoss,
         PlantPredatorMoveToTarget,
         SlimeMoveToTarget,
         DistantMoveToTarget,
         HeavyMoveToTarget,
-        WizardMoveToTarget
     }
 }

@@ -29,7 +29,6 @@ namespace _Project.Core.Projectile
                     enemy.Damage(randomDamage);
                     Destroy(_projectile.gameObject);
                 }
-                Destroy(_projectile.gameObject, 4f);
             }
         }
 
@@ -43,6 +42,8 @@ namespace _Project.Core.Projectile
             _extraDamage = extraDamage;
             _droppedDamage = droppedDamage;
             _nearestEnemy = nearestEnemy;
+
+            Destroy(_projectile.gameObject, 4f);
         }
 
         private void GiveBulletAcceleration()

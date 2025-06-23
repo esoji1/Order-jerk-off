@@ -32,7 +32,7 @@ namespace _Project.Enemy.Behaviors
         private SpawnArtefact _spawnArtefact;
 
         private PointHealth _pointHealth;
-        private EnemyView _enemyView;
+        private EnemyView.BaseEnemyView _enemyView;
         private BoxCollider2D _boxCollider2D;
         private PointExperience _pointExperience;
         private PointCoin _pointCoin;
@@ -143,7 +143,7 @@ namespace _Project.Enemy.Behaviors
         private void ExtractComponents()
         {
             _pointHealth = GetComponentInChildren<PointHealth>();
-            _enemyView = GetComponentInChildren<EnemyView>();
+            _enemyView = GetComponentInChildren<EnemyView.BaseEnemyView>();
             _boxCollider2D = GetComponent<BoxCollider2D>();
             _pointExperience = GetComponentInChildren<PointExperience>();
             _pointCoin = GetComponentInChildren<PointCoin>();

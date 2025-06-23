@@ -11,7 +11,7 @@ namespace _Project.Enemy
 {
     public class EnemyFactory
     {
-        private EnemyConfig _planetPredator, _slime, _distant, _heavy, _wizard;
+        private EnemyConfig _planetPredator, _slime, _distant, _heavy, _orc, _wizard, _summoner;
         private EnemyConfig _planetMoveToTarget, _slimeMoveToTarget, _distantMoveToTarget, _heavyMoveToTarget, _wizardMoveToTarget;
         private HealthInfo _healthInfoPrefab;
         private HealthView _healthViewPrefab;
@@ -20,18 +20,21 @@ namespace _Project.Enemy
         private Coin _coinPrefab;
         private Player.Player _player;
         private GivesData _givesData;
-        private Transform _targetForMoveToTarget;    
+        private Transform _targetForMoveToTarget;
 
-        public EnemyFactory(EnemyConfig planet, EnemyConfig slime, EnemyConfig distant, EnemyConfig heavy, EnemyConfig wizard,
-            EnemyConfig planetMoveToTarget, EnemyConfig slimeMoveToTarget, EnemyConfig distantMoveToTarget, EnemyConfig heavyMoveToTarget, 
-            EnemyConfig wizardMoveToPoint, HealthInfo healthInfoPrefab, HealthView healthViewPrefab, Canvas uiDynamic, 
-            Experience experiencePrefab, Coin coinPrefab, Player.Player player, GivesData givesData, Transform targetForMoveToTarget)
+        public EnemyFactory(EnemyConfig planet, EnemyConfig slime, EnemyConfig distant, EnemyConfig heavy, EnemyConfig wizard, EnemyConfig summoner,
+            EnemyConfig orc, EnemyConfig planetMoveToTarget, EnemyConfig slimeMoveToTarget, EnemyConfig distantMoveToTarget,
+            EnemyConfig heavyMoveToTarget, EnemyConfig wizardMoveToPoint, HealthInfo healthInfoPrefab, HealthView healthViewPrefab,
+            Canvas uiDynamic, Experience experiencePrefab, Coin coinPrefab, Player.Player player, GivesData givesData,
+            Transform targetForMoveToTarget)
         {
             _planetPredator = planet;
             _slime = slime;
             _distant = distant;
             _heavy = heavy;
             _wizard = wizard;
+            _summoner = summoner;
+            _orc = orc;
             _planetMoveToTarget = planetMoveToTarget;
             _slimeMoveToTarget = slimeMoveToTarget;
             _distantMoveToTarget = distantMoveToTarget;
@@ -71,8 +74,14 @@ namespace _Project.Enemy
                 case EnemyType.Heavy:
                     return _heavy;
 
-                case EnemyType.Wizard:
+                case EnemyType.Orc:
+                    return _orc;
+
+                case EnemyType.WizardBoss:
                     return _wizard;
+
+                case EnemyType.SummonerBoss:
+                    return _summoner;
 
                 case EnemyType.PlantPredatorMoveToTarget:
                     return _planetMoveToTarget;
@@ -85,9 +94,6 @@ namespace _Project.Enemy
 
                 case EnemyType.HeavyMoveToTarget:
                     return _heavyMoveToTarget;
-
-                case EnemyType.WizardMoveToTarget:
-                    return _wizardMoveToTarget;
 
                 default:
                     throw new ArgumentException(nameof(type));
@@ -103,27 +109,37 @@ namespace _Project.Enemy
             switch (type)
             {
                 case EnemyType.PlantPredator:
-                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab, 
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab,
                         _coinPrefab, _player, _givesData);
                     return instance;
 
                 case EnemyType.Slime:
-                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab, 
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab,
                         _coinPrefab, _player, _givesData);
                     return instance;
 
                 case EnemyType.Distant:
-                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab, 
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab,
                         _coinPrefab, _player, _givesData);
                     return instance;
 
                 case EnemyType.Heavy:
-                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab, 
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab,
                         _coinPrefab, _player, _givesData);
                     return instance;
 
-                case EnemyType.Wizard:
-                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab, 
+                case EnemyType.Orc:
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab,
+                        _coinPrefab, _player, _givesData);
+                    return instance;
+
+                case EnemyType.WizardBoss:
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab,
+                        _coinPrefab, _player, _givesData);
+                    return instance;
+
+                case EnemyType.SummonerBoss:
+                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab,
                         _coinPrefab, _player, _givesData);
                     return instance;
 
@@ -147,15 +163,10 @@ namespace _Project.Enemy
                         _coinPrefab, _player, _givesData);
                     return instance;
 
-                case EnemyType.WizardMoveToTarget:
-                    instance.Initialize(_healthInfoPrefab, _healthViewPrefab, _uiDynamic, config, _experiencePrefab,
-                        _coinPrefab, _player, _givesData);
-                    return instance;
-
                 default:
                     throw new ArgumentException(nameof(type));
             }
-           
+
         }
 
         private void InitializePathSearch(Behaviors.Enemy instance, EnemyConfig config, Transform[] points)

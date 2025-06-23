@@ -15,7 +15,7 @@ namespace _Project.Enemy.Behaviors
         private Player.Player _player;
         private Transform _target;
 
-        private EnemyView _enemyView;
+        private EnemyView.BaseEnemyView _enemyView;
         private ReasonCompleteStopAttack _reasonCompleteStopAttack;
         private AttackBreaker _attackBreaker;
 
@@ -49,7 +49,7 @@ namespace _Project.Enemy.Behaviors
 
         private void ExtractComponents()
         {
-            _enemyView = GetComponentInChildren<EnemyView>();
+            _enemyView = GetComponentInChildren<EnemyView.BaseEnemyView>();
             _reasonCompleteStopAttack = GetComponent<ReasonCompleteStopAttack>();
             _attackBreaker = GetComponent<AttackBreaker>();
         }
@@ -87,7 +87,7 @@ namespace _Project.Enemy.Behaviors
             while (true)
             {
                 _enemyView.StartAttack();
-                float attackAnimationTime = _enemyView.Animator.GetCurrentAnimatorStateInfo(0).length;
+                float attackAnimationTime = _enemyView.GetAnimator.GetCurrentAnimatorStateInfo(0).length;
                 yield return new WaitForSeconds(attackAnimationTime);
 
                 if (_fovViewAttack.CheckPlayerInRadius())

@@ -6,6 +6,7 @@
         RangedAttack,
         HeavyAttack,
         RangedAreaAttack,
+        LotsRangedAttacks,
         Manual,
     }
 }

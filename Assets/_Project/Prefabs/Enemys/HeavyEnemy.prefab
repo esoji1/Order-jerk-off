@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyTypes: 3
+  _artifactDropChance: 10
 --- !u!114 &7790586516416817811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,7 +438,7 @@ GameObject:
   - component: {fileID: 3830661074356074961}
   - component: {fileID: 922685682410623383}
   - component: {fileID: 3447215986296007414}
-  - component: {fileID: 1965773190295723675}
+  - component: {fileID: 7743221174610875837}
   m_Layer: 0
   m_Name: HeavyBlowEnemyView
   m_TagString: Untagged
@@ -537,7 +538,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1965773190295723675
+--- !u!114 &7743221174610875837
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -546,7 +547,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4055329102354172999}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3300fbfe1977c9c41bc1c9cf20711587, type: 3}
+  m_Script: {fileID: 11500000, guid: 8040d1d64d7de614b9df8f2b92917c1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5769924201842600197

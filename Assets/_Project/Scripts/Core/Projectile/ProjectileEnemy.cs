@@ -24,7 +24,6 @@ namespace _Project.Core.Projectile
                     damage.Damage(_damage);
                     Destroy(_projectile.gameObject);
                 }
-                Destroy(_projectile.gameObject, 4f);
             }
         }
 
@@ -33,6 +32,8 @@ namespace _Project.Core.Projectile
             _direction = direction.normalized;
             _projectile = projectile;
             _damage = damage;
+
+            Destroy(_projectile.gameObject, 4f);
         }
 
         private void GiveBulletAcceleration()
