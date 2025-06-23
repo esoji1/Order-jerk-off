@@ -50,6 +50,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b229547677c1343449dc01321a8f4615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &793763910298996615
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6385892818799033497}
+  m_Layer: 7
+  m_Name: PointSpawnEnemy (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6385892818799033497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793763910298996615}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.12, y: -1.611, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8207018845848599274}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2047439033024174441
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,7 +137,7 @@ GameObject:
   m_Layer: 7
   m_Name: PointAttack (0)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -169,6 +200,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 592132e68eb148b41a88fbb86b3daf82, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3795333244694836676
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1033678507337075358}
+  m_Layer: 7
+  m_Name: PointSpawnEnemy (0)
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1033678507337075358
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3795333244694836676}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.926, y: -1.611, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8207018845848599274}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3815882170937591534
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +500,7 @@ GameObject:
   - component: {fileID: 1365030270819094594}
   - component: {fileID: 7712245126376159739}
   - component: {fileID: 6084926683347065752}
+  - component: {fileID: 6993379182905234081}
   m_Layer: 7
   m_Name: SummonerEnemy
   m_TagString: Untagged
@@ -463,6 +526,8 @@ Transform:
   - {fileID: 723791222892346254}
   - {fileID: 1077623913816562831}
   - {fileID: 2955152612088565998}
+  - {fileID: 1033678507337075358}
+  - {fileID: 6385892818799033497}
   - {fileID: 1422895611938207364}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -617,6 +682,23 @@ MonoBehaviour:
   _pointsAttack:
   - {fileID: 1077623913816562831}
   - {fileID: 2955152612088565998}
+--- !u!114 &6993379182905234081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6615285917935388154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 881db6326db5d96418d7c0b7ecc5bcd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _spawnEnemyType: 4
+  _spawnInterval: 10
+  _pointsSpawn:
+  - {fileID: 1033678507337075358}
+  - {fileID: 6385892818799033497}
 --- !u!1 &7568731815637401054
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +711,7 @@ GameObject:
   m_Layer: 7
   m_Name: PointAttack (1)
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

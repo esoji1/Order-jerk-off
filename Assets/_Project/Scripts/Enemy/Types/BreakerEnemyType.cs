@@ -7,6 +7,7 @@
         HeavyAttack,
         RangedAreaAttack,
         LotsRangedAttacks,
+        SpawnEnemy,
         Manual,
     }
 }

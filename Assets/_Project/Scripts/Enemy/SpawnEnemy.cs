@@ -1,3 +1,4 @@
+using _Project.Core.Interface;
 using _Project.Enemy.Behaviors;
 using _Project.Enemy.Types;
 using _Project.SelectionGags;
@@ -89,7 +90,12 @@ namespace _Project.Enemy
             Enemy.Behaviors.Enemy newEnemy = _enemyFactoryBootstrap.EnemyFactory.Get(enemy.EnemyType, transform.position, _points);
 
             if (newEnemy != null)
+            {
                 _enemy.Add(newEnemy);
+                IInitializeBattleZone initializeBattleZone = newEnemy.GetComponent<IInitializeBattleZone>();
+                if (initializeBattleZone != null)
+                    initializeBattleZone.Initialize(_battleZone);
+            }
         }
 
         private void ClearEnemies()

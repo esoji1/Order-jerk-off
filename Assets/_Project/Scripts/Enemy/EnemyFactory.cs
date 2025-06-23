@@ -105,6 +105,7 @@ namespace _Project.Enemy
             InitializePathSearch(instance, config, points);
             InitializeFoundObjectsNeedsPlayer(instance);
             InitializeFoundObjectsNeedsMoveToTarget(instance);
+            InitializeFoundObjectsNeedsEnemyFactoryBootstrap(instance);
 
             switch (type)
             {
@@ -185,9 +186,7 @@ namespace _Project.Enemy
             IInitializePlayer[] initializePlayers = instance.GetComponents<IInitializePlayer>();
 
             foreach (IInitializePlayer initializePlayer in initializePlayers)
-            {
                 initializePlayer.Initialize(_player);
-            }
         }
 
         private void InitializeFoundObjectsNeedsMoveToTarget(Behaviors.Enemy instance)
@@ -195,9 +194,15 @@ namespace _Project.Enemy
             IInitializeTarget[] initializeTargets = instance.GetComponents<IInitializeTarget>();
 
             foreach (IInitializeTarget initializeTarget in initializeTargets)
-            {
                 initializeTarget.Initialize(_targetForMoveToTarget);
-            }
+        }
+
+        private void InitializeFoundObjectsNeedsEnemyFactoryBootstrap(Behaviors.Enemy instance)
+        {
+            IInitializeEnemyFactory[] initializeTargets = instance.GetComponents<IInitializeEnemyFactory>();
+
+            foreach (IInitializeEnemyFactory initializeTarget in initializeTargets)
+                initializeTarget.Initialize(this);
         }
     }
 }

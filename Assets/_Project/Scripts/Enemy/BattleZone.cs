@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace _Project.Enemy
@@ -15,6 +16,9 @@ namespace _Project.Enemy
         private bool _isEnterZone;
         private SpawnEnemy[] _enemys;
 
+        public event Action OnEnterZone;
+        public event Action OnExitZone;
+
         public bool IsEnterZone => _isEnterZone;
 
         private void Awake()
@@ -31,13 +35,19 @@ namespace _Project.Enemy
         private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.TryGetComponent(out Player.Player _))
+            {
                 _isEnterZone = true;
+                OnEnterZone?.Invoke();
+            }
         }
 
         private void OnTriggerExit2D(Collider2D collision)
         {
             if (collision.TryGetComponent(out Player.Player _))
+            {
                 _isEnterZone = false;
+                OnExitZone?.Invoke();
+            }
         }
 
         public void Initialize(EnemyFactoryBootstrap enemyFactory)

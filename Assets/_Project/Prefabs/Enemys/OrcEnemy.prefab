@@ -582,7 +582,7 @@ GameObject:
   - component: {fileID: 2130274007200448979}
   - component: {fileID: 4598763660732534781}
   - component: {fileID: 4393468486398710490}
-  - component: {fileID: 2337094907153574776}
+  - component: {fileID: 4501860042728726684}
   m_Layer: 0
   m_Name: OrcEnemyView
   m_TagString: Untagged
@@ -682,7 +682,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2337094907153574776
+--- !u!114 &4501860042728726684
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -691,7 +691,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8746259090846935305}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1dca7bb986612344a1934915f1283ff, type: 3}
+  m_Script: {fileID: 11500000, guid: 4af3f61a4dc05f84fb18c4e14d6532ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8800215757788693959

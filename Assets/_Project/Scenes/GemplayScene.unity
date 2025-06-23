@@ -9380,7 +9380,7 @@ MonoBehaviour:
   _slime: {fileID: 11400000, guid: 2f7e46cb98aef8c47b3fd7a8190f1ecf, type: 2}
   _distant: {fileID: 11400000, guid: b2bfb9fdb07f701458ea8d581ce15d02, type: 2}
   _heavy: {fileID: 11400000, guid: 64cc549d8aec26144bd8ec2f28f07734, type: 2}
-  _orc: {fileID: 0}
+  _orc: {fileID: 11400000, guid: f84f21103c00e2b4ba324cc6531f3536, type: 2}
   _wizard: {fileID: 11400000, guid: 5f3a68ca70932c44397197e3bccd2dbc, type: 2}
   _summoner: {fileID: 11400000, guid: f8db70b7f70d7fc4bb8e87ecd4561f05, type: 2}
   _planetMoveToTarget: {fileID: 11400000, guid: 703def7de9d11b44f98b8e76bb96a93f, type: 2}
