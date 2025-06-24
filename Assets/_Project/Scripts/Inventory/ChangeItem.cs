@@ -104,9 +104,16 @@ namespace _Project.Inventory
             }
             else if (_clickedCellInventory.Item.Category == ItemCategory.Potions)
             {
-                OnAddPotion?.Invoke(_clickedCellInventory.Item.GetItemType());
-                _inventoryActivePotions.AddItemInCell(_clickedCellInventory.Item);
-                _inventory.SubtractItems(_clickedCellInventory, 1);
+                foreach (Cell cell in _inventoryActivePotions.CellList)
+                {
+                    if (cell.Item == null)
+                    {
+                        OnAddPotion?.Invoke(_clickedCellInventory.Item.GetItemType());
+                        _inventoryActivePotions.AddItemInCell(_clickedCellInventory.Item);
+                        _inventory.SubtractItems(_clickedCellInventory, 1);
+                        return;
+                    }
+                }
                 return;
             }
             else if (_clickedCellInventory.Item.Category == ItemCategory.Artefact)
@@ -114,8 +121,15 @@ namespace _Project.Inventory
                 OnAddArtefact?.Invoke(_clickedCellInventory);
             }
 
-            _inventoryActive.AddItemInCell(_clickedCellInventory.Item);
-            _inventory.SubtractItems(_clickedCellInventory, 1);
+            foreach (Cell cell in _inventoryActive.CellList)
+            {
+                if (cell.Item == null)
+                {
+                    _inventoryActive.AddItemInCell(_clickedCellInventory.Item);
+                    _inventory.SubtractItems(_clickedCellInventory, 1);
+                    return;
+                }
+            }
         }
 
         private void TakeOff()
